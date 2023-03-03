@@ -1,0 +1,369 @@
+package Controlador;
+
+import Modelo.Asignatura;
+import Modelo.Curso;
+import Modelo.ModeloAsignatura;
+import Modelo.ModeloCurso;
+import Vista.VistaAsignatura;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import javax.xml.ws.Holder;
+
+public class ControladorAsignatura {
+
+    ModeloAsignatura modelo;
+    VistaAsignatura vista;
+
+    public ControladorAsignatura(ModeloAsignatura modelo, VistaAsignatura vista) {
+        this.modelo = modelo;
+        this.vista = vista;
+        vista.setVisible(true);
+        cargarTablaDeAsignaturas();
+    }
+
+    public void iniciarControl() {
+
+        vista.getBtnCrear().addActionListener(l -> abrirjDlgAsignatura());
+        vista.getBtnGuardar().addActionListener(l -> crearEditarAsignatura());
+        vista.getBtnModificar().addActionListener(l -> cargarDatosAsignaturaEnTXT());
+        vista.getBtnBuscarCurso().addActionListener(l -> abrirjDialogCurso());
+        vista.getBtnCargarCur().addActionListener(l -> cargarDatosCursoEnTXT());
+        vista.getBtnActualizar().addActionListener(l -> cargarTablaDeAsignaturas());
+        vista.getBtnEliminar().addActionListener(l -> eliminarAsignatura());
+        buscarAsignatura();
+    }
+
+    public void abrirjDlgAsignatura() {
+        limpiarDatos(); //Limpia los datos cada vez que se habra la ventana para crear la asignatura
+
+        vista.getjDlgAsignatura().setName("Crear nueva asignatura");
+        vista.getjDlgAsignatura().setLocationRelativeTo(null);
+        vista.getjDlgAsignatura().setSize(1061, 327);
+        vista.getjDlgAsignatura().setTitle("Crear nueva asignatura");
+        vista.getjDlgAsignatura().setVisible(true);
+    }
+
+    public void crearEditarAsignatura() {
+
+        if ("Crear nueva asignatura".equals(vista.getjDlgAsignatura().getName())) {
+
+            if (validarDatos()) {
+                ModeloAsignatura asignatura = new ModeloAsignatura();
+
+                //Setear el codigo del curso
+                asignatura.setAsi_codCurso(Integer.parseInt(vista.getTxtcodigoCurso().getText()));
+
+                //Setear los datos de la asignatura
+                asignatura.setAsi_nombre(vista.getTxtNombreAsignatura().getText());
+                asignatura.setAsi_descripcion(vista.getDescripcion().getText());
+
+                if (asignatura.crearAsignatura() == null) {
+
+                    JOptionPane.showMessageDialog(null, "Asignatura creada correctamente");
+                    vista.getjDlgAsignatura().setVisible(false);
+                    cargarTablaDeAsignaturas();
+
+                } else {
+                    JOptionPane.showConfirmDialog(null, "Error: No se pudo crear la asignatura");
+                }
+            }
+
+        } else {
+
+            if (validarDatos()) {
+                //EDITAR
+                ModeloAsignatura asignatura = new ModeloAsignatura();
+
+                //Setear el codigo del curso
+                asignatura.setAsi_codCurso(Integer.parseInt(vista.getTxtcodigoCurso().getText()));
+
+                //Setear los datos de la asignatura
+                asignatura.setAsi_codigo(codigoAsignatura);
+                asignatura.setAsi_nombre(vista.getTxtNombreAsignatura().getText());
+                asignatura.setAsi_descripcion(vista.getDescripcion().getText());
+
+                if (asignatura.modificarAsignatura() == null) {
+
+                    JOptionPane.showMessageDialog(null, "Asignatura modificada correctamente");
+                    vista.getjDlgAsignatura().setVisible(false);
+                    cargarTablaDeAsignaturas();
+
+                } else {
+                    JOptionPane.showConfirmDialog(null, "Error: No se pudo modificar la asignatura");
+                }
+            }
+        }
+    }
+
+    public void cargarTablaDeAsignaturas() {
+        DefaultTableModel tabla = (DefaultTableModel) vista.getTblAsignatura().getModel();
+        tabla.setNumRows(0);
+
+        ModeloCurso curso = new ModeloCurso();
+        List<Curso> cursos = curso.listaCursoTabla();
+        List<Asignatura> asignaturas = modelo.listaAsignaturaTabla();
+        asignaturas.stream().forEach(p -> {
+
+            cursos.stream().forEach(c -> {
+                if (p.getAsi_codCurso() == c.getCur_codigo()) {
+                    String[] datos = {String.valueOf(p.getAsi_codigo()), p.getAsi_nombre(), c.getCur_nombre()};
+                    tabla.addRow(datos);
+                }
+            });
+        });
+    }
+
+    public void eliminarAsignatura() {
+        ModeloAsignatura asignatura = new ModeloAsignatura();
+
+        int fila = vista.getTblAsignatura().getSelectedRow();
+
+        if (fila == -1) {
+            JOptionPane.showMessageDialog(null, "Aun no ha seleccionado una fila");
+        } else {
+
+            int response = JOptionPane.showConfirmDialog(vista, "¿Seguro que desea eliminar esta información?", "Confirmar", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            if (response == JOptionPane.YES_OPTION) {
+
+                int codigoAsignatura;
+                codigoAsignatura = Integer.parseInt(vista.getTblAsignatura().getValueAt(fila, 0).toString());
+
+                if (asignatura.eliminarAsignatura(codigoAsignatura) == null) {
+                    JOptionPane.showMessageDialog(null, "La asignatura fue eliminada exitosamente");
+                    cargarTablaDeAsignaturas();//Actualizo la tabla con los datos
+                } else {
+                    JOptionPane.showMessageDialog(null, "Error: La asignatura no se pudo eliminar");
+                }
+            }
+        }
+    }
+
+    int codigoAsignatura;
+
+    public void cargarDatosAsignaturaEnTXT() {
+        int fila = vista.getTblAsignatura().getSelectedRow();
+
+        if (fila == -1) {
+            JOptionPane.showMessageDialog(null, "Aun no ha seleccionado una fila");
+        } else {
+
+            //Quito la visibilidad del txt del codigo del curso
+            vista.getTxtcodigoCurso().setVisible(false);
+
+            //Abrir jDialog de campos de Docente
+            vista.getjDlgAsignatura().setName("Modificar asignatura");
+            vista.getjDlgAsignatura().setLocationRelativeTo(null);
+            vista.getjDlgAsignatura().setSize(1061, 327);
+            vista.getjDlgAsignatura().setTitle("Modificar asignatura");
+            vista.getjDlgAsignatura().setVisible(true);
+
+            //Creo un objeto de la clase ModeloCurso para traer el listado de cursos
+            ModeloCurso curso = new ModeloCurso();
+            List<Curso> listac = curso.listaCursoTabla();
+
+            List<Asignatura> listap = modelo.listaAsignaturaTabla();
+
+            listap.stream().forEach(a -> {
+
+                if (a.getAsi_codigo() == Integer.parseInt(vista.getTblAsignatura().getValueAt(fila, 0).toString())) {
+
+                    codigoAsignatura = a.getAsi_codigo(); //Obtengo el codigo de la asignatura el cual sirve para poder modificar los datos.
+
+                    listac.stream().forEach(c -> {
+
+                        if (a.getAsi_codCurso() == c.getCur_codigo()) {
+
+                            vista.getTxtcodigoCurso().setText(String.valueOf(c.getCur_codigo()));
+                            vista.getTxtNombreCurso().setText(c.getCur_nombre());
+                            vista.getTxtPeriodoCurso().setText(c.getCur_periodo());
+                            vista.getTxtPrecioCurso().setText(String.valueOf(c.getCur_precio()));
+                            vista.getTxtNombreAsignatura().setText(a.getAsi_nombre());
+                            vista.getDescripcion().setText(a.getAsi_descripcion());
+                        }
+                    });
+                }
+            });
+        }
+    }
+
+    //Todo sobre el registro de cursos en el jDialog
+    public void abrirjDialogCurso() {
+        vista.getjDlgBuscarCurso().setLocationRelativeTo(null);
+        vista.getjDlgBuscarCurso().setSize(661, 414);
+        vista.getjDlgBuscarCurso().setTitle("Seleccione un curso");
+        vista.getjDlgBuscarCurso().setVisible(true);
+        cargarRegistroDeCursos();
+        buscarCurso();
+    }
+
+    public void cargarRegistroDeCursos() {
+
+        ModeloCurso modeloCurso = new ModeloCurso();
+        vista.getTblDlgjCurso().setRowHeight(25);
+        DefaultTableModel estructuraTabla = (DefaultTableModel) vista.getTblDlgjCurso().getModel();
+        estructuraTabla.setRowCount(0);
+
+        List<Curso> listap = modeloCurso.listaCursoTabla();
+
+        Holder<Integer> i = new Holder<>(0);
+
+        listap.stream().forEach(c -> {
+
+            estructuraTabla.addRow(new Object[8]);
+
+            vista.getTblDlgjCurso().setValueAt(c.getCur_codigo(), i.value, 0);
+            vista.getTblDlgjCurso().setValueAt(c.getCur_nombre(), i.value, 1);
+            vista.getTblDlgjCurso().setValueAt(c.getCur_periodo(), i.value, 2);
+
+            i.value++;
+        });
+    }
+
+    public void cargarDatosCursoEnTXT() {
+        int fila = vista.getTblDlgjCurso().getSelectedRow();
+
+        if (fila == -1) {
+            JOptionPane.showMessageDialog(null, "Aun no ha seleccionado una fila");
+        } else {
+
+            //Quito la visibilidad del txt del codigo del curso
+            vista.getTxtcodigoCurso().setVisible(false);
+
+            ModeloCurso modeloCurso = new ModeloCurso();
+            List<Curso> listap = modeloCurso.listaCursoTabla();
+
+            listap.stream().forEach(c -> {
+
+                if (c.getCur_codigo() == Integer.parseInt(vista.getTblDlgjCurso().getValueAt(fila, 0).toString())) {
+
+                    //codigoCurso = Integer.parseInt(vista.getTblDlgjCurso().getValueAt(fila, 0).toString());
+                    vista.getTxtcodigoCurso().setText(String.valueOf(c.getCur_codigo()));
+                    vista.getTxtNombreCurso().setText(c.getCur_nombre());
+                    vista.getTxtPeriodoCurso().setText(c.getCur_periodo());
+                    vista.getTxtPrecioCurso().setText(String.valueOf(c.getCur_precio()));
+
+                }
+            });
+
+            vista.getjDlgBuscarCurso().dispose();
+        }
+    }
+
+    public void buscarCurso() {
+
+        KeyListener eventoTeclado = new KeyListener() {//Crear un objeto de tipo keyListener(Es una interface) por lo tanto se debe implementar sus metodos abstractos
+
+            @Override
+            public void keyTyped(KeyEvent e) {
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+
+                ModeloCurso modeloCurso = new ModeloCurso();
+                vista.getTblDlgjCurso().setRowHeight(25);
+                DefaultTableModel estructuraTabla = (DefaultTableModel) vista.getTblDlgjCurso().getModel();
+                estructuraTabla.setRowCount(0);
+
+                List<Curso> listap = modeloCurso.buscarCurso(vista.getTxtBuscarCur().getText());
+
+                Holder<Integer> i = new Holder<>(0);
+
+                listap.stream().forEach(c -> {
+
+                    estructuraTabla.addRow(new Object[8]);
+
+                    vista.getTblDlgjCurso().setValueAt(c.getCur_codigo(), i.value, 0);
+                    vista.getTblDlgjCurso().setValueAt(c.getCur_nombre(), i.value, 1);
+                    vista.getTblDlgjCurso().setValueAt(c.getCur_periodo(), i.value, 2);
+
+                    i.value++;
+                });
+            }
+        };
+
+        vista.getTxtBuscarCur().addKeyListener(eventoTeclado); //"addKeyListener" es un metodo que se le tiene que pasar como argumento un objeto de tipo keyListener 
+    }
+
+    public void buscarAsignatura() {
+
+        KeyListener eventoTeclado = new KeyListener() {//Crear un objeto de tipo keyListener(Es una interface) por lo tanto se debe implementar sus metodos abstractos
+
+            @Override
+            public void keyTyped(KeyEvent e) {
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                DefaultTableModel tabla = (DefaultTableModel) vista.getTblAsignatura().getModel();
+                tabla.setNumRows(0);
+
+                ModeloCurso curso = new ModeloCurso();
+                List<Curso> cursos = curso.listaCursoTabla();
+                List<Asignatura> asignaturas = modelo.buscarAsignatura(vista.getTxtBuscar().getText());
+                asignaturas.stream().forEach(p -> {
+
+                    cursos.stream().forEach(c -> {
+                        if (p.getAsi_codCurso() == c.getCur_codigo()) {
+                            String[] datos = {String.valueOf(p.getAsi_codigo()), p.getAsi_nombre(), c.getCur_nombre()};
+                            tabla.addRow(datos);
+                        }
+                    });
+                });
+            }
+        };
+
+        vista.getTxtBuscar().addKeyListener(eventoTeclado); //"addKeyListener" es un metodo que se le tiene que pasar como argumento un objeto de tipo keyListener 
+    }
+
+    public boolean validarDatos() {
+        Validaciones mivalidacion = new Validaciones();
+
+        boolean validar = true;
+
+        if (vista.getTxtNombreCurso().getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Seleccione un curso");
+            validar = false;
+        }
+
+        if (vista.getTxtNombreAsignatura().getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Ingrese el nombre de la asignatura");
+            validar = false;
+        } else {
+            if (!mivalidacion.validarTextoConEspacio(vista.getTxtNombreAsignatura().getText())) {
+                JOptionPane.showMessageDialog(null, "Nombre de la asignatura incorrecto");
+                validar = false;
+            }
+        }
+
+        if (vista.getDescripcion().getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "El campo de la descripción no puede estar vacio");
+            validar = false;
+        }
+
+        return validar;
+    }
+
+    public void limpiarDatos() {
+        vista.getTxtNombreCurso().setText("");
+        vista.getTxtPeriodoCurso().setText("");
+        vista.getTxtPrecioCurso().setText("");
+        vista.getTxtNombreAsignatura().setText("");
+        vista.getDescripcion().setText("");
+    }
+}
