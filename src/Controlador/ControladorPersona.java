@@ -12,6 +12,7 @@ import Modelo.ModeloProductor;
 import Modelo.Persona;
 import Modelo.Productor;
 import Vista.VistaPersona;
+import Vista.VistaPrincipal;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.text.ParseException;
@@ -34,10 +35,14 @@ public class ControladorPersona {
 
     static boolean asignar; //Esta variable es de tipo static para que funcione dentro de la expresion lambda. Esta variable sera true o false dependiendo si la persona es o no docente
 
+    VistaPrincipal p = new VistaPrincipal();
+
     public ControladorPersona(ModeloPersona modelo, VistaPersona vista) {
         this.modelo = modelo;
         this.vista = vista;
         vista.setVisible(true);
+
+        vista.setSize(p.getEscritorioPrincipal().getWidth(), p.getEscritorioPrincipal().getHeight());
         vista.getjDlogRegistro().setResizable(false);
         cargarPersonasTabla();
     }
