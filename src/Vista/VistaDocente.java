@@ -636,7 +636,7 @@ public class VistaDocente extends javax.swing.JInternalFrame {
         );
         jDlgBuscarPersonasLayout.setVerticalGroup(
             jDlgBuscarPersonasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 409, Short.MAX_VALUE)
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 409, Short.MAX_VALUE)
         );
 
         setBorder(null);
