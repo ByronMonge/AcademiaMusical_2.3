@@ -57,7 +57,7 @@ public class ControladorInstrumento {
         
         List<Instrumentos> instrumento = modelo.listaInstumentoTabla();
         instrumento.stream().forEach(p -> {
-            String[] datos = {String.valueOf(p.getIns_codigo()), p.getIns_nombre(), p.getIns_tipo(), p.getIns_marca(), String.valueOf(p.getIns_valor())};
+            String[] datos = {String.valueOf(p.getIns_codigo()), p.getIns_nombre(), p.getIns_marca(), p.getIns_tipo(), String.valueOf(p.getIns_valor())};
             tabla.addRow(datos);
         });
     }
@@ -199,7 +199,7 @@ public class ControladorInstrumento {
                 
                 List<Instrumentos> instrumento = modelo.buscarInstrumento(vista.getTxtBuscar().getText());
                 instrumento.stream().forEach(p -> {
-                    String[] datos = {p.getIns_nombre(), p.getIns_marca(), p.getIns_tipo(), String.valueOf(p.getIns_codigo()), String.valueOf(p.getIns_valor())};
+                    String[] datos = {String.valueOf(p.getIns_codigo()), p.getIns_nombre(), p.getIns_marca(), p.getIns_tipo(), String.valueOf(p.getIns_valor())};
                     tabla.addRow(datos);
                 });
             }
