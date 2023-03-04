@@ -8,6 +8,7 @@ import Modelo.ModeloAsignatura;
 import Modelo.ModeloDocente;
 
 import Vista.VistaAsiAsignatura;
+import Vista.VistaPrincipal;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.text.ParseException;
@@ -31,9 +32,12 @@ public class ControladorAsiAsignatura {
 
     static boolean verificarAsignacion;
 
+    VistaPrincipal p = new VistaPrincipal();
+    
     public ControladorAsiAsignatura(ModeloAsiAsignatura modelo, VistaAsiAsignatura vista) {
         this.modelo = modelo;
         this.vista = vista;
+        vista.setSize(p.getEscritorioPrincipal().getWidth(), p.getEscritorioPrincipal().getHeight());
         vista.setVisible(true);
         cargarTablaAsignaciones();
     }
