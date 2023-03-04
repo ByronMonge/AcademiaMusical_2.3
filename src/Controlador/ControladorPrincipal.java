@@ -9,6 +9,7 @@ import Modelo.ModeloAula;
 import Modelo.ModeloCurso;
 import Modelo.ModeloDocente;
 import Modelo.ModeloEstudiante;
+import Modelo.ModeloHorario;
 import Modelo.ModeloInstrumento;
 import Modelo.ModeloPersona;
 import Modelo.ModeloProductor;
@@ -22,6 +23,7 @@ import Vista.VistaCurso;
 import Vista.VistaDashboard;
 import Vista.VistaDocente;
 import Vista.VistaEstudiante;
+import Vista.VistaHorario;
 import Vista.VistaInstrumento;
 import Vista.VistaPersona;
 import Vista.VistaPrincipal;
@@ -47,13 +49,14 @@ public class ControladorPrincipal {
         vistaPrincipal.getBtnAdministrador().addActionListener(l -> registroAdministrador());
         vistaPrincipal.getBtnDashboard().addActionListener(l -> DashBoard());
         vistaPrincipal.getBtnCurso().addActionListener(l -> registroCurso());
-        vistaPrincipal.getBtnAula().addActionListener(l-> registroAula());
+        vistaPrincipal.getBtnAula().addActionListener(l -> registroAula());
         vistaPrincipal.getBtnEstudiante().addActionListener(l -> registroEstudiante());
         vistaPrincipal.getBtnAsignatura().addActionListener(l -> registroAsignatura());
         vistaPrincipal.getBtnProductor().addActionListener(l -> registroProductor());
         vistaPrincipal.getBtnAsignarAsignatura().addActionListener(l -> asignarAsignatura());
         vistaPrincipal.getBtnInstrumento().addActionListener(l -> registrarInstrumento());
         vistaPrincipal.getBtnSetGrab().addActionListener(l -> registrarSetGrabacion());
+        vistaPrincipal.getBtnHorario().addActionListener(l-> registroHorario());
     }
 
     private void registroPersona() {
@@ -171,6 +174,7 @@ public class ControladorPrincipal {
         ControladorAsiAsignatura control = new ControladorAsiAsignatura(modelo, vista);
         control.iniciarControl();
     }
+
     private void registrarInstrumento() {
         VistaInstrumento vista = new VistaInstrumento();
         ModeloInstrumento modelo = new ModeloInstrumento();
@@ -180,6 +184,7 @@ public class ControladorPrincipal {
         ControladorInstrumento control = new ControladorInstrumento(modelo, vista);
         control.iniciarControl();
     }
+
     private void registrarSetGrabacion() {
         VistaSetGrab vista = new VistaSetGrab();
         ModeloSetGrab modelo = new ModeloSetGrab();
@@ -189,5 +194,14 @@ public class ControladorPrincipal {
         ControladorSetGrabacion control = new ControladorSetGrabacion(modelo, vista);
         control.iniciarControl();
     }
-    
+
+    private void registroHorario() {
+        VistaHorario vista = new VistaHorario();
+        ModeloHorario modelo = new ModeloHorario();
+
+        vistaPrincipal.getEscritorioPrincipal().add(vista);
+
+        ControladorHorario control = new ControladorHorario(modelo, vista);
+        control.iniciarControl();
+    }
 }
