@@ -9,6 +9,8 @@ import Modelo.Persona;
 import Vista.VistaAdministrador;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -47,6 +49,7 @@ public class ControladorAdministrador {
         vista.getBtnActualizar().addActionListener(l -> cargarTablaDeAdministradores());
         vista.getBtnModificar().addActionListener(l -> cargarDatosAdministradoresEnTXT());
         vista.getBtnEliminar().addActionListener(l -> eliminarAdministrador());
+
         buscarAdministrador();
     }
 
@@ -74,7 +77,7 @@ public class ControladorAdministrador {
             //Abrir jDialog de campos de Docente
             vista.getjDlgAdministrador().setName("Modificar administrador");
             vista.getjDlgAdministrador().setLocationRelativeTo(null);
-            vista.getjDlgAdministrador().setSize(1171, 621);
+            vista.getjDlgAdministrador().setSize(978, 538);
             vista.getjDlgAdministrador().setTitle("Modificar administrador");
             vista.getjDlgAdministrador().setVisible(true);
             bloquearCampos();
@@ -122,12 +125,19 @@ public class ControladorAdministrador {
 
         vista.getjDlgAdministrador().setName("Crear nuevo administrador");
         vista.getjDlgAdministrador().setLocationRelativeTo(null);
-        vista.getjDlgAdministrador().setSize(1171, 621);
+        vista.getjDlgAdministrador().setSize(978, 538);
         vista.getjDlgAdministrador().setTitle("Crear nuevo administrador");
         vista.getjDlgAdministrador().setVisible(true);
+        vista.getLblOcultar().setVisible(true);
+        vista.getLblMostrar().setVisible(false);
+
+        //VER Y OCULTAR LAS CONTRASENIA
+        ocultarContrasenia();
+        verContrasenia();
 
         desbloquearCampos();
         limpiarCampos();
+
     }
 
     public void crearEditarAdministrador() {
@@ -578,4 +588,80 @@ public class ControladorAdministrador {
         vista.getBtnBuscarPersona().setVisible(true);
         vista.getTxtCedula().setEditable(true);
     }
+
+    public void verContrasenia() {
+        MouseListener evento = new MouseListener() {
+
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                vista.getTxtContrasenia().setEchoChar('●');
+                vista.getLblOcultar().setVisible(true);
+                vista.getLblMostrar().setVisible(false);
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+        };
+
+        vista.getLblMostrar().addMouseListener(evento);
+    }
+
+    public void ocultarContrasenia() {
+        MouseListener evento = new MouseListener() {
+
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+                vista.getTxtContrasenia().setEchoChar((char) 0);
+                vista.getLblMostrar().setVisible(true);
+                vista.getLblOcultar().setVisible(false);
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+        };
+
+        vista.getLblOcultar().addMouseListener(evento);
+    }
+
+//    public void mostrarContrasenia() {
+//        
+//    }
+//    public void ocultarContrasenia() {
+//        
+//    }
 }
