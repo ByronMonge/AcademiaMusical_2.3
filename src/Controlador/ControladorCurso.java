@@ -3,6 +3,7 @@ package Controlador;
 import Modelo.Curso;
 import Modelo.ModeloCurso;
 import Vista.VistaCurso;
+import Vista.VistaPrincipal;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.List;
@@ -14,10 +15,14 @@ public class ControladorCurso {
     ModeloCurso modelo;
     VistaCurso vista;
 
+    VistaPrincipal p = new VistaPrincipal();
+
     public ControladorCurso(ModeloCurso modelo, VistaCurso vista) {
         this.modelo = modelo;
         this.vista = vista;
         vista.setVisible(true);
+
+        vista.setSize(p.getEscritorioPrincipal().getWidth(), p.getEscritorioPrincipal().getHeight());
         vista.getjDlgCurso().setResizable(false);
         cargarTablaDeCurso();
     }
