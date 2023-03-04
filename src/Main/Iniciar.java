@@ -1,16 +1,16 @@
 package Main;
 
-import Controlador.ControladorPrincipal;
-import Vista.VistaPrincipal;
+//import Controlador.ControladorPrincipal;
+import Controlador.ControladorLogin;
+import Vista.VistaLogin;
 
+//import Vista.VistaPrincipal;
 public class Iniciar {
 
     public static void main(String[] args) {
 
-        VistaPrincipal vistaPrincipal = new VistaPrincipal();
-
-        ControladorPrincipal control = new ControladorPrincipal(vistaPrincipal);
-
+        VistaLogin vistaLogin = new VistaLogin();
+        ControladorLogin control = new ControladorLogin(vistaLogin);
         control.iniciarControl();
 
     }
