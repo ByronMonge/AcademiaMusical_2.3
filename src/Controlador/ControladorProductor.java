@@ -6,6 +6,7 @@ import Modelo.ModeloProductor;
 import Modelo.ModeloPersona;
 import Modelo.Persona;
 import Modelo.Productor;
+import Vista.VistaPrincipal;
 import Vista.VistaProductor;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -28,10 +29,14 @@ public class ControladorProductor {
 
     static boolean asignar;
 
+    VistaPrincipal p = new VistaPrincipal();
+
     public ControladorProductor(ModeloProductor modelo, VistaProductor vista) {
         this.modelo = modelo;
         this.vista = vista;
         vista.setVisible(true);
+
+        vista.setSize(p.getEscritorioPrincipal().getWidth(), p.getEscritorioPrincipal().getHeight());
         vista.getjDlgBuscarPersonas().setResizable(false);
         vista.getjDlgBuscarPersonas().setLocationRelativeTo(null);
         cargarTablaDeProductor();
