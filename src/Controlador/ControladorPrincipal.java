@@ -43,7 +43,7 @@ public class ControladorPrincipal {
     }
 
     public void iniciarControl() {
-        //VistaPersona vista = new VistaPersona();
+
         vistaPrincipal.getBtnRegistrarPersona().addActionListener(l -> registroPersona());
         vistaPrincipal.getBtnDocente().addActionListener(l -> registroDocente());
         vistaPrincipal.getBtnAdministrador().addActionListener(l -> registroAdministrador());
@@ -56,10 +56,13 @@ public class ControladorPrincipal {
         vistaPrincipal.getBtnAsignarAsignatura().addActionListener(l -> asignarAsignatura());
         vistaPrincipal.getBtnInstrumento().addActionListener(l -> registrarInstrumento());
         vistaPrincipal.getBtnSetGrab().addActionListener(l -> registrarSetGrabacion());
-        vistaPrincipal.getBtnHorario().addActionListener(l-> registroHorario());
+        vistaPrincipal.getBtnHorario().addActionListener(l -> registroHorario());
     }
 
     private void registroPersona() {
+
+        vistaPrincipal.getEscritorioPrincipal().removeAll(); //Remuevo todos los elementos que esten en sobre el desktopPane antes de abrir las ventanas
+
         //Instancio las clases del Modelo y la Vista.
         VistaPersona vista = new VistaPersona();
         ModeloPersona modelo = new ModeloPersona();
@@ -72,6 +75,9 @@ public class ControladorPrincipal {
     }
 
     private void registroDocente() {
+
+        vistaPrincipal.getEscritorioPrincipal().removeAll(); //Remuevo todos los elementos que esten en sobre el desktopPane
+
         VistaDocente vista = new VistaDocente();
         ModeloDocente modelo = new ModeloDocente();
 
@@ -82,6 +88,9 @@ public class ControladorPrincipal {
     }
 
     private void registroAdministrador() {
+
+        vistaPrincipal.getEscritorioPrincipal().removeAll(); //Remuevo todos los elementos que esten en sobre el desktopPane
+
         VistaAdministrador vista = new VistaAdministrador();
         ModeloAdministrador modelo = new ModeloAdministrador();
 
@@ -92,6 +101,9 @@ public class ControladorPrincipal {
     }
 
     private void registroProductor() {
+
+        vistaPrincipal.getEscritorioPrincipal().removeAll(); //Remuevo todos los elementos que esten en sobre el desktopPane
+
         VistaProductor vista = new VistaProductor();
         ModeloProductor modelo = new ModeloProductor();
 
@@ -102,6 +114,9 @@ public class ControladorPrincipal {
     }
 
     private void registroCurso() {
+
+        vistaPrincipal.getEscritorioPrincipal().removeAll(); //Remuevo todos los elementos que esten en sobre el desktopPane
+
         VistaCurso vista = new VistaCurso();
         ModeloCurso modelo = new ModeloCurso();
 
@@ -112,6 +127,9 @@ public class ControladorPrincipal {
     }
 
     private void registroAula() {
+
+        vistaPrincipal.getEscritorioPrincipal().removeAll(); //Remuevo todos los elementos que esten en sobre el desktopPane
+
         VistaAula vista = new VistaAula();
         ModeloAula modelo = new ModeloAula();
 
@@ -122,12 +140,16 @@ public class ControladorPrincipal {
     }
 
     private void DashBoard() {
+
+        vistaPrincipal.getEscritorioPrincipal().removeAll(); //Remuevo todos los elementos que esten en sobre el desktopPane
+
         //Instancio las clases del Modelo y la Vista.
         VistaDashboard vista = new VistaDashboard();
 
         //Agregar Vista Personas al Desktop Pane.
         vistaPrincipal.getEscritorioPrincipal().add(vista);
         vista.setVisible(true);
+        vista.setSize(vistaPrincipal.getEscritorioPrincipal().getWidth(), vistaPrincipal.getEscritorioPrincipal().getHeight());
 
         ModeloDocente docente = new ModeloDocente(); //Crear un objeto de Docente
         List<Docente> docentes = docente.listaDocentesTabla();
@@ -144,6 +166,9 @@ public class ControladorPrincipal {
     }
 
     private void registroEstudiante() {
+
+        vistaPrincipal.getEscritorioPrincipal().removeAll(); //Remuevo todos los elementos que esten en sobre el desktopPane
+
         //Instancio las clases del Modelo y la Vista.
         VistaEstudiante vista = new VistaEstudiante();
         ModeloEstudiante modelo = new ModeloEstudiante();
@@ -156,6 +181,9 @@ public class ControladorPrincipal {
     }
 
     private void registroAsignatura() {
+
+        vistaPrincipal.getEscritorioPrincipal().removeAll(); //Remuevo todos los elementos que esten en sobre el desktopPane
+
         VistaAsignatura vista = new VistaAsignatura();
         ModeloAsignatura modelo = new ModeloAsignatura();
 
@@ -166,6 +194,9 @@ public class ControladorPrincipal {
     }
 
     private void asignarAsignatura() {
+
+        vistaPrincipal.getEscritorioPrincipal().removeAll(); //Remuevo todos los elementos que esten en sobre el desktopPane
+
         VistaAsiAsignatura vista = new VistaAsiAsignatura();
         ModeloAsiAsignatura modelo = new ModeloAsiAsignatura();
 
@@ -176,6 +207,9 @@ public class ControladorPrincipal {
     }
 
     private void registrarInstrumento() {
+
+        vistaPrincipal.getEscritorioPrincipal().removeAll(); //Remuevo todos los elementos que esten en sobre el desktopPane
+
         VistaInstrumento vista = new VistaInstrumento();
         ModeloInstrumento modelo = new ModeloInstrumento();
 
@@ -186,6 +220,9 @@ public class ControladorPrincipal {
     }
 
     private void registrarSetGrabacion() {
+
+        vistaPrincipal.getEscritorioPrincipal().removeAll(); //Remuevo todos los elementos que esten en sobre el desktopPane
+
         VistaSetGrab vista = new VistaSetGrab();
         ModeloSetGrab modelo = new ModeloSetGrab();
 
@@ -196,6 +233,9 @@ public class ControladorPrincipal {
     }
 
     private void registroHorario() {
+
+        vistaPrincipal.getEscritorioPrincipal().removeAll(); //Remuevo todos los elementos que esten en sobre el desktopPane
+
         VistaHorario vista = new VistaHorario();
         ModeloHorario modelo = new ModeloHorario();
 
