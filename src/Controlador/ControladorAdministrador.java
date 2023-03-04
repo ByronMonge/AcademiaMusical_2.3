@@ -657,11 +657,4 @@ public class ControladorAdministrador {
 
         vista.getLblOcultar().addMouseListener(evento);
     }
-
-//    public void mostrarContrasenia() {
-//        
-//    }
-//    public void ocultarContrasenia() {
-//        
-//    }
 }
