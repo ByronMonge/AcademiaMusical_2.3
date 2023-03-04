@@ -1,14 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package Controlador;
 
+package Controlador;
 
 import Modelo.ModeloSetGrab;
 import Modelo.SetGrabacion;
-import Vista.VistaInstrumento;
 import Vista.VistaSetGrab;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -16,11 +10,8 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author Usuario
- */
 public class ControladorSetGrabacion {
+
     ModeloSetGrab modelo;
     VistaSetGrab vista;
 
@@ -38,13 +29,13 @@ public class ControladorSetGrabacion {
         vista.getBtnActualizar().addActionListener(l -> cargarTablaDeSetGrab());
         vista.getBtnModificar().addActionListener(l -> cargarDatosInstrumentoEnTXT());
         vista.getBtnEliminar().addActionListener(l -> eliminarInstrumento());
-        buscarInstrumento();
+        buscarSetDeGrabacion();
     }
 
     public void abrirDialogCrear() {
-        vista.getjDlgSetGrab().setName("Crear nuevo instrumento");
+        vista.getjDlgSetGrab().setName("Crear nuevo Set de grabacion");
         vista.getjDlgSetGrab().setLocationRelativeTo(vista);
-        vista.getjDlgSetGrab().setSize(761, 671);
+        vista.getjDlgSetGrab().setSize(464, 400);
         vista.getjDlgSetGrab().setTitle("Crear nuevo set de grabacion");
         vista.getjDlgSetGrab().setVisible(true);
 
@@ -58,25 +49,24 @@ public class ControladorSetGrabacion {
 
         List<SetGrabacion> instrumento = modelo.listaSetGrabTabla();
         instrumento.stream().forEach(p -> {
-            String[] datos = {String.valueOf(p.getSet_codigo()), p.getSet_nombre(), p.getSet_tamanio(), p.getSet_ubicacion()};
+            String[] datos = {String.valueOf(p.getSet_codigo()), p.getSet_nombre(), p.getSet_ubicacion(), p.getSet_tamanio()};
             tabla.addRow(datos);
         });
     }
 
     private void crearEditarSetGrab() {
         if ("Crear nuevo Set de grabacion".equals(vista.getjDlgSetGrab().getName())) {
-
-//            INSERTAR
+            //INSERTAR
             if (validarDatos()) {
                 ModeloSetGrab set = new ModeloSetGrab();
                 set.setSet_codigo(codigoSetGrab);
                 set.setSet_nombre(vista.getTxtNombre().getText());
-                set.setSet_tamanio(vista.getSpinnerTamanio().getValue().toString());
+                set.setSet_tamanio(vista.getComboTamanio().getSelectedItem().toString());
                 set.setSet_ubicacion(vista.getTxtUbicacion().getText());
-                                
+
                 if (set.crearSetGrabacion() == null) {
                     vista.getjDlgSetGrab().setVisible(false);
-                    JOptionPane.showMessageDialog(vista, "set de grabacion creado satisfactoriamente");
+                    JOptionPane.showMessageDialog(vista, "Set de grabacion creado satisfactoriamente");
                     cargarTablaDeSetGrab();
                 } else {
                     JOptionPane.showMessageDialog(vista, "No se pudo crear el set de grabacion");
@@ -88,12 +78,12 @@ public class ControladorSetGrabacion {
             //EDITAR
             if (validarDatos()) {
                 ModeloSetGrab set = new ModeloSetGrab();
-//                inst.setIns_codigo(codigoInstrumento);
+
                 set.setSet_codigo(codigoSetGrab);
                 set.setSet_nombre(vista.getTxtNombre().getText());
-                set.setSet_tamanio(vista.getSpinnerTamanio().getValue().toString());
+                set.setSet_tamanio(vista.getComboTamanio().getSelectedItem().toString());
                 set.setSet_ubicacion(vista.getTxtUbicacion().getText());
-                
+
                 if (set.modificarSetGrabacion() == null) {
                     vista.getjDlgSetGrab().setVisible(false);
                     JOptionPane.showMessageDialog(vista, "Set de grabacion modificado satisfactoriamente");
@@ -107,6 +97,7 @@ public class ControladorSetGrabacion {
         cargarTablaDeSetGrab(); //Actualizo la tabla con los datos
     }
 //
+
     public void eliminarInstrumento() {
 
         int fila = vista.getTblSetGrab().getSelectedRow();
@@ -140,31 +131,34 @@ public class ControladorSetGrabacion {
             JOptionPane.showMessageDialog(null, "Aun no ha seleccionado una fila");
         } else {
 
-            //Abrir jDialog de campos de Docente
             vista.getjDlgSetGrab().setName("Modificar Set de grabacion");
             vista.getjDlgSetGrab().setLocationRelativeTo(null);
-            vista.getjDlgSetGrab().setSize(1169, 689);
+            vista.getjDlgSetGrab().setSize(464, 400);
             vista.getjDlgSetGrab().setTitle("Modificar set de grabacion");
             vista.getjDlgSetGrab().setVisible(true);
 
-            
             List<SetGrabacion> listap = modelo.listaSetGrabTabla();
 
             listap.stream().forEach(setg -> {
 
                 if (setg.getSet_codigo() == Integer.parseInt(vista.getTblSetGrab().getValueAt(fila, 0).toString())) {
                     codigoSetGrab = setg.getSet_codigo();
-                    
+
                     vista.getTxtNombre().setText(setg.getSet_nombre());
                     vista.getTxtUbicacion().setText(setg.getSet_ubicacion());
-                    vista.getSpinnerTamanio().setValue(setg.getSet_tamanio());
-                    
+
+                    for (int j = 0; j < vista.getComboTamanio().getItemCount(); j++) {
+                        if (vista.getComboTamanio().getItemAt(j).equalsIgnoreCase(setg.getSet_tamanio())) {
+                            vista.getComboTamanio().setSelectedIndex(j);
+                            j = vista.getComboTamanio().getItemCount();
+                        }
+                    }
                 }
             });
         }
     }
 
-    public void buscarInstrumento() {
+    public void buscarSetDeGrabacion() {
 
         KeyListener eventoTeclado = new KeyListener() {//Crear un objeto de tipo keyListener(Es una interface) por lo tanto se debe implementar sus metodos abstractos
 
@@ -186,7 +180,7 @@ public class ControladorSetGrabacion {
 
                 List<SetGrabacion> instrumento = modelo.buscarSetGrabacion(vista.getTxtBuscar().getText());
                 instrumento.stream().forEach(p -> {
-                    String[] datos = {p.getSet_nombre(), p.getSet_ubicacion(), String.valueOf(p.getSet_tamanio())};
+                    String[] datos = {String.valueOf(p.getSet_codigo()), p.getSet_nombre(), p.getSet_ubicacion(), p.getSet_tamanio()};
                     tabla.addRow(datos);
                 });
             }
@@ -209,33 +203,29 @@ public class ControladorSetGrabacion {
                 validar = false;
             }
         }
+        
         if (vista.getTxtUbicacion().getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Ingrese una ubicacion");
             validar = false;
         } else {
             if (!mivalidacion.validarTextoConEspacio(vista.getTxtUbicacion().getText())) {
-                JOptionPane.showMessageDialog(null, "Ubicacion icorrecta");
+                JOptionPane.showMessageDialog(null, "Ubicacion incorrecta");
                 validar = false;
             }
         }
-//        if (vista.getTxtMarca().getText().isEmpty()) {
-//            JOptionPane.showMessageDialog(null, "Ingrese la marca");
-//            validar = false;
-//        } else {
-//            if (!mivalidacion.validarPeriodoAcademico(vista.getTxtPeriodo().getText())) {
-//                JOptionPane.showMessageDialog(null, "Marca incorrecta");
-//                validar = false;
-//            }
-//        }
-
         
+        if (vista.getComboTamanio().getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(null, "Seleccione un tamaño");
+            validar = false;
+        } 
+
         return validar;
     }
 
     public void limpiarDatos() {
-        
+
         vista.getTxtNombre().setText("");
         vista.getTxtUbicacion().setText("");
-        vista.getSpinnerTamanio().setValue(0);
-}
+        vista.getComboTamanio().setSelectedIndex(0);
+    }
 }
