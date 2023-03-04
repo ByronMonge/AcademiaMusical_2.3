@@ -13,9 +13,9 @@ public class ConexionPG {
 
     Connection con;
 
-    String cadenaConexion = "jdbc:postgresql://localhost:5432/proyectofinal";
+    String cadenaConexion = "jdbc:postgresql://localhost:5432/ProyectoAcademiaMusical";
     String usuarioPG = "postgres";
-    String passPG = "1234";
+    String passPG = "bfml1123";
 
     public ConexionPG() {
 
