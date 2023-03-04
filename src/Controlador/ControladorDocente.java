@@ -7,6 +7,7 @@ import Modelo.ModeloEmpleado;
 import Modelo.ModeloPersona;
 import Modelo.Persona;
 import Vista.VistaDocente;
+import Vista.VistaPrincipal;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.text.ParseException;
@@ -28,10 +29,14 @@ public class ControladorDocente {
 
     static boolean asignar; //Esta variable es de tipo static para que funcione dentro de la expresion lambda. Esta variable sera true o false dependiendo si la persona es o no docente
 
+    VistaPrincipal p = new VistaPrincipal();
+
     public ControladorDocente(ModeloDocente modelo, VistaDocente vista) {
         this.modelo = modelo;
         this.vista = vista;
         vista.setVisible(true);
+
+        vista.setSize(p.getEscritorioPrincipal().getWidth(), p.getEscritorioPrincipal().getHeight());
         vista.getjDlgBuscarPersonas().setResizable(false);
         vista.getjDlgBuscarPersonas().setLocationRelativeTo(null);
         cargarTablaDeDocentes();
@@ -45,7 +50,7 @@ public class ControladorDocente {
         vista.getBtnActualizar().addActionListener(l -> cargarTablaDeDocentes());
         vista.getBtnModificar().addActionListener(l -> cargarDatosDocentesEnTXT());
         vista.getBtnEliminar().addActionListener(l -> eliminarDocente());
-        vista.getBtnCancelar().addActionListener(l-> botonCancelar());
+        vista.getBtnCancelar().addActionListener(l -> botonCancelar());
         buscarDocente();
     }
 
@@ -533,8 +538,8 @@ public class ControladorDocente {
         vista.getTxtEmail().setEditable(false);
         vista.getTxtDireccion().setEditable(false);
     }
-    
-    public void botonCancelar(){
+
+    public void botonCancelar() {
         vista.getjDlgDocente().setVisible(false);
     }
 }
