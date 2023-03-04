@@ -5,6 +5,7 @@ import Modelo.Curso;
 import Modelo.ModeloAsignatura;
 import Modelo.ModeloCurso;
 import Vista.VistaAsignatura;
+import Vista.VistaPrincipal;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.List;
@@ -17,10 +18,13 @@ public class ControladorAsignatura {
     ModeloAsignatura modelo;
     VistaAsignatura vista;
 
+    VistaPrincipal p = new VistaPrincipal();
+
     public ControladorAsignatura(ModeloAsignatura modelo, VistaAsignatura vista) {
         this.modelo = modelo;
         this.vista = vista;
         vista.setVisible(true);
+        vista.setSize(p.getEscritorioPrincipal().getWidth(), p.getEscritorioPrincipal().getHeight());
         cargarTablaDeAsignaturas();
     }
 
