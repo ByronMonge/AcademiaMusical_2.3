@@ -7,6 +7,8 @@ import Modelo.ModeloEmpleado;
 import Modelo.ModeloPersona;
 import Modelo.Persona;
 import Vista.VistaAdministrador;
+import Vista.VistaPrincipal;
+import static java.awt.Frame.MAXIMIZED_BOTH;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
@@ -32,10 +34,13 @@ public class ControladorAdministrador {
     static boolean encontrarUsuarioMismaPosicion;// Esta varible sera true si el usuario que se ingresa en la modificacion es igual a otro en la BD
     static boolean encontrarUsuarioDiferentePosicion;
 
+    VistaPrincipal p = new VistaPrincipal();
+    
     public ControladorAdministrador(ModeloAdministrador modelo, VistaAdministrador vista) {
         this.modelo = modelo;
         this.vista = vista;
         vista.setVisible(true);
+        vista.setSize(p.getEscritorioPrincipal().getWidth(), p.getEscritorioPrincipal().getHeight());
         vista.getjDlgBuscarPersonas().setResizable(false);
         vista.getjDlgBuscarPersonas().setLocationRelativeTo(null);
         cargarTablaDeAdministradores();
