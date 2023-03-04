@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Modelo;
 
 import java.sql.ResultSet;
@@ -12,10 +7,6 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author Usuario
- */
 public class ModeloInstrumento extends Instrumentos {
 
     ConexionPG conpg = new ConexionPG();
@@ -28,13 +19,13 @@ public class ModeloInstrumento extends Instrumentos {
     }
 
     public SQLException crearInstrumento() {
-        String sql = "INSERT INTO instrumento(ins_nombre, ins_marca, ins_tipo, ins_estado, ins_codigo, ins_setcodigo, ins_valor) VALUES ('" + getIns_nombre() + "', '" + getIns_marca() + "', '" + getIns_tipo() + "', '" + 'A' + "','" + getIns_codigo() + "', " + getIns_setcodigo() + "','"+getIns_valor()+"');";
+        String sql = "INSERT INTO instrumento(ins_setcodigo, ins_nombre, ins_marca, ins_tipo, ins_valor, ins_estado) VALUES (" + getIns_setcodigo() + ",'" + getIns_nombre() + "', '" + getIns_marca() + "', '" + getIns_tipo() + "', " + getIns_valor() + ", 'A');";
 
         return conpg.accion(sql);
     }
 
     public SQLException modificarInstrumento() {
-        String sql = "UPDATE instrumento SET ins_nombre = '" + getIns_nombre() + "', ins_marca = '" + getIns_marca()+ "', ins_tipo = '" + getIns_tipo() + "', ins_estado = '" + getIns_estado() + "', ins_codigo = '" + getIns_setcodigo() + "', ins_setcodigo = " + getIns_setcodigo() + " where ins_codigo = " + getIns_codigo() + ";";
+        String sql = "UPDATE instrumento SET ins_nombre = '" + getIns_nombre() + "', ins_marca = '" + getIns_marca() + "', ins_tipo = '" + getIns_tipo() + "', ins_valor = "+ getIns_valor() + ", ins_setcodigo = " + getIns_setcodigo() + " where ins_codigo = " + getIns_codigo() + ";";
 
         return conpg.accion(sql);
     }
@@ -49,7 +40,7 @@ public class ModeloInstrumento extends Instrumentos {
         try {
             List<Instrumentos> lista = new ArrayList<>();
 
-            String sql = "select * from instumento where ins_estado = 'A'";
+            String sql = "select * from instrumento where ins_estado = 'A'";
 
             ResultSet rs = conpg.consulta(sql); //La consulta nos devuelve un "ResultSet"
 
@@ -65,7 +56,6 @@ public class ModeloInstrumento extends Instrumentos {
                 instrumento.setIns_setcodigo(rs.getInt("ins_setcodigo"));
                 instrumento.setIns_tipo(rs.getString("ins_tipo"));
                 instrumento.setIns_valor(rs.getDouble("ins_valor"));
-             
 
                 lista.add(instrumento); //Agrego los datos a la lista
             }
@@ -103,7 +93,6 @@ public class ModeloInstrumento extends Instrumentos {
                 instrumento.setIns_setcodigo(rs.getInt("ins_setcodigo"));
                 instrumento.setIns_tipo(rs.getString("ins_tipo"));
                 instrumento.setIns_valor(rs.getDouble("ins_valor"));
-             
 
                 lista.add(instrumento); //Agrego los datos a la lista
             }
