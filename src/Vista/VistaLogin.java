@@ -72,38 +72,38 @@ public class VistaLogin extends javax.swing.JFrame {
         jLabel13.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         jLabel13.setText("Usuario:");
         jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, -1, -1));
-        jPanel1.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 70, 256, -1));
+        jPanel1.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, 140, -1));
 
         jLabel18.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         jLabel18.setText("Contraseña:");
         jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, -1, -1));
 
         txtContrasenia.setText("jPasswordField1");
-        jPanel1.add(txtContrasenia, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 120, 221, -1));
+        jPanel1.add(txtContrasenia, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 120, 140, -1));
 
         lblOcultar.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         lblOcultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/visible.png"))); // NOI18N
-        jPanel1.add(lblOcultar, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 120, 30, -1));
+        jPanel1.add(lblOcultar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 120, 30, -1));
 
         lblMostrar.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         lblMostrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ojo-rojo.png"))); // NOI18N
-        jPanel1.add(lblMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 120, 30, -1));
+        jPanel1.add(lblMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 120, 30, -1));
 
         btnIniciarSesion.setText("Iniciar sesión");
-        jPanel1.add(btnIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 180, -1, -1));
+        jPanel1.add(btnIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 180, -1, -1));
 
         jLabel1.setText("Inicio de sesión");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 10, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
         );
 
         pack();
