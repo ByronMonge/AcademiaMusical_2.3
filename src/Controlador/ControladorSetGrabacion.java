@@ -1,8 +1,8 @@
-
 package Controlador;
 
 import Modelo.ModeloSetGrab;
 import Modelo.SetGrabacion;
+import Vista.VistaPrincipal;
 import Vista.VistaSetGrab;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -15,10 +15,14 @@ public class ControladorSetGrabacion {
     ModeloSetGrab modelo;
     VistaSetGrab vista;
 
+    VistaPrincipal p = new VistaPrincipal();
+
     public ControladorSetGrabacion(ModeloSetGrab modelo, VistaSetGrab vista) {
         this.modelo = modelo;
         this.vista = vista;
         vista.setVisible(true);
+
+        vista.setSize(p.getEscritorioPrincipal().getWidth(), p.getEscritorioPrincipal().getHeight());
         vista.getjDlgSetGrab().setResizable(false);
         cargarTablaDeSetGrab();
     }
@@ -203,7 +207,7 @@ public class ControladorSetGrabacion {
                 validar = false;
             }
         }
-        
+
         if (vista.getTxtUbicacion().getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Ingrese una ubicacion");
             validar = false;
@@ -213,11 +217,11 @@ public class ControladorSetGrabacion {
                 validar = false;
             }
         }
-        
+
         if (vista.getComboTamanio().getSelectedIndex() == 0) {
             JOptionPane.showMessageDialog(null, "Seleccione un tamaño");
             validar = false;
-        } 
+        }
 
         return validar;
     }
