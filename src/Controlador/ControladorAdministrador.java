@@ -8,7 +8,6 @@ import Modelo.ModeloPersona;
 import Modelo.Persona;
 import Vista.VistaAdministrador;
 import Vista.VistaPrincipal;
-import static java.awt.Frame.MAXIMIZED_BOTH;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
