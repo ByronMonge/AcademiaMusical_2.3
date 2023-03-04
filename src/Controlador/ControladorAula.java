@@ -3,6 +3,7 @@ package Controlador;
 import Modelo.Aula;
 import Modelo.ModeloAula;
 import Vista.VistaAula;
+import Vista.VistaPrincipal;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.List;
@@ -14,10 +15,13 @@ public class ControladorAula {
     ModeloAula modelo;
     VistaAula vista;
 
+    VistaPrincipal p = new VistaPrincipal();
+
     public ControladorAula(ModeloAula modelo, VistaAula vista) {
         this.modelo = modelo;
         this.vista = vista;
         vista.setVisible(true);
+        vista.setSize(p.getEscritorioPrincipal().getWidth(), p.getEscritorioPrincipal().getHeight());
         cargarTablaDeAula();
     }
 
