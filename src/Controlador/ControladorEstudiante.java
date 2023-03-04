@@ -5,6 +5,7 @@ import Modelo.ModeloEstudiante;
 import Modelo.ModeloPersona;
 import Modelo.Persona;
 import Vista.VistaEstudiante;
+import Vista.VistaPrincipal;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.List;
@@ -12,19 +13,19 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.xml.ws.Holder;
 
-/**
- *
- * @author Usuario
- */
 public class ControladorEstudiante {
 
     ModeloEstudiante modelo;
     VistaEstudiante vista;
 
+    VistaPrincipal p = new VistaPrincipal();
+
     public ControladorEstudiante(ModeloEstudiante modelo, VistaEstudiante vista) {
         this.modelo = modelo;
         this.vista = vista;
         vista.setVisible(true);
+
+        vista.setSize(p.getEscritorioPrincipal().getWidth(), p.getEscritorioPrincipal().getHeight());
         vista.getjDlgBuscarPersonas().setResizable(false);
         vista.getjDlgBuscarPersonas().setLocationRelativeTo(null);
         cargarTablaDeEstudiantes();
@@ -118,7 +119,6 @@ public class ControladorEstudiante {
 
             if (validarDatos()) {
                 ModeloPersona persona = new ModeloPersona();
-             
 
                 if (modelo.traerEstadoDelEstudiante(persona.traerCodigoDePersonaCrear(vista.getTxtCedula().getText())).equals("A")) {
 
@@ -325,8 +325,8 @@ public class ControladorEstudiante {
         }
         return validar;
     }
-    
-        public void bloquearCampos() {
+
+    public void bloquearCampos() {
         vista.getBtnBuscarPersona().setVisible(false);
         vista.getTxtCedula().setEditable(false);
         vista.getTxtPrimerNombre().setEditable(false);
@@ -341,8 +341,8 @@ public class ControladorEstudiante {
         vista.getTxtEmail().setEditable(false);
         vista.getTxtDireccion().setEditable(false);
     }
-        
-               public void bloquearCampos1() {
+
+    public void bloquearCampos1() {
         vista.getTxtCedula().setEditable(false);
         vista.getTxtPrimerNombre().setEditable(false);
         vista.getTxtSegundoNombre().setEditable(false);
@@ -356,8 +356,8 @@ public class ControladorEstudiante {
         vista.getTxtEmail().setEditable(false);
         vista.getTxtDireccion().setEditable(false);
     }
-        
-            public void limpiarCampos() {
+
+    public void limpiarCampos() {
         vista.getTxtCedula().setText("");
         vista.getTxtPrimerNombre().setText("");
         vista.getTxtSegundoNombre().setText("");
