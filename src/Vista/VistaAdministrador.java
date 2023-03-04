@@ -4,6 +4,7 @@ import com.toedter.calendar.JDateChooser;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JLabel;
 import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
 import javax.swing.JSpinner;
@@ -22,6 +23,22 @@ public class VistaAdministrador extends javax.swing.JInternalFrame {
 
     public void setBtnActualizar(JButton btnActualizar) {
         this.btnActualizar = btnActualizar;
+    }
+
+    public JLabel getLblMostrar() {
+        return lblMostrar;
+    }
+
+    public void setLblMostrar(JLabel lblMostrar) {
+        this.lblMostrar = lblMostrar;
+    }
+
+    public JLabel getLblOcultar() {
+        return lblOcultar;
+    }
+
+    public void setLblOcultar(JLabel lblOcultar) {
+        this.lblOcultar = lblOcultar;
     }
 
     public JButton getBtnAsignar() {
@@ -208,11 +225,11 @@ public class VistaAdministrador extends javax.swing.JInternalFrame {
         this.txtEmail = txtEmail;
     }
 
-    public JTextField getTxtContrasenia() {
+    public JPasswordField getTxtContrasenia() {
         return txtContrasenia;
     }
 
-    public void setTxtContrasenia(JTextField txtContrasenia) {
+    public void setTxtContrasenia(JPasswordField txtContrasenia) {
         this.txtContrasenia = txtContrasenia;
     }
 
@@ -304,7 +321,9 @@ public class VistaAdministrador extends javax.swing.JInternalFrame {
         fechaContratacion = new com.toedter.calendar.JDateChooser();
         jLabel16 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
-        txtContrasenia = new javax.swing.JTextField();
+        txtContrasenia = new javax.swing.JPasswordField();
+        lblOcultar = new javax.swing.JLabel();
+        lblMostrar = new javax.swing.JLabel();
         jDlgBuscarPersonas = new javax.swing.JDialog();
         jPanel3 = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
@@ -325,9 +344,12 @@ public class VistaAdministrador extends javax.swing.JInternalFrame {
         btnEliminar = new javax.swing.JButton();
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel2.add(txtSegundoApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(166, 311, 209, -1));
 
         jLabel12.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         jLabel12.setText("Dirección:");
+        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(511, 212, -1, -1));
 
         btnGuardar.setBackground(new java.awt.Color(255, 255, 255));
         btnGuardar.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
@@ -335,45 +357,66 @@ public class VistaAdministrador extends javax.swing.JInternalFrame {
         btnGuardar.setText("Guardar");
         btnGuardar.setBorder(null);
         btnGuardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel2.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(357, 503, -1, -1));
 
         jLabel8.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         jLabel8.setText("Fecha de nacimiento:");
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(511, 92, -1, -1));
+        jPanel2.add(txtDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(682, 209, 256, -1));
 
         jLabel2.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         jLabel2.setText("Cédula:");
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 92, -1, -1));
+        jPanel2.add(fechaNacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(682, 91, 256, -1));
+        jPanel2.add(txtCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(166, 89, 209, -1));
 
         jLabel9.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         jLabel9.setText("Género:");
+        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 373, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         jLabel4.setText("Primer nombre:");
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 151, -1, -1));
 
         genero.add(masculino);
         masculino.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         masculino.setText("M");
+        jPanel2.add(masculino, new org.netbeans.lib.awtextra.AbsoluteConstraints(166, 365, -1, -1));
+        jPanel2.add(txtPrimerNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(166, 148, 209, -1));
 
         genero.add(femenino);
         femenino.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         femenino.setText("F");
+        jPanel2.add(femenino, new org.netbeans.lib.awtextra.AbsoluteConstraints(225, 365, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         jLabel5.setText("Segundo nombre:");
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 209, -1, -1));
 
         genero.add(noBinario);
         noBinario.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         noBinario.setText("No binario");
+        jPanel2.add(noBinario, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 365, -1, -1));
+        jPanel2.add(txtSegundoNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(166, 206, 209, -1));
 
         jLabel10.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         jLabel10.setText("Teléfono:");
+        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 436, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         jLabel6.setText("Primer apellido:");
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 264, -1, -1));
+        jPanel2.add(txtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(166, 433, 209, -1));
+        jPanel2.add(txtPrimerApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(166, 264, 209, -1));
 
         jLabel11.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         jLabel11.setText("Email:");
+        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(511, 151, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         jLabel7.setText("Segundo apellido:");
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 314, -1, -1));
+        jPanel2.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(682, 148, 256, -1));
 
         btnBuscarPersona.setBackground(new java.awt.Color(255, 255, 255));
         btnBuscarPersona.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
@@ -382,13 +425,17 @@ public class VistaAdministrador extends javax.swing.JInternalFrame {
         btnBuscarPersona.setBorder(null);
         btnBuscarPersona.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnBuscarPersona.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        jPanel2.add(btnBuscarPersona, new org.netbeans.lib.awtextra.AbsoluteConstraints(389, 88, -1, -1));
 
         jLabel13.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         jLabel13.setText("Usuario:");
+        jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(511, 267, -1, -1));
+        jPanel2.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(682, 264, 256, -1));
 
         jLabel3.setFont(new java.awt.Font("Roboto Black", 0, 28)); // NOI18N
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/profesor.png"))); // NOI18N
         jLabel3.setText("Datos del administrador ");
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 13, -1, -1));
 
         btnCancelar.setBackground(new java.awt.Color(255, 255, 255));
         btnCancelar.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
@@ -396,171 +443,44 @@ public class VistaAdministrador extends javax.swing.JInternalFrame {
         btnCancelar.setText("Cancelar");
         btnCancelar.setBorder(null);
         btnCancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel2.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(653, 499, 95, 39));
 
         spinnerSueldo.setModel(new javax.swing.SpinnerNumberModel(0.0d, 0.0d, 10000.0d, 1.0d));
+        jPanel2.add(spinnerSueldo, new org.netbeans.lib.awtextra.AbsoluteConstraints(682, 366, 189, -1));
 
         jLabel14.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         jLabel14.setText("Sueldo");
+        jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(511, 369, -1, -1));
 
         jLabel15.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         jLabel15.setText("$");
+        jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 369, -1, -1));
+        jPanel2.add(fechaContratacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(682, 433, 256, -1));
 
         jLabel16.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         jLabel16.setText("Fecha de contratacion:");
+        jPanel2.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(511, 436, -1, -1));
 
         jLabel18.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         jLabel18.setText("Contraseña:");
+        jPanel2.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(511, 314, -1, -1));
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel10)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel9)
-                                    .addComponent(jLabel2))
-                                .addGap(3, 3, 3))
-                            .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(txtTelefono, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtSegundoApellido, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                                        .addComponent(masculino)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(femenino)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(noBinario))
-                                    .addComponent(txtPrimerApellido, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtSegundoNombre, javax.swing.GroupLayout.Alignment.LEADING)))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(12, 12, 12)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtPrimerNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtCedula, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(14, 14, 14)
-                                .addComponent(btnBuscarPersona))))
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 245, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel11)
-                    .addComponent(jLabel12)
-                    .addComponent(jLabel14)
-                    .addComponent(jLabel16)
-                    .addComponent(jLabel18)
-                    .addComponent(jLabel13))
-                .addGap(25, 25, 25)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtContrasenia)
-                            .addComponent(txtUsuario)
-                            .addComponent(txtDireccion, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                                        .addComponent(spinnerSueldo, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabel15))
-                                    .addComponent(fechaNacimiento, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtEmail, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addGap(93, 93, 93))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(fechaContratacion, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(357, 357, 357)
-                .addComponent(btnGuardar)
-                .addGap(209, 209, 209)
-                .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel3)
-                .addGap(42, 42, 42)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel8)
-                        .addComponent(jLabel2)
-                        .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnBuscarPersona))
-                    .addComponent(fechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(35, 35, 35)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
-                            .addComponent(txtPrimerNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(36, 36, 36)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5)
-                            .addComponent(txtSegundoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(36, 36, 36)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(txtPrimerApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel13)
-                                .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel11)
-                            .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(39, 39, 39)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel12)
-                            .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtContrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel18)
-                    .addComponent(txtSegundoApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
-                .addGap(30, 30, 30)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel9)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(masculino)
-                        .addComponent(femenino)
-                        .addComponent(noBinario)
-                        .addComponent(jLabel14)
-                        .addComponent(spinnerSueldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel15)))
-                .addGap(43, 43, 43)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel16)
-                        .addComponent(jLabel10)
-                        .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(fechaContratacion, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnGuardar))
-                .addGap(35, 35, 35))
-        );
+        txtContrasenia.setText("jPasswordField1");
+        jPanel2.add(txtContrasenia, new org.netbeans.lib.awtextra.AbsoluteConstraints(681, 311, 221, -1));
+
+        lblOcultar.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
+        lblOcultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/visible.png"))); // NOI18N
+        jPanel2.add(lblOcultar, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 310, 30, -1));
+
+        lblMostrar.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
+        lblMostrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ojo-rojo.png"))); // NOI18N
+        jPanel2.add(lblMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(914, 311, -1, -1));
 
         javax.swing.GroupLayout jDlgAdministradorLayout = new javax.swing.GroupLayout(jDlgAdministrador.getContentPane());
         jDlgAdministrador.getContentPane().setLayout(jDlgAdministradorLayout);
         jDlgAdministradorLayout.setHorizontalGroup(
             jDlgAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 978, Short.MAX_VALUE)
         );
         jDlgAdministradorLayout.setVerticalGroup(
             jDlgAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -789,6 +709,8 @@ public class VistaAdministrador extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel lblMostrar;
+    private javax.swing.JLabel lblOcultar;
     private javax.swing.JRadioButton masculino;
     private javax.swing.JRadioButton noBinario;
     private javax.swing.JSpinner spinnerSueldo;
@@ -797,7 +719,7 @@ public class VistaAdministrador extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtBuscar;
     private javax.swing.JTextField txtBuscarPer;
     private javax.swing.JTextField txtCedula;
-    private javax.swing.JTextField txtContrasenia;
+    private javax.swing.JPasswordField txtContrasenia;
     private javax.swing.JTextField txtDireccion;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtPrimerApellido;
