@@ -33,12 +33,13 @@ public class ControladorAsiAsignatura {
     static boolean verificarAsignacion;
 
     VistaPrincipal p = new VistaPrincipal();
-    
+
     public ControladorAsiAsignatura(ModeloAsiAsignatura modelo, VistaAsiAsignatura vista) {
         this.modelo = modelo;
         this.vista = vista;
         vista.setSize(p.getEscritorioPrincipal().getWidth(), p.getEscritorioPrincipal().getHeight());
         vista.setVisible(true);
+        cargarFechaActual();
         cargarTablaAsignaciones();
     }
 
@@ -94,7 +95,7 @@ public class ControladorAsiAsignatura {
 
     public void abrirjDialogAsignarAsignatura() {
         vista.getjDlgAsiAsignatura().setLocationRelativeTo(null);
-        vista.getjDlgAsiAsignatura().setSize(1061, 376);
+        vista.getjDlgAsiAsignatura().setSize(885, 433);
         vista.getjDlgAsiAsignatura().setTitle("Asignar asignatura");
         vista.getjDlgAsiAsignatura().setName("Asignar asignatura");
         vista.getjDlgAsiAsignatura().setVisible(true);
@@ -216,9 +217,11 @@ public class ControladorAsiAsignatura {
 
             vista.getjDlgAsiAsignatura().setName("Modificar curso");
             vista.getjDlgAsiAsignatura().setLocationRelativeTo(null);
-            vista.getjDlgAsiAsignatura().setSize(1061, 376);
+            vista.getjDlgAsiAsignatura().setSize(885, 433);
             vista.getjDlgAsiAsignatura().setTitle("Modificar  curso");
             vista.getjDlgAsiAsignatura().setVisible(true);
+            vista.getTxtCodigoDocente().setVisible(false);
+            vista.getTxtCodigoAsignatura().setVisible(false);
 
             ModeloDocente modeloDocente = new ModeloDocente();
             ModeloAsignatura modeloAsignatura = new ModeloAsignatura();
@@ -553,5 +556,13 @@ public class ControladorAsiAsignatura {
         }
 
         return validar;
+    }
+
+    public void cargarFechaActual() {
+        vista.getFechaDeAsignacion().setEnabled(false);
+
+        //Seteo la fecha actual en el jCalendar
+        Date fecha = new Date();
+        vista.getFechaDeAsignacion().setDate(fecha);
     }
 }
