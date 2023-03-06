@@ -14,6 +14,7 @@ public class ControladorLogin {
     VistaLogin vista;
 
     static boolean encontrar;//Variable para saber si el usuario y la contraseña estan en la BD
+    static String usuario;
 
     public ControladorLogin(VistaLogin vista) {
         this.vista = vista;
@@ -41,11 +42,13 @@ public class ControladorLogin {
             if (a.getAdm_usuario().equals(vista.getTxtUsuario().getText()) && a.getAdm_clave().equals(vista.getTxtContrasenia().getText())) {
                 vista.setVisible(false);//Cierro la ventana del login y abro la ventana principal 
                 encontrar = true;//El usuario y la contraseña ingresados por el usuario son iguales a los que estan en la BD
+
                 VistaPrincipal vistaPrincipal = new VistaPrincipal();
-
                 ControladorPrincipal control = new ControladorPrincipal(vistaPrincipal);
-
                 control.iniciarControl();
+
+                usuario = vista.getTxtUsuario().getText();//Guardo el usuario para luego usarlo en la matricula
+                System.out.println("Usuario login: " + usuario);
             }
         });
 
