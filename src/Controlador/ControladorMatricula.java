@@ -1,24 +1,27 @@
-
 package Controlador;
 
 import Modelo.ModeloMatricula;
 import Vista.VistaMatricula;
+import Vista.VistaPrincipal;
 
 public class ControladorMatricula {
-    
+
     ModeloMatricula modelo;
     VistaMatricula vista;
+
+    VistaPrincipal p = new VistaPrincipal();
 
     public ControladorMatricula(ModeloMatricula modelo, VistaMatricula vista) {
         this.modelo = modelo;
         this.vista = vista;
         vista.setVisible(true);
+        vista.setSize(p.getEscritorioPrincipal().getWidth(), p.getEscritorioPrincipal().getHeight());
     }
-    
-    public void iniciarControl(){
-        
+
+    public void iniciarControl() {
+
     }
-    
+
     //Todo sobre estudiante
     public void abrirjDialogEstudiante() {
         vista.getjDlgBuscarEstudiante().setLocationRelativeTo(null);
@@ -28,7 +31,7 @@ public class ControladorMatricula {
         //cargarRegistroDePersonas();
         //buscarPersona();
     }
-    
+
     //Todo sobre curso
     public void abrirjDialogCurso() {
         vista.getjDlgBuscarCurso().setLocationRelativeTo(null);
@@ -38,6 +41,5 @@ public class ControladorMatricula {
         //cargarRegistroDePersonas();
         //buscarPersona();
     }
-    
-    
+
 }
