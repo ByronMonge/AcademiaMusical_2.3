@@ -121,6 +121,14 @@ public class VistaPrincipal extends javax.swing.JFrame {
         this.btnHorario = btnHorario;
     }
 
+    public JButton getBtnMatricula() {
+        return btnMatricula;
+    }
+
+    public void setBtnMatricula(JButton btnMatricula) {
+        this.btnMatricula = btnMatricula;
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -144,6 +152,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         btnHorario = new javax.swing.JButton();
+        btnMatricula = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setExtendedState(2);
@@ -330,6 +339,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         );
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Roboto", 1, 26)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(153, 0, 0));
@@ -338,6 +348,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         jLabel1.setToolTipText("");
         jLabel1.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 380, -1));
 
         btnHorario.setBackground(new java.awt.Color(46, 49, 49));
         btnHorario.setFont(new java.awt.Font("Roboto Medium", 0, 16)); // NOI18N
@@ -346,27 +357,16 @@ public class VistaPrincipal extends javax.swing.JFrame {
         btnHorario.setText("Horario");
         btnHorario.setBorder(null);
         btnHorario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel3.add(btnHorario, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 30, -1, -1));
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnHorario)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(52, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnHorario))
-                .addGap(22, 22, 22))
-        );
+        btnMatricula.setBackground(new java.awt.Color(46, 49, 49));
+        btnMatricula.setFont(new java.awt.Font("Roboto Medium", 0, 16)); // NOI18N
+        btnMatricula.setForeground(new java.awt.Color(255, 255, 255));
+        btnMatricula.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/profesor.png"))); // NOI18N
+        btnMatricula.setText("Matricula");
+        btnMatricula.setBorder(null);
+        btnMatricula.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel3.add(btnMatricula, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 30, -1, -1));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -378,7 +378,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(escritorioPrincipal))
         );
@@ -413,6 +413,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnEstudiante;
     private javax.swing.JButton btnHorario;
     private javax.swing.JButton btnInstrumento;
+    private javax.swing.JButton btnMatricula;
     private javax.swing.JButton btnProductor;
     private javax.swing.JButton btnRegistrarPersona;
     private javax.swing.JButton btnSetGrab;
