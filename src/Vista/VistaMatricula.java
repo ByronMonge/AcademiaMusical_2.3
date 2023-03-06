@@ -5,7 +5,7 @@ import javax.swing.JDialog;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
-public class VistaMatricula extends javax.swing.JFrame {
+public class VistaMatricula extends javax.swing.JInternalFrame {
 
     public VistaMatricula() {
         initComponents();
