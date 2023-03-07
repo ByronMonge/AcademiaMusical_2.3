@@ -1,6 +1,5 @@
 package Controlador;
 
-import static Controlador.ControladorLogin.encontrar;
 import static Controlador.ControladorLogin.usuario;
 import Modelo.Administrador;
 import Modelo.Curso;
