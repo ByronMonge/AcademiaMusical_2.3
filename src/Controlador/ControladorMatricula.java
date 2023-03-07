@@ -5,6 +5,7 @@ import static Controlador.ControladorLogin.usuario;
 import Modelo.Administrador;
 import Modelo.Curso;
 import Modelo.Estudiante;
+import Modelo.Matricula;
 import Modelo.ModeloAdministrador;
 import Modelo.ModeloCurso;
 import Modelo.ModeloEstudiante;
@@ -13,9 +14,12 @@ import Vista.VistaMatricula;
 import Vista.VistaPrincipal;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 import javax.xml.ws.Holder;
 
 public class ControladorMatricula {
@@ -30,17 +34,24 @@ public class ControladorMatricula {
         this.vista = vista;
         vista.setVisible(true);
         vista.setSize(p.getEscritorioPrincipal().getWidth(), p.getEscritorioPrincipal().getHeight());
-        bloquearCamposDeAdministradorYQuitarvisibilidad();
+        cargarTablaDeMatriculas();
     }
 
     public void iniciarControl() {
+
+        //Matricula
         vista.getBtnMatricular().addActionListener(l -> abrirjDialogMatricula());
+        vista.getBtnGuardar().addActionListener(l -> crearModificarMatricula());
+        vista.getBtnModificar().addActionListener(l -> cargarDatosMatriculaEnTXT());
+        vista.getBtnEliminar().addActionListener(l -> eliminarMatricula());
+        buscarMatricula();
+        //Cargar datos del estudiante
         vista.getBtnBuscarEstudiante().addActionListener(l -> abrirjDialogEstudiante());
         vista.getBtnCargarEst().addActionListener(l -> cargarDatosEstudianteEnTXT());
-
+        //Cargar datos del curso
         vista.getBtnBuscarCurso().addActionListener(l -> abrirjDialogCurso());
         vista.getBtnCargarCur().addActionListener(l -> cargarDatosCursoEnTXT());
-
+        //Cargar datos del administrador
         cargarDatosAdministradorEnTxt();
     }
 
@@ -49,7 +60,216 @@ public class ControladorMatricula {
         vista.getjDlgMatricula().setLocationRelativeTo(null);
         vista.getjDlgMatricula().setSize(1202, 464);
         vista.getjDlgMatricula().setTitle("Registrar matricula");
+        vista.getjDlgMatricula().setName("Registrar matricula");
         vista.getjDlgMatricula().setVisible(true);
+        Date fecha = new Date();
+        vista.getFechaDeMatricula().setDate(fecha);
+        bloquearYVisibilidadCrear();
+        limpiar();
+    }
+
+    public void cargarTablaDeMatriculas() {
+        DefaultTableModel tabla = (DefaultTableModel) vista.getTblMatricula().getModel();
+        tabla.setNumRows(0);
+
+        ModeloAdministrador modeloAdministrador = new ModeloAdministrador();
+        ModeloEstudiante modeloEstudiante = new ModeloEstudiante();
+        ModeloCurso modeloCurso = new ModeloCurso();
+
+        List<Matricula> matriculas = modelo.listaMatriculaTabla();
+        List<Administrador> administradores = modeloAdministrador.listaAdministradoresTabla();
+        List<Estudiante> estudiantes = modeloEstudiante.listaEstudiantesTabla();
+        List<Curso> cursos = modeloCurso.listaCursoTabla();
+
+        matriculas.stream().forEach(m -> {
+
+            administradores.stream().forEach(a -> {
+
+                if (m.getMat_codAmd() == a.getAdm_codigo()) {
+
+                    estudiantes.stream().forEach(e -> {
+
+                        if (m.getMat_codEst() == e.getEst_codigo()) {
+
+                            cursos.stream().forEach(c -> {
+
+                                if (m.getMat_codCur() == c.getCur_codigo()) {
+                                    String[] datos = {String.valueOf(m.getMat_codigo()), e.getPer_cedula(), e.getPer_primernom() + " " + e.getPer_apellidopater(), a.getPer_cedula(), a.getPer_primernom() + " " + a.getPer_apellidopater(), c.getCur_nombre()};
+                                    tabla.addRow(datos);
+                                }
+                            });
+                        }
+                    });
+                }
+            });
+        });
+    }
+
+    public void crearModificarMatricula() {
+        if (vista.getjDlgMatricula().getName().equals("Registrar matricula")) {
+
+            if (validarDatos()) {
+
+                modelo.setMat_codAmd(Integer.parseInt(vista.getTxtCodigoAdministrador().getText()));
+                modelo.setMat_codEst(Integer.parseInt(vista.getTxtCodigoEstudiantematri().getText()));
+                modelo.setMat_codCur(Integer.parseInt(vista.getTxtCodigoCurso().getText()));
+
+                Date fecha = vista.getFechaDeMatricula().getDate();
+                java.sql.Date fechaSQL = new java.sql.Date(fecha.getTime());
+                modelo.setMat_fechamatri(fechaSQL);
+
+                if (modelo.crearMatricula() == null) {
+                    JOptionPane.showMessageDialog(null, "Se registro satisfactoriamente la matricula");
+                } else {
+                    JOptionPane.showMessageDialog(null, "No se puedo registrar la matricula");
+                }
+            }
+        } else {
+            if (validarDatos()) {
+
+                modelo.setMat_codigo(codigoMatricula);
+                modelo.setMat_codEst(Integer.parseInt(vista.getTxtCodigoEstudiantematri().getText()));
+                modelo.setMat_codCur(Integer.parseInt(vista.getTxtCodigoCurso().getText()));
+
+                Date fecha = vista.getFechaDeMatricula().getDate();
+                java.sql.Date fechaSQL = new java.sql.Date(fecha.getTime());
+                modelo.setMat_fechamatri(fechaSQL);
+
+                if (modelo.modificarMatricula() == null) {
+                    JOptionPane.showMessageDialog(null, "La matricula se modifico exitosamente");
+                } else {
+                    JOptionPane.showMessageDialog(null, "No se pudo modificar la matricula");
+                }
+            }
+        }
+
+        cargarTablaDeMatriculas();
+    }
+
+    int codigoMatricula;
+
+    public void cargarDatosMatriculaEnTXT() {
+        int fila = vista.getTblMatricula().getSelectedRow();
+
+        if (fila == -1) {
+            JOptionPane.showMessageDialog(null, "Aun no ha seleccionado una fila");
+        } else {
+
+            vista.getjDlgMatricula().setName("Modificar matricula");
+            vista.getjDlgMatricula().setLocationRelativeTo(null);
+            vista.getjDlgMatricula().setSize(978, 538);
+            vista.getjDlgMatricula().setTitle("Modificar matricula");
+            vista.getjDlgMatricula().setVisible(true);
+            bloquearYVisibilidadModificar();
+
+            ModeloAdministrador modeloAdministrador = new ModeloAdministrador();
+            ModeloEstudiante modeloEstudiante = new ModeloEstudiante();
+            ModeloCurso modeloCurso = new ModeloCurso();
+
+            List<Matricula> matriculas = modelo.listaMatriculaTabla();
+            List<Administrador> administradores = modeloAdministrador.listaAdministradoresTabla();
+            List<Estudiante> estudiantes = modeloEstudiante.listaEstudiantesTabla();
+            List<Curso> cursos = modeloCurso.listaCursoTabla();
+
+            matriculas.stream().forEach(m -> {
+                if (m.getMat_codigo() == Integer.parseInt(vista.getTblMatricula().getValueAt(fila, 0).toString())) {
+                    administradores.stream().forEach(a -> {
+
+                        if (m.getMat_codAmd() == a.getAdm_codigo()) {
+
+                            estudiantes.stream().forEach(e -> {
+
+                                if (m.getMat_codEst() == e.getEst_codigo()) {
+
+                                    cursos.stream().forEach(c -> {
+
+                                        if (m.getMat_codCur() == c.getCur_codigo()) {
+
+                                            //Matricula
+                                            codigoMatricula = Integer.parseInt(vista.getTblMatricula().getValueAt(fila, 0).toString());
+                                            vista.getFechaDeMatricula().setDate(m.getMat_fechamatri());
+                                            //Administrador
+                                            vista.getTxtCodigoAdministrador().setText(String.valueOf(a.getAdm_codigo()));
+                                            vista.getTxtCedulaAdministrador().setText(a.getPer_cedula());
+                                            vista.getTxtNombreYApellidoAdministrador().setText(a.getPer_primernom() + " " + a.getPer_apellidopater());
+                                            //Estudiante
+                                            vista.getTxtCodigoEstudiantematri().setText(String.valueOf(e.getEst_codigo()));
+                                            vista.getTxtCedulaEstudiante().setText(e.getPer_cedula());
+                                            vista.getTxtNombreYApellidoEstudiante().setText(e.getPer_primernom() + " " + e.getPer_apellidopater());
+                                            //Curso
+                                            vista.getTxtCodigoCurso().setText(String.valueOf(c.getCur_codigo()));
+                                            vista.getTxtNombreCurso().setText(c.getCur_nombre());
+                                        }
+                                    });
+                                }
+                            });
+                        }
+                    });
+                }
+            });
+        }
+    }
+
+    public void eliminarMatricula() {
+
+        int fila = vista.getTblMatricula().getSelectedRow();
+
+        if (fila == -1) {
+            JOptionPane.showMessageDialog(null, "Aun no ha seleccionado una fila");
+        } else {
+
+            int response = JOptionPane.showConfirmDialog(vista, "¿Seguro que desea eliminar esta información?", "Confirmar", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            if (response == JOptionPane.YES_OPTION) {
+
+                int codigoMatriculaEliminar;
+                codigoMatriculaEliminar = Integer.parseInt(vista.getTblMatricula().getValueAt(fila, 0).toString());
+
+                if (modelo.eliminarMatricula(codigoMatriculaEliminar) == null) {
+                    JOptionPane.showMessageDialog(null, "La matricula fue eliminada exitosamente");
+                    cargarTablaDeMatriculas();//Actualizo la tabla con los datos
+                } else {
+                    JOptionPane.showMessageDialog(null, "La matricula no se pudo eliminar");
+                }
+            }
+        }
+    }
+
+    public void buscarMatricula() {
+
+        KeyListener eventoTeclado = new KeyListener() {//Crear un objeto de tipo keyListener(Es una interface) por lo tanto se debe implementar sus metodos abstractos
+
+            @Override
+            public void keyTyped(KeyEvent e) {
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+
+                //CODIGO PARA FILTRAR LOS DATOS DIRECTAMENTE DE LA TABLA. NO ELIMINAR. SI FUNCIONA. ES MUY IMPORTANTE
+                TableRowSorter<DefaultTableModel> filtrar;
+
+                DefaultTableModel tabla = (DefaultTableModel) vista.getTblMatricula().getModel();
+
+                //vista.getTablaconduccion().setAutoCreateRowSorter(true);
+                filtrar = new TableRowSorter<>(tabla);
+                vista.getTblMatricula().setRowSorter(filtrar);
+
+                try {
+
+                    filtrar.setRowFilter(RowFilter.regexFilter(vista.getTxtBuscar().getText())); //Se pasa como parametro el campo de donde se va a obtener la informacion y el (3) es la columna con la cual va a buscar las coincidencias
+                } catch (Exception ex) {
+                    System.out.println("Error: " + ex);
+                }
+            }
+        };
+
+        vista.getTxtBuscar().addKeyListener(eventoTeclado); //"addKeyListener" es un metodo que se le tiene que pasar como argumento un objeto de tipo keyListener 
     }
 
     //Todo sobre estudiante
@@ -90,7 +310,9 @@ public class ControladorMatricula {
 
                 if (persona.getPer_cedula().equals(vista.getTblDlgEstudiantes().getValueAt(fila, 0).toString())) {
 
-                    vista.getTxtCodigoEstudiante().setText(String.valueOf(persona.getEst_codigo()));
+                    System.out.println("Codigo est: " + persona.getEst_codigo());
+
+                    vista.getTxtCodigoEstudiantematri().setText(String.valueOf(persona.getEst_codigo()));
                     vista.getTxtCedulaEstudiante().setText(persona.getPer_cedula());
                     vista.getTxtNombreYApellidoEstudiante().setText(persona.getPer_primernom() + " " + persona.getPer_apellidopater());
 
@@ -251,12 +473,55 @@ public class ControladorMatricula {
         });
     }
 
-    public void bloquearCamposDeAdministradorYQuitarvisibilidad() {
-        vista.getTxtCodigoAdministrador().setEditable(false);
+    public boolean validarDatos() {
+
+        boolean validar = true;
+
+        if (vista.getTxtCedulaEstudiante().getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Seleccione un estudiante");
+            validar = false;
+        }
+
+        if (vista.getTxtNombreCurso().getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Seleccione un curso");
+            validar = false;
+        }
+
+        return validar;
+
+    }
+
+    public void bloquearYVisibilidadCrear() {
+        vista.getTxtCodigoAdministrador().setVisible(false);
         vista.getTxtCedulaAdministrador().setEditable(false);
         vista.getTxtNombreYApellidoAdministrador().setEditable(false);
-        vista.getTxtCodigoEstudiante().setVisible(false);
+        vista.getTxtCodigoEstudiantematri().setVisible(false);
+        vista.getTxtCedulaEstudiante().setEditable(false);
+        vista.getTxtNombreYApellidoEstudiante().setEditable(false);
         vista.getTxtCodigoCurso().setVisible(false);
+        vista.getTxtNombreCurso().setEditable(false);
+        vista.getFechaDeMatricula().setEnabled(false);
+    }
+
+    public void bloquearYVisibilidadModificar() {
         vista.getTxtCodigoAdministrador().setVisible(false);
+        vista.getTxtCedulaAdministrador().setEditable(false);
+        vista.getTxtNombreYApellidoAdministrador().setEditable(false);
+        vista.getTxtCodigoEstudiantematri().setVisible(false);
+        vista.getTxtCedulaEstudiante().setEditable(false);
+        vista.getTxtNombreYApellidoEstudiante().setEditable(false);
+        vista.getTxtCodigoCurso().setVisible(false);
+        vista.getTxtNombreCurso().setEditable(false);
+        vista.getFechaDeMatricula().setEnabled(false);
+        vista.getBtnBuscarEstudiante().setVisible(false);
+    }
+
+    public void limpiar() {
+
+        vista.getTxtCodigoEstudiantematri().setText("");
+        vista.getTxtCedulaEstudiante().setText("");
+        vista.getTxtNombreYApellidoEstudiante().setText("");
+        vista.getTxtCodigoCurso().setText("");
+        vista.getTxtNombreCurso().setText("");
     }
 }
