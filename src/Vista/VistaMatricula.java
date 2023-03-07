@@ -196,14 +196,6 @@ public class VistaMatricula extends javax.swing.JInternalFrame {
         this.txtCodigoCurso = txtCodigoCurso;
     }
 
-    public JTextField getTxtCodigoEstudiante() {
-        return txtCodigoAdministrador;
-    }
-
-    public void setTxtCodigoEstudiante(JTextField txtCodigoEstudiante) {
-        this.txtCodigoAdministrador = txtCodigoEstudiante;
-    }
-
     public JTextField getTxtNombreCurso() {
         return txtNombreCurso;
     }
@@ -236,6 +228,14 @@ public class VistaMatricula extends javax.swing.JInternalFrame {
         this.txtCodigoAdministrador = txtCodigoAdministrador;
     }
 
+    public JTextField getTxtCodigoEstudiantematri() {
+        return txtCodigoEstudiantematri;
+    }
+
+    public void setTxtCodigoEstudiantematri(JTextField txtCodigoEstudiantematri) {
+        this.txtCodigoEstudiantematri = txtCodigoEstudiantematri;
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -256,29 +256,29 @@ public class VistaMatricula extends javax.swing.JInternalFrame {
         btnCargarCur = new javax.swing.JButton();
         jDlgMatricula = new javax.swing.JDialog();
         jPanel2 = new javax.swing.JPanel();
-        jLabel27 = new javax.swing.JLabel();
-        jLabel24 = new javax.swing.JLabel();
-        jLabel28 = new javax.swing.JLabel();
-        btnBuscarEstudiante = new javax.swing.JButton();
-        jLabel26 = new javax.swing.JLabel();
-        txtNombreYApellidoAdministrador = new javax.swing.JTextField();
-        txtCedulaAdministrador = new javax.swing.JTextField();
-        txtNombreYApellidoEstudiante = new javax.swing.JTextField();
-        jLabel29 = new javax.swing.JLabel();
-        jLabel23 = new javax.swing.JLabel();
-        jLabel = new javax.swing.JLabel();
-        btnGuardar = new javax.swing.JButton();
-        jLabel25 = new javax.swing.JLabel();
-        txtNombreCurso = new javax.swing.JTextField();
-        jLabel30 = new javax.swing.JLabel();
         fechaDeMatricula = new com.toedter.calendar.JDateChooser();
+        txtNombreYApellidoAdministrador = new javax.swing.JTextField();
         btnBuscarCurso = new javax.swing.JButton();
+        txtCedulaAdministrador = new javax.swing.JTextField();
         btnCancelar = new javax.swing.JButton();
+        txtNombreYApellidoEstudiante = new javax.swing.JTextField();
         txtCodigoCurso = new javax.swing.JTextField();
+        jLabel29 = new javax.swing.JLabel();
         txtCedulaEstudiante = new javax.swing.JTextField();
+        jLabel23 = new javax.swing.JLabel();
         jLabel31 = new javax.swing.JLabel();
+        jLabel = new javax.swing.JLabel();
         txtCodigoAdministrador = new javax.swing.JTextField();
-        txtCodigoEstudiante = new javax.swing.JTextField();
+        jLabel27 = new javax.swing.JLabel();
+        btnGuardar = new javax.swing.JButton();
+        txtCodigoEstudiantematri = new javax.swing.JTextField();
+        jLabel24 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        jLabel28 = new javax.swing.JLabel();
+        txtNombreCurso = new javax.swing.JTextField();
+        btnBuscarEstudiante = new javax.swing.JButton();
+        jLabel30 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblMatricula = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
@@ -417,49 +417,6 @@ public class VistaMatricula extends javax.swing.JInternalFrame {
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel27.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
-        jLabel27.setText("Información del estudiante");
-
-        jLabel24.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
-        jLabel24.setText("Nombre y apellido:");
-
-        jLabel28.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
-        jLabel28.setText("Información del administrador");
-
-        btnBuscarEstudiante.setBackground(new java.awt.Color(255, 255, 255));
-        btnBuscarEstudiante.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        btnBuscarEstudiante.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/buscar.png"))); // NOI18N
-        btnBuscarEstudiante.setText("Buscar");
-        btnBuscarEstudiante.setBorder(null);
-        btnBuscarEstudiante.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnBuscarEstudiante.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-
-        jLabel26.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
-        jLabel26.setText("Cédula:");
-
-        jLabel29.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
-        jLabel29.setText("Información del curso");
-
-        jLabel23.setFont(new java.awt.Font("Roboto Black", 0, 28)); // NOI18N
-        jLabel23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/profesor.png"))); // NOI18N
-        jLabel23.setText("Registrar matricula");
-
-        jLabel.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
-        jLabel.setText("Nombre:");
-
-        btnGuardar.setBackground(new java.awt.Color(255, 255, 255));
-        btnGuardar.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
-        btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/guardar.png"))); // NOI18N
-        btnGuardar.setText("Guardar");
-        btnGuardar.setBorder(null);
-        btnGuardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
-        jLabel25.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
-        jLabel25.setText("Nombre y apellido:");
-
-        jLabel30.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
-        jLabel30.setText("Cédula:");
-
         btnBuscarCurso.setBackground(new java.awt.Color(255, 255, 255));
         btnBuscarCurso.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         btnBuscarCurso.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/buscar.png"))); // NOI18N
@@ -475,8 +432,51 @@ public class VistaMatricula extends javax.swing.JInternalFrame {
         btnCancelar.setBorder(null);
         btnCancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
+        jLabel29.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
+        jLabel29.setText("Información del curso");
+
+        jLabel23.setFont(new java.awt.Font("Roboto Black", 0, 28)); // NOI18N
+        jLabel23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/profesor.png"))); // NOI18N
+        jLabel23.setText("Registrar matricula");
+
         jLabel31.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         jLabel31.setText("Fecha de asignación:");
+
+        jLabel.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
+        jLabel.setText("Nombre:");
+
+        jLabel27.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
+        jLabel27.setText("Información del estudiante");
+
+        btnGuardar.setBackground(new java.awt.Color(255, 255, 255));
+        btnGuardar.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
+        btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/guardar.png"))); // NOI18N
+        btnGuardar.setText("Guardar");
+        btnGuardar.setBorder(null);
+        btnGuardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        jLabel24.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
+        jLabel24.setText("Nombre y apellido:");
+
+        jLabel25.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
+        jLabel25.setText("Nombre y apellido:");
+
+        jLabel28.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
+        jLabel28.setText("Información del administrador");
+
+        btnBuscarEstudiante.setBackground(new java.awt.Color(255, 255, 255));
+        btnBuscarEstudiante.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        btnBuscarEstudiante.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/buscar.png"))); // NOI18N
+        btnBuscarEstudiante.setText("Buscar");
+        btnBuscarEstudiante.setBorder(null);
+        btnBuscarEstudiante.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnBuscarEstudiante.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+
+        jLabel30.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
+        jLabel30.setText("Cédula:");
+
+        jLabel26.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
+        jLabel26.setText("Cédula:");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -506,7 +506,7 @@ public class VistaMatricula extends javax.swing.JInternalFrame {
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(btnBuscarEstudiante)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtCodigoEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtCodigoEstudiantematri, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(62, 62, 62)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -564,7 +564,7 @@ public class VistaMatricula extends javax.swing.JInternalFrame {
                     .addComponent(txtCodigoAdministrador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel26)
                     .addComponent(txtCedulaAdministrador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtCodigoEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtCodigoEstudiantematri, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(33, 33, 33)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel25)
@@ -597,7 +597,7 @@ public class VistaMatricula extends javax.swing.JInternalFrame {
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         tblMatricula.setFont(new java.awt.Font("Roboto Medium", 0, 13)); // NOI18N
         tblMatricula.setModel(new javax.swing.table.DefaultTableModel(
@@ -748,7 +748,7 @@ public class VistaMatricula extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtCedulaEstudiante;
     private javax.swing.JTextField txtCodigoAdministrador;
     private javax.swing.JTextField txtCodigoCurso;
-    private javax.swing.JTextField txtCodigoEstudiante;
+    private javax.swing.JTextField txtCodigoEstudiantematri;
     private javax.swing.JTextField txtNombreCurso;
     private javax.swing.JTextField txtNombreYApellidoAdministrador;
     private javax.swing.JTextField txtNombreYApellidoEstudiante;
