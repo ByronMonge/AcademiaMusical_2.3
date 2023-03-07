@@ -4,6 +4,7 @@ import Modelo.Docente;
 import Modelo.Estudiante;
 import Modelo.ModeloAdministrador;
 import Modelo.ModeloAsiAsignatura;
+import Modelo.ModeloAsiHorario;
 import Modelo.ModeloAsignatura;
 import Modelo.ModeloAula;
 import Modelo.ModeloCurso;
@@ -18,6 +19,7 @@ import Modelo.ModeloSetGrab;
 import Modelo.Productor;
 import Vista.VistaAdministrador;
 import Vista.VistaAsiAsignatura;
+import Vista.VistaAsiHorario;
 import Vista.VistaAsignatura;
 import Vista.VistaAula;
 import Vista.VistaCurso;
@@ -60,6 +62,7 @@ public class ControladorPrincipal {
         vistaPrincipal.getBtnSetGrab().addActionListener(l -> registrarSetGrabacion());
         vistaPrincipal.getBtnHorario().addActionListener(l -> registroHorario());
         vistaPrincipal.getBtnMatricula().addActionListener(l -> registroMatricula());
+        vistaPrincipal.getBtnAsiHorario().addActionListener(l -> registroAsiHorario());
     }
     
     private void registroPersona() {
@@ -258,6 +261,20 @@ public class ControladorPrincipal {
         vistaPrincipal.getEscritorioPrincipal().add(vista);
         
         ControladorMatricula control = new ControladorMatricula(modelo, vista);
+        control.iniciarControl();
+    }
+    
+    private void registroAsiHorario() {
+        
+        System.out.println("Registro horario");
+        vistaPrincipal.getEscritorioPrincipal().removeAll(); //Remuevo todos los elementos que esten en sobre el desktopPane
+
+        VistaAsiHorario vista = new VistaAsiHorario();
+        ModeloAsiHorario modelo = new ModeloAsiHorario();
+        
+        vistaPrincipal.getEscritorioPrincipal().add(vista);
+        
+        ControladorAsiHorario control = new ControladorAsiHorario(modelo, vista);
         control.iniciarControl();
     }
 }
