@@ -129,6 +129,14 @@ public class VistaPrincipal extends javax.swing.JFrame {
         this.btnMatricula = btnMatricula;
     }
 
+    public JButton getBtnAsiHorario() {
+        return btnAsiHorario;
+    }
+
+    public void setBtnAsiHorario(JButton btnAsiHorario) {
+        this.btnAsiHorario = btnAsiHorario;
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -152,6 +160,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         btnHorario = new javax.swing.JButton();
+        btnAsiHorario = new javax.swing.JButton();
         btnMatricula = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -359,6 +368,15 @@ public class VistaPrincipal extends javax.swing.JFrame {
         btnHorario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel3.add(btnHorario, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 30, -1, -1));
 
+        btnAsiHorario.setBackground(new java.awt.Color(46, 49, 49));
+        btnAsiHorario.setFont(new java.awt.Font("Roboto Medium", 0, 16)); // NOI18N
+        btnAsiHorario.setForeground(new java.awt.Color(255, 255, 255));
+        btnAsiHorario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/profesor.png"))); // NOI18N
+        btnAsiHorario.setText("Asignar Horario");
+        btnAsiHorario.setBorder(null);
+        btnAsiHorario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel3.add(btnAsiHorario, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 30, -1, -1));
+
         btnMatricula.setBackground(new java.awt.Color(46, 49, 49));
         btnMatricula.setFont(new java.awt.Font("Roboto Medium", 0, 16)); // NOI18N
         btnMatricula.setForeground(new java.awt.Color(255, 255, 255));
@@ -404,6 +422,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdministrador;
+    private javax.swing.JButton btnAsiHorario;
     private javax.swing.JButton btnAsignarAsignatura;
     private javax.swing.JButton btnAsignatura;
     private javax.swing.JButton btnAula;
