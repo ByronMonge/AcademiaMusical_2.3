@@ -531,30 +531,6 @@ public class ControladorAsiAsignatura {
             validar = false;
         }
 
-        if (vista.getFechaDeAsignacion().getDate() == null) {
-            JOptionPane.showMessageDialog(null, "Ingrese una fecha");
-            validar = false;
-        } else {
-
-            SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yy");//Doy formato a la fecha
-            String fechaContratacionT = formato.format(vista.getFechaDeAsignacion().getDate()); //Paso de la fecha de contratacion de tipo de Date a String con el formato especificado
-
-            Date fechaConD = null;
-            try {
-                fechaConD = formato.parse(fechaContratacionT); //Paso la fecha de contratacion de String a Date
-
-            } catch (ParseException ex) {
-                Logger.getLogger(ControladorDocente.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
-            Date fechaNueva = Date.from(LocalDate.now().atStartOfDay(ZoneId.systemDefault()).toInstant()); //Paso la fecha actual de tipo LocalDate a Date
-            if (fechaConD.after(fechaNueva)) {
-                JOptionPane.showMessageDialog(null, "La fecha de asignacion no puede superar a la fecha actual");
-                return false;
-            }
-
-        }
-
         return validar;
     }
 
