@@ -1,5 +1,6 @@
 package Vista;
 
+import com.toedter.calendar.JDateChooser;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JTable;
@@ -27,6 +28,30 @@ public class VistaAsiHorario extends javax.swing.JInternalFrame {
         this.btnAsignar = btnAsignar;
     }
 
+    public JButton getBtnBuscarCurso() {
+        return btnBuscarCurso;
+    }
+
+    public void setBtnBuscarCurso(JButton btnBuscarCurso) {
+        this.btnBuscarCurso = btnBuscarCurso;
+    }
+
+    public JButton getBtnBuscarHorario() {
+        return btnBuscarHorario;
+    }
+
+    public void setBtnBuscarHorario(JButton btnBuscarHorario) {
+        this.btnBuscarHorario = btnBuscarHorario;
+    }
+
+    public JButton getBtnCancelar() {
+        return btnCancelar;
+    }
+
+    public void setBtnCancelar(JButton btnCancelar) {
+        this.btnCancelar = btnCancelar;
+    }
+
     public JButton getBtnCargarCur() {
         return btnCargarCur;
     }
@@ -51,12 +76,36 @@ public class VistaAsiHorario extends javax.swing.JInternalFrame {
         this.btnEliminar = btnEliminar;
     }
 
+    public JButton getBtnGuardar() {
+        return btnGuardar;
+    }
+
+    public void setBtnGuardar(JButton btnGuardar) {
+        this.btnGuardar = btnGuardar;
+    }
+
     public JButton getBtnModificar() {
         return btnModificar;
     }
 
     public void setBtnModificar(JButton btnModificar) {
         this.btnModificar = btnModificar;
+    }
+
+    public JDateChooser getFechaDeAsignacion() {
+        return fechaDeAsignacion;
+    }
+
+    public void setFechaDeAsignacion(JDateChooser fechaDeAsignacion) {
+        this.fechaDeAsignacion = fechaDeAsignacion;
+    }
+
+    public JDialog getjDlgAsignarHorario() {
+        return jDlgAsignarHorario;
+    }
+
+    public void setjDlgAsignarHorario(JDialog jDlgAsignarHorario) {
+        this.jDlgAsignarHorario = jDlgAsignarHorario;
     }
 
     public JDialog getjDlgBuscarCurso() {
@@ -121,6 +170,62 @@ public class VistaAsiHorario extends javax.swing.JInternalFrame {
 
     public void setTxtBuscarHor(JTextField txtBuscarHor) {
         this.txtBuscarHor = txtBuscarHor;
+    }
+
+    public JTextField getTxtCodigoCurso() {
+        return txtCodigoCurso;
+    }
+
+    public void setTxtCodigoCurso(JTextField txtCodigoCurso) {
+        this.txtCodigoCurso = txtCodigoCurso;
+    }
+
+    public JTextField getTxtCodigoHorario() {
+        return txtCodigoHorario;
+    }
+
+    public void setTxtCodigoHorario(JTextField txtCodigoHorario) {
+        this.txtCodigoHorario = txtCodigoHorario;
+    }
+
+    public JTextField getTxtDiaHorario() {
+        return txtDiaHorario;
+    }
+
+    public void setTxtDiaHorario(JTextField txtDiaHorario) {
+        this.txtDiaHorario = txtDiaHorario;
+    }
+
+    public JTextField getTxtHoraDeFin() {
+        return txtHoraDeFin;
+    }
+
+    public void setTxtHoraDeFin(JTextField txtHoraDeFin) {
+        this.txtHoraDeFin = txtHoraDeFin;
+    }
+
+    public JTextField getTxtHoraDeInicio() {
+        return txtHoraDeInicio;
+    }
+
+    public void setTxtHoraDeInicio(JTextField txtHoraDeInicio) {
+        this.txtHoraDeInicio = txtHoraDeInicio;
+    }
+
+    public JTextField getTxtNombreCurso() {
+        return txtNombreCurso;
+    }
+
+    public void setTxtNombreCurso(JTextField txtNombreCurso) {
+        this.txtNombreCurso = txtNombreCurso;
+    }
+
+    public JTextField getTxtPeriodoCurso() {
+        return txtPeriodoCurso;
+    }
+
+    public void setTxtPeriodoCurso(JTextField txtPeriodoCurso) {
+        this.txtPeriodoCurso = txtPeriodoCurso;
     }
 
     @SuppressWarnings("unchecked")
