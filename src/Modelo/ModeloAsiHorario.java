@@ -31,6 +31,12 @@ public class ModeloAsiHorario extends AsiHorario {
         return conpg.accion(sql);
     }
 
+    public SQLException eliminarAsignacion(int codigoAsignacion) {
+        String sql = "UPDATE asihorario SET asih_estado = 'I' where asih_codigo = " + codigoAsignacion + ";";
+
+        return conpg.accion(sql);
+    }
+
     public List<AsiHorario> listaAsignacionesTabla() {
         try {
             List<AsiHorario> lista = new ArrayList<>();
