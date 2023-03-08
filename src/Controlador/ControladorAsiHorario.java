@@ -10,14 +10,8 @@ import Vista.VistaAsiHorario;
 import Vista.VistaPrincipal;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
@@ -54,6 +48,8 @@ public class ControladorAsiHorario {
         vista.getBtnCargarHor().addActionListener(l -> cargarDatosHorarioEnTXT());
         vista.getBtnGuardar().addActionListener(l -> crearModificarAsignarHorario());
         vista.getBtnModificar().addActionListener(l -> cargarDatosAsignarHorarioEnTXT());
+        vista.getBtnEliminar().addActionListener(l-> eliminarAsignacion());
+        buscarRegistros();
     }
 
     //Asignar horario
@@ -250,6 +246,67 @@ public class ControladorAsiHorario {
                 }
             });
         }
+    }
+
+    public void eliminarAsignacion() {
+        int fila = vista.getTblAsiHorario().getSelectedRow();
+
+        if (fila == -1) {
+            JOptionPane.showMessageDialog(null, "Aun no ha seleccionado una fila");
+        } else {
+
+            int response = JOptionPane.showConfirmDialog(vista, "¿Seguro que desea eliminar esta información?", "Confirmar", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            if (response == JOptionPane.YES_OPTION) {
+
+                int codigo;
+                codigo = Integer.parseInt(vista.getTblAsiHorario().getValueAt(fila, 0).toString());
+
+                if (modelo.eliminarAsignacion(codigo) == null) {
+                    JOptionPane.showMessageDialog(null, "El registro fue eliminado exitosamente");
+                    cargarTablaAsignaciones();//Actualizo la tabla con los datos
+                } else {
+                    JOptionPane.showMessageDialog(null, "Los datos no fueron eliminados");
+                }
+            }
+        }
+    }
+
+    public void buscarRegistros() {
+
+        KeyListener eventoTeclado = new KeyListener() {//Crear un objeto de tipo keyListener(Es una interface) por lo tanto se debe implementar sus metodos abstractos
+
+            @Override
+            public void keyTyped(KeyEvent e) {
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+
+                //CODIGO PARA FILTRAR LOS DATOS DIRECTAMENTE DE LA TABLA. NO ELIMINAR. SI FUNCIONA. ES MUY IMPORTANTE
+                TableRowSorter<DefaultTableModel> filtrar;
+
+                DefaultTableModel tabla = (DefaultTableModel) vista.getTblAsiHorario().getModel();
+
+                //vista.getTablaconduccion().setAutoCreateRowSorter(true);
+                filtrar = new TableRowSorter<>(tabla);
+                vista.getTblAsiHorario().setRowSorter(filtrar);
+
+                try {
+
+                    filtrar.setRowFilter(RowFilter.regexFilter(vista.getTxtBuscar().getText())); //Se pasa como parametro el campo de donde se va a obtener la informacion y el (3) es la columna con la cual va a buscar las coincidencias
+                } catch (Exception ex) {
+                    System.out.println("Error: " + ex);
+                }
+            }
+        };
+
+        vista.getTxtBuscar().addKeyListener(eventoTeclado); //"addKeyListener" es un metodo que se le tiene que pasar como argumento un objeto de tipo keyListener 
     }
 
     //Todo sobre el registro de cursos en el jDialog
