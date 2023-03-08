@@ -25,12 +25,6 @@ public class ModeloAsiAsignatura extends AsiAsignatura {
         return conpg.accion(sql);
     }
 
-    public SQLException modificarAsignacionFecha() {
-        String sql = "UPDATE asiasignatura SET asig_fecha = '" + getAsig_fecha() + "' where asig_codigo = " + getAsig_codigo() + ";";
-
-        return conpg.accion(sql);
-    }
-
     public SQLException modificarAsignacionCompleto() {
         String sql = "UPDATE asiasignatura SET asig_coddoc = " + getAsig_coddoc() + ", asig_codasi = " + getAsig_codasi() + ", asig_fecha = '" + getAsig_fecha() + "' where asig_codigo = " + getAsig_codigo() + ";";
 
