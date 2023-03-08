@@ -15,8 +15,10 @@ import Modelo.ModeloInstrumento;
 import Modelo.ModeloMatricula;
 import Modelo.ModeloPersona;
 import Modelo.ModeloProductor;
+import Modelo.ModeloReserva;
 import Modelo.ModeloSetGrab;
 import Modelo.Productor;
+import Modelo.Reserva;
 import Vista.VistaAdministrador;
 import Vista.VistaAsiAsignatura;
 import Vista.VistaAsiHorario;
@@ -32,6 +34,7 @@ import Vista.VistaMatricula;
 import Vista.VistaPersona;
 import Vista.VistaPrincipal;
 import Vista.VistaProductor;
+import Vista.VistaReserva;
 import Vista.VistaSetGrab;
 import java.util.List;
 
@@ -63,6 +66,7 @@ public class ControladorPrincipal {
         vistaPrincipal.getBtnHorario().addActionListener(l -> registroHorario());
         vistaPrincipal.getBtnMatricula().addActionListener(l -> registroMatricula());
         vistaPrincipal.getBtnAsiHorario().addActionListener(l -> registroAsiHorario());
+        vistaPrincipal.getBtnReserva().addActionListener(l -> Reserva());
     }
     
     private void registroPersona() {
@@ -165,10 +169,15 @@ public class ControladorPrincipal {
         
         ModeloProductor productor = new ModeloProductor(); //Crear un objeto de Estudiante
         List<Productor> productores = productor.listaProductorTabla();
+        
+        ModeloReserva reserva = new ModeloReserva(); //Crear un objeto de Reserva
+        List<Reserva> reservas = reserva.listaReservasTabla();
+        
         //Setear en los labels del dashBoard la cantidad total de cada elemento que conforma la academia
         vista.getLblDocentes().setText(String.valueOf(docentes.stream().count())); //Seteo la cantidad de docentes     
         vista.getLblEstudiantes().setText(String.valueOf(estudiantes.stream().count()));//Seteo la cantidad de estudiantes
         vista.getLblProductores().setText(String.valueOf(productores.stream().count()));//Seteo la cantidad de productores
+        vista.getLblReservas().setText(String.valueOf(reservas.stream().count())); //Seteo la cantidad de reservas 
     }
     
     private void registroEstudiante() {
@@ -275,6 +284,19 @@ public class ControladorPrincipal {
         vistaPrincipal.getEscritorioPrincipal().add(vista);
         
         ControladorAsiHorario control = new ControladorAsiHorario(modelo, vista);
+        control.iniciarControl();
+    }
+    
+    private void Reserva() {
+        
+        vistaPrincipal.getEscritorioPrincipal().removeAll(); //Remuevo todos los elementos que esten en sobre el desktopPane
+
+        VistaReserva vista = new VistaReserva();
+        ModeloReserva modelo = new ModeloReserva();
+        
+        vistaPrincipal.getEscritorioPrincipal().add(vista);
+        
+        ControladorReserva control = new ControladorReserva(modelo, vista);
         control.iniciarControl();
     }
 }

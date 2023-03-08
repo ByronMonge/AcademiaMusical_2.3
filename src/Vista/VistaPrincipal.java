@@ -137,6 +137,16 @@ public class VistaPrincipal extends javax.swing.JFrame {
         this.btnAsiHorario = btnAsiHorario;
     }
 
+    public JButton getBtnReserva() {
+        return btnReserva;
+    }
+
+    public void setBtnReserva(JButton btnReserva) {
+        this.btnReserva = btnReserva;
+    }
+
+    
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -162,6 +172,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         btnHorario = new javax.swing.JButton();
         btnAsiHorario = new javax.swing.JButton();
         btnMatricula = new javax.swing.JButton();
+        btnReserva = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setExtendedState(2);
@@ -366,7 +377,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         btnHorario.setText("Horario");
         btnHorario.setBorder(null);
         btnHorario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel3.add(btnHorario, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 30, -1, -1));
+        jPanel3.add(btnHorario, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 30, -1, -1));
 
         btnAsiHorario.setBackground(new java.awt.Color(46, 49, 49));
         btnAsiHorario.setFont(new java.awt.Font("Roboto Medium", 0, 16)); // NOI18N
@@ -385,6 +396,15 @@ public class VistaPrincipal extends javax.swing.JFrame {
         btnMatricula.setBorder(null);
         btnMatricula.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel3.add(btnMatricula, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 30, -1, -1));
+
+        btnReserva.setBackground(new java.awt.Color(46, 49, 49));
+        btnReserva.setFont(new java.awt.Font("Roboto Medium", 0, 16)); // NOI18N
+        btnReserva.setForeground(new java.awt.Color(255, 255, 255));
+        btnReserva.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Guitar-icon.png"))); // NOI18N
+        btnReserva.setText("Reserva");
+        btnReserva.setBorder(null);
+        btnReserva.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel3.add(btnReserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 30, -1, -1));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -435,6 +455,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnMatricula;
     private javax.swing.JButton btnProductor;
     private javax.swing.JButton btnRegistrarPersona;
+    private javax.swing.JButton btnReserva;
     private javax.swing.JButton btnSetGrab;
     private javax.swing.JDesktopPane escritorioPrincipal;
     private javax.swing.JLabel jLabel1;
