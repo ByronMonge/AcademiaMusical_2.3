@@ -248,8 +248,8 @@ public class ControladorReserva {
             vista.getjDlgReserva().setSize(885, 433);
             vista.getjDlgReserva().setTitle("Modificar  curso");
             vista.getjDlgReserva().setVisible(true);
-            vista.getjDlgReserva().setVisible(false);
-            vista.getjDlgReserva().setVisible(false);
+            vista.getTxtCodigoEstudiante().setVisible(false);
+            vista.getTxtCodigoSet().setVisible(false);
 
             ModeloEstudiante modeloEstudiante = new ModeloEstudiante();
             ModeloSetGrab modeloSetGrab = new ModeloSetGrab();
