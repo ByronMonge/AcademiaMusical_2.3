@@ -38,7 +38,7 @@ public class ModeloReserva extends Reserva {
 //    }
 
     public SQLException eliminarReserva(int codigoReserva) {
-        String sql = "UPDATE reserva SET res_estado = 'I' where asig_codigo = " + codigoReserva + ";";
+        String sql = "UPDATE reserva SET res_estado = 'I' where res_codigo = " + codigoReserva + ";";
 
         return conpg.accion(sql);
     }
