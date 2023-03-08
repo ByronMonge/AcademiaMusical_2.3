@@ -33,7 +33,6 @@ public class ControladorAsiAsignatura {
         this.vista = vista;
         vista.setSize(p.getEscritorioPrincipal().getWidth(), p.getEscritorioPrincipal().getHeight());
         vista.setVisible(true);
-        cargarFechaActual();
         cargarTablaAsignaciones();
     }
 
@@ -95,6 +94,9 @@ public class ControladorAsiAsignatura {
         vista.getjDlgAsiAsignatura().setVisible(true);
         vista.getTxtCodigoDocente().setVisible(false);
         vista.getTxtCodigoAsignatura().setVisible(false);
+        limpiarCampos();
+        bloquearCampos();
+        cargarFechaActual();
     }
 
     //Todo sobre el registro de Docentes en el jDialog
@@ -164,20 +166,13 @@ public class ControladorAsiAsignatura {
                     }
                 });
 
-                //Si el docente ya imparte la materia solo se modificara la fecha
+                //Si el docente ya imparte la materia solo se mostrara un mensaje
                 if (verificarAsignacion) {
 
-                    modelo.setAsig_codigo(codigoAsiAsignatura);
+                    JOptionPane.showMessageDialog(vista, "Los datos fueron modificados satisfactoriamente");
+                    vista.getjDlgAsiAsignatura().setVisible(false);
+                    cargarTablaAsignaciones();
 
-                    Date fecha = vista.getFechaDeAsignacion().getDate();
-                    java.sql.Date fechaSQL = new java.sql.Date(fecha.getTime());
-                    modelo.setAsig_fecha(fechaSQL);
-
-                    if (modelo.modificarAsignacionFecha() == null) {
-                        JOptionPane.showMessageDialog(vista, "Los datos fueron modificados satisfactoriamente");
-                        vista.getjDlgAsiAsignatura().setVisible(false);
-                        cargarTablaAsignaciones();
-                    }
                 } else {
 
                     modelo.setAsig_codigo(codigoAsiAsignatura);
@@ -209,10 +204,12 @@ public class ControladorAsiAsignatura {
             JOptionPane.showMessageDialog(null, "Aun no ha seleccionado una fila");
         } else {
 
-            vista.getjDlgAsiAsignatura().setName("Modificar curso");
+            bloquearCampos();
+
+            vista.getjDlgAsiAsignatura().setName("Modificar asignacion");
             vista.getjDlgAsiAsignatura().setLocationRelativeTo(null);
             vista.getjDlgAsiAsignatura().setSize(885, 433);
-            vista.getjDlgAsiAsignatura().setTitle("Modificar  curso");
+            vista.getjDlgAsiAsignatura().setTitle("Modificar  asignacion");
             vista.getjDlgAsiAsignatura().setVisible(true);
             vista.getTxtCodigoDocente().setVisible(false);
             vista.getTxtCodigoAsignatura().setVisible(false);
@@ -528,8 +525,24 @@ public class ControladorAsiAsignatura {
         return validar;
     }
 
-    public void cargarFechaActual() {
+    public void bloquearCampos() {
+        vista.getTxtCedula().setEditable(false);
+        vista.getTxtNombreDocente().setEditable(false);
+        vista.getTxtApellido().setEditable(false);
+        vista.getTxtEspecialidad().setEditable(false);
+        vista.getTxtNombreAsignatura().setEditable(false);
         vista.getFechaDeAsignacion().setEnabled(false);
+    }
+
+    public void limpiarCampos() {
+        vista.getTxtCedula().setText("");
+        vista.getTxtNombreDocente().setText("");
+        vista.getTxtApellido().setText("");
+        vista.getTxtEspecialidad().setText("");
+        vista.getTxtNombreAsignatura().setText("");
+    }
+
+    public void cargarFechaActual() {
 
         //Seteo la fecha actual en el jCalendar
         Date fecha = new Date();
