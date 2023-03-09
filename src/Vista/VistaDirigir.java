@@ -40,29 +40,6 @@ public class VistaDirigir extends javax.swing.JInternalFrame  {
         this.btnActualizar = btnActualizar;
     }
 
-    public JButton getBtnActualizar1() {
-        return btnActualizar1;
-    }
-
-    public void setBtnActualizar1(JButton btnActualizar1) {
-        this.btnActualizar1 = btnActualizar1;
-    }
-
-    public JButton getBtnActualizar2() {
-        return btnActualizar2;
-    }
-
-    public void setBtnActualizar2(JButton btnActualizar2) {
-        this.btnActualizar2 = btnActualizar2;
-    }
-
-    public JButton getBtnActualizar3() {
-        return btnActualizar3;
-    }
-
-    public void setBtnActualizar3(JButton btnActualizar3) {
-        this.btnActualizar3 = btnActualizar3;
-    }
 
     public JButton getBtnAsignar() {
         return btnAsignar;
@@ -72,29 +49,6 @@ public class VistaDirigir extends javax.swing.JInternalFrame  {
         this.btnAsignar = btnAsignar;
     }
 
-    public JButton getBtnAsignar1() {
-        return btnAsignar1;
-    }
-
-    public void setBtnAsignar1(JButton btnAsignar1) {
-        this.btnAsignar1 = btnAsignar1;
-    }
-
-    public JButton getBtnAsignar2() {
-        return btnAsignar2;
-    }
-
-    public void setBtnAsignar2(JButton btnAsignar2) {
-        this.btnAsignar2 = btnAsignar2;
-    }
-
-    public JButton getBtnAsignar4() {
-        return btnAsignar4;
-    }
-
-    public void setBtnAsignar4(JButton btnAsignar4) {
-        this.btnAsignar4 = btnAsignar4;
-    }
 
     public JButton getBtnBuscarAsignatura() {
         return btnBuscarAsignatura;
@@ -186,30 +140,6 @@ public class VistaDirigir extends javax.swing.JInternalFrame  {
         this.btnEliminar = btnEliminar;
     }
 
-    public JButton getBtnEliminar1() {
-        return btnEliminar1;
-    }
-
-    public void setBtnEliminar1(JButton btnEliminar1) {
-        this.btnEliminar1 = btnEliminar1;
-    }
-
-    public JButton getBtnEliminar2() {
-        return btnEliminar2;
-    }
-
-    public void setBtnEliminar2(JButton btnEliminar2) {
-        this.btnEliminar2 = btnEliminar2;
-    }
-
-    public JButton getBtnEliminar3() {
-        return btnEliminar3;
-    }
-
-    public void setBtnEliminar3(JButton btnEliminar3) {
-        this.btnEliminar3 = btnEliminar3;
-    }
-
     public JButton getBtnGuardar() {
         return btnGuardar;
     }
@@ -224,30 +154,6 @@ public class VistaDirigir extends javax.swing.JInternalFrame  {
 
     public void setBtnModificar(JButton btnModificar) {
         this.btnModificar = btnModificar;
-    }
-
-    public JButton getBtnModificar1() {
-        return btnModificar1;
-    }
-
-    public void setBtnModificar1(JButton btnModificar1) {
-        this.btnModificar1 = btnModificar1;
-    }
-
-    public JButton getBtnModificar2() {
-        return btnModificar2;
-    }
-
-    public void setBtnModificar2(JButton btnModificar2) {
-        this.btnModificar2 = btnModificar2;
-    }
-
-    public JButton getBtnModificar3() {
-        return btnModificar3;
-    }
-
-    public void setBtnModificar3(JButton btnModificar3) {
-        this.btnModificar3 = btnModificar3;
     }
 
     public JDateChooser getFechaDeAsignacion() {
@@ -280,14 +186,6 @@ public class VistaDirigir extends javax.swing.JInternalFrame  {
 
     public void setjDlgDirigir(JDialog jDlgDirigir) {
         this.jDlgDirigir = jDlgDirigir;
-    }
-
-    public JLabel getjLabel1() {
-        return jLabel1;
-    }
-
-    public void setjLabel1(JLabel jLabel1) {
-        this.jLabel1 = jLabel1;
     }
 
     public JLabel getjLabel12() {
@@ -330,13 +228,6 @@ public class VistaDirigir extends javax.swing.JInternalFrame  {
         this.jLabel19 = jLabel19;
     }
 
-    public JLabel getjLabel2() {
-        return jLabel2;
-    }
-
-    public void setjLabel2(JLabel jLabel2) {
-        this.jLabel2 = jLabel2;
-    }
 
     public JLabel getjLabel20() {
         return jLabel20;
@@ -346,13 +237,7 @@ public class VistaDirigir extends javax.swing.JInternalFrame  {
         this.jLabel20 = jLabel20;
     }
 
-    public JLabel getjLabel3() {
-        return jLabel3;
-    }
 
-    public void setjLabel3(JLabel jLabel3) {
-        this.jLabel3 = jLabel3;
-    }
 
     public JLabel getjLabel4() {
         return jLabel4;
@@ -402,29 +287,6 @@ public class VistaDirigir extends javax.swing.JInternalFrame  {
         this.jLabel9 = jLabel9;
     }
 
-    public JPanel getjPanel1() {
-        return jPanel1;
-    }
-
-    public void setjPanel1(JPanel jPanel1) {
-        this.jPanel1 = jPanel1;
-    }
-
-    public JPanel getjPanel2() {
-        return jPanel2;
-    }
-
-    public void setjPanel2(JPanel jPanel2) {
-        this.jPanel2 = jPanel2;
-    }
-
-    public JPanel getjPanel3() {
-        return jPanel3;
-    }
-
-    public void setjPanel3(JPanel jPanel3) {
-        this.jPanel3 = jPanel3;
-    }
 
     public JPanel getjPanel4() {
         return jPanel4;
@@ -522,29 +384,6 @@ public class VistaDirigir extends javax.swing.JInternalFrame  {
         this.txtBuscar = txtBuscar;
     }
 
-    public JTextField getTxtBuscar1() {
-        return txtBuscar1;
-    }
-
-    public void setTxtBuscar1(JTextField txtBuscar1) {
-        this.txtBuscar1 = txtBuscar1;
-    }
-
-    public JTextField getTxtBuscar2() {
-        return txtBuscar2;
-    }
-
-    public void setTxtBuscar2(JTextField txtBuscar2) {
-        this.txtBuscar2 = txtBuscar2;
-    }
-
-    public JTextField getTxtBuscar3() {
-        return txtBuscar3;
-    }
-
-    public void setTxtBuscar3(JTextField txtBuscar3) {
-        this.txtBuscar3 = txtBuscar3;
-    }
 
     public JTextField getTxtBuscarAsignatura() {
         return txtBuscarAsignatura;
@@ -782,11 +621,11 @@ public class VistaDirigir extends javax.swing.JInternalFrame  {
         btnBuscarAsignatura = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        txtBuscar3 = new javax.swing.JTextField();
-        btnAsignar4 = new javax.swing.JButton();
-        btnModificar3 = new javax.swing.JButton();
-        btnActualizar3 = new javax.swing.JButton();
-        btnEliminar3 = new javax.swing.JButton();
+        txtBuscar = new javax.swing.JTextField();
+        btnAsignar = new javax.swing.JButton();
+        btnModificar = new javax.swing.JButton();
+        btnActualizar = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblDirigir = new javax.swing.JTable();
 
@@ -1111,33 +950,39 @@ public class VistaDirigir extends javax.swing.JInternalFrame  {
         jLabel4.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         jLabel4.setText("Buscar:");
 
-        btnAsignar4.setBackground(new java.awt.Color(255, 255, 255));
-        btnAsignar4.setFont(new java.awt.Font("Roboto Medium", 0, 13)); // NOI18N
-        btnAsignar4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/AñadirDetalles.png"))); // NOI18N
-        btnAsignar4.setText("Asignar");
-        btnAsignar4.setBorder(null);
-        btnAsignar4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        txtBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtBuscarActionPerformed(evt);
+            }
+        });
 
-        btnModificar3.setBackground(new java.awt.Color(255, 255, 255));
-        btnModificar3.setFont(new java.awt.Font("Roboto Medium", 0, 13)); // NOI18N
-        btnModificar3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/modificar.png"))); // NOI18N
-        btnModificar3.setText("Modificar");
-        btnModificar3.setBorder(null);
-        btnModificar3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAsignar.setBackground(new java.awt.Color(255, 255, 255));
+        btnAsignar.setFont(new java.awt.Font("Roboto Medium", 0, 13)); // NOI18N
+        btnAsignar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/AñadirDetalles.png"))); // NOI18N
+        btnAsignar.setText("Asignar");
+        btnAsignar.setBorder(null);
+        btnAsignar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        btnActualizar3.setBackground(new java.awt.Color(255, 255, 255));
-        btnActualizar3.setFont(new java.awt.Font("Roboto Medium", 0, 13)); // NOI18N
-        btnActualizar3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/actualizar.png"))); // NOI18N
-        btnActualizar3.setText("Actualizar");
-        btnActualizar3.setBorder(null);
-        btnActualizar3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnModificar.setBackground(new java.awt.Color(255, 255, 255));
+        btnModificar.setFont(new java.awt.Font("Roboto Medium", 0, 13)); // NOI18N
+        btnModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/modificar.png"))); // NOI18N
+        btnModificar.setText("Modificar");
+        btnModificar.setBorder(null);
+        btnModificar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        btnEliminar3.setBackground(new java.awt.Color(255, 255, 255));
-        btnEliminar3.setFont(new java.awt.Font("Roboto Medium", 0, 13)); // NOI18N
-        btnEliminar3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/compartimiento.png"))); // NOI18N
-        btnEliminar3.setText("Eliminar");
-        btnEliminar3.setBorder(null);
-        btnEliminar3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnActualizar.setBackground(new java.awt.Color(255, 255, 255));
+        btnActualizar.setFont(new java.awt.Font("Roboto Medium", 0, 13)); // NOI18N
+        btnActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/actualizar.png"))); // NOI18N
+        btnActualizar.setText("Actualizar");
+        btnActualizar.setBorder(null);
+        btnActualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        btnEliminar.setBackground(new java.awt.Color(255, 255, 255));
+        btnEliminar.setFont(new java.awt.Font("Roboto Medium", 0, 13)); // NOI18N
+        btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/compartimiento.png"))); // NOI18N
+        btnEliminar.setText("Eliminar");
+        btnEliminar.setBorder(null);
+        btnEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         tblDirigir.setFont(new java.awt.Font("Roboto Medium", 0, 13)); // NOI18N
         tblDirigir.setModel(new javax.swing.table.DefaultTableModel(
@@ -1161,15 +1006,15 @@ public class VistaDirigir extends javax.swing.JInternalFrame  {
                 .addGap(39, 39, 39)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtBuscar3, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 107, Short.MAX_VALUE)
-                .addComponent(btnAsignar4, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnAsignar, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(56, 56, 56)
-                .addComponent(btnModificar3, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(49, 49, 49)
-                .addComponent(btnActualizar3, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(59, 59, 59)
-                .addComponent(btnEliminar3, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(140, 140, 140))
             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
         );
@@ -1181,14 +1026,14 @@ public class VistaDirigir extends javax.swing.JInternalFrame  {
                         .addGap(40, 40, 40)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
-                            .addComponent(txtBuscar3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(33, 33, 33)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnEliminar3)
-                            .addComponent(btnActualizar3, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnModificar3)
-                            .addComponent(btnAsignar4))))
+                            .addComponent(btnEliminar)
+                            .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnModificar)
+                            .addComponent(btnAsignar))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 513, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -1209,18 +1054,22 @@ public class VistaDirigir extends javax.swing.JInternalFrame  {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void txtBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtBuscarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnActualizar3;
-    private javax.swing.JButton btnAsignar4;
+    private javax.swing.JButton btnActualizar;
+    private javax.swing.JButton btnAsignar;
     private javax.swing.JButton btnBuscarAsignatura;
     private javax.swing.JButton btnBuscarDocente;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnCargarAsignatura;
     private javax.swing.JButton btnCargarDocente;
-    private javax.swing.JButton btnEliminar3;
+    private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnGuardar;
-    private javax.swing.JButton btnModificar3;
+    private javax.swing.JButton btnModificar;
     private com.toedter.calendar.JDateChooser fechaDeAsignacion;
     private javax.swing.JDialog jDlgBuscarProductor;
     private javax.swing.JDialog jDlgBuscarSetgrabacion;
@@ -1248,7 +1097,7 @@ public class VistaDirigir extends javax.swing.JInternalFrame  {
     private javax.swing.JTable tblDlgProductor;
     private javax.swing.JTable tblDlgjSetGrabacion;
     private javax.swing.JTextField txtApellido;
-    private javax.swing.JTextField txtBuscar3;
+    private javax.swing.JTextField txtBuscar;
     private javax.swing.JTextField txtBuscarAsignatura;
     private javax.swing.JTextField txtBuscarDocente;
     private javax.swing.JTextField txtCedula;
