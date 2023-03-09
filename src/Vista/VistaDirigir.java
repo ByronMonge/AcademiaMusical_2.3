@@ -128,6 +128,48 @@ public class VistaDirigir extends javax.swing.JInternalFrame  {
         this.btnCargarAsignatura = btnCargarAsignatura;
     }
 
+    public JTable getTblDlgProductor() {
+        return tblDlgProductor;
+    }
+
+    public void setTblDlgProductor(JTable tblDlgProductor) {
+        this.tblDlgProductor = tblDlgProductor;
+    }
+
+    public JTable getTblDlgjSetGrabacion() {
+        return tblDlgjSetGrabacion;
+    }
+
+    public void setTblDlgjSetGrabacion(JTable tblDlgjSetGrabacion) {
+        this.tblDlgjSetGrabacion = tblDlgjSetGrabacion;
+    }
+
+    public JTextField getTxtCodigoProductor() {
+        return txtCodigoProductor;
+    }
+
+    public void setTxtCodigoProductor(JTextField txtCodigoProductor) {
+        this.txtCodigoProductor = txtCodigoProductor;
+    }
+
+    public JTextField getTxtCodigoSetgrabacion() {
+        return txtCodigoSetgrabacion;
+    }
+
+    public void setTxtCodigoSetgrabacion(JTextField txtCodigoSetgrabacion) {
+        this.txtCodigoSetgrabacion = txtCodigoSetgrabacion;
+    }
+
+    public JTable getTblDirigir() {
+        return tblDirigir;
+    }
+
+    public void setTblDirigir(JTable tblDirigir) {
+        this.tblDirigir = tblDirigir;
+    }
+    
+    
+
     public JButton getBtnCargarDocente() {
         return btnCargarDocente;
     }
@@ -441,27 +483,27 @@ public class VistaDirigir extends javax.swing.JInternalFrame  {
     }
 
     public JTable getTblAsiAsignatura() {
-        return tblAsiAsignatura;
+        return tblDirigir;
     }
 
     public void setTblAsiAsignatura(JTable tblAsiAsignatura) {
-        this.tblAsiAsignatura = tblAsiAsignatura;
+        this.tblDirigir = tblAsiAsignatura;
     }
 
     public JTable getTblDlgDocente() {
-        return tblDlgDocente;
+        return tblDlgProductor;
     }
 
     public void setTblDlgDocente(JTable tblDlgDocente) {
-        this.tblDlgDocente = tblDlgDocente;
+        this.tblDlgProductor = tblDlgDocente;
     }
 
     public JTable getTblDlgjAsignatura() {
-        return tblDlgjAsignatura;
+        return tblDlgjSetGrabacion;
     }
 
     public void setTblDlgjAsignatura(JTable tblDlgjAsignatura) {
-        this.tblDlgjAsignatura = tblDlgjAsignatura;
+        this.tblDlgjSetGrabacion = tblDlgjAsignatura;
     }
 
     public JTextField getTxtApellido() {
@@ -529,19 +571,19 @@ public class VistaDirigir extends javax.swing.JInternalFrame  {
     }
 
     public JTextField getTxtCodigoAsignatura() {
-        return txtCodigoAsignatura;
+        return txtCodigoSetgrabacion;
     }
 
     public void setTxtCodigoAsignatura(JTextField txtCodigoAsignatura) {
-        this.txtCodigoAsignatura = txtCodigoAsignatura;
+        this.txtCodigoSetgrabacion = txtCodigoAsignatura;
     }
 
     public JTextField getTxtCodigoDocente() {
-        return txtCodigoDocente;
+        return txtCodigoProductor;
     }
 
     public void setTxtCodigoDocente(JTextField txtCodigoDocente) {
-        this.txtCodigoDocente = txtCodigoDocente;
+        this.txtCodigoProductor = txtCodigoDocente;
     }
 
     public JTextField getTxtEspecialidad() {
@@ -707,7 +749,7 @@ public class VistaDirigir extends javax.swing.JInternalFrame  {
         jLabel17 = new javax.swing.JLabel();
         txtBuscarDocente = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
-        tblDlgDocente = new javax.swing.JTable();
+        tblDlgProductor = new javax.swing.JTable();
         btnCargarDocente = new javax.swing.JButton();
         jDlgBuscarSetgrabacion = new javax.swing.JDialog();
         jPanel6 = new javax.swing.JPanel();
@@ -716,13 +758,13 @@ public class VistaDirigir extends javax.swing.JInternalFrame  {
         jLabel18 = new javax.swing.JLabel();
         txtBuscarAsignatura = new javax.swing.JTextField();
         jScrollPane3 = new javax.swing.JScrollPane();
-        tblDlgjAsignatura = new javax.swing.JTable();
+        tblDlgjSetGrabacion = new javax.swing.JTable();
         jDlgDirigir = new javax.swing.JDialog();
         jPanel7 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         txtCedula = new javax.swing.JTextField();
-        txtCodigoDocente = new javax.swing.JTextField();
+        txtCodigoProductor = new javax.swing.JTextField();
         btnBuscarDocente = new javax.swing.JButton();
         txtNombreDocente = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
@@ -735,7 +777,7 @@ public class VistaDirigir extends javax.swing.JInternalFrame  {
         jLabel13 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         txtNombreAsignatura = new javax.swing.JTextField();
-        txtCodigoAsignatura = new javax.swing.JTextField();
+        txtCodigoSetgrabacion = new javax.swing.JTextField();
         fechaDeAsignacion = new com.toedter.calendar.JDateChooser();
         btnBuscarAsignatura = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
@@ -746,7 +788,7 @@ public class VistaDirigir extends javax.swing.JInternalFrame  {
         btnActualizar3 = new javax.swing.JButton();
         btnEliminar3 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblAsiAsignatura = new javax.swing.JTable();
+        tblDirigir = new javax.swing.JTable();
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -757,8 +799,8 @@ public class VistaDirigir extends javax.swing.JInternalFrame  {
         jLabel17.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         jLabel17.setText("Buscar:");
 
-        tblDlgDocente.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
-        tblDlgDocente.setModel(new javax.swing.table.DefaultTableModel(
+        tblDlgProductor.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
+        tblDlgProductor.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -769,7 +811,7 @@ public class VistaDirigir extends javax.swing.JInternalFrame  {
                 "Cédula", "Nombre", "Apellido", "Experiencia", "Sueldo"
             }
         ));
-        jScrollPane2.setViewportView(tblDlgDocente);
+        jScrollPane2.setViewportView(tblDlgProductor);
 
         btnCargarDocente.setBackground(new java.awt.Color(255, 255, 255));
         btnCargarDocente.setFont(new java.awt.Font("Roboto Medium", 0, 13)); // NOI18N
@@ -839,8 +881,8 @@ public class VistaDirigir extends javax.swing.JInternalFrame  {
         jLabel18.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         jLabel18.setText("Buscar:");
 
-        tblDlgjAsignatura.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
-        tblDlgjAsignatura.setModel(new javax.swing.table.DefaultTableModel(
+        tblDlgjSetGrabacion.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
+        tblDlgjSetGrabacion.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
                 {null, null},
@@ -851,7 +893,7 @@ public class VistaDirigir extends javax.swing.JInternalFrame  {
                 "Código", "Nombre"
             }
         ));
-        jScrollPane3.setViewportView(tblDlgjAsignatura);
+        jScrollPane3.setViewportView(tblDlgjSetGrabacion);
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -968,7 +1010,7 @@ public class VistaDirigir extends javax.swing.JInternalFrame  {
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                             .addComponent(txtEspecialidad, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtCodigoAsignatura, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtCodigoSetgrabacion, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel7Layout.createSequentialGroup()
                                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -977,7 +1019,7 @@ public class VistaDirigir extends javax.swing.JInternalFrame  {
                                             .addComponent(jLabel6)
                                             .addGap(49, 49, 49)
                                             .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addComponent(txtCodigoDocente, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(txtCodigoProductor, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel7Layout.createSequentialGroup()
                                         .addComponent(jLabel8)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -1022,7 +1064,7 @@ public class VistaDirigir extends javax.swing.JInternalFrame  {
                         .addComponent(jLabel13))
                     .addComponent(fechaDeAsignacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(3, 3, 3)
-                .addComponent(txtCodigoDocente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtCodigoProductor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1036,7 +1078,7 @@ public class VistaDirigir extends javax.swing.JInternalFrame  {
                             .addComponent(txtNombreAsignatura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnBuscarAsignatura))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtCodigoAsignatura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtCodigoSetgrabacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1100,8 +1142,8 @@ public class VistaDirigir extends javax.swing.JInternalFrame  {
         btnEliminar3.setBorder(null);
         btnEliminar3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        tblAsiAsignatura.setFont(new java.awt.Font("Roboto Medium", 0, 13)); // NOI18N
-        tblAsiAsignatura.setModel(new javax.swing.table.DefaultTableModel(
+        tblDirigir.setFont(new java.awt.Font("Roboto Medium", 0, 13)); // NOI18N
+        tblDirigir.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
@@ -1112,7 +1154,7 @@ public class VistaDirigir extends javax.swing.JInternalFrame  {
                 "Código de asignación", "Código de productor", "Cédula", "Nombre y apellido del docente", "Código del set de grabacion", "Nombre del set de grabacion"
             }
         ));
-        jScrollPane1.setViewportView(tblAsiAsignatura);
+        jScrollPane1.setViewportView(tblDirigir);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -1223,9 +1265,9 @@ public class VistaDirigir extends javax.swing.JInternalFrame  {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTable tblAsiAsignatura;
-    private javax.swing.JTable tblDlgDocente;
-    private javax.swing.JTable tblDlgjAsignatura;
+    private javax.swing.JTable tblDirigir;
+    private javax.swing.JTable tblDlgProductor;
+    private javax.swing.JTable tblDlgjSetGrabacion;
     private javax.swing.JTextField txtApellido;
     private javax.swing.JTextField txtBuscar;
     private javax.swing.JTextField txtBuscar1;
@@ -1234,8 +1276,8 @@ public class VistaDirigir extends javax.swing.JInternalFrame  {
     private javax.swing.JTextField txtBuscarAsignatura;
     private javax.swing.JTextField txtBuscarDocente;
     private javax.swing.JTextField txtCedula;
-    private javax.swing.JTextField txtCodigoAsignatura;
-    private javax.swing.JTextField txtCodigoDocente;
+    private javax.swing.JTextField txtCodigoProductor;
+    private javax.swing.JTextField txtCodigoSetgrabacion;
     private javax.swing.JTextField txtEspecialidad;
     private javax.swing.JTextField txtNombreAsignatura;
     private javax.swing.JTextField txtNombreDocente;
