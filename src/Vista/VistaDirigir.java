@@ -993,7 +993,7 @@ public class VistaDirigir extends javax.swing.JInternalFrame  {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "Código de asignación", "Código de productor", "Cédula", "Nombre y apellido del docente", "Código del set de grabacion", "Nombre del set de grabacion"
+                "Código de dirigir", "Código de productor", "Cédula", "Nombre y apellido del docente", "Código del set de grabacion", "Nombre del set de grabacion"
             }
         ));
         jScrollPane1.setViewportView(tblDirigir);
