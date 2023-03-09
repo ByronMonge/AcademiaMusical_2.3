@@ -112,14 +112,6 @@ public class VistaReserva extends javax.swing.JInternalFrame {
         this.fechaDeReserva = fechaDeReserva;
     }
 
-    public JDateChooser getFechaDeSalida() {
-        return fechaDeSalida;
-    }
-
-    public void setFechaDeSalida(JDateChooser fechaDeSalida) {
-        this.fechaDeSalida = fechaDeSalida;
-    }
-
     public JDialog getjDlgBuscarEstudiante() {
         return jDlgBuscarEstudiante;
     }
@@ -174,14 +166,6 @@ public class VistaReserva extends javax.swing.JInternalFrame {
 
     public void setjLabel14(JLabel jLabel14) {
         this.jLabel14 = jLabel14;
-    }
-
-    public JLabel getjLabel15() {
-        return jLabel15;
-    }
-
-    public void setjLabel15(JLabel jLabel15) {
-        this.jLabel15 = jLabel15;
     }
 
     public JLabel getjLabel17() {
@@ -468,8 +452,6 @@ public class VistaReserva extends javax.swing.JInternalFrame {
         btnBuscarSet = new javax.swing.JButton();
         jLabel14 = new javax.swing.JLabel();
         fechaDeEntrada = new com.toedter.calendar.JDateChooser();
-        jLabel15 = new javax.swing.JLabel();
-        fechaDeSalida = new com.toedter.calendar.JDateChooser();
         jScrollPane4 = new javax.swing.JScrollPane();
         txtAreaEspecificacion = new javax.swing.JTextArea();
         jPanel1 = new javax.swing.JPanel();
@@ -689,10 +671,7 @@ public class VistaReserva extends javax.swing.JInternalFrame {
         btnBuscarSet.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
 
         jLabel14.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
-        jLabel14.setText("Entrada:");
-
-        jLabel15.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
-        jLabel15.setText("Salida:");
+        jLabel14.setText("Día de reserva:");
 
         txtAreaEspecificacion.setColumns(20);
         txtAreaEspecificacion.setRows(5);
@@ -703,21 +682,29 @@ public class VistaReserva extends javax.swing.JInternalFrame {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(176, 176, 176)
+                        .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(256, 256, 256)
+                        .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(jLabel3)))
+                .addContainerGap(302, Short.MAX_VALUE))
+            .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(130, 130, 130)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(jLabel15)
-                                .addGap(53, 53, 53))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                                .addComponent(jLabel14)
-                                .addGap(43, 43, 43)))
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(fechaDeEntrada, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                            .addComponent(fechaDeSalida, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(79, 79, 79))
-                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                            .addComponent(jLabel14)
+                            .addGap(43, 43, 43)
+                            .addComponent(fechaDeEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(79, 79, 79))
                         .addComponent(jLabel6)
                         .addComponent(jLabel2)
                         .addComponent(jLabel4)
@@ -745,23 +732,8 @@ public class VistaReserva extends javax.swing.JInternalFrame {
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                         .addComponent(btnBuscarSet)
-                                        .addComponent(btnBuscarEstudiante)))))
-                        .addGroup(jPanel4Layout.createSequentialGroup()
-                            .addComponent(jLabel5)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jScrollPane4))))
+                                        .addComponent(btnBuscarEstudiante)))))))
                 .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(176, 176, 176)
-                        .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(256, 256, 256)
-                        .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addComponent(jLabel3)))
-                .addContainerGap(302, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -798,18 +770,11 @@ public class VistaReserva extends javax.swing.JInternalFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel14)
                     .addComponent(fechaDeEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(31, 31, 31)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel15)
-                    .addComponent(fechaDeSalida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addComponent(jLabel5)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                    .addComponent(jLabel5)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                         .addComponent(btnGuardar)
@@ -951,7 +916,6 @@ public class VistaReserva extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnReservar;
     private com.toedter.calendar.JDateChooser fechaDeEntrada;
     private com.toedter.calendar.JDateChooser fechaDeReserva;
-    private com.toedter.calendar.JDateChooser fechaDeSalida;
     private javax.swing.JDialog jDlgBuscarEstudiante;
     private javax.swing.JDialog jDlgBuscarSet;
     private javax.swing.JDialog jDlgReserva;
@@ -959,7 +923,6 @@ public class VistaReserva extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
