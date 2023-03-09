@@ -33,11 +33,11 @@ public class ModeloDirigir extends Dirigir {
         return conpg.accion(sql);
     }
 
-//    public SQLException modificarAsignacionFecha() {
-//        String sql = "UPDATE dirigir SET dir_fecharegistro = '" + getDir_fecharegistro() + "' where dir_codigo = " + getDir_codigo() + ";";
-//
-//        return conpg.accion(sql);
-//    }
+    public SQLException modificarDirigirFecha() {
+        String sql = "UPDATE dirigir SET dir_fecharegistro = '" + getDir_fecharegistro() + "' where dir_codigo = " + getDir_codigo() + ";";
+
+        return conpg.accion(sql);
+    }
 
     public SQLException modificarDirigirCompleto() {
         String sql = "UPDATE dirigir SET dir_codset = " + getDir_codset() + ", dir_codpro = " + getDir_codpro() + ", dir_fecharegistro = '" + getDir_fecharegistro() + "' where dir_codigo = " + getDir_codigo() + ";";
