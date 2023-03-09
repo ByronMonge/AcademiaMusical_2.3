@@ -60,8 +60,10 @@ public class ControladorDirigir {
     public void iniciarControl() {
 
         vista.getBtnAsignar().addActionListener(l -> abrirjDialogDirigir());
+        //productor
         vista.getBtnBuscarDocente().addActionListener(l -> abrirjDialogProductor());
         vista.getBtnCargarDocente().addActionListener(l -> cargarDatosProductorEnTXT());
+        //set grabacion
         vista.getBtnBuscarAsignatura().addActionListener(l -> abrirjDialogSetGrab());
         vista.getBtnCargarAsignatura().addActionListener(l -> cargarDatosSetGrabacionEnTXT());
         vista.getBtnGuardar().addActionListener(l -> crearModificarDirigir());
@@ -73,24 +75,25 @@ public class ControladorDirigir {
     public void cargarTablaDirigir() {
 
         System.out.println("Entra a");
-        DefaultTableModel tabla = (DefaultTableModel) vista.getTblAsiAsignatura().getModel();
+        DefaultTableModel tabla = (DefaultTableModel) vista.getTblDirigir().getModel();
         tabla.setNumRows(0);
 
         ModeloProductor modeloProductor = new ModeloProductor();
         ModeloSetGrab modeloSetGrab = new ModeloSetGrab();
 
-        List<Dirigir> dirigir = modelo.listaDirigirTabla();
+        List<Dirigir> dirigi = modelo.listaDirigirTabla();
         List<Productor> productores = modeloProductor.listaProductorTabla();
         List<SetGrabacion> grabaciones = modeloSetGrab.listaSetGrabTabla();
 
-        dirigir.stream().forEach(dr -> {
-            System.out.println("Codigo docAsi : " + dr.getDir_codpro());
+        dirigi.stream().forEach(dr -> {
+            System.out.println("Codigo prodir : " + dr.getDir_codpro());
 
             productores.stream().forEach(p -> {
+                
 
                 if (dr.getDir_codpro() == p.getPro_codigo()) {
 
-                    System.out.println("Codigo pro : " + dr.getDir_codpro());
+                    System.out.println("Codigo dir_pro : " + dr.getDir_codpro());
                     System.out.println("Codigo pro : " + p.getPro_codigo());
 
                     grabaciones.stream().forEach(g -> {
@@ -110,11 +113,11 @@ public class ControladorDirigir {
     public void abrirjDialogDirigir() {
         vista.getjDlgDirigir().setLocationRelativeTo(null);
         vista.getjDlgDirigir().setSize(885, 433);
-        vista.getjDlgDirigir().setTitle("Asignar set de grabacion");
-        vista.getjDlgDirigir().setName("Asignar set de grabacion");
+        vista.getjDlgDirigir().setTitle("Crear Dirigir");
+        vista.getjDlgDirigir().setName("Crear Dirigir");
         vista.getjDlgDirigir().setVisible(true);
-        vista.getTxtCodigoDocente().setVisible(false);
-        vista.getTxtCodigoAsignatura().setVisible(false);
+        vista.getTxtCodigoProductor().setVisible(false);
+        vista.getTxtCodigoSetgrabacion().setVisible(false);
     }
 
     //Todo sobre el registro de Docentes en el jDialog
@@ -128,7 +131,8 @@ public class ControladorDirigir {
     }
 
     public void crearModificarDirigir() {
-        if ("Asignar  set de grabacion".equals(vista.getjDlgDirigir().getName())) {
+
+        if ("Crear Dirigir".equals(vista.getjDlgDirigir().getName())) {
 
             verificarDirigir = false;
 
@@ -541,7 +545,7 @@ public class ControladorDirigir {
         }
 
         if (vista.getTxtNombreAsignatura().getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Seleccione una asignatura");
+            JOptionPane.showMessageDialog(null, "Seleccione un set de grabacion");
             validar = false;
         }
 
