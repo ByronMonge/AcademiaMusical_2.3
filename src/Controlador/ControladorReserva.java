@@ -69,14 +69,10 @@ public class ControladorReserva {
         List<SetGrabacion> setsgrabacion = modeloSetGrab.listaSetGrabTabla();
 
         reservas.stream().forEach(as -> {
-            System.out.println("Codigo docEstudiante : " + as.getRes_codestudiante());
 
             estudiantes.stream().forEach(d -> {
 
                 if (as.getRes_codestudiante() == d.getEst_codigo()) {
-
-                    System.out.println("Codigo docestudiante : " + as.getRes_codestudiante());
-                    System.out.println("Codigo estudiante : " + d.getEst_codigo());
 
                     setsgrabacion.stream().forEach(a -> {
 
@@ -116,27 +112,26 @@ public class ControladorReserva {
     }
 
     public void crearModificarReserva() {
-        if ("Crear reserva".equals(vista.getjDlgReserva().getName())) 
+        if ("Realizar reserva".equals(vista.getjDlgReserva().getName())) 
         {
             verificarReserva = false;
             //INSERTAR
             if (validarDatos()) {
+
                 List<Reserva> reservas = modelo.listaReservasTabla();
+
                 reservas.stream().forEach(as -> {
 
-                    if (as.getRes_codestudiante() == Integer.parseInt(vista.getTxtCodigoEstudiante().getText())) 
-                    {
-                        if (as.getRes_codset() == Integer.parseInt(vista.getTxtCodigoSet().getText())) 
-                        {
-                                /*AQUÍ HACE FALTA LA COMPARACIÓN DE QUE UN SET NO SE PUEDA RESERVAR EN LA FECHA QUE YA ESTABA RESERVADO*/
+                    if (as.getRes_codestudiante() == Integer.parseInt(vista.getTxtCodigoEstudiante().getText())) {
+                        if (as.getRes_codset() == Integer.parseInt(vista.getTxtCodigoSet().getText())  && as.getRes_fechaentra() == vista.getFechaDeEntrada().getDate()) {
                                 verificarReserva = true;
                         }
                     }
                 });
 
                 if (verificarReserva) {
-                    JOptionPane.showMessageDialog(vista, "El estudiante ya ha hecho una reserva de éste set EN ÉSTA FECHA");
-                } 
+                    JOptionPane.showMessageDialog(vista, "ERROR DE RESERVA: El estudiante ya ha reservado este set!!");
+                }
                 else 
                 {
                     modelo.setRes_codestudiante(Integer.parseInt(vista.getTxtCodigoEstudiante().getText()));
@@ -150,9 +145,7 @@ public class ControladorReserva {
                     java.sql.Date fechaentraSQL = new java.sql.Date(fechaentra.getTime());
                     modelo.setRes_fechaentra(fechaentraSQL);
                     
-                    Date fechasale = vista.getFechaDeSalida().getDate();
-                    java.sql.Date fechasaleSQL = new java.sql.Date(fechasale.getTime());
-                    modelo.setRes_fechasali(fechasaleSQL);
+                    modelo.setRes_especificacion(vista.getTxtAreaEspecificacion().getText());
 
                     if (modelo.insertarReserva() == null) 
                     {
@@ -192,13 +185,9 @@ public class ControladorReserva {
                     Date fechaentra = vista.getFechaDeEntrada().getDate();
                     java.sql.Date fechaentraSQL = new java.sql.Date(fechaentra.getTime());
                     modelo.setRes_fechaentra(fechaentraSQL);
-                    
-                    Date fechasale = vista.getFechaDeSalida().getDate();
-                    java.sql.Date fechasaleSQL = new java.sql.Date(fechasale.getTime());
-                    modelo.setRes_fechasali(fechasaleSQL);
 
                     if (modelo.modificarReserva() == null) {
-                        JOptionPane.showMessageDialog(vista, "Los datos de la reserva fueron modificados satisfactoriamente 1");
+                        JOptionPane.showMessageDialog(vista, "Los datos de la reserva fueron modificados satisfactoriamente");
                         vista.getjDlgReserva().setVisible(false);
                         cargarTablaReservas();
                     }
@@ -216,10 +205,6 @@ public class ControladorReserva {
                     java.sql.Date fechaentraSQL = new java.sql.Date(fechaentra.getTime());
                     modelo.setRes_fechaentra(fechaentraSQL);
                     
-                    Date fechasale = vista.getFechaDeSalida().getDate();
-                    java.sql.Date fechasaleSQL = new java.sql.Date(fechasale.getTime());
-                    modelo.setRes_fechasali(fechasaleSQL);
-
                     if (modelo.modificarReserva() == null) 
                     {
                         JOptionPane.showMessageDialog(vista, "Los datos de la RESERVA fueron modificados satisfactoriamente");
@@ -280,7 +265,6 @@ public class ControladorReserva {
                                     vista.getTxtNombreSet().setText(a.getSet_nombre());
                                     vista.getFechaDeReserva().setDate(res.getRes_fechareser());
                                     vista.getFechaDeEntrada().setDate(res.getRes_fechaentra());
-                                    vista.getFechaDeSalida().setDate(res.getRes_fechasali());
 
                                 }
                             });
@@ -558,21 +542,23 @@ public class ControladorReserva {
             validar = false;
         } 
         
-        if (vista.getFechaDeSalida().getDate() == null) {
-            JOptionPane.showMessageDialog(null, "Ingrese una fecha de salida");
-            validar = false;
-        } 
         else {
 
             SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yy");//Doy formato a la fecha
             String fechaEntradaT = formato.format(vista.getFechaDeEntrada().getDate()); //Paso de la fecha de contratacion de tipo de Date a String con el formato especificado
 
             Date fechaConD = null;
-            try {
-                fechaConD = formato.parse(fechaEntradaT); //Paso la fecha de contratacion de String a Date
+            try 
+            {
+                fechaConD = formato.parse(fechaEntradaT); //Paso la fecha de RESERVACION de String a Date
 
             } catch (ParseException ex) {
                 Logger.getLogger(ControladorReserva.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            Date fechaNueva = Date.from(LocalDate.now().atStartOfDay(ZoneId.systemDefault()).toInstant()); //Paso la fecha actual de tipo LocalDate a Date
+            if (fechaConD.before(fechaNueva)) {
+                JOptionPane.showMessageDialog(null, "DIA DE RESERVA INVÁLIDO: El día de reserva no puede ser antes de la fecha de reserva!!");
+                return false;
             }
 
         }
@@ -594,7 +580,6 @@ public class ControladorReserva {
         vista.getTxtAreaEspecificacion().setText("");
         vista.getTxtNombreSet().setText("");
         vista.getFechaDeEntrada().setDate(null);
-        vista.getFechaDeSalida().setDate(null);
     }
 
     
@@ -605,4 +590,5 @@ public class ControladorReserva {
         Date fecha = new Date();
         vista.getFechaDeReserva().setDate(fecha);
     }
+    
 }
