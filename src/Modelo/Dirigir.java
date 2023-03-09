@@ -12,11 +12,11 @@ import java.util.Date;
  * @author Usuario
  */
 public class Dirigir {
-    int dir_codigo;
-    int dir_codset;
-    int dir_codpro;
-    Date dir_fecharegistro;
-    String dir_estado;
+    private int dir_codigo;
+    private int dir_codset;
+    private int dir_codpro;
+    private Date dir_fecharegistro;
+    private String dir_estado;
 
     public Dirigir() {
     }
