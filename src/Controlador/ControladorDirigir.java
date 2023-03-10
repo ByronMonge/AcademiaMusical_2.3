@@ -19,7 +19,9 @@ import Modelo.Productor;
 import Modelo.SetGrabacion;
 import Vista.VistaAsiAsignatura;
 import Vista.VistaDirigir;
+import Vista.VistaDirigirp;
 import Vista.VistaPrincipal;
+import Vista.VistaPrueba;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.text.ParseException;
@@ -42,30 +44,32 @@ import javax.xml.ws.Holder;
  */
 public class ControladorDirigir {
      ModeloDirigir modelo;
-    VistaDirigir vista;
+    VistaDirigirp vista;
 
     static boolean verificarDirigir;
 
     VistaPrincipal p = new VistaPrincipal();
 
-    public ControladorDirigir(ModeloDirigir modelo, VistaDirigir vista) {
+    public ControladorDirigir(ModeloDirigir modelo, VistaDirigirp vista) {
         this.modelo = modelo;
         this.vista = vista;
         vista.setSize(p.getEscritorioPrincipal().getWidth(), p.getEscritorioPrincipal().getHeight());
         vista.setVisible(true);
-        cargarFechaActual();
         cargarTablaDirigir();
     }
+
+    
+    
 
     public void iniciarControl() {
 
         vista.getBtnAsignar().addActionListener(l -> abrirjDialogDirigir());
         //productor
-        vista.getBtnBuscarDocente().addActionListener(l -> abrirjDialogProductor());
-        vista.getBtnCargarDocente().addActionListener(l -> cargarDatosProductorEnTXT());
+        vista.getBtnBuscarProductor().addActionListener(l -> abrirjDialogProductor());
+        vista.getBtnCargarProductor().addActionListener(l -> cargarDatosProductorEnTXT());
         //set grabacion
-        vista.getBtnBuscarAsignatura().addActionListener(l -> abrirjDialogSetGrab());
-        vista.getBtnCargarAsignatura().addActionListener(l -> cargarDatosSetGrabacionEnTXT());
+        vista.getBtnBuscarSetGrabacion().addActionListener(l -> abrirjDialogSetGrab());
+        vista.getBtnCargarSetGrabacion().addActionListener(l -> cargarDatosSetGrabacionEnTXT());
         vista.getBtnGuardar().addActionListener(l -> crearModificarDirigir());
         vista.getBtnModificar().addActionListener(l -> cargarDatosDirigirEnTXT());
         vista.getBtnEliminar().addActionListener(l -> eliminarDirigir());
@@ -111,6 +115,7 @@ public class ControladorDirigir {
     }
 
     public void abrirjDialogDirigir() {
+          System.out.println("holi");
         vista.getjDlgDirigir().setLocationRelativeTo(null);
         vista.getjDlgDirigir().setSize(885, 433);
         vista.getjDlgDirigir().setTitle("Crear Dirigir");
@@ -131,6 +136,7 @@ public class ControladorDirigir {
     }
 
     public void crearModificarDirigir() {
+        System.out.println("holi");
 
         if ("Crear Dirigir".equals(vista.getjDlgDirigir().getName())) {
 
@@ -267,7 +273,7 @@ public class ControladorDirigir {
                                     vista.getTxtNombreDocente().setText(p.getPer_primernom());
                                     vista.getTxtApellido().setText(p.getPer_apellidopater());
                                     vista.getTxtEspecialidad().setText(String.valueOf(p.getPro_expe()));
-                                    vista.getTxtCodigoAsignatura().setText(String.valueOf(s.getSet_codigo()));
+                                    vista.getTxtCodigoSetgrabacion().setText(String.valueOf(s.getSet_codigo()));
                                     vista.getTxtNombreAsignatura().setText(s.getSet_nombre());
                                     vista.getFechaDeAsignacion().setDate(dr.getDir_fecharegistro());
 
@@ -358,11 +364,11 @@ public class ControladorDirigir {
 
             estructuraTabla.addRow(new Object[8]);
 
-            vista.getTblDlgDocente().setValueAt(c.getPer_cedula(), i.value, 0);
-            vista.getTblDlgDocente().setValueAt(c.getPer_primernom(), i.value, 1);
-            vista.getTblDlgDocente().setValueAt(c.getPer_apellidopater(), i.value, 2);
-            vista.getTblDlgDocente().setValueAt(c.getPro_expe(), i.value, 3);
-            vista.getTblDlgDocente().setValueAt(c.getEmp_salario(), i.value, 4);
+            vista.getTblDlgProductor().setValueAt(c.getPer_cedula(), i.value, 0);
+            vista.getTblDlgProductor().setValueAt(c.getPer_primernom(), i.value, 1);
+            vista.getTblDlgProductor().setValueAt(c.getPer_apellidopater(), i.value, 2);
+            vista.getTblDlgProductor().setValueAt(c.getPro_expe(), i.value, 3);
+            vista.getTblDlgProductor().setValueAt(c.getEmp_salario(), i.value, 4);
 
             i.value++;
         });
@@ -380,7 +386,7 @@ public class ControladorDirigir {
 
             listap.stream().forEach(c -> {
 
-                if (c.getPer_cedula().equals(vista.getTblDlgDocente().getValueAt(fila, 0).toString())) {
+                if (c.getPer_cedula().equals(vista.getTblDlgProductor().getValueAt(fila, 0).toString())) {
 
                     vista.getTxtCodigoProductor().setText(String.valueOf(c.getPro_codigo()));
                     vista.getTxtCedula().setText(c.getPer_cedula());
@@ -416,7 +422,7 @@ public class ControladorDirigir {
                 DefaultTableModel estructuraTabla = (DefaultTableModel) vista.getTblDlgProductor().getModel();
                 estructuraTabla.setRowCount(0);
 
-                List<Productor> listap = modeloProductor.buscarProductor(vista.getTxtBuscarDocente().getText());
+                List<Productor> listap = modeloProductor.buscarProductor(vista.getTxtBuscarProductor().getText());
 
                 Holder<Integer> i = new Holder<>(0);
 
@@ -424,18 +430,18 @@ public class ControladorDirigir {
 
                     estructuraTabla.addRow(new Object[8]);
 
-                    vista.getTblDlgDocente().setValueAt(c.getPer_cedula(), i.value, 0);
-                    vista.getTblDlgDocente().setValueAt(c.getPer_primernom(), i.value, 1);
-                    vista.getTblDlgDocente().setValueAt(c.getPer_apellidopater(), i.value, 2);
-                    vista.getTblDlgDocente().setValueAt(c.getPro_expe(), i.value, 3);
-                    vista.getTblDlgDocente().setValueAt(c.getEmp_salario(), i.value, 4);
+                    vista.getTblDlgProductor().setValueAt(c.getPer_cedula(), i.value, 0);
+                    vista.getTblDlgProductor().setValueAt(c.getPer_primernom(), i.value, 1);
+                    vista.getTblDlgProductor().setValueAt(c.getPer_apellidopater(), i.value, 2);
+                    vista.getTblDlgProductor().setValueAt(c.getPro_expe(), i.value, 3);
+                    vista.getTblDlgProductor().setValueAt(c.getEmp_salario(), i.value, 4);
 
                     i.value++;
                 });
             }
         };
 
-        vista.getTxtBuscarDocente().addKeyListener(eventoTeclado); //"addKeyListener" es un metodo que se le tiene que pasar como argumento un objeto de tipo keyListener 
+        vista.getTxtBuscarProductor().addKeyListener(eventoTeclado); //"addKeyListener" es un metodo que se le tiene que pasar como argumento un objeto de tipo keyListener 
     }
 
     //Todo sobre el registro de asignatura en el jDialog
@@ -485,7 +491,7 @@ public class ControladorDirigir {
 
                 if (c.getSet_codigo() == Integer.parseInt(vista.getTblDlgjSetGrabacion().getValueAt(fila, 0).toString())) {
 
-                    vista.getTxtCodigoAsignatura().setText(String.valueOf(c.getSet_codigo()));
+                    vista.getTxtCodigoSetgrabacion().setText(String.valueOf(c.getSet_codigo()));
                     vista.getTxtNombreAsignatura().setText(c.getSet_nombre());
                 }
             });
@@ -513,10 +519,10 @@ public class ControladorDirigir {
 
                 ModeloSetGrab modeloset = new ModeloSetGrab();
                 vista.getTblDlgjSetGrabacion().setRowHeight(25);
-                DefaultTableModel estructuraTabla = (DefaultTableModel) vista.getTblDlgjAsignatura().getModel();
+                DefaultTableModel estructuraTabla = (DefaultTableModel) vista.getTblDlgjSetGrabacion().getModel();
                 estructuraTabla.setRowCount(0);
 
-                List<SetGrabacion> listap = modeloset.buscarSetGrabacion(vista.getTxtBuscarAsignatura().getText());
+                List<SetGrabacion> listap = modeloset.buscarSetGrabacion(vista.getTxtBuscarSetGrabacion().getText());
 
                 Holder<Integer> i = new Holder<>(0);
 
@@ -524,15 +530,15 @@ public class ControladorDirigir {
 
                     estructuraTabla.addRow(new Object[8]);
 
-                    vista.getTblDlgjAsignatura().setValueAt(c.getSet_codigo(), i.value, 0);
-                    vista.getTblDlgjAsignatura().setValueAt(c.getSet_nombre(), i.value, 1);
+                    vista.getTblDlgjSetGrabacion().setValueAt(c.getSet_codigo(), i.value, 0);
+                    vista.getTblDlgjSetGrabacion().setValueAt(c.getSet_nombre(), i.value, 1);
 
                     i.value++;
                 });
             }
         };
 
-        vista.getTxtBuscarAsignatura().addKeyListener(eventoTeclado); //"addKeyListener" es un metodo que se le tiene que pasar como argumento un objeto de tipo keyListener 
+        vista.getTxtBuscarSetGrabacion().addKeyListener(eventoTeclado); //"addKeyListener" es un metodo que se le tiene que pasar como argumento un objeto de tipo keyListener 
     }
 
     public boolean validarDatos() {
