@@ -154,6 +154,14 @@ public class VistaPrincipal extends javax.swing.JFrame {
         this.btnReserva = btnReserva;
     }
 
+    public JButton getBtnAsignarAula() {
+        return btnAsignarAula;
+    }
+
+    public void setBtnAsignarAula(JButton btnAsignarAula) {
+        this.btnAsignarAula = btnAsignarAula;
+    }
+
     
     
     @SuppressWarnings("unchecked")
@@ -183,6 +191,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         btnMatricula = new javax.swing.JButton();
         btnReserva = new javax.swing.JButton();
         btnDirigir = new javax.swing.JButton();
+        btnAsignarAula = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setExtendedState(2);
@@ -425,6 +434,15 @@ public class VistaPrincipal extends javax.swing.JFrame {
         btnDirigir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel3.add(btnDirigir, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 30, -1, -1));
 
+        btnAsignarAula.setBackground(new java.awt.Color(46, 49, 49));
+        btnAsignarAula.setFont(new java.awt.Font("Roboto Medium", 0, 16)); // NOI18N
+        btnAsignarAula.setForeground(new java.awt.Color(255, 255, 255));
+        btnAsignarAula.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/aula_1.png"))); // NOI18N
+        btnAsignarAula.setText("Asignar Aula");
+        btnAsignarAula.setBorder(null);
+        btnAsignarAula.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel3.add(btnAsignarAula, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 30, -1, -1));
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -463,6 +481,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnAdministrador;
     private javax.swing.JButton btnAsiHorario;
     private javax.swing.JButton btnAsignarAsignatura;
+    private javax.swing.JButton btnAsignarAula;
     private javax.swing.JButton btnAsignatura;
     private javax.swing.JButton btnAula;
     private javax.swing.JButton btnCurso;

@@ -1,43 +1,8 @@
 package Controlador;
 
-import Modelo.Docente;
-import Modelo.Estudiante;
-import Modelo.ModeloAdministrador;
-import Modelo.ModeloAsiAsignatura;
-import Modelo.ModeloAsiHorario;
-import Modelo.ModeloAsignatura;
-import Modelo.ModeloAula;
-import Modelo.ModeloCurso;
-import Modelo.ModeloDirigir;
-import Modelo.ModeloDocente;
-import Modelo.ModeloEstudiante;
-import Modelo.ModeloHorario;
-import Modelo.ModeloInstrumento;
-import Modelo.ModeloMatricula;
-import Modelo.ModeloPersona;
-import Modelo.ModeloProductor;
-import Modelo.ModeloReserva;
-import Modelo.ModeloSetGrab;
-import Modelo.Productor;
-import Modelo.Reserva;
-import Vista.VistaAdministrador;
-import Vista.VistaAsiAsignatura;
-import Vista.VistaAsiHorario;
-import Vista.VistaAsignatura;
-import Vista.VistaAula;
-import Vista.VistaCurso;
-import Vista.VistaDashboard;
-import Vista.VistaDirigirp;
-import Vista.VistaDocente;
-import Vista.VistaEstudiante;
-import Vista.VistaHorario;
-import Vista.VistaInstrumento;
-import Vista.VistaMatricula;
-import Vista.VistaPersona;
-import Vista.VistaPrincipal;
-import Vista.VistaProductor;
-import Vista.VistaReserva;
-import Vista.VistaSetGrab;
+import Modelo.*;
+import Vista.*;
+
 import java.util.List;
 
 public class ControladorPrincipal {
@@ -69,7 +34,8 @@ public class ControladorPrincipal {
         vistaPrincipal.getBtnMatricula().addActionListener(l -> registroMatricula());
         vistaPrincipal.getBtnAsiHorario().addActionListener(l -> registroAsiHorario());
         vistaPrincipal.getBtnReserva().addActionListener(l -> Reserva());
-        vistaPrincipal.getBtnDirigir().addActionListener(l -> RegistroDirigir());
+        vistaPrincipal.getBtnDirigir().addActionListener(l -> RegistroDirigir());        
+        vistaPrincipal.getBtnAsignarAula().addActionListener(l -> AsignarAula());
     }
     
     private void registroPersona() {
@@ -314,6 +280,18 @@ public class ControladorPrincipal {
         vistaPrincipal.getEscritorioPrincipal().add(vista);
         
         ControladorDirigir control = new ControladorDirigir(modelo, vista);
+        control.iniciarControl();
+    }
+      private void AsignarAula() {
+        
+        vistaPrincipal.getEscritorioPrincipal().removeAll(); //Remuevo todos los elementos que esten en sobre el desktopPane
+
+        VistaAsigAula vista = new VistaAsigAula();
+        ModeloAsigAula modelo = new ModeloAsigAula();
+        
+        vistaPrincipal.getEscritorioPrincipal().add(vista);
+        
+        ControladorAsigAula control = new ControladorAsigAula(modelo, vista);
         control.iniciarControl();
     }
 }
