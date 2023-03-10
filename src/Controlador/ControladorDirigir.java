@@ -5,23 +5,15 @@
  */
 package Controlador;
 
-import Modelo.AsiAsignatura;
-import Modelo.Asignatura;
+
 import Modelo.Dirigir;
-import Modelo.Docente;
-import Modelo.ModeloAsiAsignatura;
-import Modelo.ModeloAsignatura;
 import Modelo.ModeloDirigir;
-import Modelo.ModeloDocente;
 import Modelo.ModeloProductor;
 import Modelo.ModeloSetGrab;
 import Modelo.Productor;
 import Modelo.SetGrabacion;
-import Vista.VistaAsiAsignatura;
-import Vista.VistaDirigir;
 import Vista.VistaDirigirp;
 import Vista.VistaPrincipal;
-import Vista.VistaPrueba;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.text.ParseException;
