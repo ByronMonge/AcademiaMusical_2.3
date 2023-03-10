@@ -8,6 +8,7 @@ import Modelo.ModeloAsiHorario;
 import Modelo.ModeloAsignatura;
 import Modelo.ModeloAula;
 import Modelo.ModeloCurso;
+import Modelo.ModeloDirigir;
 import Modelo.ModeloDocente;
 import Modelo.ModeloEstudiante;
 import Modelo.ModeloHorario;
@@ -26,6 +27,8 @@ import Vista.VistaAsignatura;
 import Vista.VistaAula;
 import Vista.VistaCurso;
 import Vista.VistaDashboard;
+import Vista.VistaDirigir;
+import Vista.VistaDirigirp;
 import Vista.VistaDocente;
 import Vista.VistaEstudiante;
 import Vista.VistaHorario;
@@ -34,6 +37,7 @@ import Vista.VistaMatricula;
 import Vista.VistaPersona;
 import Vista.VistaPrincipal;
 import Vista.VistaProductor;
+import Vista.VistaPrueba;
 import Vista.VistaReserva;
 import Vista.VistaSetGrab;
 import java.util.List;
@@ -67,6 +71,7 @@ public class ControladorPrincipal {
         vistaPrincipal.getBtnMatricula().addActionListener(l -> registroMatricula());
         vistaPrincipal.getBtnAsiHorario().addActionListener(l -> registroAsiHorario());
         vistaPrincipal.getBtnReserva().addActionListener(l -> Reserva());
+        vistaPrincipal.getBtnDirigir().addActionListener(l -> RegistroDirigir());
     }
     
     private void registroPersona() {
@@ -297,6 +302,20 @@ public class ControladorPrincipal {
         vistaPrincipal.getEscritorioPrincipal().add(vista);
         
         ControladorReserva control = new ControladorReserva(modelo, vista);
+        control.iniciarControl();
+    }
+    
+        private void RegistroDirigir() {
+        
+        
+        vistaPrincipal.getEscritorioPrincipal().removeAll(); //Remuevo todos los elementos que esten en sobre el desktopPane
+
+        VistaDirigirp vista = new VistaDirigirp();
+        ModeloDirigir modelo = new ModeloDirigir();
+        
+        vistaPrincipal.getEscritorioPrincipal().add(vista);
+        
+        ControladorDirigir control = new ControladorDirigir(modelo, vista);
         control.iniciarControl();
     }
 }
