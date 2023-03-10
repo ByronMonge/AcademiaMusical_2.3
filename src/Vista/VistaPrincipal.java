@@ -41,6 +41,15 @@ public class VistaPrincipal extends javax.swing.JFrame {
         this.btnAula = btnAula;
     }
 
+    public JButton getBtnDirigir() {
+        return btnDirigir;
+    }
+
+    public void setBtnDirigir(JButton btnDirigir) {
+        this.btnDirigir = btnDirigir;
+    }
+    
+
     public JButton getBtnCurso() {
         return btnCurso;
     }
@@ -173,6 +182,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         btnAsiHorario = new javax.swing.JButton();
         btnMatricula = new javax.swing.JButton();
         btnReserva = new javax.swing.JButton();
+        btnDirigir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setExtendedState(2);
@@ -406,6 +416,15 @@ public class VistaPrincipal extends javax.swing.JFrame {
         btnReserva.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel3.add(btnReserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 30, -1, -1));
 
+        btnDirigir.setBackground(new java.awt.Color(46, 49, 49));
+        btnDirigir.setFont(new java.awt.Font("Roboto Medium", 0, 16)); // NOI18N
+        btnDirigir.setForeground(new java.awt.Color(255, 255, 255));
+        btnDirigir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/profesor.png"))); // NOI18N
+        btnDirigir.setText("Dirigir");
+        btnDirigir.setBorder(null);
+        btnDirigir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel3.add(btnDirigir, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 30, -1, -1));
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -448,6 +467,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnAula;
     private javax.swing.JButton btnCurso;
     private javax.swing.JButton btnDashboard;
+    private javax.swing.JButton btnDirigir;
     private javax.swing.JButton btnDocente;
     private javax.swing.JButton btnEstudiante;
     private javax.swing.JButton btnHorario;
