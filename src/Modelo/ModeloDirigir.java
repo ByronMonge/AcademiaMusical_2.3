@@ -65,10 +65,10 @@ public class ModeloDirigir extends Dirigir {
                 Dirigir diri = new Dirigir();
 
                 //Todo lo que haga en la sentencia define como voy a extraer los datos
-                diri.setDir_codigo(rs.getInt("asig_codigo"));
-                diri.setDir_codpro(rs.getInt("asig_coddoc"));
-                diri.setDir_codset(rs.getInt("asig_codasi"));
-                diri.setDir_fecharegistro(rs.getDate("asig_fecha"));
+                diri.setDir_codigo(rs.getInt("dir_codigo"));
+                diri.setDir_codpro(rs.getInt("dir_codpro"));
+                diri.setDir_codset(rs.getInt("dir_codset"));
+                diri.setDir_fecharegistro(rs.getDate("dir_fecharegistro"));
 
                 lista.add(diri); //Agrego los datos a la lista
             }
