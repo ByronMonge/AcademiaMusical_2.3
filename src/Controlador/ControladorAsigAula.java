@@ -21,7 +21,7 @@ import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
-import javax.xml.ws.Holder;
+
 
 /**
  *
@@ -101,6 +101,7 @@ public class ControladorAsigAula {
         vista.getTxtCodigocurso().setVisible(false);
         vista.getjDlgAsigAula().setLocationRelativeTo(null);
         limpiarlabels();
+        vista.getFechaDeAsignacion().setEnabled(true);
         bloquearTxtAsi();
     }
 
@@ -215,6 +216,7 @@ public class ControladorAsigAula {
             vista.getjDlgAsigAula().setVisible(true);
             vista.getjDlgAsigAula().setLocationRelativeTo(null);
             bloquearTxtAsi();
+            vista.getFechaDeAsignacion().setEnabled(false);
             vista.getTxtCodigocurso().setVisible(false);
 
             ModeloCurso modeloCurso = new ModeloCurso();
