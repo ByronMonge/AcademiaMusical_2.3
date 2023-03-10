@@ -236,6 +236,14 @@ public class VistaMatricula extends javax.swing.JInternalFrame {
         this.txtCodigoEstudiantematri = txtCodigoEstudiantematri;
     }
 
+    public JTextField getTxtCorreoEstudiante() {
+        return txtCorreoEstudiante;
+    }
+
+    public void setTxtCorreoEstudiante(JTextField txtCorreoEstudiante) {
+        this.txtCorreoEstudiante = txtCorreoEstudiante;
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -279,6 +287,7 @@ public class VistaMatricula extends javax.swing.JInternalFrame {
         btnBuscarEstudiante = new javax.swing.JButton();
         jLabel30 = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
+        txtCorreoEstudiante = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblMatricula = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
@@ -491,11 +500,13 @@ public class VistaMatricula extends javax.swing.JInternalFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel27)
                                 .addGroup(jPanel2Layout.createSequentialGroup()
                                     .addComponent(jLabel25)
                                     .addGap(18, 18, 18)
-                                    .addComponent(txtNombreYApellidoEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(jLabel27))
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(txtCorreoEstudiante)
+                                        .addComponent(txtNombreYApellidoEstudiante, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE))))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel30)
                                 .addGap(89, 89, 89)
@@ -571,7 +582,9 @@ public class VistaMatricula extends javax.swing.JInternalFrame {
                     .addComponent(txtNombreYApellidoEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel24)
                     .addComponent(txtNombreYApellidoAdministrador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtCorreoEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                 .addComponent(jLabel29)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -749,6 +762,7 @@ public class VistaMatricula extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtCodigoAdministrador;
     private javax.swing.JTextField txtCodigoCurso;
     private javax.swing.JTextField txtCodigoEstudiantematri;
+    private javax.swing.JTextField txtCorreoEstudiante;
     private javax.swing.JTextField txtNombreCurso;
     private javax.swing.JTextField txtNombreYApellidoAdministrador;
     private javax.swing.JTextField txtNombreYApellidoEstudiante;
