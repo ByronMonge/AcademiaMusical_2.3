@@ -244,7 +244,6 @@ public class ControladorPrincipal {
     
     private void registroAsiHorario() {
         
-        System.out.println("Registro horario");
         vistaPrincipal.getEscritorioPrincipal().removeAll(); //Remuevo todos los elementos que esten en sobre el desktopPane
 
         VistaAsiHorario vista = new VistaAsiHorario();
