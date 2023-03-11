@@ -1,18 +1,17 @@
-
 package Modelo;
 
 import java.sql.Date;
 
-
 public class Reserva {
+
     private int res_codigo, res_codestudiante, res_codset;
     private String res_especificacion, res_estado;
-    private Date res_fechareser,res_fechaentra, res_fechasali;
+    private Date res_fechareser, res_fechaentra;
 
     public Reserva() {
     }
 
-    public Reserva(int res_codigo, int res_codestudiante, int res_codset, String res_especificacion, String res_estado, Date res_fechareser, Date res_fechaentra, Date res_fechasali) {
+    public Reserva(int res_codigo, int res_codestudiante, int res_codset, String res_especificacion, String res_estado, Date res_fechareser, Date res_fechaentra) {
         this.res_codigo = res_codigo;
         this.res_codestudiante = res_codestudiante;
         this.res_codset = res_codset;
@@ -20,7 +19,6 @@ public class Reserva {
         this.res_estado = res_estado;
         this.res_fechareser = res_fechareser;
         this.res_fechaentra = res_fechaentra;
-        this.res_fechasali = res_fechasali;
     }
 
     public int getRes_codigo() {
@@ -78,14 +76,4 @@ public class Reserva {
     public void setRes_fechaentra(Date res_fechaentra) {
         this.res_fechaentra = res_fechaentra;
     }
-
-    public Date getRes_fechasali() {
-        return res_fechasali;
-    }
-
-    public void setRes_fechasali(Date res_fechasali) {
-        this.res_fechasali = res_fechasali;
-    }
-    
-    
 }
