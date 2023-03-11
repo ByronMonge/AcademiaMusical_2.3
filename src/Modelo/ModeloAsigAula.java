@@ -1,10 +1,8 @@
 package Modelo;
 
-import Modelo.AsigAula;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -24,7 +22,7 @@ public class ModeloAsigAula extends AsigAula {
     }
 
      public SQLException asignarAula() {
-        String sql = "INSERT INTO asigaula( asia_codcurso, asia_codaula, asia_fecha ,asi_estado) VALUES (" +getAsia_codcurso() + ", " + getAsia_codaula() +",'"+getAsia_fecha()+"', 'A');";
+        String sql = "INSERT INTO asigaula( asia_codcurso, asia_codaula, asia_fecha ,asia_estado) VALUES (" +getAsia_codcurso() + ", " + getAsia_codaula() +",'"+getAsia_fecha()+"', 'A');";
 
         return conpg.accion(sql);
     }
@@ -36,7 +34,7 @@ public class ModeloAsigAula extends AsigAula {
     }
 
     public SQLException eliminarAsignacion(int codigoAsignacion) {
-        String sql = "UPDATE asigaula SET asi_estado = 'I' where asia_codigo = " + codigoAsignacion + ";";
+        String sql = "UPDATE asigaula SET asia_estado = 'I' where asia_codigo = " + codigoAsignacion + ";";
 
         return conpg.accion(sql);
     }
@@ -45,7 +43,7 @@ public class ModeloAsigAula extends AsigAula {
         try {
             List<AsigAula> lista = new ArrayList<>();
 
-            String sql = "select * from asigaula where asi_estado = 'A'";
+            String sql = "select * from asigaula where asia_estado = 'A'";
 
             ResultSet rs = conpg.consulta(sql); //La consulta nos devuelve un "ResultSet"
 
