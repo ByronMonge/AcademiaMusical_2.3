@@ -1,6 +1,7 @@
 package Controlador;
 
 import Modelo.Administrador;
+import Modelo.ConexionPG;
 import Modelo.Empleado;
 import Modelo.ModeloAdministrador;
 import Modelo.ModeloEmpleado;
@@ -17,7 +18,9 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -34,7 +37,7 @@ public class ControladorAdministrador {
     static boolean encontrarUsuarioDiferentePosicion;
 
     VistaPrincipal p = new VistaPrincipal();
-    
+
     public ControladorAdministrador(ModeloAdministrador modelo, VistaAdministrador vista) {
         this.modelo = modelo;
         this.vista = vista;
@@ -53,6 +56,7 @@ public class ControladorAdministrador {
         vista.getBtnActualizar().addActionListener(l -> cargarTablaDeAdministradores());
         vista.getBtnModificar().addActionListener(l -> cargarDatosAdministradoresEnTXT());
         vista.getBtnEliminar().addActionListener(l -> eliminarAdministrador());
+        //vista.getBtnImprimir().addActionListener(l -> imprimir());
 
         buscarAdministrador();
     }
@@ -79,11 +83,12 @@ public class ControladorAdministrador {
         } else {
 
             //Abrir jDialog de campos de Docente
-            vista.getjDlgAdministrador().setName("Modificar administrador");
-            vista.getjDlgAdministrador().setLocationRelativeTo(null);
-            vista.getjDlgAdministrador().setSize(978, 538);
-            vista.getjDlgAdministrador().setTitle("Modificar administrador");
             vista.getjDlgAdministrador().setVisible(true);
+            vista.getjDlgAdministrador().setName("Modificar administrador");
+            vista.getjDlgAdministrador().setSize(978, 600);
+            vista.getjDlgAdministrador().setLocationRelativeTo(null);
+            vista.getjDlgAdministrador().setTitle("Modificar administrador");
+
             bloquearCampos();
 
             //ModeloPersona modeloPersona = new ModeloPersona();
@@ -127,11 +132,12 @@ public class ControladorAdministrador {
 
     public void abrirjDlgAdministrador() {
 
-        vista.getjDlgAdministrador().setName("Crear nuevo administrador");
-        vista.getjDlgAdministrador().setLocationRelativeTo(null);
-        vista.getjDlgAdministrador().setSize(978, 538);
-        vista.getjDlgAdministrador().setTitle("Crear nuevo administrador");
         vista.getjDlgAdministrador().setVisible(true);
+        vista.getjDlgAdministrador().setName("Crear nuevo administrador");
+        vista.getjDlgAdministrador().setSize(978, 600);
+        vista.getjDlgAdministrador().setLocationRelativeTo(null);
+        vista.getjDlgAdministrador().setTitle("Crear nuevo administrador");
+
         vista.getLblOcultar().setVisible(true);
         vista.getLblMostrar().setVisible(false);
 
@@ -327,10 +333,11 @@ public class ControladorAdministrador {
 
     //Todo sobre el registro de personas en el jDialog
     public void abrirjDialogPersonas() {
-        vista.getjDlgBuscarPersonas().setLocationRelativeTo(null);
+        vista.getjDlgBuscarPersonas().setVisible(true);
         vista.getjDlgBuscarPersonas().setSize(587, 422);
         vista.getjDlgBuscarPersonas().setTitle("Seleccione una persona");
-        vista.getjDlgBuscarPersonas().setVisible(true);
+        vista.getjDlgBuscarPersonas().setLocationRelativeTo(vista.getBtnBuscarPersona());
+
         cargarRegistroDePersonas();
         buscarPersona();
     }
@@ -661,4 +668,28 @@ public class ControladorAdministrador {
 
         vista.getLblOcultar().addMouseListener(evento);
     }
+
+    /*public void imprimir() {
+
+        ConexionPG conpg = new ConexionPG();//Instanciar la conexion con esto abrimos la conexion a la BD
+        try {
+            JasperReport jr = (JasperReport) JRLoader.loadObject(getClass().getResource("/vista/reportes/Reporte mvc.jasper"));
+
+            //Hacer una vista previa
+            //JasperPrint jp = JasperFillManager.fillReport(jr, null, cpg.getCon());//JasperFillManager.fillReport: Carga los datos de la BD.//JasperPrint: Hace la impresion del reporte. Puede ir 'null' si en el jasper no existen parametros caso contrario se envian los parametros necesarios
+            Map<String, Object> parametros = new HashMap<String, Object>();
+
+            parametros.put("titulo", vista.getTxtTitulo().getText()); //En donde esta 'titulo' tienen que ser igual al nombre que esta en el parametro del jasper
+            parametros.put("limitea", Double.parseDouble(vista.getSpinnerSueldomaximo().getValue().toString()));
+            parametros.put("limiteb", Double.parseDouble(vista.getSpinnerSueldominimo().getValue().toString()));//Cuando se quiere pasar un tipo de dato int '100' se coloca la 'd' despues del dato'100d'
+
+            JasperPrint jp = JasperFillManager.fillReport(jr, parametros, cpg.getCon());//'parametros' es el Map recien creado que contiene los parametros que iran al jasper
+
+            JasperViewer jv = new JasperViewer(jp, false); //Se pasa false para que no se cierre el sistema 
+            jv.setVisible(true);
+
+        } catch (JRException ex) {
+            Logger.getLogger(ControladorPersona.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }*/
 }
