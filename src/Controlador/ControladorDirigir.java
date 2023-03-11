@@ -12,7 +12,7 @@ import Modelo.ModeloProductor;
 import Modelo.ModeloSetGrab;
 import Modelo.Productor;
 import Modelo.SetGrabacion;
-import Vista.VistaDirigirp;
+import Vista.VistaDirigir;
 import Vista.VistaPrincipal;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -36,13 +36,13 @@ import javax.xml.ws.Holder;
  */
 public class ControladorDirigir {
      ModeloDirigir modelo;
-    VistaDirigirp vista;
+    VistaDirigir vista;
 
     static boolean verificarDirigir;
 
     VistaPrincipal p = new VistaPrincipal();
 
-    public ControladorDirigir(ModeloDirigir modelo, VistaDirigirp vista) {
+    public ControladorDirigir(ModeloDirigir modelo, VistaDirigir vista) {
         this.modelo = modelo;
         this.vista = vista;
         vista.setSize(p.getEscritorioPrincipal().getWidth(), p.getEscritorioPrincipal().getHeight());
