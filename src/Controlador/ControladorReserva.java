@@ -29,8 +29,6 @@ public class ControladorReserva {
     ModeloReserva modelo;
     VistaReserva vista;
 
-    static boolean verificarReserva;
-
     VistaPrincipal p = new VistaPrincipal();
 
     public ControladorReserva(ModeloReserva modelo, VistaReserva vista) {
@@ -38,7 +36,6 @@ public class ControladorReserva {
         this.vista = vista;
         vista.setSize(p.getEscritorioPrincipal().getWidth(), p.getEscritorioPrincipal().getHeight());
         vista.setVisible(true);
-        cargarFechaActual();
         cargarTablaReservas();
     }
 
@@ -57,7 +54,6 @@ public class ControladorReserva {
 
     public void cargarTablaReservas() {
 
-        System.out.println("Entra a");
         DefaultTableModel tabla = (DefaultTableModel) vista.getTblReserva().getModel();
         tabla.setNumRows(0);
 
@@ -78,7 +74,7 @@ public class ControladorReserva {
 
                         if (as.getRes_codset() == a.getSet_codigo()) {
 
-                            String[] datos = {String.valueOf(as.getRes_codigo()), String.valueOf(d.getEst_codigo()), d.getPer_cedula(), d.getPer_primernom() + " " + d.getPer_apellidopater(), String.valueOf(a.getSet_codigo()), String.valueOf(a.getSet_nombre())};
+                            String[] datos = {String.valueOf(as.getRes_codigo()), d.getPer_cedula(), d.getPer_primernom() + " " + d.getPer_apellidopater(), a.getSet_nombre(), String.valueOf(as.getRes_fechaentra())};
                             tabla.addRow(datos);
 
                         }
@@ -112,44 +108,30 @@ public class ControladorReserva {
     }
 
     public void crearModificarReserva() {
-        if ("Realizar reserva".equals(vista.getjDlgReserva().getName())) 
-        {
-            verificarReserva = false;
+
+        if ("Realizar reserva".equals(vista.getjDlgReserva().getName())) {
             //INSERTAR
             if (validarDatos()) {
 
-                List<Reserva> reservas = modelo.listaReservasTabla();
+                Date fechaentra = vista.getFechaDeEntrada().getDate();
+                java.sql.Date fechaentraSQL = new java.sql.Date(fechaentra.getTime());
 
-                reservas.stream().forEach(as -> {
-
-                    if (as.getRes_codestudiante() == Integer.parseInt(vista.getTxtCodigoEstudiante().getText())) {
-                        if (as.getRes_codset() == Integer.parseInt(vista.getTxtCodigoSet().getText())  && as.getRes_fechaentra() == vista.getFechaDeEntrada().getDate()) {
-                                verificarReserva = true;
-                        }
-                    }
-                });
-
-                if (verificarReserva) {
-                    JOptionPane.showMessageDialog(vista, "ERROR DE RESERVA: El estudiante ya ha reservado este set!!");
-                }
-                else 
-                {
+                if (modelo.verificarFechaDisponible(fechaentraSQL, Integer.parseInt(vista.getTxtCodigoSet().getText())) != 0) {
+                    JOptionPane.showMessageDialog(vista, "El set ya ha sido reservado para esta fecha");
+                } else {
                     modelo.setRes_codestudiante(Integer.parseInt(vista.getTxtCodigoEstudiante().getText()));
                     modelo.setRes_codset(Integer.parseInt(vista.getTxtCodigoSet().getText()));
 
                     Date fechareserva = vista.getFechaDeReserva().getDate();
                     java.sql.Date fechaSQL = new java.sql.Date(fechareserva.getTime());
                     modelo.setRes_fechareser(fechaSQL);
-                    
-                    Date fechaentra = vista.getFechaDeEntrada().getDate();
-                    java.sql.Date fechaentraSQL = new java.sql.Date(fechaentra.getTime());
+
                     modelo.setRes_fechaentra(fechaentraSQL);
-                    
+
                     modelo.setRes_especificacion(vista.getTxtAreaEspecificacion().getText());
 
-                    if (modelo.insertarReserva() == null) 
-                    {
-                        JOptionPane.showMessageDialog(vista, "La reserva se ha realizado satisfactoriamente");
+                    if (modelo.insertarReserva() == null) {
+                        JOptionPane.showMessageDialog(vista, "La reservación se ha realizado satisfactoriamente");
                         vista.getjDlgReserva().setVisible(false);
                         cargarTablaReservas();
                     } else {
@@ -157,61 +139,42 @@ public class ControladorReserva {
                     }
                 }
             }
-        } 
-        else 
-        {
+        } else {
             //EDITAR
-            verificarReserva = false;
-            if (validarDatos()) 
-            {
-                List<Reserva> reservas = modelo.listaReservasTabla();
-                reservas.stream().forEach(as -> {
 
-                    if (as.getRes_codestudiante() == Integer.parseInt(vista.getTxtCodigoEstudiante().getText())) {
-                        if (as.getRes_codset() == Integer.parseInt(vista.getTxtCodigoSet().getText())) {
-                            verificarReserva = true;
-                        }
-                    }
-                });
+            if (validarDatos()) {
 
-                //Si el alumno ya imparte la materia solo se modificara la fecha
-                if (verificarReserva) {
+                Date fechaentra = vista.getFechaDeEntrada().getDate();
+                java.sql.Date fechaentraSQL = new java.sql.Date(fechaentra.getTime());
 
+                if (modelo.verificarFechaDisponible(fechaentraSQL, Integer.parseInt(vista.getTxtCodigoSet().getText())) != 0) {
+
+                    JOptionPane.showMessageDialog(vista, "Los datos de la reservación fueron modificados satisfactoriamente");
+                    vista.getjDlgReserva().setVisible(false);
+                    cargarTablaReservas();
+
+                } else {
+
+                    //Reservacion
                     modelo.setRes_codigo(codigoReserva);
-                    Date fecha = vista.getFechaDeReserva().getDate();
-                    java.sql.Date fechaSQL = new java.sql.Date(fecha.getTime());
-                    modelo.setRes_fechareser(fechaSQL);
-                    
-                    Date fechaentra = vista.getFechaDeEntrada().getDate();
-                    java.sql.Date fechaentraSQL = new java.sql.Date(fechaentra.getTime());
-                    modelo.setRes_fechaentra(fechaentraSQL);
-
-                    if (modelo.modificarReserva() == null) {
-                        JOptionPane.showMessageDialog(vista, "Los datos de la reserva fueron modificados satisfactoriamente");
-                        vista.getjDlgReserva().setVisible(false);
-                        cargarTablaReservas();
-                    }
-                } else 
-                {
-                    modelo.setRes_codigo(codigoReserva);
-                    modelo.setRes_codestudiante(Integer.parseInt(vista.getTxtCodigoEstudiante().getText()));
-                    modelo.setRes_codset(Integer.parseInt(vista.getTxtCodigoSet().getText()));
-
                     Date fechareserva = vista.getFechaDeReserva().getDate();
                     java.sql.Date fechaSQL = new java.sql.Date(fechareserva.getTime());
+
                     modelo.setRes_fechareser(fechaSQL);
-                    
-                    Date fechaentra = vista.getFechaDeEntrada().getDate();
-                    java.sql.Date fechaentraSQL = new java.sql.Date(fechaentra.getTime());
                     modelo.setRes_fechaentra(fechaentraSQL);
-                    
-                    if (modelo.modificarReserva() == null) 
-                    {
-                        JOptionPane.showMessageDialog(vista, "Los datos de la RESERVA fueron modificados satisfactoriamente");
+                    modelo.setRes_especificacion(vista.getTxtAreaEspecificacion().getText());
+
+                    //Estudiante
+                    modelo.setRes_codestudiante(Integer.parseInt(vista.getTxtCodigoEstudiante().getText()));
+
+                    //Set
+                    modelo.setRes_codset(Integer.parseInt(vista.getTxtCodigoSet().getText()));
+
+                    if (modelo.modificarReserva() == null) {
+                        JOptionPane.showMessageDialog(vista, "Los datos se modificaron satisfactoriamente");
                         vista.getjDlgReserva().setVisible(false);
                         cargarTablaReservas();
-                    } else 
-                    {
+                    } else {
                         JOptionPane.showMessageDialog(vista, "Los datos no pudieron ser modificados");
                     }
                 }
@@ -228,11 +191,13 @@ public class ControladorReserva {
             JOptionPane.showMessageDialog(null, "Aun no ha seleccionado una fila");
         } else {
 
-            vista.getjDlgReserva().setName("Modificar curso");
+            vista.getjDlgReserva().setName("Modificar reservación");
             vista.getjDlgReserva().setLocationRelativeTo(null);
             vista.getjDlgReserva().setSize(885, 433);
-            vista.getjDlgReserva().setTitle("Modificar  curso");
+            vista.getjDlgReserva().setTitle("Modificar reservación");
             vista.getjDlgReserva().setVisible(true);
+            bloquearCampos();
+            vista.getFechaDeReserva().setEnabled(true);//Hago editable el jDate de la fecha en la que se realiza la reservacion
             vista.getTxtCodigoEstudiante().setVisible(false);
             vista.getTxtCodigoSet().setVisible(false);
 
@@ -336,7 +301,7 @@ public class ControladorReserva {
         vista.getTxtBuscar().addKeyListener(eventoTeclado); //"addKeyListener" es un metodo que se le tiene que pasar como argumento un objeto de tipo keyListener 
     }
 
-    //Todo sobre los registros de docentes
+    //Todo sobre los registros de estudiantes
     public void cargarRegistroDeEstudiantes() {
 
         ModeloEstudiante modeloEstudiante = new ModeloEstudiante();
@@ -427,7 +392,7 @@ public class ControladorReserva {
         vista.getTxtBuscarEstudiante().addKeyListener(eventoTeclado); //"addKeyListener" es un metodo que se le tiene que pasar como argumento un objeto de tipo keyListener 
     }
 
-    //Todo sobre el registro de asignatura en el jDialog
+    //Todo sobre el registro de sets en el jDialog
     public void abrirjDialogSet() {
         vista.getjDlgBuscarSet().setLocationRelativeTo(null);
         vista.getjDlgBuscarSet().setSize(619, 435);
@@ -500,22 +465,14 @@ public class ControladorReserva {
             public void keyReleased(KeyEvent e) {
 
                 ModeloSetGrab modeloSetgrab = new ModeloSetGrab();
-                vista.getTblDlgjSet().setRowHeight(25);
-                DefaultTableModel estructuraTabla = (DefaultTableModel) vista.getTblDlgjSet().getModel();
-                estructuraTabla.setRowCount(0);
 
-                List<SetGrabacion> listap = modeloSetgrab.buscarSetGrabacion(vista.getTxtBuscarSet().getText());
+                DefaultTableModel tabla = (DefaultTableModel) vista.getTblDlgjSet().getModel();
+                tabla.setNumRows(0);
 
-                Holder<Integer> i = new Holder<>(0);
-
-                listap.stream().forEach(c -> {
-
-                    estructuraTabla.addRow(new Object[3]);
-
-                    vista.getTblDlgjSet().setValueAt(c.getSet_codigo(), i.value, 0);
-                    vista.getTblDlgjSet().setValueAt(c.getSet_nombre(), i.value, 1);
-                    vista.getTblDlgjSet().setValueAt(c.getSet_ubicacion(), i.value, 2);
-                    i.value++;
+                List<SetGrabacion> instrumento = modeloSetgrab.buscarSetGrabacion(vista.getTxtBuscarSet().getText());
+                instrumento.stream().forEach(p -> {
+                    String[] datos = {String.valueOf(p.getSet_codigo()), p.getSet_nombre(), p.getSet_ubicacion()};
+                    tabla.addRow(datos);
                 });
             }
         };
@@ -538,29 +495,61 @@ public class ControladorReserva {
         }
 
         if (vista.getFechaDeEntrada().getDate() == null) {
-            JOptionPane.showMessageDialog(null, "Ingrese una fecha de entrada");
+            JOptionPane.showMessageDialog(null, "Ingrese la fecha para la cual desea apartar el set de grabación");
             validar = false;
-        } 
-        
-        else {
+        } else {
 
             SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yy");//Doy formato a la fecha
-            String fechaEntradaT = formato.format(vista.getFechaDeEntrada().getDate()); //Paso de la fecha de contratacion de tipo de Date a String con el formato especificado
+            String fechaReservaT = formato.format(vista.getFechaDeReserva().getDate()); //Paso de la fecha de RESERVACION de tipo de Date a String con el formato especificado
+            String fechaEntradaT = formato.format(vista.getFechaDeEntrada().getDate()); //Paso de la fecha de ENTRADA de tipo de Date a String con el formato especificado
 
-            Date fechaConD = null;
-            try 
-            {
-                fechaConD = formato.parse(fechaEntradaT); //Paso la fecha de RESERVACION de String a Date
+            Date fechaReser = null;
+            Date fechaEntra = null;
+
+            try {
+                fechaReser = formato.parse(fechaReservaT); //Paso la fecha de RESERVACION de String a Date
+                fechaEntra = formato.parse(fechaEntradaT); //Paso la fecha de ENTRADA de String a Date
 
             } catch (ParseException ex) {
                 Logger.getLogger(ControladorReserva.class.getName()).log(Level.SEVERE, null, ex);
             }
-            Date fechaNueva = Date.from(LocalDate.now().atStartOfDay(ZoneId.systemDefault()).toInstant()); //Paso la fecha actual de tipo LocalDate a Date
-            if (fechaConD.before(fechaNueva)) {
-                JOptionPane.showMessageDialog(null, "DIA DE RESERVA INVÁLIDO: El día de reserva no puede ser antes de la fecha de reserva!!");
+
+            if (fechaEntra.before(fechaReser) || fechaEntra.equals(fechaReser)) {
+                JOptionPane.showMessageDialog(null, "La fecha para la que se desea reservar el set de grabación,\ndebe ser mayor a la fecha en que se registra la reservación");
+                return false;
+            }
+        }
+
+        if (vista.getFechaDeReserva().getDate() == null) {
+            JOptionPane.showMessageDialog(null, "Ingrese la fecha de apartado del set de grabación");
+            validar = false;
+        } else {
+
+            SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yy");//Doy formato a la fecha
+            String fechaReservaT = formato.format(vista.getFechaDeReserva().getDate()); //Paso de la fecha de RESERVACION de tipo de Date a String con el formato especificado
+            String fechaEntradaT = formato.format(vista.getFechaDeEntrada().getDate()); //Paso de la fecha de ENTRADA de tipo de Date a String con el formato especificado
+
+            Date fechaReser = null;
+            Date fechaEntra = null;
+
+            try {
+                fechaReser = formato.parse(fechaReservaT); //Paso la fecha de RESERVACION de String a Date
+                fechaEntra = formato.parse(fechaEntradaT); //Paso la fecha de ENTRADA de String a Date
+
+            } catch (ParseException ex) {
+                Logger.getLogger(ControladorReserva.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            if (fechaReser.after(fechaEntra)) {
+                JOptionPane.showMessageDialog(null, "La fecha de reservación no debe superar a la fecha\npara la cual se desea apartar el set de grabación");
                 return false;
             }
 
+        }
+
+        if (vista.getTxtAreaEspecificacion().getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "El area de la descripción no debe estar vacia");
+            validar = false;
         }
 
         return validar;
@@ -582,7 +571,6 @@ public class ControladorReserva {
         vista.getFechaDeEntrada().setDate(null);
     }
 
-    
     public void cargarFechaActual() {
         vista.getFechaDeReserva().setEnabled(false);
 
@@ -590,5 +578,5 @@ public class ControladorReserva {
         Date fecha = new Date();
         vista.getFechaDeReserva().setDate(fecha);
     }
-    
+
 }
