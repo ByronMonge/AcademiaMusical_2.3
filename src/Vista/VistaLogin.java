@@ -133,19 +133,19 @@ public class VistaLogin extends javax.swing.JFrame {
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/punto2.png"))); // NOI18N
         jButton1.setBorder(null);
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 560, -1, -1));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 560, -1, -1));
 
         jButton2.setBackground(new java.awt.Color(141, 0, 148));
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/punto2.png"))); // NOI18N
         jButton2.setBorder(null);
         jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 560, -1, -1));
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 560, -1, -1));
 
         jButton3.setBackground(new java.awt.Color(141, 0, 148));
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/punto2.png"))); // NOI18N
         jButton3.setBorder(null);
         jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 560, -1, -1));
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 560, -1, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo.png"))); // NOI18N
         jLabel2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -160,7 +160,7 @@ public class VistaLogin extends javax.swing.JFrame {
 
         jLabel18.setFont(new java.awt.Font("Roboto Thin", 0, 30)); // NOI18N
         jLabel18.setText("Contraseña:");
-        jPanel2.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, -1, -1));
+        jPanel2.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, -1, -1));
 
         txtContrasenia.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
         txtContrasenia.setText("jPasswordField1");
@@ -183,7 +183,7 @@ public class VistaLogin extends javax.swing.JFrame {
 
         jLabel14.setFont(new java.awt.Font("Roboto Thin", 0, 30)); // NOI18N
         jLabel14.setText("Usuario:");
-        jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, -1, -1));
+        jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, -1, -1));
 
         jLabel13.setFont(new java.awt.Font("Roboto Black", 0, 30)); // NOI18N
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/musica.gif"))); // NOI18N
