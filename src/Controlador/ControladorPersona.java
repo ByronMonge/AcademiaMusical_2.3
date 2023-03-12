@@ -59,76 +59,85 @@ public class ControladorPersona {
         vista.getCheckAdministrador().addActionListener(l -> abrirDlgRegistroAdministrador());
         vista.getCheckProductor().addActionListener(l -> abrirDlgRegistroProductor());
         vista.getCheckEstudiante().addActionListener(l -> registroEstudiante());
-        vista.getBtnCancelar().addActionListener(l -> botonCancelar());
+        vista.getBtnCancelarPersona().addActionListener(l -> botonCancelarPersona());
+        vista.getBtnCancelarAdministrador().addActionListener(l -> botonCancelarAdministrador());
+        vista.getBtnCancelarDocente().addActionListener(l -> botonCancelarDocente());
+        vista.getBtnCancelarProductor().addActionListener(l -> botonCancelarProductor());
+        //vista.getBtnImprimir().addActionListener(l-> imprimir());
         buscarPersona();
     }
 
     public void abrirDlgPersonas() {
-
-        vista.getjDlogRegistro().setName("Crear nueva persona");
-        vista.getjDlogRegistro().setLocationRelativeTo(vista);
-        vista.getjDlogRegistro().setSize(802, 622);
-        vista.getjDlogRegistro().setTitle("Crear nueva persona");
         vista.getjDlogRegistro().setVisible(true);
+        vista.getjDlogRegistro().setSize(802, 622);
+        vista.getjDlogRegistro().setLocationRelativeTo(null);
+        vista.getjDlogRegistro().setName("Crear nueva persona");
+        vista.getjDlogRegistro().setTitle("Crear nueva persona");
 
         visibilidadCrear();
     }
 
     public void abrirDlgRegistroDocente() {
 
-        vista.getjDlgRegistroDocente().setName("Registrar docente");
-        vista.getjDlgRegistroDocente().setLocationRelativeTo(vista);
-        vista.getjDlgRegistroDocente().setSize(470, 321);
-        vista.getjDlgRegistroDocente().setTitle("Registrar docente");
         vista.getjDlgRegistroDocente().setVisible(true);
+        vista.getjDlgRegistroDocente().setSize(470, 321);
+        vista.getjDlgRegistroDocente().setLocationRelativeTo(vista.getCheckDocente());
+        vista.getjDlgRegistroDocente().setName("Registrar docente");
+        vista.getjDlgRegistroDocente().setTitle("Registrar docente");
+
     }
 
     public void abrirDlgRegistroProductor() {
-
-        vista.getjDlgRegistroProductor().setName("Registrar productor");
-        vista.getjDlgRegistroProductor().setLocationRelativeTo(vista);
-        vista.getjDlgRegistroProductor().setSize(440, 310);
-        vista.getjDlgRegistroProductor().setTitle("Registrar productor");
         vista.getjDlgRegistroProductor().setVisible(true);
+        vista.getjDlgRegistroProductor().setSize(440, 310);
+        vista.getjDlgRegistroProductor().setLocationRelativeTo(vista.getCheckProductor());
+        vista.getjDlgRegistroProductor().setName("Registrar productor");
+        vista.getjDlgRegistroProductor().setTitle("Registrar productor");
+
     }
 
     public void abrirDlgRegistroAdministrador() {
 
-        vista.getjDlgRegistroAdministrador().setName("Registrar administrador");
-        vista.getjDlgRegistroAdministrador().setLocationRelativeTo(vista);
-        vista.getjDlgRegistroAdministrador().setSize(380, 386);
-        vista.getjDlgRegistroAdministrador().setTitle("Registrar administrador");
         vista.getjDlgRegistroAdministrador().setVisible(true);
+        vista.getjDlgRegistroAdministrador().setSize(380, 386);
+        vista.getjDlgRegistroAdministrador().setLocationRelativeTo(vista.getCheckAdministrador());
+        vista.getjDlgRegistroAdministrador().setName("Registrar administrador");
+        vista.getjDlgRegistroAdministrador().setTitle("Registrar administrador");
+
     }
 
     public void registroEstudiante() {
-        int response = JOptionPane.showConfirmDialog(vista, "¿Desea registrar a esta persona como estudiante?", "Confirmar", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-        if (response == JOptionPane.YES_OPTION) {
 
-            crearPersona();
-            ModeloPersona persona = new ModeloPersona();
-            ModeloEstudiante estudiante = new ModeloEstudiante();
+        if (validarDatosPersona()) {
 
-            if (estudiante.traerEstadoDelEstudiante(persona.traerCodigoDePersonaCrear(vista.getTxtCedula().getText())).equals("A")) {
+            int response = JOptionPane.showConfirmDialog(vista, "¿Desea registrar a esta persona como estudiante?", "Confirmar", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            if (response == JOptionPane.YES_OPTION) {
 
-                JOptionPane.showMessageDialog(null, "Esta persona ya ha sido ha asignada como estudiante");
-            } else {
-                if (estudiante.traerEstadoDelEstudiante(persona.traerCodigoDePersonaCrear(vista.getTxtCedula().getText())).equals("I")) {
-                    if (estudiante.crearEstudiante2(persona.traerCodigoDePersonaCrear(vista.getTxtCedula().getText())) == null) {
-                        JOptionPane.showMessageDialog(null, "Estudiante asignado correctamente");
-                    }
+                crearPersona();
+                ModeloPersona persona = new ModeloPersona();
+                ModeloEstudiante estudiante = new ModeloEstudiante();
+
+                if (estudiante.traerEstadoDelEstudiante(persona.traerCodigoDePersonaCrear(vista.getTxtCedula().getText())).equals("A")) {
+
+                    JOptionPane.showMessageDialog(null, "Esta persona ya ha sido ha asignada como estudiante");
                 } else {
-                    //Setear Datos de estudiante
-                    ModeloEstudiante estudiantes = new ModeloEstudiante();
-                    estudiantes.setEst_codper(persona.traerCodigoDePersonaCrear(vista.getTxtCedula().getText()));
-
-                    if (estudiantes.crearEstudiante() == null) {
-
-                        JOptionPane.showMessageDialog(null, "Estudiante asignado correctamente");
-                        cargarPersonasTabla();
-
+                    if (estudiante.traerEstadoDelEstudiante(persona.traerCodigoDePersonaCrear(vista.getTxtCedula().getText())).equals("I")) {
+                        if (estudiante.crearEstudiante2(persona.traerCodigoDePersonaCrear(vista.getTxtCedula().getText())) == null) {
+                            JOptionPane.showMessageDialog(null, "Estudiante asignado correctamente");
+                        }
                     } else {
-                        JOptionPane.showMessageDialog(null, "Error al asignar el rol de estudiante");
+                        //Setear Datos de estudiante
+                        ModeloEstudiante estudiantes = new ModeloEstudiante();
+                        estudiantes.setEst_codper(persona.traerCodigoDePersonaCrear(vista.getTxtCedula().getText()));
+
+                        if (estudiantes.crearEstudiante() == null) {
+
+                            JOptionPane.showMessageDialog(null, "Estudiante asignado correctamente");
+                            cargarPersonasTabla();
+
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Error al asignar el rol de estudiante");
+                        }
                     }
                 }
             }
@@ -362,12 +371,12 @@ public class ControladorPersona {
             JOptionPane.showMessageDialog(null, "Aun no ha seleccionado una fila");
         } else {
 
-            //Abrir jDialog de campos de Docente
-            vista.getjDlogRegistro().setName("Modificar persona");
-            vista.getjDlogRegistro().setLocationRelativeTo(null);
-            vista.getjDlogRegistro().setSize(802, 622);
-            vista.getjDlogRegistro().setTitle("Modificar  persona");
             vista.getjDlogRegistro().setVisible(true);
+            vista.getjDlogRegistro().setSize(802, 622);
+            vista.getjDlogRegistro().setLocationRelativeTo(null);
+            vista.getjDlogRegistro().setName("Modificar persona");
+            vista.getjDlogRegistro().setTitle("Modificar  persona");
+
             visibilidadModificar();
 
             //ModeloPersona modeloPersona = new ModeloPersona();
@@ -790,6 +799,10 @@ public class ControladorPersona {
         vista.getFechaNacimiento().setDate(null);
         vista.getTxtEmail().setText("");
         vista.getTxtDireccion().setText("");
+        vista.getCheckDocente().setSelected(false);
+        vista.getCheckProductor().setSelected(false);
+        vista.getCheckAdministrador().setSelected(false);
+        vista.getCheckEstudiante().setSelected(false);
     }
 
     public void visibilidadModificar() {
@@ -803,8 +816,43 @@ public class ControladorPersona {
         vista.getTxtCedula().setEditable(false);
     }
 
-    public void botonCancelar() {
+    public void botonCancelarPersona() {
         vista.getjDlogRegistro().setVisible(false);
     }
 
+    public void botonCancelarAdministrador() {
+        vista.getjDlgRegistroAdministrador().setVisible(false);
+    }
+
+    public void botonCancelarProductor() {
+        vista.getjDlgRegistroProductor().setVisible(false);
+    }
+
+    public void botonCancelarDocente() {
+        vista.getjDlgRegistroDocente().setVisible(false);
+    }
+
+    /*public void imprimir() {
+
+        ConexionPG conpg = new ConexionPG();//Instanciar la conexion con esto abrimos la conexion a la BD
+        try {
+            JasperReport jr = (JasperReport) JRLoader.loadObject(getClass().getResource("/vista/reportes/Reporte mvc.jasper"));
+
+            //Hacer una vista previa
+            //JasperPrint jp = JasperFillManager.fillReport(jr, null, cpg.getCon());//JasperFillManager.fillReport: Carga los datos de la BD.//JasperPrint: Hace la impresion del reporte. Puede ir 'null' si en el jasper no existen parametros caso contrario se envian los parametros necesarios
+            Map<String, Object> parametros = new HashMap<String, Object>();
+
+            parametros.put("titulo", vista.getTxtTitulo().getText()); //En donde esta 'titulo' tienen que ser igual al nombre que esta en el parametro del jasper
+            parametros.put("limitea", Double.parseDouble(vista.getSpinnerSueldomaximo().getValue().toString()));
+            parametros.put("limiteb", Double.parseDouble(vista.getSpinnerSueldominimo().getValue().toString()));//Cuando se quiere pasar un tipo de dato int '100' se coloca la 'd' despues del dato'100d'
+
+            JasperPrint jp = JasperFillManager.fillReport(jr, parametros, cpg.getCon());//'parametros' es el Map recien creado que contiene los parametros que iran al jasper
+
+            JasperViewer jv = new JasperViewer(jp, false); //Se pasa false para que no se cierre el sistema 
+            jv.setVisible(true);
+
+        } catch (JRException ex) {
+            Logger.getLogger(ControladorPersona.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }*/
 }
