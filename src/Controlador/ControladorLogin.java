@@ -55,8 +55,7 @@ public class ControladorLogin {
                 encontrar = true;//El usuario y la contraseña ingresados por el usuario son iguales a los que estan en la BD
 
                 usuario = vista.getTxtUsuario().getText();//Guardo el usuario para luego usarlo en la matricula
-                System.out.println("Usuario login: " + usuario);
-                
+
                 VistaPrincipal vistaPrincipal = new VistaPrincipal();
                 ControladorPrincipal control = new ControladorPrincipal(vistaPrincipal);
                 control.iniciarControl();
