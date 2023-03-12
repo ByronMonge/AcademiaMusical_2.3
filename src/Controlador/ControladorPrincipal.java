@@ -13,6 +13,7 @@ public class ControladorPrincipal {
         this.vistaPrincipal = vistaPrincipal;
         vistaPrincipal.setVisible(true);
         vistaPrincipal.setLocationRelativeTo(null);
+        vistaPrincipal.getLblUsuario().setText(ControladorLogin.usuario);
         DashBoard();
     }
 
