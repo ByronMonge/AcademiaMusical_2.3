@@ -4,14 +4,10 @@ import Modelo.Administrador;
 import Modelo.ModeloAdministrador;
 import Vista.VistaLogin;
 import Vista.VistaPrincipal;
-import java.awt.Color;
 import java.awt.Image;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -58,12 +54,12 @@ public class ControladorLogin {
                 vista.setVisible(false);//Cierro la ventana del login y abro la ventana principal 
                 encontrar = true;//El usuario y la contraseña ingresados por el usuario son iguales a los que estan en la BD
 
+                usuario = vista.getTxtUsuario().getText();//Guardo el usuario para luego usarlo en la matricula
+                System.out.println("Usuario login: " + usuario);
+                
                 VistaPrincipal vistaPrincipal = new VistaPrincipal();
                 ControladorPrincipal control = new ControladorPrincipal(vistaPrincipal);
                 control.iniciarControl();
-
-                usuario = vista.getTxtUsuario().getText();//Guardo el usuario para luego usarlo en la matricula
-                System.out.println("Usuario login: " + usuario);
             }
         });
 
@@ -85,7 +81,7 @@ public class ControladorLogin {
                 vista.getTxtContrasenia().setEchoChar('●');
                 vista.getLblOcultar().setVisible(true);
                 vista.getLblMostrar().setVisible(false);
-               
+
             }
 
             @Override
@@ -118,11 +114,11 @@ public class ControladorLogin {
 
             @Override
             public void mousePressed(MouseEvent e) {
-                
+
                 vista.getTxtContrasenia().setEchoChar((char) 0);
                 vista.getLblMostrar().setVisible(true);
                 vista.getLblOcultar().setVisible(false);
-                
+
             }
 
             @Override
@@ -142,6 +138,7 @@ public class ControladorLogin {
         };
         vista.getLblOcultar().addMouseListener(evento);
     }
+
     public void Cargarpinci() {
         MouseListener evento = new MouseListener() {
 
@@ -153,7 +150,7 @@ public class ControladorLogin {
             @Override
             public void mousePressed(MouseEvent e) {
                 crarPrincip();
-                               
+
             }
 
             @Override
@@ -171,7 +168,7 @@ public class ControladorLogin {
                 //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
             }
         };
-       
+
         vista.getTxtUsuario().addMouseListener(evento);
         vista.getTxtContrasenia().addMouseListener(evento);
     }
