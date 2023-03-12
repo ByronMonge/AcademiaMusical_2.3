@@ -59,8 +59,6 @@ public class VistaLogin extends javax.swing.JFrame {
         this.lblImagen1 = lblImagen1;
     }
 
- 
-
     public JButton getjButton1() {
         return jButton1;
     }
@@ -84,9 +82,6 @@ public class VistaLogin extends javax.swing.JFrame {
     public void setjButton3(JButton jButton3) {
         this.jButton3 = jButton3;
     }
-
-  
-    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
