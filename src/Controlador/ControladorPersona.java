@@ -167,11 +167,10 @@ public class ControladorPersona {
 
     public void crearPersonaYDocente() {
 
-        //Insertar docente
-        if (validarDatosDocenteYEmpleado()) {
-
-            //Insertar persona
-            if (crearPersona()) {
+        //Insertar persona
+        if (crearPersona()) {
+            //Insertar docente
+            if (validarDatosDocenteYEmpleado()) {
 
                 asignar = false; //Siempre que ingrese a este metodo la variable sera false
 
@@ -232,11 +231,10 @@ public class ControladorPersona {
 
     public void crearPersonaYProductor() {
 
-        //Insertar productor
-        if (validarDatosProductorYEmpleado()) {
-
-            //Insertar persona
-            if (crearPersona()) {
+        //Insertar persona
+        if (crearPersona()) {
+            //Insertar productor
+            if (validarDatosProductorYEmpleado()) {
                 asignar = false;
 
                 ModeloPersona persona = new ModeloPersona();
