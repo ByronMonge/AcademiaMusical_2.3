@@ -56,7 +56,7 @@ public class ControladorAdministrador {
         vista.getBtnActualizar().addActionListener(l -> cargarTablaDeAdministradores());
         vista.getBtnModificar().addActionListener(l -> cargarDatosAdministradoresEnTXT());
         vista.getBtnEliminar().addActionListener(l -> eliminarAdministrador());
-        vista.getBtnCancelar().addActionListener(l-> botonEliminar());
+        vista.getBtnCancelar().addActionListener(l -> botonEliminar());
         //vista.getBtnImprimir().addActionListener(l -> imprimir());
 
         buscarAdministrador();
@@ -323,7 +323,7 @@ public class ControladorAdministrador {
 
                 List<Administrador> administradores = modelo.buscarAdministrador(vista.getTxtBuscar().getText());
                 administradores.stream().forEach(p -> {
-                    String[] datos = {p.getPer_cedula(), p.getPer_primernom() + " " + p.getPer_apellidopater(), String.valueOf(p.getEmp_codigo()), p.getEmp_salario().toString(), String.valueOf(p.getAdm_codigo()), p.getAdm_usuario()};
+                    String[] datos = {p.getPer_cedula(), p.getPer_primernom() + " " + p.getPer_apellidopater(), p.getEmp_salario().toString(), p.getAdm_usuario()};
                     tabla.addRow(datos);
                 });
             }
@@ -670,7 +670,7 @@ public class ControladorAdministrador {
         vista.getLblOcultar().addMouseListener(evento);
     }
 
-    public void botonEliminar(){
+    public void botonEliminar() {
         vista.getjDlgAdministrador().setVisible(false);
     }
     /*public void imprimir() {
