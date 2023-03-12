@@ -51,6 +51,7 @@ public class ControladorDocente {
         vista.getBtnModificar().addActionListener(l -> cargarDatosDocentesEnTXT());
         vista.getBtnEliminar().addActionListener(l -> eliminarDocente());
         vista.getBtnCancelar().addActionListener(l -> botonCancelar());
+        //vista.getBtnImprimir().addActionListener(l -> imprimir());
         buscarDocente();
     }
 
@@ -60,7 +61,7 @@ public class ControladorDocente {
 
         List<Docente> docentes = modelo.listaDocentesTabla();
         docentes.stream().forEach(p -> {
-            String[] datos = {p.getPer_cedula(), p.getPer_primernom() + " " + p.getPer_apellidopater(), String.valueOf(p.getEmp_codigo()), p.getEmp_salario().toString(), String.valueOf(p.getDoc_codigo()), p.getDoc_especialidad()};
+            String[] datos = {p.getPer_cedula(), p.getPer_primernom() + " " + p.getPer_apellidopater(), String.valueOf(p.getEmp_codigo()), p.getEmp_salario().toString(),String.valueOf(p.getDoc_codigo()), p.getDoc_especialidad()};
             tabla.addRow(datos);
         });
     }
@@ -76,11 +77,12 @@ public class ControladorDocente {
         } else {
 
             //Abrir jDialog de campos de Docente
-            vista.getjDlgDocente().setName("Modificar docente");
-            vista.getjDlgDocente().setLocationRelativeTo(null);
-            vista.getjDlgDocente().setSize(774, 585);
-            vista.getjDlgDocente().setTitle("Modificar  docente");
             vista.getjDlgDocente().setVisible(true);
+            vista.getjDlgDocente().setSize(774, 614);
+            vista.getjDlgDocente().setLocationRelativeTo(null);
+            vista.getjDlgDocente().setName("Modificar docente");
+            vista.getjDlgDocente().setTitle("Modificar  docente");
+
             bloquearCamposModificar();
 
             //ModeloPersona modeloPersona = new ModeloPersona();
@@ -123,11 +125,11 @@ public class ControladorDocente {
 
     public void abrirjDlgDocente() {
 
-        vista.getjDlgDocente().setName("Crear nuevo docente");
-        vista.getjDlgDocente().setLocationRelativeTo(null);
-        vista.getjDlgDocente().setSize(774, 585);
-        vista.getjDlgDocente().setTitle("Crear nuevo docente");
         vista.getjDlgDocente().setVisible(true);
+        vista.getjDlgDocente().setSize(774, 614);
+        vista.getjDlgDocente().setLocationRelativeTo(null);
+        vista.getjDlgDocente().setName("Crear nuevo docente");
+        vista.getjDlgDocente().setTitle("Crear nuevo docente");
 
         desbloquearCampos();
         limpiarCampos();
@@ -271,7 +273,7 @@ public class ControladorDocente {
 
                 List<Docente> docentes = modelo.buscarDocente(vista.getTxtBuscar().getText());
                 docentes.stream().forEach(p -> {
-                    String[] datos = {p.getPer_cedula(), p.getPer_primernom() + " " + p.getPer_apellidopater(), String.valueOf(p.getEmp_codigo()), p.getEmp_salario().toString(), String.valueOf(p.getDoc_codigo()), p.getDoc_especialidad()};
+                    String[] datos = {p.getPer_cedula(), p.getPer_primernom() + " " + p.getPer_apellidopater(), String.valueOf(p.getEmp_codigo()), p.getEmp_salario().toString(),String.valueOf(p.getDoc_codigo()), p.getDoc_especialidad()};
                     tabla.addRow(datos);
                 });
             }
@@ -282,10 +284,11 @@ public class ControladorDocente {
 
     //Todo sobre el registro de personas en el jDialog
     public void abrirjDialogPersonas() {
-        vista.getjDlgBuscarPersonas().setLocationRelativeTo(null);
-        vista.getjDlgBuscarPersonas().setSize(605, 409);
-        vista.getjDlgBuscarPersonas().setTitle("Seleccione una persona");
         vista.getjDlgBuscarPersonas().setVisible(true);
+        vista.getjDlgBuscarPersonas().setSize(605, 409);
+        vista.getjDlgBuscarPersonas().setLocationRelativeTo(vista.getBtnBuscarPersona());
+        vista.getjDlgBuscarPersonas().setTitle("Seleccione una persona");
+
         cargarRegistroDePersonas();
         buscarPersona();
     }
@@ -542,4 +545,28 @@ public class ControladorDocente {
     public void botonCancelar() {
         vista.getjDlgDocente().setVisible(false);
     }
+
+    /*public void imprimir() {
+
+        ConexionPG conpg = new ConexionPG();//Instanciar la conexion con esto abrimos la conexion a la BD
+        try {
+            JasperReport jr = (JasperReport) JRLoader.loadObject(getClass().getResource("/vista/reportes/Reporte mvc.jasper"));
+
+            //Hacer una vista previa
+            //JasperPrint jp = JasperFillManager.fillReport(jr, null, cpg.getCon());//JasperFillManager.fillReport: Carga los datos de la BD.//JasperPrint: Hace la impresion del reporte. Puede ir 'null' si en el jasper no existen parametros caso contrario se envian los parametros necesarios
+            Map<String, Object> parametros = new HashMap<String, Object>();
+
+            parametros.put("titulo", vista.getTxtTitulo().getText()); //En donde esta 'titulo' tienen que ser igual al nombre que esta en el parametro del jasper
+            parametros.put("limitea", Double.parseDouble(vista.getSpinnerSueldomaximo().getValue().toString()));
+            parametros.put("limiteb", Double.parseDouble(vista.getSpinnerSueldominimo().getValue().toString()));//Cuando se quiere pasar un tipo de dato int '100' se coloca la 'd' despues del dato'100d'
+
+            JasperPrint jp = JasperFillManager.fillReport(jr, parametros, cpg.getCon());//'parametros' es el Map recien creado que contiene los parametros que iran al jasper
+
+            JasperViewer jv = new JasperViewer(jp, false); //Se pasa false para que no se cierre el sistema 
+            jv.setVisible(true);
+
+        } catch (JRException ex) {
+            Logger.getLogger(ControladorPersona.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }*/
 }
