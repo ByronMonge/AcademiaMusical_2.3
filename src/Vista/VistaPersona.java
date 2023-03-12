@@ -25,14 +25,6 @@ public class VistaPersona extends javax.swing.JInternalFrame {
         this.btnModificar = btnActualizar;
     }
 
-    public JButton getBtnCancelar() {
-        return btnModificarPersona;
-    }
-
-    public void setBtnCancelar(JButton btnCancelar) {
-        this.btnModificarPersona = btnCancelar;
-    }
-
     public JButton getBtnCrear() {
         return btnCrear;
     }
@@ -369,6 +361,38 @@ public class VistaPersona extends javax.swing.JInternalFrame {
         this.txtUsuario = txtUsuario;
     }
 
+    public JButton getBtnImprimir() {
+        return btnImprimir;
+    }
+
+    public void setBtnImprimir(JButton btnImprimir) {
+        this.btnImprimir = btnImprimir;
+    }
+
+    public JButton getBtnCancelarDocente() {
+        return btnCancelarDocente;
+    }
+
+    public void setBtnCancelarDocente(JButton btnCancelarDocente) {
+        this.btnCancelarDocente = btnCancelarDocente;
+    }
+
+    public JButton getBtnCancelarProductor() {
+        return btnCancelarProductor;
+    }
+
+    public void setBtnCancelarProductor(JButton btnCancelarProductor) {
+        this.btnCancelarProductor = btnCancelarProductor;
+    }
+
+    public JButton getBtnCancelarPersona() {
+        return btnCancelarPersona;
+    }
+
+    public void setBtnCancelarPersona(JButton btnCancelarPersona) {
+        this.btnCancelarPersona = btnCancelarPersona;
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -404,7 +428,7 @@ public class VistaPersona extends javax.swing.JInternalFrame {
         lblRol = new javax.swing.JLabel();
         checkEstudiante = new javax.swing.JCheckBox();
         checkAdministrador = new javax.swing.JCheckBox();
-        btnCancelar3 = new javax.swing.JButton();
+        btnCancelarPersona = new javax.swing.JButton();
         genero = new javax.swing.ButtonGroup();
         rol = new javax.swing.ButtonGroup();
         jDlgRegistroDocente = new javax.swing.JDialog();
@@ -417,7 +441,7 @@ public class VistaPersona extends javax.swing.JInternalFrame {
         fechaContratacionDocente = new com.toedter.calendar.JDateChooser();
         spinnerSueldoDocente = new javax.swing.JSpinner();
         txtEspecialidad = new javax.swing.JTextField();
-        btnCancelar1 = new javax.swing.JButton();
+        btnCancelarDocente = new javax.swing.JButton();
         jDlgRegistroProductor = new javax.swing.JDialog();
         jPanel4 = new javax.swing.JPanel();
         jLabel21 = new javax.swing.JLabel();
@@ -429,7 +453,7 @@ public class VistaPersona extends javax.swing.JInternalFrame {
         spinnerSueldoProductor = new javax.swing.JSpinner();
         fechaContratacionProductor = new com.toedter.calendar.JDateChooser();
         jLabel26 = new javax.swing.JLabel();
-        btnCancelar2 = new javax.swing.JButton();
+        btnCancelarProductor = new javax.swing.JButton();
         jDlgRegistroAdministrador = new javax.swing.JDialog();
         jPanel5 = new javax.swing.JPanel();
         jLabel25 = new javax.swing.JLabel();
@@ -450,6 +474,7 @@ public class VistaPersona extends javax.swing.JInternalFrame {
         btnModificar = new javax.swing.JButton();
         btnCrear = new javax.swing.JButton();
         btnActualizar1 = new javax.swing.JButton();
+        btnImprimir = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblPersona = new javax.swing.JTable();
 
@@ -527,12 +552,12 @@ public class VistaPersona extends javax.swing.JInternalFrame {
         checkAdministrador.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         checkAdministrador.setText("Administrador");
 
-        btnCancelar3.setBackground(new java.awt.Color(255, 255, 255));
-        btnCancelar3.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
-        btnCancelar3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/boton-x.png"))); // NOI18N
-        btnCancelar3.setText("Cancelar");
-        btnCancelar3.setBorder(null);
-        btnCancelar3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCancelarPersona.setBackground(new java.awt.Color(255, 255, 255));
+        btnCancelarPersona.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
+        btnCancelarPersona.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/boton-x.png"))); // NOI18N
+        btnCancelarPersona.setText("Cancelar");
+        btnCancelarPersona.setBorder(null);
+        btnCancelarPersona.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -574,7 +599,7 @@ public class VistaPersona extends javax.swing.JInternalFrame {
                 .addGap(63, 63, 63)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(btnCancelar3, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnCancelarPersona, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(lblRol)
@@ -664,7 +689,7 @@ public class VistaPersona extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnModificarPersona, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCancelar3, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnCancelarPersona, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -702,12 +727,12 @@ public class VistaPersona extends javax.swing.JInternalFrame {
 
         spinnerSueldoDocente.setModel(new javax.swing.SpinnerNumberModel(0.0d, 0.0d, 10000.0d, 1.0d));
 
-        btnCancelar1.setBackground(new java.awt.Color(255, 255, 255));
-        btnCancelar1.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
-        btnCancelar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/boton-x.png"))); // NOI18N
-        btnCancelar1.setText("Cancelar");
-        btnCancelar1.setBorder(null);
-        btnCancelar1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCancelarDocente.setBackground(new java.awt.Color(255, 255, 255));
+        btnCancelarDocente.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
+        btnCancelarDocente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/boton-x.png"))); // NOI18N
+        btnCancelarDocente.setText("Cancelar");
+        btnCancelarDocente.setBorder(null);
+        btnCancelarDocente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -734,7 +759,7 @@ public class VistaPersona extends javax.swing.JInternalFrame {
                             .addComponent(spinnerSueldoDocente, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtEspecialidad, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(btnCancelar1, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnCancelarDocente, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(fechaContratacionDocente, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(57, Short.MAX_VALUE))
         );
@@ -758,7 +783,7 @@ public class VistaPersona extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardarDocente)
-                    .addComponent(btnCancelar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnCancelarDocente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(24, 24, 24))
         );
 
@@ -797,12 +822,12 @@ public class VistaPersona extends javax.swing.JInternalFrame {
         jLabel26.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         jLabel26.setText("$");
 
-        btnCancelar2.setBackground(new java.awt.Color(255, 255, 255));
-        btnCancelar2.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
-        btnCancelar2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/boton-x.png"))); // NOI18N
-        btnCancelar2.setText("Cancelar");
-        btnCancelar2.setBorder(null);
-        btnCancelar2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCancelarProductor.setBackground(new java.awt.Color(255, 255, 255));
+        btnCancelarProductor.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
+        btnCancelarProductor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/boton-x.png"))); // NOI18N
+        btnCancelarProductor.setText("Cancelar");
+        btnCancelarProductor.setBorder(null);
+        btnCancelarProductor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -831,7 +856,7 @@ public class VistaPersona extends javax.swing.JInternalFrame {
                         .addGap(83, 83, 83)
                         .addComponent(btnGuardarProductor)
                         .addGap(78, 78, 78)
-                        .addComponent(btnCancelar2, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnCancelarProductor, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(78, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
@@ -858,7 +883,7 @@ public class VistaPersona extends javax.swing.JInternalFrame {
                 .addGap(43, 43, 43)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardarProductor)
-                    .addComponent(btnCancelar2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnCancelarProductor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -1019,6 +1044,13 @@ public class VistaPersona extends javax.swing.JInternalFrame {
         btnActualizar1.setText("Actualizar");
         btnActualizar1.setBorder(null);
 
+        btnImprimir.setBackground(new java.awt.Color(255, 255, 255));
+        btnImprimir.setFont(new java.awt.Font("Roboto Medium", 0, 13)); // NOI18N
+        btnImprimir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/imprimir.png"))); // NOI18N
+        btnImprimir.setText("Imprimir");
+        btnImprimir.setBorder(null);
+        btnImprimir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -1028,25 +1060,28 @@ public class VistaPersona extends javax.swing.JInternalFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 405, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 301, Short.MAX_VALUE)
                 .addComponent(btnCrear, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(92, 92, 92)
-                .addComponent(btnActualizar1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(75, 75, 75)
+                .addGap(82, 82, 82)
                 .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(100, 100, 100))
+                .addGap(83, 83, 83)
+                .addComponent(btnActualizar1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(72, 72, 72)
+                .addComponent(btnImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(34, 34, 34)
+                .addGap(33, 33, 33)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCrear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnActualizar1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnActualizar1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(44, 44, 44))
+                    .addComponent(btnImprimir))
+                .addGap(43, 43, 43))
         );
 
         tblPersona.setModel(new javax.swing.table.DefaultTableModel(
@@ -1083,14 +1118,15 @@ public class VistaPersona extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar1;
-    private javax.swing.JButton btnCancelar1;
-    private javax.swing.JButton btnCancelar2;
-    private javax.swing.JButton btnCancelar3;
     private javax.swing.JButton btnCancelarAdministrador;
+    private javax.swing.JButton btnCancelarDocente;
+    private javax.swing.JButton btnCancelarPersona;
+    private javax.swing.JButton btnCancelarProductor;
     private javax.swing.JButton btnCrear;
     private javax.swing.JButton btnGuardarAdministrador;
     private javax.swing.JButton btnGuardarDocente;
     private javax.swing.JButton btnGuardarProductor;
+    private javax.swing.JButton btnImprimir;
     private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnModificarPersona;
     private javax.swing.JCheckBox checkAdministrador;
