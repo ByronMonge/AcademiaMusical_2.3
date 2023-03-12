@@ -2,6 +2,7 @@ package Vista;
 
 import javax.swing.JButton;
 import javax.swing.JDesktopPane;
+import javax.swing.JLabel;
 
 public class VistaPrincipal extends javax.swing.JFrame {
 
@@ -48,7 +49,6 @@ public class VistaPrincipal extends javax.swing.JFrame {
     public void setBtnDirigir(JButton btnDirigir) {
         this.btnDirigir = btnDirigir;
     }
-    
 
     public JButton getBtnCurso() {
         return btnCurso;
@@ -162,8 +162,14 @@ public class VistaPrincipal extends javax.swing.JFrame {
         this.btnAsignarAula = btnAsignarAula;
     }
 
-    
-    
+    public JLabel getLblUsuario() {
+        return jLabel2;
+    }
+
+    public void setLblUsuario(JLabel lblUsuario) {
+        this.jLabel2 = lblUsuario;
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -296,7 +302,8 @@ public class VistaPrincipal extends javax.swing.JFrame {
         btnDocente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.add(btnDocente, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 312, -1, -1));
 
-        jLabel2.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        jLabel2.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel2.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/usuariogrande.png"))); // NOI18N
