@@ -255,6 +255,14 @@ public class VistaDocente extends javax.swing.JInternalFrame {
         this.btnBuscarPersona = btnBuscarPersona;
     }
 
+    public JButton getBtnImprimir() {
+        return btnImprimir;
+    }
+
+    public void setBtnImprimir(JButton btnImprimir) {
+        this.btnImprimir = btnImprimir;
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -312,6 +320,7 @@ public class VistaDocente extends javax.swing.JInternalFrame {
         btnModificar = new javax.swing.JButton();
         btnActualizar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
+        btnImprimir = new javax.swing.JButton();
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -449,7 +458,6 @@ public class VistaDocente extends javax.swing.JInternalFrame {
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                                         .addGap(18, 18, 18)
                                         .addComponent(txtPrimerNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(32, 32, 32)
@@ -540,7 +548,7 @@ public class VistaDocente extends javax.swing.JInternalFrame {
                             .addComponent(jLabel14)
                             .addComponent(spinnerSueldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel15))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardar)
                     .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -651,7 +659,7 @@ public class VistaDocente extends javax.swing.JInternalFrame {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "Cédula", "Nombre y apellido", "Código del empleado", "Salario", "Código del docente", "Especialidad"
+                "Cédula", "Nombre y apellido", "Código de empleado", "Salario", "Código de docente", "Especialidad"
             }
         ));
         jScrollPane1.setViewportView(tblDocente);
@@ -689,6 +697,13 @@ public class VistaDocente extends javax.swing.JInternalFrame {
         btnEliminar.setBorder(null);
         btnEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
+        btnImprimir.setBackground(new java.awt.Color(255, 255, 255));
+        btnImprimir.setFont(new java.awt.Font("Roboto Medium", 0, 13)); // NOI18N
+        btnImprimir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/imprimir.png"))); // NOI18N
+        btnImprimir.setText("Imprimir");
+        btnImprimir.setBorder(null);
+        btnImprimir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -698,15 +713,17 @@ public class VistaDocente extends javax.swing.JInternalFrame {
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 209, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 181, Short.MAX_VALUE)
                 .addComponent(btnAsignar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(56, 56, 56)
+                .addGap(49, 49, 49)
                 .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(46, 46, 46)
+                .addGap(44, 44, 44)
                 .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(67, 67, 67)
+                .addGap(57, 57, 57)
                 .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(137, 137, 137))
+                .addGap(44, 44, 44)
+                .addComponent(btnImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -723,7 +740,8 @@ public class VistaDocente extends javax.swing.JInternalFrame {
                             .addComponent(btnEliminar)
                             .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnModificar)
-                            .addComponent(btnAsignar))))
+                            .addComponent(btnAsignar)
+                            .addComponent(btnImprimir))))
                 .addContainerGap(59, Short.MAX_VALUE))
         );
 
@@ -754,6 +772,7 @@ public class VistaDocente extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnCargarPer;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnGuardar;
+    private javax.swing.JButton btnImprimir;
     private javax.swing.JButton btnModificar;
     private com.toedter.calendar.JDateChooser fechaContratacion;
     private com.toedter.calendar.JDateChooser fechaNacimiento;
