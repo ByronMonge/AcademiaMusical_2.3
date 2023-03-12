@@ -56,6 +56,7 @@ public class ControladorAdministrador {
         vista.getBtnActualizar().addActionListener(l -> cargarTablaDeAdministradores());
         vista.getBtnModificar().addActionListener(l -> cargarDatosAdministradoresEnTXT());
         vista.getBtnEliminar().addActionListener(l -> eliminarAdministrador());
+        vista.getBtnCancelar().addActionListener(l-> botonEliminar());
         //vista.getBtnImprimir().addActionListener(l -> imprimir());
 
         buscarAdministrador();
@@ -669,6 +670,9 @@ public class ControladorAdministrador {
         vista.getLblOcultar().addMouseListener(evento);
     }
 
+    public void botonEliminar(){
+        vista.getjDlgAdministrador().setVisible(false);
+    }
     /*public void imprimir() {
 
         ConexionPG conpg = new ConexionPG();//Instanciar la conexion con esto abrimos la conexion a la BD
