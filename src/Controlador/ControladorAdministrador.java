@@ -29,7 +29,7 @@ import javax.xml.ws.Holder;
 
 public class ControladorAdministrador {
 
-    ModeloAdministrador modelo;
+    ModeloAdministrador  modelo;
     VistaAdministrador vista;
 
     static boolean asignar; //Esta variable es de tipo static para que funcione dentro de la expresion lambda. Esta variable sera true o false dependiendo si la persona es o no docente
