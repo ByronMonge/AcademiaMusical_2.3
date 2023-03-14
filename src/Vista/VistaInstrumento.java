@@ -37,22 +37,6 @@ public class VistaInstrumento extends javax.swing.JInternalFrame {
         this.btnCancelar = btnCancelar;
     }
 
-    public JButton getBtnCargarPer() {
-        return btnCargarSetGrba;
-    }
-
-    public void setBtnCargarPer(JButton btnCargarPer) {
-        this.btnCargarSetGrba = btnCargarPer;
-    }
-
-    public JButton getBtnCargarPer1() {
-        return btnCargar;
-    }
-
-    public void setBtnCargarPer1(JButton btnCargarPer1) {
-        this.btnCargar = btnCargarPer1;
-    }
-
     public JButton getBtnCrear() {
         return btnCrear;
     }
@@ -83,14 +67,6 @@ public class VistaInstrumento extends javax.swing.JInternalFrame {
 
     public void setBtnModificar(JButton btnModificar) {
         this.btnModificar = btnModificar;
-    }
-
-    public JDialog getjDlgCargarinstru() {
-        return jDlgCargarSet;
-    }
-
-    public void setjDlgCargarinstru(JDialog jDlgCargarinstru) {
-        this.jDlgCargarSet = jDlgCargarinstru;
     }
 
     public JDialog getjDlgInstrumento() {
@@ -133,10 +109,6 @@ public class VistaInstrumento extends javax.swing.JInternalFrame {
         this.tblSet = tblInstrumentoset;
     }
 
-    public JTextField getTxtBuscarPer() {
-        return txtBuscarPer;
-    }
-
     public JTextField getTxtMarca() {
         return txtMarca;
     }
@@ -162,11 +134,11 @@ public class VistaInstrumento extends javax.swing.JInternalFrame {
     }
 
     public JTextField getTxtBuscarSet() {
-        return txtTamanio;
+        return txtBuscarSet;
     }
 
     public void setTxtBuscarSet(JTextField txtBuscarSet) {
-        this.txtTamanio = txtBuscarSet;
+        this.txtBuscarSet = txtBuscarSet;
     }
 
     public JTextField getTxtnombreset() {
@@ -233,6 +205,16 @@ public class VistaInstrumento extends javax.swing.JInternalFrame {
         this.jDlgCargarSet = jDlgCargarSet;
     }
 
+    public JButton getBtnImprimir() {
+        return btnImprimir;
+    }
+
+    public void setBtnImprimir(JButton btnImprimir) {
+        this.btnImprimir = btnImprimir;
+    }
+
+    
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -259,10 +241,11 @@ public class VistaInstrumento extends javax.swing.JInternalFrame {
         txtUbicacionSet = new javax.swing.JTextField();
         jSpinnerValor = new javax.swing.JSpinner();
         txtCodigoSet = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
         jDlgCargarSet = new javax.swing.JDialog();
         jPanel4 = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
-        txtBuscarPer = new javax.swing.JTextField();
+        txtBuscarSet = new javax.swing.JTextField();
         btnCargarSetGrba = new javax.swing.JButton();
         jLabel19 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -274,8 +257,12 @@ public class VistaInstrumento extends javax.swing.JInternalFrame {
         btnModificar = new javax.swing.JButton();
         btnActualizar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
+        btnImprimir = new javax.swing.JButton();
+        jLabel28 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblInstrumento = new javax.swing.JTable();
+
+        jDlgInstrumento.setResizable(false);
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -286,26 +273,26 @@ public class VistaInstrumento extends javax.swing.JInternalFrame {
         btnGuardar.setText("Guardar");
         btnGuardar.setBorder(null);
         btnGuardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel3.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 440, -1, -1));
+        jPanel3.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 410, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
-        jLabel4.setText("Nombre");
+        jLabel4.setText("Nombre:");
         jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 140, -1, -1));
         jPanel3.add(txtnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(102, 137, 215, -1));
 
         jLabel5.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
-        jLabel5.setText("Marca");
+        jLabel5.setText("Marca:");
         jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 209, -1, -1));
         jPanel3.add(txtMarca, new org.netbeans.lib.awtextra.AbsoluteConstraints(102, 206, 215, -1));
 
         jLabel6.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
-        jLabel6.setText("Tipo");
+        jLabel6.setText("Tipo:");
         jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 274, -1, -1));
         jPanel3.add(txtTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(102, 271, 215, -1));
 
         jLabel3.setFont(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
-        jLabel3.setText("Asignar a un set de grabacion");
-        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(433, 94, -1, -1));
+        jLabel3.setText("Información del instrumento");
+        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, -1, -1));
 
         btnCancelar.setBackground(new java.awt.Color(255, 255, 255));
         btnCancelar.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
@@ -313,11 +300,11 @@ public class VistaInstrumento extends javax.swing.JInternalFrame {
         btnCancelar.setText("Cancelar");
         btnCancelar.setBorder(null);
         btnCancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel3.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 440, -1, 39));
-        jPanel3.add(txtTamanio, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 200, 164, -1));
+        jPanel3.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 400, -1, 39));
+        jPanel3.add(txtTamanio, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 200, 170, -1));
 
         jLabel18.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
-        jLabel18.setText("Tamaño");
+        jLabel18.setText("Tamaño:");
         jPanel3.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 200, -1, -1));
 
         btnCargar.setBackground(new java.awt.Color(255, 255, 255));
@@ -325,39 +312,45 @@ public class VistaInstrumento extends javax.swing.JInternalFrame {
         btnCargar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/buscar.png"))); // NOI18N
         btnCargar.setText("Buscar");
         btnCargar.setBorder(null);
-        jPanel3.add(btnCargar, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 129, 80, 30));
+        jPanel3.add(btnCargar, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 130, 80, 30));
 
         jLabel8.setFont(new java.awt.Font("Roboto Black", 0, 28)); // NOI18N
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Guitar-icon.png"))); // NOI18N
         jLabel8.setText("Datos de Instrumento");
-        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(49, 23, -1, -1));
+        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
 
         jLabel9.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
-        jLabel9.setText("Nombre");
+        jLabel9.setText("Nombre:");
         jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 140, -1, -1));
         jPanel3.add(txtnombreset, new org.netbeans.lib.awtextra.AbsoluteConstraints(517, 137, 170, -1));
 
         jLabel10.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
-        jLabel10.setText("Valor");
+        jLabel10.setText("Valor:");
         jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 331, -1, -1));
 
         jLabel20.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
-        jLabel20.setText("Ubicacion");
+        jLabel20.setText("Ubicacion:");
         jPanel3.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 280, -1, 10));
-        jPanel3.add(txtUbicacionSet, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 270, 164, -1));
+        jPanel3.add(txtUbicacionSet, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 270, 170, -1));
         jPanel3.add(jSpinnerValor, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 330, 220, -1));
-        jPanel3.add(txtCodigoSet, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 170, 40, -1));
+        jPanel3.add(txtCodigoSet, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 170, 40, -1));
+
+        jLabel7.setFont(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
+        jLabel7.setText("Asignar a un set de grabacion");
+        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 90, -1, -1));
 
         javax.swing.GroupLayout jDlgInstrumentoLayout = new javax.swing.GroupLayout(jDlgInstrumento.getContentPane());
         jDlgInstrumento.getContentPane().setLayout(jDlgInstrumentoLayout);
         jDlgInstrumentoLayout.setHorizontalGroup(
             jDlgInstrumentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 890, Short.MAX_VALUE)
+            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 813, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         jDlgInstrumentoLayout.setVerticalGroup(
             jDlgInstrumentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 508, Short.MAX_VALUE)
+            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 468, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
+
+        jDlgCargarSet.setResizable(false);
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -371,7 +364,7 @@ public class VistaInstrumento extends javax.swing.JInternalFrame {
         btnCargarSetGrba.setBorder(null);
 
         jLabel19.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
-        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Guitar-icon.png"))); // NOI18N
+        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/microfono.png"))); // NOI18N
         jLabel19.setText("Cargar Set de Grabacion");
 
         tblSet.setFont(new java.awt.Font("Roboto Medium", 0, 13)); // NOI18N
@@ -393,21 +386,21 @@ public class VistaInstrumento extends javax.swing.JInternalFrame {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel17)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtBuscarPer, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(357, 357, 357)
-                        .addComponent(btnCargarSetGrba, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel4Layout.createSequentialGroup()
-                            .addGap(39, 39, 39)
-                            .addComponent(jLabel19))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(jPanel4Layout.createSequentialGroup()
                             .addContainerGap()
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 665, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jLabel17)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(txtBuscarSet, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(357, 357, 357)
+                            .addComponent(btnCargarSetGrba, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel4Layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 665, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel19)))
                 .addContainerGap(24, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
@@ -418,7 +411,7 @@ public class VistaInstrumento extends javax.swing.JInternalFrame {
                 .addGap(27, 27, 27)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel17)
-                    .addComponent(txtBuscarPer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtBuscarSet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCargarSetGrba, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(25, 25, 25)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -473,42 +466,58 @@ public class VistaInstrumento extends javax.swing.JInternalFrame {
         btnEliminar.setBorder(null);
         btnEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
+        btnImprimir.setBackground(new java.awt.Color(255, 255, 255));
+        btnImprimir.setFont(new java.awt.Font("Roboto Medium", 0, 13)); // NOI18N
+        btnImprimir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/imprimir.png"))); // NOI18N
+        btnImprimir.setText("Imprimir");
+        btnImprimir.setBorder(null);
+        btnImprimir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        jLabel28.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
+        jLabel28.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel28.setText("Listado de instrumentos");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(57, 57, 57)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 345, Short.MAX_VALUE)
-                .addComponent(btnCrear, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 271, Short.MAX_VALUE)
+                .addComponent(btnCrear, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(54, 54, 54)
+                .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(50, 50, 50)
-                .addComponent(btnModificar)
-                .addGap(40, 40, 40)
                 .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
+                .addGap(50, 50, 50)
                 .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(57, 57, 57))
+                .addGap(36, 36, 36)
+                .addComponent(btnImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25))
+            .addComponent(jLabel28, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel28)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
+                        .addGap(7, 7, 7)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
                             .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnEliminar)
-                            .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnModificar)
-                            .addComponent(btnCrear))))
-                .addContainerGap(59, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnEliminar)
+                        .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnModificar)
+                        .addComponent(btnCrear)
+                        .addComponent(btnImprimir)))
+                .addContainerGap())
         );
 
         tblInstrumento.setFont(new java.awt.Font("Roboto Medium", 0, 13)); // NOI18N
@@ -537,7 +546,7 @@ public class VistaInstrumento extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 492, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE))
         );
 
         pack();
@@ -552,6 +561,7 @@ public class VistaInstrumento extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnCrear;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnGuardar;
+    private javax.swing.JButton btnImprimir;
     private javax.swing.JButton btnModificar;
     private javax.swing.JDialog jDlgCargarSet;
     private javax.swing.JDialog jDlgInstrumento;
@@ -561,10 +571,12 @@ public class VistaInstrumento extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel2;
@@ -576,7 +588,7 @@ public class VistaInstrumento extends javax.swing.JInternalFrame {
     private javax.swing.JTable tblInstrumento;
     private javax.swing.JTable tblSet;
     private javax.swing.JTextField txtBuscar;
-    private javax.swing.JTextField txtBuscarPer;
+    private javax.swing.JTextField txtBuscarSet;
     private javax.swing.JTextField txtCodigoSet;
     private javax.swing.JTextField txtMarca;
     private javax.swing.JTextField txtTamanio;
