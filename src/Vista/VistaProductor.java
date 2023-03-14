@@ -50,6 +50,15 @@ public class VistaProductor extends javax.swing.JInternalFrame {
         this.btnCancelar = btnCancelar;
     }
 
+    public JButton getBtnImprimir() {
+        return btnImprimir;
+    }
+
+    public void setBtnImprimir(JButton btnImprimir) {
+        this.btnImprimir = btnImprimir;
+    }
+    
+
     public JButton getBtnCargarPer() {
         return btnCargarPer;
     }
@@ -524,6 +533,7 @@ public class VistaProductor extends javax.swing.JInternalFrame {
         btnActualizar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
         jLabel20 = new javax.swing.JLabel();
+        btnImprimir = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblProductor = new javax.swing.JTable();
 
@@ -898,30 +908,34 @@ public class VistaProductor extends javax.swing.JInternalFrame {
         jLabel20.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
         jLabel20.setText("Listado De Productores");
 
+        btnImprimir.setBackground(new java.awt.Color(255, 255, 255));
+        btnImprimir.setFont(new java.awt.Font("Roboto Medium", 0, 13)); // NOI18N
+        btnImprimir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/imprimir.png"))); // NOI18N
+        btnImprimir.setText("Imprimir");
+        btnImprimir.setBorder(null);
+        btnImprimir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(68, 68, 68)
-                        .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 164, Short.MAX_VALUE)
-                        .addComponent(btnAsignar, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(266, 266, 266)
-                        .addComponent(jLabel20)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(68, 68, 68)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 164, Short.MAX_VALUE)
+                .addComponent(btnAsignar, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(56, 56, 56)
                 .addComponent(btnModificar)
                 .addGap(59, 59, 59)
                 .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(42, 42, 42)
                 .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(126, 126, 126))
+                .addGap(18, 18, 18)
+                .addComponent(btnImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(6, 6, 6))
+            .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -939,7 +953,8 @@ public class VistaProductor extends javax.swing.JInternalFrame {
                         .addComponent(btnEliminar)
                         .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnModificar)
-                        .addComponent(btnAsignar))))
+                        .addComponent(btnAsignar)
+                        .addComponent(btnImprimir))))
         );
 
         tblProductor.setFont(new java.awt.Font("Roboto Medium", 0, 13)); // NOI18N
@@ -994,6 +1009,7 @@ public class VistaProductor extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnCargarPer;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnGuardar;
+    private javax.swing.JButton btnImprimir;
     private javax.swing.JButton btnModificar;
     private com.toedter.calendar.JDateChooser fechaContratacion;
     private com.toedter.calendar.JDateChooser fechaNacimiento;
