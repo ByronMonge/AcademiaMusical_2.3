@@ -143,11 +143,15 @@ public class ControladorPrincipal {
         ModeloReserva reserva = new ModeloReserva(); //Crear un objeto de Reserva
         List<Reserva> reservas = reserva.listaReservasTabla();
 
+        ModeloInstrumento instrumento = new ModeloInstrumento();
+        List<Instrumentos> instrumentos =instrumento.listaInstumentoTabla();
         //Setear en los labels del dashBoard la cantidad total de cada elemento que conforma la academia
         vista.getLblDocentes().setText(String.valueOf(docentes.stream().count())); //Seteo la cantidad de docentes     
         vista.getLblEstudiantes().setText(String.valueOf(estudiantes.stream().count()));//Seteo la cantidad de estudiantes
         vista.getLblProductores().setText(String.valueOf(productores.stream().count()));//Seteo la cantidad de productores
-        vista.getLblReservas().setText(String.valueOf(reservas.stream().count())); //Seteo la cantidad de reservas 
+        vista.getLblReservas().setText(String.valueOf(reservas.stream().count())); //Seteo la cantidad de reservas
+        vista.getLblInstrumentos().setText(String.valueOf(instrumentos.stream().count()));
+        
     }
 
     private void registroEstudiante() {
