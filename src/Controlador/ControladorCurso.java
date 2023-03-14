@@ -33,7 +33,8 @@ public class ControladorCurso {
         vista.getBtnActualizar().addActionListener(l -> cargarTablaDeCurso());
         vista.getBtnModificar().addActionListener(l -> cargarDatosCursoEnTXT());
         vista.getBtnEliminar().addActionListener(l -> eliminarCurso());
-        vista.getBtnCancelar().addActionListener(l -> cancelar());
+        vista.getBtnCancelar().addActionListener(l -> botonCancelar());
+        //vista.getBtnImprimir().addActionListener(l-> imprimir());
         buscarCurso();
     }
 
@@ -43,7 +44,6 @@ public class ControladorCurso {
         vista.getjDlgCurso().setLocationRelativeTo(null);
         vista.getjDlgCurso().setName("Crear nuevo curso");
         vista.getjDlgCurso().setTitle("Crear nuevo curso");
-       
 
         //Limpiar los datos del jDialog
         limpiarDatos();
@@ -194,7 +194,7 @@ public class ControladorCurso {
 
                 List<Curso> cursos = modelo.buscarCurso(vista.getTxtBuscar().getText());
                 cursos.stream().forEach(p -> {
-                    String[] datos = {p.getCur_nombre(), p.getCur_periodo(), p.getCur_fechaInicio().toString(), p.getCur_fechaFin().toString(), String.valueOf(p.getCur_precio())};
+                    String[] datos = {String.valueOf(p.getCur_codigo()), p.getCur_nombre(), p.getCur_periodo(), p.getCur_fechaInicio().toString(), p.getCur_fechaFin().toString(), String.valueOf(p.getCur_precio())};
                     tabla.addRow(datos);
                 });
             }
@@ -222,7 +222,7 @@ public class ControladorCurso {
             validar = false;
         } else {
             if (!mivalidacion.validarPeriodoAcademico(vista.getTxtPeriodo().getText())) {
-                JOptionPane.showMessageDialog(null, "Periodo academico incorrecto");
+                JOptionPane.showMessageDialog(null, "El periodo academico puede empezar desde el 2023 y ser menor a 2025.\nEl inicio del periodo academico no debe superar a la fecha fin del mismo.");
                 validar = false;
             }
         }
@@ -252,7 +252,32 @@ public class ControladorCurso {
         vista.getDescripcion().setText("");
         vista.getSpinnerPrecio().setValue(0.1);
     }
-    public void cancelar(){
+
+    public void botonCancelar() {
         vista.getjDlgCurso().setVisible(false);
     }
+
+    /*public void imprimir() {
+
+        ConexionPG conpg = new ConexionPG();//Instanciar la conexion con esto abrimos la conexion a la BD
+        try {
+            JasperReport jr = (JasperReport) JRLoader.loadObject(getClass().getResource("/vista/reportes/Reporte mvc.jasper"));
+
+            //Hacer una vista previa
+            //JasperPrint jp = JasperFillManager.fillReport(jr, null, cpg.getCon());//JasperFillManager.fillReport: Carga los datos de la BD.//JasperPrint: Hace la impresion del reporte. Puede ir 'null' si en el jasper no existen parametros caso contrario se envian los parametros necesarios
+            Map<String, Object> parametros = new HashMap<String, Object>();
+
+            parametros.put("titulo", vista.getTxtTitulo().getText()); //En donde esta 'titulo' tienen que ser igual al nombre que esta en el parametro del jasper
+            parametros.put("limitea", Double.parseDouble(vista.getSpinnerSueldomaximo().getValue().toString()));
+            parametros.put("limiteb", Double.parseDouble(vista.getSpinnerSueldominimo().getValue().toString()));//Cuando se quiere pasar un tipo de dato int '100' se coloca la 'd' despues del dato'100d'
+
+            JasperPrint jp = JasperFillManager.fillReport(jr, parametros, cpg.getCon());//'parametros' es el Map recien creado que contiene los parametros que iran al jasper
+
+            JasperViewer jv = new JasperViewer(jp, false); //Se pasa false para que no se cierre el sistema 
+            jv.setVisible(true);
+
+        } catch (JRException ex) {
+            Logger.getLogger(ControladorPersona.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }*/
 }
