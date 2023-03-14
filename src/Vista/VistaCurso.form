@@ -3,6 +3,9 @@
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JInternalFrameFormInfo">
   <NonVisualComponents>
     <Container class="javax.swing.JDialog" name="jDlgCurso">
+      <Properties>
+        <Property name="resizable" type="boolean" value="false"/>
+      </Properties>
 
       <Layout>
         <DimensionLayout dim="0">
@@ -316,7 +319,7 @@
           <Group type="102" alignment="1" attributes="0">
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jScrollPane1" pref="511" max="32767" attributes="0"/>
+              <Component id="jScrollPane1" pref="526" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -499,7 +502,7 @@
         <Component class="javax.swing.JLabel" name="jLabel4">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Verdana" size="36" style="1"/>
+              <Font name="Verdana" size="24" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Listado De Cursos"/>
           </Properties>
