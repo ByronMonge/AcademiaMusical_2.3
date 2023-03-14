@@ -38,15 +38,18 @@ public class ControladorInstrumento {
         vista.getBtnEliminar().addActionListener(l -> eliminarInstrumento());
         vista.getBtnCargar().addActionListener(l -> abrirjDlgCargarSet());
         vista.getBtnCargarSetGrba().addActionListener(l -> cargarDatosSetGrabEnTXT());
+        vista.getBtnCancelar().addActionListener(l -> botonCancelar());
+        //vista.getBtnImprimir().addActionListener(l-> imprimir());
         buscarInstrumento();
     }
 
     public void abrirDialogCrear() {
-        vista.getjDlgInstrumento().setName("Crear nuevo instrumento");
-        vista.getjDlgInstrumento().setLocationRelativeTo(vista);
-        vista.getjDlgInstrumento().setSize(890, 508);
-        vista.getjDlgInstrumento().setTitle("Crear nuevo instrumento");
         vista.getjDlgInstrumento().setVisible(true);
+        vista.getjDlgInstrumento().setSize(813, 488);
+        vista.getjDlgInstrumento().setLocationRelativeTo(vista);
+        vista.getjDlgInstrumento().setName("Crear nuevo instrumento");
+        vista.getjDlgInstrumento().setTitle("Crear nuevo instrumento");
+
         vista.getTxtnombreset().setEnabled(false);
         vista.getTxtUbicacionSet().setEnabled(false);
         vista.getTxtTamanio().setEnabled(false);
@@ -131,7 +134,7 @@ public class ControladorInstrumento {
                     JOptionPane.showMessageDialog(null, "El instrumento fue eliminado exitosamente");
                     cargarTablaDeInstrumento();//Actualizo la tabla con los datos
                 } else {
-                    JOptionPane.showMessageDialog(null, "Error: El instrumento no pudo ser eliminado");
+                    JOptionPane.showMessageDialog(null, "El instrumento no pudo ser eliminado");
                 }
             }
         }
@@ -149,12 +152,11 @@ public class ControladorInstrumento {
             vista.getTxtCodigoSet().setVisible(false);
             ModeloSetGrab modeloSet = new ModeloSetGrab();
 
-            //Abrir jDialog de campos de Docente
-            vista.getjDlgInstrumento().setName("Modificar instrumento");
-            vista.getjDlgInstrumento().setLocationRelativeTo(null);
-            vista.getjDlgInstrumento().setSize(1169, 689);
-            vista.getjDlgInstrumento().setTitle("Modificar instrumento");
             vista.getjDlgInstrumento().setVisible(true);
+            vista.getjDlgInstrumento().setSize(813, 488);
+            vista.getjDlgInstrumento().setLocationRelativeTo(null);
+            vista.getjDlgInstrumento().setName("Modificar instrumento");
+            vista.getjDlgInstrumento().setTitle("Modificar instrumento");
 
             List<Instrumentos> listai = modelo.listaInstumentoTabla();
             List<SetGrabacion> listas = modeloSet.listaSetGrabTabla();
@@ -215,11 +217,13 @@ public class ControladorInstrumento {
 
     //INFORMACION SOBRE EL SET DE GRABACION
     public void abrirjDlgCargarSet() {
-        vista.getjDlgCargarSet().setLocationRelativeTo(vista);
-        vista.getjDlgCargarSet().setSize(731, 506);
-        vista.getjDlgCargarSet().setTitle("Seleccionar set de grabacion");
         vista.getjDlgCargarSet().setVisible(true);
+        vista.getjDlgCargarSet().setSize(701, 436);
+        vista.getjDlgCargarSet().setLocationRelativeTo(vista);
+        vista.getjDlgCargarSet().setTitle("Seleccionar set de grabacion");
+
         cargarDatosDeSetGrab();
+        buscarSetDeGrabacion();
 
     }
 
@@ -240,8 +244,8 @@ public class ControladorInstrumento {
 
             vista.getTblSet().setValueAt(setgr.getSet_codigo(), i.value, 0);
             vista.getTblSet().setValueAt(setgr.getSet_nombre(), i.value, 1);
-            vista.getTblSet().setValueAt(setgr.getSet_tamanio(), i.value, 2);
-            vista.getTblSet().setValueAt(setgr.getSet_ubicacion(), i.value, 3);
+            vista.getTblSet().setValueAt(setgr.getSet_ubicacion(), i.value, 2);
+            vista.getTblSet().setValueAt(setgr.getSet_tamanio(), i.value, 3);
 
             i.value++;
         });
@@ -268,6 +272,39 @@ public class ControladorInstrumento {
                 }
             });
         }
+    }
+
+    public void buscarSetDeGrabacion() {
+
+        KeyListener eventoTeclado = new KeyListener() {//Crear un objeto de tipo keyListener(Es una interface) por lo tanto se debe implementar sus metodos abstractos
+
+            @Override
+            public void keyTyped(KeyEvent e) {
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+
+                ModeloSetGrab modeloSet = new ModeloSetGrab();
+
+                DefaultTableModel tabla = (DefaultTableModel) vista.getTblSet().getModel();
+                tabla.setNumRows(0);
+
+                List<SetGrabacion> set = modeloSet.buscarSetGrabacion(vista.getTxtBuscarSet().getText());
+                set.stream().forEach(p -> {
+                    String[] datos = {String.valueOf(p.getSet_codigo()), p.getSet_nombre(), p.getSet_ubicacion(), p.getSet_tamanio()};
+                    tabla.addRow(datos);
+                });
+            }
+        };
+
+        vista.getTxtBuscarSet().addKeyListener(eventoTeclado); //"addKeyListener" es un metodo que se le tiene que pasar como argumento un objeto de tipo keyListener 
     }
 
     public boolean validarDatos() {
@@ -318,9 +355,37 @@ public class ControladorInstrumento {
         vista.getTxtnombre().setText("");
         vista.getTxtMarca().setText("");
         vista.getTxtTipo().setText("");
-        vista.getTxtBuscarSet().setText("");
         vista.getTxtnombreset().setText("");
+        vista.getTxtTamanio().setText("");
         vista.getTxtUbicacionSet().setText("");
         vista.getjSpinnerValor().setValue(0);
     }
+
+    public void botonCancelar() {
+        vista.getjDlgInstrumento().setVisible(false);
+    }
+
+    /*public void imprimir() {
+
+        ConexionPG conpg = new ConexionPG();//Instanciar la conexion con esto abrimos la conexion a la BD
+        try {
+            JasperReport jr = (JasperReport) JRLoader.loadObject(getClass().getResource("/vista/reportes/Reporte mvc.jasper"));
+
+            //Hacer una vista previa
+            //JasperPrint jp = JasperFillManager.fillReport(jr, null, cpg.getCon());//JasperFillManager.fillReport: Carga los datos de la BD.//JasperPrint: Hace la impresion del reporte. Puede ir 'null' si en el jasper no existen parametros caso contrario se envian los parametros necesarios
+            Map<String, Object> parametros = new HashMap<String, Object>();
+
+            parametros.put("titulo", vista.getTxtTitulo().getText()); //En donde esta 'titulo' tienen que ser igual al nombre que esta en el parametro del jasper
+            parametros.put("limitea", Double.parseDouble(vista.getSpinnerSueldomaximo().getValue().toString()));
+            parametros.put("limiteb", Double.parseDouble(vista.getSpinnerSueldominimo().getValue().toString()));//Cuando se quiere pasar un tipo de dato int '100' se coloca la 'd' despues del dato'100d'
+
+            JasperPrint jp = JasperFillManager.fillReport(jr, parametros, cpg.getCon());//'parametros' es el Map recien creado que contiene los parametros que iran al jasper
+
+            JasperViewer jv = new JasperViewer(jp, false); //Se pasa false para que no se cierre el sistema 
+            jv.setVisible(true);
+
+        } catch (JRException ex) {
+            Logger.getLogger(ControladorPersona.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }*/
 }
