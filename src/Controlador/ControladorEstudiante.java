@@ -109,7 +109,7 @@ public class ControladorEstudiante {
     public void abrirjDlgEstudiante() {
 
         vista.getjDlgEstudiante().setVisible(true);
-        vista.getjDlgEstudiante().setSize(850, 630);
+        vista.getjDlgEstudiante().setSize(840, 610);
         vista.getjDlgEstudiante().setLocationRelativeTo(null);
         vista.getjDlgEstudiante().setName("Crear nuevo estudiante");
         vista.getjDlgEstudiante().setTitle("Crear nuevo estudiante");
