@@ -84,7 +84,7 @@ public class VistaDashboard extends javax.swing.JInternalFrame {
         reservas.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         reservas.setForeground(new java.awt.Color(255, 255, 255));
         reservas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        reservas.setText("Reservas");
+        reservas.setText("Reservaciones");
         reservas.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         reservas.setFocusable(false);
         reservas.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
