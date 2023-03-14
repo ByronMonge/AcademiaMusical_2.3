@@ -22,7 +22,6 @@ import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
-
 /**
  *
  * @author Usuario
@@ -95,12 +94,14 @@ public class ControladorAsigAula {
 
     public void abrirjDlgAsigAula() {
 
-        vista.getjDlgAsigAula().setSize(910, 437);
+        vista.getjDlgAsigAula().setVisible(true);
+        vista.getjDlgAsigAula().setSize(858, 430);
+        vista.getjDlgAsigAula().setLocationRelativeTo(null);
         vista.getjDlgAsigAula().setTitle("Asignar Aula");
         vista.getjDlgAsigAula().setName("Asignar Aula");
-        vista.getjDlgAsigAula().setVisible(true);
+
         vista.getTxtCodigocurso().setVisible(false);
-        vista.getjDlgAsigAula().setLocationRelativeTo(null);
+
         limpiarlabels();
         vista.getFechaDeAsignacion().setEnabled(true);
         bloquearTxtAsi();
@@ -211,11 +212,12 @@ public class ControladorAsigAula {
             JOptionPane.showMessageDialog(null, "Aun no ha seleccionado una fila");
         } else {
 
-            vista.getjDlgAsigAula().setName("Modificar Asignacion");
-            vista.getjDlgAsigAula().setSize(1063, 437);
-            vista.getjDlgAsigAula().setTitle("Modificar  Asignacion");
             vista.getjDlgAsigAula().setVisible(true);
+            vista.getjDlgAsigAula().setSize(858, 430);
             vista.getjDlgAsigAula().setLocationRelativeTo(null);
+            vista.getjDlgAsigAula().setName("Modificar Asignacion");
+            vista.getjDlgAsigAula().setTitle("Modificar  Asignacion");
+
             bloquearTxtAsi();
             vista.getFechaDeAsignacion().setEnabled(false);
             vista.getTxtCodigocurso().setVisible(false);
@@ -545,7 +547,8 @@ public class ControladorAsigAula {
 
         return validar;
     }
-        public void botonEliminar() {
+
+    public void botonEliminar() {
         vista.getjDlgAsigAula().setVisible(false);
     }
 }
