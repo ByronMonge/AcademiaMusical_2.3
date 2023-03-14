@@ -234,7 +234,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         btnMatricula.setBackground(new java.awt.Color(46, 49, 49));
         btnMatricula.setFont(new java.awt.Font("Roboto Medium", 0, 16)); // NOI18N
         btnMatricula.setForeground(new java.awt.Color(255, 255, 255));
-        btnMatricula.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/profesor.png"))); // NOI18N
+        btnMatricula.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/matricula.png"))); // NOI18N
         btnMatricula.setText("Matricula");
         btnMatricula.setBorder(null);
         btnMatricula.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
