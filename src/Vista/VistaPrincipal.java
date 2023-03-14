@@ -216,7 +216,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         btnHorario.setBackground(new java.awt.Color(46, 49, 49));
         btnHorario.setFont(new java.awt.Font("Roboto Medium", 0, 16)); // NOI18N
         btnHorario.setForeground(new java.awt.Color(255, 255, 255));
-        btnHorario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/libros.png"))); // NOI18N
+        btnHorario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/calendario.png"))); // NOI18N
         btnHorario.setText("Horario");
         btnHorario.setBorder(null);
         btnHorario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
