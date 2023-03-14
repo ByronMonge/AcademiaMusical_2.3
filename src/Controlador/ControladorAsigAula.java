@@ -53,6 +53,7 @@ public class ControladorAsigAula {
         vista.getBtnModificar().addActionListener(l -> cargarDatosAsignarAulaEnTXT());
         vista.getBtnEliminar().addActionListener(l -> eliminarAsignacion());
         vista.getBtnActualizar().addActionListener(l -> cargarTablaAsignaciones());
+        vista.getBtnCancelar().addActionListener(l -> botonEliminar());
         buscarRegistros();
     }
 
@@ -107,7 +108,7 @@ public class ControladorAsigAula {
 
     public void abrirjDialogCargarAula() {
 
-        vista.getjDlgCargarAula().setSize(685, 418);
+        vista.getjDlgCargarAula().setSize(742, 414);
         vista.getjDlgCargarAula().setTitle("Seleccione una aula");
         vista.getjDlgCargarAula().setVisible(true);
         vista.getjDlgCargarAula().setLocationRelativeTo(null);
@@ -395,7 +396,7 @@ public class ControladorAsigAula {
 
     //Todo sobre el registro de asignatura en el jDialog
     public void abrirjDialogCurso() {
-        vista.getjDlgCargarCuso().setSize(619, 435);
+        vista.getjDlgCargarCuso().setSize(694, 454);
         vista.getjDlgCargarCuso().setTitle("Seleccione un Curso");
         vista.getjDlgCargarCuso().setVisible(true);
         vista.getjDlgCargarCuso().setLocationRelativeTo(null);
@@ -544,5 +545,7 @@ public class ControladorAsigAula {
 
         return validar;
     }
-
+        public void botonEliminar() {
+        vista.getjDlgAsigAula().setVisible(false);
+    }
 }
