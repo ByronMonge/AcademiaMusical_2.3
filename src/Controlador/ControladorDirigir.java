@@ -5,7 +5,6 @@
  */
 package Controlador;
 
-
 import Modelo.Dirigir;
 import Modelo.ModeloDirigir;
 import Modelo.ModeloProductor;
@@ -35,7 +34,8 @@ import javax.xml.ws.Holder;
  * @author Usuario
  */
 public class ControladorDirigir {
-     ModeloDirigir modelo;
+
+    ModeloDirigir modelo;
     VistaDirigir vista;
 
     static boolean verificarDirigir;
@@ -50,9 +50,6 @@ public class ControladorDirigir {
         cargarTablaDirigir();
     }
 
-    
-    
-
     public void iniciarControl() {
 
         vista.getBtnAsignar().addActionListener(l -> abrirjDialogDirigir());
@@ -65,12 +62,12 @@ public class ControladorDirigir {
         vista.getBtnGuardar().addActionListener(l -> crearModificarDirigir());
         vista.getBtnModificar().addActionListener(l -> cargarDatosDirigirEnTXT());
         vista.getBtnEliminar().addActionListener(l -> eliminarDirigir());
+        vista.getBtnCancelar().addActionListener(l -> botonCancelar());
         buscarRegistros();
     }
 
     public void cargarTablaDirigir() {
 
-        System.out.println("Entra a");
         DefaultTableModel tabla = (DefaultTableModel) vista.getTblDirigir().getModel();
         tabla.setNumRows(0);
 
@@ -85,7 +82,6 @@ public class ControladorDirigir {
             System.out.println("Codigo prodir : " + dr.getDir_codpro());
 
             productores.stream().forEach(p -> {
-                
 
                 if (dr.getDir_codpro() == p.getPro_codigo()) {
 
@@ -107,22 +103,22 @@ public class ControladorDirigir {
     }
 
     public void abrirjDialogDirigir() {
-          System.out.println("holi");
+        vista.getjDlgDirigir().setVisible(true);
+        vista.getjDlgDirigir().setSize(832, 409);
         vista.getjDlgDirigir().setLocationRelativeTo(null);
-        vista.getjDlgDirigir().setSize(885, 433);
         vista.getjDlgDirigir().setTitle("Crear Dirigir");
         vista.getjDlgDirigir().setName("Crear Dirigir");
-        vista.getjDlgDirigir().setVisible(true);
         vista.getTxtCodigoProductor().setVisible(false);
         vista.getTxtCodigoSetgrabacion().setVisible(false);
+        bloquearCampos();
     }
 
     //Todo sobre el registro de Docentes en el jDialog
     public void abrirjDialogProductor() {
-        vista.getjDlgBuscarProductor().setLocationRelativeTo(null);
-        vista.getjDlgBuscarProductor().setSize(685, 418);
-        vista.getjDlgBuscarProductor().setTitle("Seleccione un productor");
         vista.getjDlgBuscarProductor().setVisible(true);
+        vista.getjDlgBuscarProductor().setSize(685, 418);
+        vista.getjDlgBuscarProductor().setLocationRelativeTo(null);
+        vista.getjDlgBuscarProductor().setTitle("Seleccione un productor");
         cargarRegistroDeProductores();
         buscarProductor();
     }
@@ -231,11 +227,11 @@ public class ControladorDirigir {
             JOptionPane.showMessageDialog(null, "Aun no ha seleccionado una fila");
         } else {
 
-            vista.getjDlgDirigir().setName("Modificar dirigir");
-            vista.getjDlgDirigir().setLocationRelativeTo(null);
-            vista.getjDlgDirigir().setSize(885, 433);
-            vista.getjDlgDirigir().setTitle("Modificar  dirigir");
             vista.getjDlgDirigir().setVisible(true);
+            vista.getjDlgDirigir().setSize(832, 448);
+            vista.getjDlgDirigir().setLocationRelativeTo(null);
+            vista.getjDlgDirigir().setName("Modificar dirigir");
+            vista.getjDlgDirigir().setTitle("Modificar  dirigir");
             vista.getTxtCodigoProductor().setVisible(false);
             vista.getTxtCodigoSetgrabacion().setVisible(false);
 
@@ -438,10 +434,10 @@ public class ControladorDirigir {
 
     //Todo sobre el registro de asignatura en el jDialog
     public void abrirjDialogSetGrab() {
-        vista.getjDlgBuscarSetgrabacion().setLocationRelativeTo(null);
-        vista.getjDlgBuscarSetgrabacion().setSize(619, 435);
-        vista.getjDlgBuscarSetgrabacion().setTitle("Seleccione un set de grabacion");
         vista.getjDlgBuscarSetgrabacion().setVisible(true);
+        vista.getjDlgBuscarSetgrabacion().setSize(619, 435);
+        vista.getjDlgBuscarSetgrabacion().setLocationRelativeTo(null);
+        vista.getjDlgBuscarSetgrabacion().setTitle("Seleccione un set de grabacion");
         cargarRegistroDeSetGrabacion();
         buscarSetGrabacion();
     }
@@ -580,5 +576,19 @@ public class ControladorDirigir {
         //Seteo la fecha actual en el jCalendar
         Date fecha = new Date();
         vista.getFechaDeAsignacion().setDate(fecha);
+    }
+    
+        public void bloquearCampos() {
+        vista.getTxtCedula().setEditable(false);
+        vista.getTxtNombreDocente().setEditable(false);
+        vista.getTxtApellido().setEditable(false);
+        vista.getTxtEspecialidad().setEditable(false);
+        vista.getTxtCodigoProductor().setEditable(false);
+        vista.getTxtCodigoSetgrabacion().setEnabled(false);
+        vista.getTxtNombreAsignatura().setEnabled(false);
+    }
+        
+            public void botonCancelar() {
+        vista.getjDlgDirigir().setVisible(false);
     }
 }
