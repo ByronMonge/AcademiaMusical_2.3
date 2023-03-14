@@ -55,6 +55,8 @@ public class ControladorMatricula {
         vista.getBtnGuardar().addActionListener(l -> crearModificarMatricula());
         vista.getBtnModificar().addActionListener(l -> cargarDatosMatriculaEnTXT());
         vista.getBtnEliminar().addActionListener(l -> eliminarMatricula());
+        vista.getBtnCancelar().addActionListener(l -> botonCancelar());
+        //vista.getBtnImprimir().addActionListener(l-> imprimir());
         buscarMatricula();
         //Cargar datos del estudiante
         vista.getBtnBuscarEstudiante().addActionListener(l -> abrirjDialogEstudiante());
@@ -68,11 +70,12 @@ public class ControladorMatricula {
 
     //Matricula
     public void abrirjDialogMatricula() {
+        vista.getjDlgMatricula().setVisible(true);
+        vista.getjDlgMatricula().setSize(858, 585);
         vista.getjDlgMatricula().setLocationRelativeTo(null);
-        vista.getjDlgMatricula().setSize(1202, 464);
         vista.getjDlgMatricula().setTitle("Registrar matricula");
         vista.getjDlgMatricula().setName("Registrar matricula");
-        vista.getjDlgMatricula().setVisible(true);
+
         Date fecha = new Date();
         vista.getFechaDeMatricula().setDate(fecha);
         bloquearYVisibilidadCrear();
@@ -130,10 +133,11 @@ public class ControladorMatricula {
                 modelo.setMat_fechamatri(fechaSQL);
 
                 if (modelo.crearMatricula() == null) {
-                    JOptionPane.showMessageDialog(null, "Se registro satisfactoriamente la matricula");
+                    JOptionPane.showMessageDialog(null, "Se registro satisfactoriamente la matricula\nLa matrícula esta siendo enviada al email del estudiante...");
                     cargarTablaDeMatriculas();
 
                     crearPdf();//LLamo al metodo de crear pdf y enviar email
+                    vista.getjDlgMatricula().setVisible(false);
                 } else {
                     JOptionPane.showMessageDialog(null, "No se puedo registrar la matricula");
                 }
@@ -151,6 +155,7 @@ public class ControladorMatricula {
 
                 if (modelo.modificarMatricula() == null) {
                     JOptionPane.showMessageDialog(null, "La matricula se modifico exitosamente");
+                    vista.getjDlgMatricula().setVisible(false);
                     cargarTablaDeMatriculas();
                 } else {
                     JOptionPane.showMessageDialog(null, "No se pudo modificar la matricula");
@@ -168,11 +173,12 @@ public class ControladorMatricula {
             JOptionPane.showMessageDialog(null, "Aun no ha seleccionado una fila");
         } else {
 
-            vista.getjDlgMatricula().setName("Modificar matricula");
-            vista.getjDlgMatricula().setLocationRelativeTo(null);
-            vista.getjDlgMatricula().setSize(978, 538);
-            vista.getjDlgMatricula().setTitle("Modificar matricula");
             vista.getjDlgMatricula().setVisible(true);
+            vista.getjDlgMatricula().setSize(858, 585);
+            vista.getjDlgMatricula().setLocationRelativeTo(null);
+            vista.getjDlgMatricula().setName("Modificar matricula");
+            vista.getjDlgMatricula().setTitle("Modificar matricula");
+
             bloquearYVisibilidadModificar();
 
             ModeloAdministrador modeloAdministrador = new ModeloAdministrador();
@@ -287,10 +293,11 @@ public class ControladorMatricula {
 
     //Todo sobre estudiante
     public void abrirjDialogEstudiante() {
-        vista.getjDlgBuscarEstudiante().setLocationRelativeTo(null);
-        vista.getjDlgBuscarEstudiante().setSize(701, 407);
-        vista.getjDlgBuscarEstudiante().setTitle("Seleccione un estudiante");
         vista.getjDlgBuscarEstudiante().setVisible(true);
+        vista.getjDlgBuscarEstudiante().setSize(708, 416);
+        vista.getjDlgBuscarEstudiante().setLocationRelativeTo(vista.getBtnBuscarEstudiante());
+        vista.getjDlgBuscarEstudiante().setTitle("Seleccione un estudiante");
+
         cargarRegistroDeEstudiantes();
         buscarEstudiante();
     }
@@ -372,10 +379,11 @@ public class ControladorMatricula {
 
     //Todo sobre curso
     public void abrirjDialogCurso() {
-        vista.getjDlgBuscarCurso().setLocationRelativeTo(null);
-        vista.getjDlgBuscarCurso().setSize(576, 414);
-        vista.getjDlgBuscarCurso().setTitle("Seleccione un curso");
         vista.getjDlgBuscarCurso().setVisible(true);
+        vista.getjDlgBuscarCurso().setSize(585, 420);
+        vista.getjDlgBuscarCurso().setLocationRelativeTo(null);
+        vista.getjDlgBuscarCurso().setTitle("Seleccione un curso");
+
         cargarRegistroDeCursos();
         buscarCurso();
     }
@@ -512,10 +520,10 @@ public class ControladorMatricula {
         vista.getTxtCodigoEstudiantematri().setVisible(false);
         vista.getTxtCedulaEstudiante().setEditable(false);
         vista.getTxtNombreYApellidoEstudiante().setEditable(false);
+        vista.getTxtCorreoEstudiante().setEditable(false);
         vista.getTxtCodigoCurso().setVisible(false);
         vista.getTxtNombreCurso().setEditable(false);
         vista.getFechaDeMatricula().setEnabled(false);
-        vista.getTxtCorreoEstudiante().setVisible(false);
     }
 
     public void bloquearYVisibilidadModificar() {
@@ -525,11 +533,11 @@ public class ControladorMatricula {
         vista.getTxtCodigoEstudiantematri().setVisible(false);
         vista.getTxtCedulaEstudiante().setEditable(false);
         vista.getTxtNombreYApellidoEstudiante().setEditable(false);
+        vista.getTxtCorreoEstudiante().setEditable(false);
         vista.getTxtCodigoCurso().setVisible(false);
         vista.getTxtNombreCurso().setEditable(false);
         vista.getFechaDeMatricula().setEnabled(false);
         vista.getBtnBuscarEstudiante().setVisible(false);
-        vista.getTxtCorreoEstudiante().setVisible(false);
     }
 
     public void limpiar() {
@@ -595,7 +603,7 @@ public class ControladorMatricula {
             //Agregar parrafo 3
             Paragraph parrafo3 = new Paragraph();
             parrafo3.setAlignment(Paragraph.ALIGN_LEFT);
-            parrafo3.add("Cédula: " + vista.getTxtCedulaAdministrador().getText() + "                                                                   Nombre y apellido: " + vista.getTxtNombreYApellidoAdministrador().getText() + "\n \n \nInformación de la matrícula: \n \nFecha de matrícula: " + fechaS + "\n \n");
+            parrafo3.add("Cédula: " + vista.getTxtCedulaAdministrador().getText() + "                                                    Nombre y apellido: " + vista.getTxtNombreYApellidoAdministrador().getText() + "\n \n \nInformación de la matrícula: \n \nFecha de matrícula: " + fechaS + "\n \n");
             documento.add(parrafo3);
 
             //Agregar los datos de la tabla al documento
@@ -662,7 +670,7 @@ public class ControladorMatricula {
                 //Agregar parrafo 3
                 Paragraph parrafo3 = new Paragraph();
                 parrafo3.setAlignment(Paragraph.ALIGN_LEFT);
-                parrafo3.add("Cédula: " + vista.getTxtCedulaAdministrador().getText() + "                                                                   Nombre y apellido: " + vista.getTxtNombreYApellidoAdministrador().getText() + "\n \n \nInformación de la matrícula: \n \nFecha de matrícula: " + fechaS + "\n \n");
+                parrafo3.add("Cédula: " + vista.getTxtCedulaAdministrador().getText() + "                                                    Nombre y apellido: " + vista.getTxtNombreYApellidoAdministrador().getText() + "\n \n \nInformación de la matrícula: \n \nFecha de matrícula: " + fechaS + "\n \n");
                 documento.add(parrafo3);
 
                 //Agregar los datos de la tabla al documento
@@ -689,4 +697,32 @@ public class ControladorMatricula {
             }
         }
     }
+
+    public void botonCancelar() {
+        vista.getjDlgMatricula().setVisible(false);
+    }
+
+    /*public void imprimir() {
+
+        ConexionPG conpg = new ConexionPG();//Instanciar la conexion con esto abrimos la conexion a la BD
+        try {
+            JasperReport jr = (JasperReport) JRLoader.loadObject(getClass().getResource("/vista/reportes/Reporte mvc.jasper"));
+
+            //Hacer una vista previa
+            //JasperPrint jp = JasperFillManager.fillReport(jr, null, cpg.getCon());//JasperFillManager.fillReport: Carga los datos de la BD.//JasperPrint: Hace la impresion del reporte. Puede ir 'null' si en el jasper no existen parametros caso contrario se envian los parametros necesarios
+            Map<String, Object> parametros = new HashMap<String, Object>();
+
+            parametros.put("titulo", vista.getTxtTitulo().getText()); //En donde esta 'titulo' tienen que ser igual al nombre que esta en el parametro del jasper
+            parametros.put("limitea", Double.parseDouble(vista.getSpinnerSueldomaximo().getValue().toString()));
+            parametros.put("limiteb", Double.parseDouble(vista.getSpinnerSueldominimo().getValue().toString()));//Cuando se quiere pasar un tipo de dato int '100' se coloca la 'd' despues del dato'100d'
+
+            JasperPrint jp = JasperFillManager.fillReport(jr, parametros, cpg.getCon());//'parametros' es el Map recien creado que contiene los parametros que iran al jasper
+
+            JasperViewer jv = new JasperViewer(jp, false); //Se pasa false para que no se cierre el sistema 
+            jv.setVisible(true);
+
+        } catch (JRException ex) {
+            Logger.getLogger(ControladorPersona.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }*/
 }
