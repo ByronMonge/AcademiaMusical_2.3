@@ -150,7 +150,7 @@ public class Validaciones {
     public boolean validarPeriodoAcademico(String periodo) {
 
         try {
-            if (Integer.parseInt(periodo.substring(0, 4)) >= 2023 && periodo.substring(4, 5).equals("-") && Integer.parseInt(periodo.substring(5, 9)) <= 2025) {
+            if (Integer.parseInt(periodo.substring(0, 4)) >= 2023 && Integer.parseInt(periodo.substring(0, 4)) < Integer.parseInt(periodo.substring(5, 9)) && periodo.substring(4, 5).equals("-") && Integer.parseInt(periodo.substring(5, 9)) <= 2025) {
                 return true;
             }
         } catch (NumberFormatException e) {
