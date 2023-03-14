@@ -33,15 +33,17 @@ public class ControladorCurso {
         vista.getBtnActualizar().addActionListener(l -> cargarTablaDeCurso());
         vista.getBtnModificar().addActionListener(l -> cargarDatosCursoEnTXT());
         vista.getBtnEliminar().addActionListener(l -> eliminarCurso());
+        vista.getBtnCancelar().addActionListener(l -> cancelar());
         buscarCurso();
     }
 
     public void abrirDialogCrear() {
-        vista.getjDlgCurso().setName("Crear nuevo curso");
-        vista.getjDlgCurso().setLocationRelativeTo(vista);
-        vista.getjDlgCurso().setSize(602, 592);
-        vista.getjDlgCurso().setTitle("Crear nuevo curso");
         vista.getjDlgCurso().setVisible(true);
+        vista.getjDlgCurso().setSize(602, 592);
+        vista.getjDlgCurso().setLocationRelativeTo(null);
+        vista.getjDlgCurso().setName("Crear nuevo curso");
+        vista.getjDlgCurso().setTitle("Crear nuevo curso");
+       
 
         //Limpiar los datos del jDialog
         limpiarDatos();
@@ -249,5 +251,8 @@ public class ControladorCurso {
         vista.getFechFin().setDate(null);
         vista.getDescripcion().setText("");
         vista.getSpinnerPrecio().setValue(0.1);
+    }
+    public void cancelar(){
+        vista.getjDlgCurso().setVisible(false);
     }
 }
