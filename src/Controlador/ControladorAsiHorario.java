@@ -56,7 +56,7 @@ public class ControladorAsiHorario {
     //Asignar horario
     public void abrirjDialogAsiHorario() {
         vista.getjDlgAsignarHorario().setVisible(true);
-        vista.getjDlgAsignarHorario().setSize(809, 506);
+        vista.getjDlgAsignarHorario().setSize(809, 540);
         vista.getjDlgAsignarHorario().setLocationRelativeTo(null);
         vista.getjDlgAsignarHorario().setTitle("Asignar horario");
         vista.getjDlgAsignarHorario().setName("Asignar horario");
@@ -199,7 +199,7 @@ public class ControladorAsiHorario {
             bloquearCampos();
 
             vista.getjDlgAsignarHorario().setVisible(true);
-            vista.getjDlgAsignarHorario().setSize(885, 433);
+            vista.getjDlgAsignarHorario().setSize(809, 540);
             vista.getjDlgAsignarHorario().setLocationRelativeTo(null);
             vista.getjDlgAsignarHorario().setName("Modificar asignacion");
             vista.getjDlgAsignarHorario().setTitle("Modificar asignacion");
