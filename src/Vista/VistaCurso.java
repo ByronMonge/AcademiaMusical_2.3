@@ -168,6 +168,8 @@ public class VistaCurso extends javax.swing.JInternalFrame {
         btnEliminar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
 
+        jDlgCurso.setResizable(false);
+
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel3.setFont(new java.awt.Font("Roboto Black", 0, 28)); // NOI18N
