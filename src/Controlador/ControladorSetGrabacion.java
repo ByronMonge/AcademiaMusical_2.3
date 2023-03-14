@@ -33,15 +33,16 @@ public class ControladorSetGrabacion {
         vista.getBtnActualizar().addActionListener(l -> cargarTablaDeSetGrab());
         vista.getBtnModificar().addActionListener(l -> cargarDatosInstrumentoEnTXT());
         vista.getBtnEliminar().addActionListener(l -> eliminarInstrumento());
+        vista.getBtnCancelar().addActionListener(l -> botonEliminar());
         buscarSetDeGrabacion();
     }
 
     public void abrirDialogCrear() {
-        vista.getjDlgSetGrab().setName("Crear nuevo Set de grabacion");
-        vista.getjDlgSetGrab().setLocationRelativeTo(vista);
-        vista.getjDlgSetGrab().setSize(464, 400);
+        vista.getjDlgSetGrab().setName("Crear nuevo Set de grabacion");        
+        vista.getjDlgSetGrab().setSize(485, 411);
         vista.getjDlgSetGrab().setTitle("Crear nuevo set de grabacion");
         vista.getjDlgSetGrab().setVisible(true);
+        vista.getjDlgSetGrab().setLocationRelativeTo(null);
 
         //Limpiar los datos del jDialog
         limpiarDatos();
@@ -231,5 +232,8 @@ public class ControladorSetGrabacion {
         vista.getTxtNombre().setText("");
         vista.getTxtUbicacion().setText("");
         vista.getComboTamanio().setSelectedIndex(0);
+    }
+     public void botonEliminar() {
+        vista.getjDlgSetGrab().setVisible(false);
     }
 }

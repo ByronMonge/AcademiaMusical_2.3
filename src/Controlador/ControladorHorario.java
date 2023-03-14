@@ -34,15 +34,16 @@ public class ControladorHorario {
         vista.getBtnActualizar().addActionListener(l -> cargarTablaDeHorario());
         vista.getBtnModificar().addActionListener(l -> cargarDatosHorarioEnTXT());
         vista.getBtnEliminar().addActionListener(l -> eliminarHorario());
+        vista.getBtnCancelar().addActionListener(l -> botonEliminar());
         buscarHorario();
     }
 
     public void abrirDialogCrear() {
-        vista.getjDlgHorario().setName("Crear nuevo horario");
-        vista.getjDlgHorario().setLocationRelativeTo(vista);
-        vista.getjDlgHorario().setSize(640, 355);
+        vista.getjDlgHorario().setName("Crear nuevo horario");        
+        vista.getjDlgHorario().setSize(615, 386);
         vista.getjDlgHorario().setTitle("Crear nuevo horario");
         vista.getjDlgHorario().setVisible(true);
+        vista.getjDlgHorario().setLocationRelativeTo(null);
 
         //Limpiar los datos del jDialog
         limpiarDatos();
@@ -262,5 +263,8 @@ public class ControladorHorario {
         vista.getComboMinutosInicio().setSelectedIndex(0);
         vista.getComboHoraFin().setSelectedIndex(0);
         vista.getComboMinutosFin().setSelectedIndex(0);
+    }
+     public void botonEliminar() {
+        vista.getjDlgHorario().setVisible(false);
     }
 }
