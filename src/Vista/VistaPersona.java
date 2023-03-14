@@ -479,6 +479,8 @@ public class VistaPersona extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblPersona = new javax.swing.JTable();
 
+        jDlogRegistro.setResizable(false);
+
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel12.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
@@ -701,6 +703,8 @@ public class VistaPersona extends javax.swing.JInternalFrame {
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
+        jDlgRegistroDocente.setResizable(false);
+
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel16.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
@@ -793,6 +797,8 @@ public class VistaPersona extends javax.swing.JInternalFrame {
             jDlgRegistroDocenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
+
+        jDlgRegistroProductor.setResizable(false);
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -893,6 +899,8 @@ public class VistaPersona extends javax.swing.JInternalFrame {
             jDlgRegistroProductorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
+
+        jDlgRegistroAdministrador.setResizable(false);
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -1047,7 +1055,7 @@ public class VistaPersona extends javax.swing.JInternalFrame {
         btnImprimir.setBorder(null);
         btnImprimir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        jLabel28.setFont(new java.awt.Font("Verdana", 1, 36)); // NOI18N
+        jLabel28.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
         jLabel28.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel28.setText("Listado del personal");
 
@@ -1070,7 +1078,7 @@ public class VistaPersona extends javax.swing.JInternalFrame {
                 .addComponent(btnImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(354, 354, 354)
+                .addGap(446, 446, 446)
                 .addComponent(jLabel28)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -1115,7 +1123,7 @@ public class VistaPersona extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 479, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 494, Short.MAX_VALUE)
                 .addContainerGap())
         );
 

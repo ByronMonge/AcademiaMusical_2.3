@@ -43,11 +43,12 @@ public class ControladorAsignatura {
     public void abrirjDlgAsignatura() {
         limpiarDatos(); //Limpia los datos cada vez que se habra la ventana para crear la asignatura
 
-        vista.getjDlgAsignatura().setName("Crear nueva asignatura");
-        vista.getjDlgAsignatura().setLocationRelativeTo(null);
-        vista.getjDlgAsignatura().setSize(1061, 327);
-        vista.getjDlgAsignatura().setTitle("Crear nueva asignatura");
         vista.getjDlgAsignatura().setVisible(true);
+        vista.getjDlgAsignatura().setSize(1080, 350);
+        vista.getjDlgAsignatura().setLocationRelativeTo(null);
+        vista.getjDlgAsignatura().setName("Crear nueva asignatura");
+        vista.getjDlgAsignatura().setTitle("Crear nueva asignatura");
+        bloquearcampos();
     }
 
     public void crearEditarAsignatura() {
@@ -195,10 +196,10 @@ public class ControladorAsignatura {
 
     //Todo sobre el registro de cursos en el jDialog
     public void abrirjDialogCurso() {
-        vista.getjDlgBuscarCurso().setLocationRelativeTo(null);
-        vista.getjDlgBuscarCurso().setSize(661, 414);
-        vista.getjDlgBuscarCurso().setTitle("Seleccione un curso");
         vista.getjDlgBuscarCurso().setVisible(true);
+        vista.getjDlgBuscarCurso().setSize(661, 414);
+        vista.getjDlgBuscarCurso().setLocationRelativeTo(null);
+        vista.getjDlgBuscarCurso().setTitle("Seleccione un curso");
         cargarRegistroDeCursos();
         buscarCurso();
     }
@@ -369,5 +370,12 @@ public class ControladorAsignatura {
         vista.getTxtPrecioCurso().setText("");
         vista.getTxtNombreAsignatura().setText("");
         vista.getDescripcion().setText("");
+    }
+
+    public void bloquearcampos() {
+        vista.getTxtNombreCurso().setEditable(false);
+        vista.getTxtPeriodoCurso().setEditable(false);
+        vista.getTxtPrecioCurso().setEditable(false);
+        vista.getTxtcodigoCurso().setVisible(false);
     }
 }
