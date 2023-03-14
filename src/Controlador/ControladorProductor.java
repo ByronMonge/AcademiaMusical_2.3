@@ -50,6 +50,7 @@ public class ControladorProductor {
         vista.getBtnActualizar().addActionListener(l -> cargarTablaDeProductor());
         vista.getBtnModificar().addActionListener(l -> cargarDatosProductoresEnTXT());
         vista.getBtnEliminar().addActionListener(l -> eliminarProductor());
+        vista.getBtnCancelar().addActionListener(l -> cancelar());
         buscarProductor();
     }
 
@@ -75,11 +76,11 @@ public class ControladorProductor {
         } else {
 
             //Abrir jDialog de campos de Docente
-            vista.getjDlgProductor().setName("Modificar productor");
-            vista.getjDlgProductor().setLocationRelativeTo(null);
-            vista.getjDlgProductor().setSize(1169, 689);
-            vista.getjDlgProductor().setTitle("Modificar productor");
             vista.getjDlgProductor().setVisible(true);
+            vista.getjDlgProductor().setSize(817, 667);
+            vista.getjDlgProductor().setLocationRelativeTo(null);
+            vista.getjDlgProductor().setName("Modificar productor");
+            vista.getjDlgProductor().setTitle("Modificar productor");
             bloquearCampos();
 
             //ModeloPersona modeloPersona = new ModeloPersona();
@@ -122,13 +123,12 @@ public class ControladorProductor {
 
     public void abrirjDlgProductor() {
 
-        vista.getjDlgProductor().setName("Crear nuevo productor");
-        vista.getjDlgProductor().setLocationRelativeTo(null);
-        vista.getjDlgProductor().setSize(1169, 689);
-        vista.getjDlgProductor().setTitle("Crear nuevo productor");
         vista.getjDlgProductor().setVisible(true);
-
-        desbloquearCampos();
+        vista.getjDlgProductor().setSize(817, 667);
+        vista.getjDlgProductor().setLocationRelativeTo(null);
+        vista.getjDlgProductor().setName("Crear nuevo productor");
+        vista.getjDlgProductor().setTitle("Crear nuevo productor");
+        bloquearCampos();
         limpiarCampos();
     }
 
@@ -282,10 +282,10 @@ public class ControladorProductor {
 
     //Todo sobre el registro de personas en el jDialog
     public void abrirjDialogPersonas() {
-        vista.getjDlgBuscarPersonas().setLocationRelativeTo(null);
-        vista.getjDlgBuscarPersonas().setSize(722, 433);
-        vista.getjDlgBuscarPersonas().setTitle("Seleccione una persona");
         vista.getjDlgBuscarPersonas().setVisible(true);
+        vista.getjDlgBuscarPersonas().setSize(722, 433);
+        vista.getjDlgBuscarPersonas().setLocationRelativeTo(null);
+        vista.getjDlgBuscarPersonas().setTitle("Seleccione una persona");
         cargarRegistroDePersonas();
         buscarPersona();
     }
@@ -483,7 +483,6 @@ public class ControladorProductor {
     }
 
     public void bloquearCampos() {
-        vista.getBtnBuscarPersona().setVisible(false);
         vista.getTxtCedula().setEditable(false);
         vista.getTxtPrimerNombre().setEditable(false);
         vista.getTxtSegundoNombre().setEditable(false);
@@ -501,5 +500,9 @@ public class ControladorProductor {
     public void desbloquearCampos() {
         vista.getBtnBuscarPersona().setVisible(true);
         vista.getTxtCedula().setEditable(true);
+    }
+
+    public void cancelar() {
+        vista.getjDlgProductor().setVisible(false);
     }
 }
