@@ -39,7 +39,10 @@ public class ControladorEstudiante {
         vista.getBtnActualizar().addActionListener(l -> cargarTablaDeEstudiantes());
         vista.getBtnModificar().addActionListener(l -> cargarDatosEstudianteEnTXT());
         vista.getBtnEliminar().addActionListener(l -> eliminarEstudiante());
+        vista.getBtnCancelar().addActionListener(l -> cancelar());
+        vista.getBtnCargarPer().addActionListener(l -> cancelarper());
         buscarEstudiante();
+        
     }
 
     public void cargarTablaDeEstudiantes() {
@@ -63,11 +66,12 @@ public class ControladorEstudiante {
         } else {
 
             //Abrir jDialog de campos de Docente
-            vista.getjDlgEstudiante().setName("Modificar estudiante");
-            vista.getjDlgEstudiante().setLocationRelativeTo(null);
-            vista.getjDlgEstudiante().setSize(838, 578);
-            vista.getjDlgEstudiante().setTitle("Modificar  estudiante");
             vista.getjDlgEstudiante().setVisible(true);
+            vista.getjDlgEstudiante().setSize(838, 602);
+            vista.getjDlgEstudiante().setLocationRelativeTo(null);
+            vista.getjDlgEstudiante().setName("Modificar estudiante");
+            vista.getjDlgEstudiante().setTitle("Modificar  estudiante");
+            
 
             //ModeloPersona modeloPersona = new ModeloPersona();
             List<Estudiante> listap = modelo.listaEstudiantesTabla();
@@ -104,11 +108,11 @@ public class ControladorEstudiante {
 
     public void abrirjDlgEstudiante() {
 
-        vista.getjDlgEstudiante().setName("Crear nuevo estudiante");
-        vista.getjDlgEstudiante().setLocationRelativeTo(null);
-        vista.getjDlgEstudiante().setSize(838, 578);
-        vista.getjDlgEstudiante().setTitle("Crear nuevo estudiante");
         vista.getjDlgEstudiante().setVisible(true);
+        vista.getjDlgEstudiante().setSize(850, 630);
+        vista.getjDlgEstudiante().setLocationRelativeTo(null);
+        vista.getjDlgEstudiante().setName("Crear nuevo estudiante");
+        vista.getjDlgEstudiante().setTitle("Crear nuevo estudiante");
         limpiarCampos();
         bloquearCampos1();
     }
@@ -237,13 +241,57 @@ public class ControladorEstudiante {
         vista.getTxtBuscar().addKeyListener(eventoTeclado); //"addKeyListener" es un metodo que se le tiene que pasar como argumento un objeto de tipo keyListener 
     }
 
+        public void buscarPersona() {
+
+        KeyListener eventoTeclado = new KeyListener() {//Crear un objeto de tipo keyListener(Es una interface) por lo tanto se debe implementar sus metodos abstractos
+
+            @Override
+            public void keyTyped(KeyEvent e) {
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+
+                ModeloPersona modeloPersona = new ModeloPersona();
+                vista.getTblDlgPersonas().setRowHeight(25);
+                DefaultTableModel estructuraTabla = (DefaultTableModel) vista.getTblDlgPersonas().getModel();
+                estructuraTabla.setRowCount(0);
+
+                List<Persona> listap = modeloPersona.buscarPersona(vista.getTxtBuscarPer().getText());
+
+                Holder<Integer> i = new Holder<>(0);
+
+                listap.stream().forEach(persona -> {
+
+                    estructuraTabla.addRow(new Object[8]);
+
+                    vista.getTblDlgPersonas().setValueAt(persona.getPer_cedula(), i.value, 0);
+                    vista.getTblDlgPersonas().setValueAt(persona.getPer_primernom(), i.value, 1);
+                    vista.getTblDlgPersonas().setValueAt(persona.getPer_apellidopater(), i.value, 2);
+                    vista.getTblDlgPersonas().setValueAt(persona.getPer_telefono(), i.value, 3);
+                    vista.getTblDlgPersonas().setValueAt(persona.getPer_email(), i.value, 4);
+
+                    i.value++;
+                });
+            }
+        };
+
+        vista.getTxtBuscarPer().addKeyListener(eventoTeclado); //"addKeyListener" es un metodo que se le tiene que pasar como argumento un objeto de tipo keyListener 
+    }
     //Todo sobre el registro de personas en el jDialog
     public void abrirjDialogPersonas() {
-        vista.getjDlgBuscarPersonas().setLocationRelativeTo(null);
-        vista.getjDlgBuscarPersonas().setSize(763, 366);
-        vista.getjDlgBuscarPersonas().setTitle("Seleccione una persona");
         vista.getjDlgBuscarPersonas().setVisible(true);
+        vista.getjDlgBuscarPersonas().setSize(763, 366);
+        vista.getjDlgBuscarPersonas().setLocationRelativeTo(null);
+        vista.getjDlgBuscarPersonas().setTitle("Seleccione una persona");
         cargarRegistroDePersonas();
+        buscarPersona();
     }
 
     public void cargarRegistroDePersonas() {
@@ -265,7 +313,7 @@ public class ControladorEstudiante {
             vista.getTblDlgPersonas().setValueAt(persona.getPer_primernom(), i.value, 1);
             vista.getTblDlgPersonas().setValueAt(persona.getPer_apellidopater(), i.value, 2);
             vista.getTblDlgPersonas().setValueAt(persona.getPer_telefono(), i.value, 3);
-            vista.getTblDlgPersonas().setValueAt(persona.getPer_email(), i.value, 3);
+            vista.getTblDlgPersonas().setValueAt(persona.getPer_email(), i.value, 4);
 
             i.value++;
         });
@@ -368,5 +416,13 @@ public class ControladorEstudiante {
         vista.getFechaNacimiento().setDate(null);
         vista.getTxtEmail().setText("");
         vista.getTxtDireccion().setText("");
+    }
+
+    public void cancelar() {
+        vista.getjDlgEstudiante().setVisible(false);
+    }
+
+    public void cancelarper() {
+        vista.getjDlgBuscarPersonas().setVisible(false);
     }
 }
