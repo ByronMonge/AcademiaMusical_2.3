@@ -48,17 +48,18 @@ public class ControladorAsiHorario {
         vista.getBtnCargarHor().addActionListener(l -> cargarDatosHorarioEnTXT());
         vista.getBtnGuardar().addActionListener(l -> crearModificarAsignarHorario());
         vista.getBtnModificar().addActionListener(l -> cargarDatosAsignarHorarioEnTXT());
-        vista.getBtnEliminar().addActionListener(l-> eliminarAsignacion());
+        vista.getBtnEliminar().addActionListener(l -> eliminarAsignacion());
+        vista.getBtnCancelar().addActionListener(l -> cancelar());
         buscarRegistros();
     }
 
     //Asignar horario
     public void abrirjDialogAsiHorario() {
-        vista.getjDlgAsignarHorario().setLocationRelativeTo(null);
+        vista.getjDlgAsignarHorario().setVisible(true);
         vista.getjDlgAsignarHorario().setSize(809, 506);
+        vista.getjDlgAsignarHorario().setLocationRelativeTo(null);
         vista.getjDlgAsignarHorario().setTitle("Asignar horario");
         vista.getjDlgAsignarHorario().setName("Asignar horario");
-        vista.getjDlgAsignarHorario().setVisible(true);
         //Bloquear y limpiar los campos
         limpiarCampos();
         bloquearCampos();
@@ -197,11 +198,11 @@ public class ControladorAsiHorario {
             //Bloquear los campos
             bloquearCampos();
 
-            vista.getjDlgAsignarHorario().setName("Modificar asignacion");
-            vista.getjDlgAsignarHorario().setLocationRelativeTo(null);
-            vista.getjDlgAsignarHorario().setSize(885, 433);
-            vista.getjDlgAsignarHorario().setTitle("Modificar asignacion");
             vista.getjDlgAsignarHorario().setVisible(true);
+            vista.getjDlgAsignarHorario().setSize(885, 433);
+            vista.getjDlgAsignarHorario().setLocationRelativeTo(null);
+            vista.getjDlgAsignarHorario().setName("Modificar asignacion");
+            vista.getjDlgAsignarHorario().setTitle("Modificar asignacion");
             //Quito la visibilidad de los txt de los codigos
             vista.getTxtCodigoCurso().setVisible(false);
             vista.getTxtCodigoHorario().setVisible(false);
@@ -311,10 +312,11 @@ public class ControladorAsiHorario {
 
     //Todo sobre el registro de cursos en el jDialog
     public void abrirjDialogCurso() {
-        vista.getjDlgBuscarCurso().setLocationRelativeTo(null);
-        vista.getjDlgBuscarCurso().setSize(515, 388);
-        vista.getjDlgBuscarCurso().setTitle("Seleccionar curso");
         vista.getjDlgBuscarCurso().setVisible(true);
+        vista.getjDlgBuscarCurso().setSize(515, 388);
+        vista.getjDlgBuscarCurso().setLocationRelativeTo(null);
+        vista.getjDlgBuscarCurso().setTitle("Seleccionar curso");
+
         //Quito la visibilidad del txt del codigo del curso
         // vista.getTxtCodigoCurso().setVisible(false);
         cargarRegistroDeCursos();
@@ -413,10 +415,10 @@ public class ControladorAsiHorario {
 
     //Todo sobre Horario
     public void abrirjDialogHorario() {
-        vista.getjDlgBuscarHorario().setLocationRelativeTo(null);
-        vista.getjDlgBuscarHorario().setSize(515, 388);
-        vista.getjDlgBuscarHorario().setTitle("Seleccionar horario");
         vista.getjDlgBuscarHorario().setVisible(true);
+        vista.getjDlgBuscarHorario().setSize(515, 388);
+        vista.getjDlgBuscarHorario().setLocationRelativeTo(null);
+        vista.getjDlgBuscarHorario().setTitle("Seleccionar horario");
         //Quito la visibilidad del txt del codigo del horario
         //vista.getTxtCodigoHorario().setVisible(false);
         cargarRegistroDeHorarios();
@@ -539,5 +541,8 @@ public class ControladorAsiHorario {
         //Seteo la fecha actual en el jCalendar
         Date fecha = new Date();
         vista.getFechaDeAsignacion().setDate(fecha);
+    }
+        public void cancelar(){
+        vista.getjDlgAsignarHorario().setVisible(false);
     }
 }
