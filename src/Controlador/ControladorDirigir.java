@@ -105,7 +105,7 @@ public class ControladorDirigir {
 
     public void abrirjDialogDirigir() {
         vista.getjDlgDirigir().setVisible(true);
-        vista.getjDlgDirigir().setSize(832, 409);
+        vista.getjDlgDirigir().setSize(872, 435);
         vista.getjDlgDirigir().setLocationRelativeTo(null);
         vista.getjDlgDirigir().setTitle("Crear Dirigir");
         vista.getjDlgDirigir().setName("Crear Dirigir");
@@ -229,7 +229,7 @@ public class ControladorDirigir {
         } else {
 
             vista.getjDlgDirigir().setVisible(true);
-            vista.getjDlgDirigir().setSize(832, 448);
+            vista.getjDlgDirigir().setSize(872, 435);
             vista.getjDlgDirigir().setLocationRelativeTo(null);
             vista.getjDlgDirigir().setName("Modificar dirigir");
             vista.getjDlgDirigir().setTitle("Modificar  dirigir");
