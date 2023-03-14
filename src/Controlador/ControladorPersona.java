@@ -69,7 +69,7 @@ public class ControladorPersona {
 
     public void abrirDlgPersonas() {
         vista.getjDlogRegistro().setVisible(true);
-        vista.getjDlogRegistro().setSize(802, 622);
+        vista.getjDlogRegistro().setSize(886, 680);
         vista.getjDlogRegistro().setLocationRelativeTo(null);
         vista.getjDlogRegistro().setName("Crear nueva persona");
         vista.getjDlogRegistro().setTitle("Crear nueva persona");
@@ -80,7 +80,7 @@ public class ControladorPersona {
     public void abrirDlgRegistroDocente() {
 
         vista.getjDlgRegistroDocente().setVisible(true);
-        vista.getjDlgRegistroDocente().setSize(470, 321);
+        vista.getjDlgRegistroDocente().setSize(409, 310);
         vista.getjDlgRegistroDocente().setLocationRelativeTo(vista.getCheckDocente());
         vista.getjDlgRegistroDocente().setName("Registrar docente");
         vista.getjDlgRegistroDocente().setTitle("Registrar docente");
@@ -89,7 +89,7 @@ public class ControladorPersona {
 
     public void abrirDlgRegistroProductor() {
         vista.getjDlgRegistroProductor().setVisible(true);
-        vista.getjDlgRegistroProductor().setSize(440, 310);
+        vista.getjDlgRegistroProductor().setSize(424, 330);
         vista.getjDlgRegistroProductor().setLocationRelativeTo(vista.getCheckProductor());
         vista.getjDlgRegistroProductor().setName("Registrar productor");
         vista.getjDlgRegistroProductor().setTitle("Registrar productor");
@@ -99,7 +99,7 @@ public class ControladorPersona {
     public void abrirDlgRegistroAdministrador() {
 
         vista.getjDlgRegistroAdministrador().setVisible(true);
-        vista.getjDlgRegistroAdministrador().setSize(380, 386);
+        vista.getjDlgRegistroAdministrador().setSize(401, 405);
         vista.getjDlgRegistroAdministrador().setLocationRelativeTo(vista.getCheckAdministrador());
         vista.getjDlgRegistroAdministrador().setName("Registrar administrador");
         vista.getjDlgRegistroAdministrador().setTitle("Registrar administrador");
