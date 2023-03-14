@@ -40,6 +40,9 @@ public class ControladorMatricula {
 
     VistaPrincipal p = new VistaPrincipal();
 
+    //Variable estatica para saber si el estudiante esta o no matriculado en un curso
+    static boolean matriculado;
+
     public ControladorMatricula(ModeloMatricula modelo, VistaMatricula vista) {
         this.modelo = modelo;
         this.vista = vista;
@@ -52,8 +55,7 @@ public class ControladorMatricula {
 
         //Matricula
         vista.getBtnMatricular().addActionListener(l -> abrirjDialogMatricula());
-        vista.getBtnGuardar().addActionListener(l -> crearModificarMatricula());
-        vista.getBtnModificar().addActionListener(l -> cargarDatosMatriculaEnTXT());
+        vista.getBtnGuardar().addActionListener(l -> crearMatricula());
         vista.getBtnEliminar().addActionListener(l -> eliminarMatricula());
         vista.getBtnCancelar().addActionListener(l -> botonCancelar());
         //vista.getBtnImprimir().addActionListener(l-> imprimir());
@@ -119,113 +121,43 @@ public class ControladorMatricula {
         });
     }
 
-    public void crearModificarMatricula() {
+    public void crearMatricula() {
+        matriculado = false;
         if (vista.getjDlgMatricula().getName().equals("Registrar matricula")) {
 
             if (validarDatos()) {
 
-                modelo.setMat_codAmd(Integer.parseInt(vista.getTxtCodigoAdministrador().getText()));
-                modelo.setMat_codEst(Integer.parseInt(vista.getTxtCodigoEstudiantematri().getText()));
-                modelo.setMat_codCur(Integer.parseInt(vista.getTxtCodigoCurso().getText()));
+                List<Matricula> matriculas = modelo.listaMatriculaTabla();
 
-                Date fecha = vista.getFechaDeMatricula().getDate();
-                java.sql.Date fechaSQL = new java.sql.Date(fecha.getTime());
-                modelo.setMat_fechamatri(fechaSQL);
+                matriculas.stream().forEach(m -> {
 
-                if (modelo.crearMatricula() == null) {
-                    JOptionPane.showMessageDialog(null, "Se registro satisfactoriamente la matricula\nLa matrícula esta siendo enviada al email del estudiante...");
-                    cargarTablaDeMatriculas();
+                    if (m.getMat_codEst() == Integer.parseInt(vista.getTxtCodigoEstudiantematri().getText()) && m.getMat_codCur() == Integer.parseInt(vista.getTxtCodigoCurso().getText()) && m.getMat_estado().equals("A")) {
+                        matriculado = true;
+                    }
+                });
 
-                    crearPdf();//LLamo al metodo de crear pdf y enviar email
-                    vista.getjDlgMatricula().setVisible(false);
+                if (matriculado) {
+                    JOptionPane.showMessageDialog(null, "El estudiante ya se encuentra matriculado en este curso");
                 } else {
-                    JOptionPane.showMessageDialog(null, "No se puedo registrar la matricula");
+                    modelo.setMat_codAmd(Integer.parseInt(vista.getTxtCodigoAdministrador().getText()));
+                    modelo.setMat_codEst(Integer.parseInt(vista.getTxtCodigoEstudiantematri().getText()));
+                    modelo.setMat_codCur(Integer.parseInt(vista.getTxtCodigoCurso().getText()));
+
+                    Date fecha = vista.getFechaDeMatricula().getDate();
+                    java.sql.Date fechaSQL = new java.sql.Date(fecha.getTime());
+                    modelo.setMat_fechamatri(fechaSQL);
+
+                    if (modelo.crearMatricula() == null) {
+                        JOptionPane.showMessageDialog(null, "Se registro satisfactoriamente la matricula.\nLa matrícula esta siendo enviada al email del estudiante...");
+                        cargarTablaDeMatriculas();
+
+                        crearPdf();//LLamo al metodo de crear pdf y enviar email
+                        vista.getjDlgMatricula().setVisible(false);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "No se puedo registrar la matricula");
+                    }
                 }
             }
-        } else {
-            if (validarDatos()) {
-
-                modelo.setMat_codigo(codigoMatricula);
-                modelo.setMat_codEst(Integer.parseInt(vista.getTxtCodigoEstudiantematri().getText()));
-                modelo.setMat_codCur(Integer.parseInt(vista.getTxtCodigoCurso().getText()));
-
-                Date fecha = vista.getFechaDeMatricula().getDate();
-                java.sql.Date fechaSQL = new java.sql.Date(fecha.getTime());
-                modelo.setMat_fechamatri(fechaSQL);
-
-                if (modelo.modificarMatricula() == null) {
-                    JOptionPane.showMessageDialog(null, "La matricula se modifico exitosamente");
-                    vista.getjDlgMatricula().setVisible(false);
-                    cargarTablaDeMatriculas();
-                } else {
-                    JOptionPane.showMessageDialog(null, "No se pudo modificar la matricula");
-                }
-            }
-        }
-    }
-
-    int codigoMatricula;
-
-    public void cargarDatosMatriculaEnTXT() {
-        int fila = vista.getTblMatricula().getSelectedRow();
-
-        if (fila == -1) {
-            JOptionPane.showMessageDialog(null, "Aun no ha seleccionado una fila");
-        } else {
-
-            vista.getjDlgMatricula().setVisible(true);
-            vista.getjDlgMatricula().setSize(858, 585);
-            vista.getjDlgMatricula().setLocationRelativeTo(null);
-            vista.getjDlgMatricula().setName("Modificar matricula");
-            vista.getjDlgMatricula().setTitle("Modificar matricula");
-
-            bloquearYVisibilidadModificar();
-
-            ModeloAdministrador modeloAdministrador = new ModeloAdministrador();
-            ModeloEstudiante modeloEstudiante = new ModeloEstudiante();
-            ModeloCurso modeloCurso = new ModeloCurso();
-
-            List<Matricula> matriculas = modelo.listaMatriculaTabla();
-            List<Administrador> administradores = modeloAdministrador.listaAdministradoresTabla();
-            List<Estudiante> estudiantes = modeloEstudiante.listaEstudiantesTabla();
-            List<Curso> cursos = modeloCurso.listaCursoTabla();
-
-            matriculas.stream().forEach(m -> {
-                if (m.getMat_codigo() == Integer.parseInt(vista.getTblMatricula().getValueAt(fila, 0).toString())) {
-                    administradores.stream().forEach(a -> {
-
-                        if (m.getMat_codAmd() == a.getAdm_codigo()) {
-
-                            estudiantes.stream().forEach(e -> {
-
-                                if (m.getMat_codEst() == e.getEst_codigo()) {
-
-                                    cursos.stream().forEach(c -> {
-
-                                        if (m.getMat_codCur() == c.getCur_codigo()) {
-
-                                            //Matricula
-                                            codigoMatricula = Integer.parseInt(vista.getTblMatricula().getValueAt(fila, 0).toString());
-                                            vista.getFechaDeMatricula().setDate(m.getMat_fechamatri());
-                                            //Administrador
-                                            vista.getTxtCodigoAdministrador().setText(String.valueOf(a.getAdm_codigo()));
-                                            vista.getTxtCedulaAdministrador().setText(a.getPer_cedula());
-                                            vista.getTxtNombreYApellidoAdministrador().setText(a.getPer_primernom() + " " + a.getPer_apellidopater());
-                                            //Estudiante
-                                            vista.getTxtCodigoEstudiantematri().setText(String.valueOf(e.getEst_codigo()));
-                                            vista.getTxtCedulaEstudiante().setText(e.getPer_cedula());
-                                            vista.getTxtNombreYApellidoEstudiante().setText(e.getPer_primernom() + " " + e.getPer_apellidopater());
-                                            //Curso
-                                            vista.getTxtCodigoCurso().setText(String.valueOf(c.getCur_codigo()));
-                                            vista.getTxtNombreCurso().setText(c.getCur_nombre());
-                                        }
-                                    });
-                                }
-                            });
-                        }
-                    });
-                }
-            });
         }
     }
 
@@ -545,6 +477,7 @@ public class ControladorMatricula {
         vista.getTxtCodigoEstudiantematri().setText("");
         vista.getTxtCedulaEstudiante().setText("");
         vista.getTxtNombreYApellidoEstudiante().setText("");
+        vista.getTxtCorreoEstudiante().setText("");
         vista.getTxtCodigoCurso().setText("");
         vista.getTxtNombreCurso().setText("");
     }
@@ -725,4 +658,38 @@ public class ControladorMatricula {
             Logger.getLogger(ControladorPersona.class.getName()).log(Level.SEVERE, null, ex);
         }
     }*/
+ /*else {
+            matriculado = false;
+            if (validarDatos()) {
+
+                List<Matricula> matriculas = modelo.listaMatriculaTabla();
+
+                matriculas.stream().forEach(m -> {
+
+                    if (m.getMat_codEst() == Integer.parseInt(vista.getTxtCodigoEstudiantematri().getText()) && m.getMat_codCur() == Integer.parseInt(vista.getTxtCodigoCurso().getText()) && m.getMat_estado().equals("A")) {
+                        matriculado = true;
+                    }
+                });
+
+                if (matriculado) {
+                    JOptionPane.showMessageDialog(null, "El estudiante ya se encuentra matriculado en este curso");
+                } else {
+                    modelo.setMat_codigo(codigoMatricula);
+                    modelo.setMat_codEst(Integer.parseInt(vista.getTxtCodigoEstudiantematri().getText()));
+                    modelo.setMat_codCur(Integer.parseInt(vista.getTxtCodigoCurso().getText()));
+
+                    Date fecha = vista.getFechaDeMatricula().getDate();
+                    java.sql.Date fechaSQL = new java.sql.Date(fecha.getTime());
+                    modelo.setMat_fechamatri(fechaSQL);
+
+                    if (modelo.modificarMatricula() == null) {
+                        JOptionPane.showMessageDialog(null, "La matricula se modifico exitosamente");
+                        vista.getjDlgMatricula().setVisible(false);
+                        cargarTablaDeMatriculas();
+                    } else {
+                        JOptionPane.showMessageDialog(null, "No se pudo modificar la matricula");
+                    }
+                }
+            }
+        }*/
 }
