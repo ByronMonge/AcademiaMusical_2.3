@@ -29,7 +29,7 @@ import javax.xml.ws.Holder;
 
 public class ControladorAdministrador {
 
-    ModeloAdministrador  modelo;
+    ModeloAdministrador modelo;
     VistaAdministrador vista;
 
     static boolean asignar; //Esta variable es de tipo static para que funcione dentro de la expresion lambda. Esta variable sera true o false dependiendo si la persona es o no docente
@@ -57,8 +57,8 @@ public class ControladorAdministrador {
         vista.getBtnModificar().addActionListener(l -> cargarDatosAdministradoresEnTXT());
         vista.getBtnEliminar().addActionListener(l -> eliminarAdministrador());
         vista.getBtnCancelar().addActionListener(l -> botonEliminar());
-        //vista.getBtnImprimir().addActionListener(l -> imprimir());
 
+        //vista.getBtnImprimir().addActionListener(l -> imprimir());
         buscarAdministrador();
     }
 
@@ -71,6 +71,21 @@ public class ControladorAdministrador {
             String[] datos = {p.getPer_cedula(), p.getPer_primernom() + " " + p.getPer_apellidopater(), String.valueOf(p.getEmp_codigo()), p.getEmp_salario().toString(), String.valueOf(p.getAdm_codigo()), p.getAdm_usuario()};
             tabla.addRow(datos);
         });
+    }
+
+    public void bloquearClaves() {
+        vista.getTxtCedula().setEnabled(false);
+        vista.getTxtPrimerApellido().setEnabled(false);
+        vista.getTxtDireccion().setEnabled(false);
+        vista.getTxtPrimerNombre().setEnabled(false);
+        vista.getTxtSegundoApellido().setEnabled(false);
+        vista.getTxtEmail().setEnabled(false);
+        vista.getTxtSegundoNombre().setEnabled(false);
+        vista.getTxtTelefono().setEnabled(false);
+        vista.getFechaNacimiento().setEnabled(false);
+        vista.getFemenino().setEnabled(false);
+        vista.getMasculino().setEnabled(false);
+        vista.getNoBinario().setEnabled(false);
     }
 
     int codigoAdministrador;
@@ -138,7 +153,7 @@ public class ControladorAdministrador {
         vista.getjDlgAdministrador().setSize(978, 600);
         vista.getjDlgAdministrador().setLocationRelativeTo(null);
         vista.getjDlgAdministrador().setTitle("Crear nuevo administrador");
-
+        bloquearClaves();
         vista.getLblOcultar().setVisible(true);
         vista.getLblMostrar().setVisible(false);
 
