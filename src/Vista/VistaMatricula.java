@@ -52,14 +52,6 @@ public class VistaMatricula extends javax.swing.JInternalFrame {
         this.btnMatricular = btnMatricular;
     }
 
-    public JButton getBtnModificar() {
-        return btnModificar;
-    }
-
-    public void setBtnModificar(JButton btnModificar) {
-        this.btnModificar = btnModificar;
-    }
-
     public JDialog getjDlgBuscarCurso() {
         return jDlgBuscarCurso;
     }
@@ -306,7 +298,6 @@ public class VistaMatricula extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         txtBuscar = new javax.swing.JTextField();
         btnMatricular = new javax.swing.JButton();
-        btnModificar = new javax.swing.JButton();
         btnActualizar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
         jLabel32 = new javax.swing.JLabel();
@@ -547,13 +538,6 @@ public class VistaMatricula extends javax.swing.JInternalFrame {
         btnMatricular.setBorder(null);
         btnMatricular.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        btnModificar.setBackground(new java.awt.Color(255, 255, 255));
-        btnModificar.setFont(new java.awt.Font("Roboto Medium", 0, 13)); // NOI18N
-        btnModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/modificar.png"))); // NOI18N
-        btnModificar.setText("Modificar");
-        btnModificar.setBorder(null);
-        btnModificar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
         btnActualizar.setBackground(new java.awt.Color(255, 255, 255));
         btnActualizar.setFont(new java.awt.Font("Roboto Medium", 0, 13)); // NOI18N
         btnActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/actualizar.png"))); // NOI18N
@@ -564,7 +548,7 @@ public class VistaMatricula extends javax.swing.JInternalFrame {
         btnEliminar.setBackground(new java.awt.Color(255, 255, 255));
         btnEliminar.setFont(new java.awt.Font("Roboto Medium", 0, 13)); // NOI18N
         btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/compartimiento.png"))); // NOI18N
-        btnEliminar.setText("Eliminar");
+        btnEliminar.setText("Anular");
         btnEliminar.setBorder(null);
         btnEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
@@ -588,11 +572,9 @@ public class VistaMatricula extends javax.swing.JInternalFrame {
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 272, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 428, Short.MAX_VALUE)
                 .addComponent(btnMatricular, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(69, 69, 69)
-                .addComponent(btnModificar)
-                .addGap(66, 66, 66)
+                .addGap(68, 68, 68)
                 .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(64, 64, 64)
                 .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -616,7 +598,6 @@ public class VistaMatricula extends javax.swing.JInternalFrame {
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnEliminar)
                         .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnModificar)
                         .addComponent(btnMatricular)
                         .addComponent(btnImprimir)))
                 .addGap(23, 23, 23))
@@ -652,7 +633,6 @@ public class VistaMatricula extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnImprimir;
     private javax.swing.JButton btnMatricular;
-    private javax.swing.JButton btnModificar;
     private com.toedter.calendar.JDateChooser fechaDeMatricula;
     private javax.swing.JDialog jDlgBuscarCurso;
     private javax.swing.JDialog jDlgBuscarEstudiante;
