@@ -220,7 +220,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         btnHorario.setText("Horario");
         btnHorario.setBorder(null);
         btnHorario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel3.add(btnHorario, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 30, -1, -1));
+        jPanel3.add(btnHorario, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 30, -1, -1));
 
         btnAsiHorario.setBackground(new java.awt.Color(46, 49, 49));
         btnAsiHorario.setFont(new java.awt.Font("Roboto Medium", 0, 16)); // NOI18N
@@ -238,13 +238,13 @@ public class VistaPrincipal extends javax.swing.JFrame {
         btnMatricula.setText("Matricula");
         btnMatricula.setBorder(null);
         btnMatricula.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel3.add(btnMatricula, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 30, -1, -1));
+        jPanel3.add(btnMatricula, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 30, -1, -1));
 
         btnReserva.setBackground(new java.awt.Color(46, 49, 49));
         btnReserva.setFont(new java.awt.Font("Roboto Medium", 0, 16)); // NOI18N
         btnReserva.setForeground(new java.awt.Color(255, 255, 255));
-        btnReserva.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Guitar-icon.png"))); // NOI18N
-        btnReserva.setText("Reserva");
+        btnReserva.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/reservaa.png"))); // NOI18N
+        btnReserva.setText("Reservaciones");
         btnReserva.setBorder(null);
         btnReserva.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel3.add(btnReserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 30, -1, -1));
