@@ -26,12 +26,6 @@ public class ModeloMatricula extends Matricula {
         return conpg.accion(sql);
     }
 
-    public SQLException modificarMatricula() {
-        String sql = "UPDATE matricula SET mat_codcurso = " + getMat_codCur() + " where mat_codigo = " + getMat_codigo() + ";";
-
-        return conpg.accion(sql);
-    }
-
     public SQLException eliminarMatricula(int codigoMatricula) {
         String sql = "UPDATE matricula SET mat_estado= 'I' where mat_codigo = " + codigoMatricula + ";";
 
