@@ -46,6 +46,7 @@ public class ControladorAsiAsignatura {
         vista.getBtnGuardar().addActionListener(l -> crearModificarAsignarAsignatura());
         vista.getBtnModificar().addActionListener(l -> cargarDatosAsignarAsignaturaEnTXT());
         vista.getBtnEliminar().addActionListener(l -> eliminarAsignacion());
+        vista.getBtnCancelar().addActionListener(l -> botonEliminar());
         buscarRegistros();
     }
 
@@ -87,11 +88,12 @@ public class ControladorAsiAsignatura {
     }
 
     public void abrirjDialogAsignarAsignatura() {
-        vista.getjDlgAsiAsignatura().setLocationRelativeTo(null);
-        vista.getjDlgAsiAsignatura().setSize(885, 433);
+        
+        vista.getjDlgAsiAsignatura().setSize(892, 449);
         vista.getjDlgAsiAsignatura().setTitle("Asignar asignatura");
         vista.getjDlgAsiAsignatura().setName("Asignar asignatura");
         vista.getjDlgAsiAsignatura().setVisible(true);
+        vista.getjDlgAsiAsignatura().setLocationRelativeTo(null);
         vista.getTxtCodigoDocente().setVisible(false);
         vista.getTxtCodigoAsignatura().setVisible(false);
         limpiarCampos();
@@ -101,10 +103,11 @@ public class ControladorAsiAsignatura {
 
     //Todo sobre el registro de Docentes en el jDialog
     public void abrirjDialogDocente() {
-        vista.getjDlgBuscarDocente().setLocationRelativeTo(null);
+        
         vista.getjDlgBuscarDocente().setSize(685, 418);
         vista.getjDlgBuscarDocente().setTitle("Seleccione un docente");
         vista.getjDlgBuscarDocente().setVisible(true);
+        vista.getjDlgBuscarDocente().setLocationRelativeTo(null);
         cargarRegistroDeDocentes();
         buscarDocente();
     }
@@ -413,10 +416,11 @@ public class ControladorAsiAsignatura {
 
     //Todo sobre el registro de asignatura en el jDialog
     public void abrirjDialogAsignatura() {
-        vista.getjDlgBuscarAsignatura().setLocationRelativeTo(null);
-        vista.getjDlgBuscarAsignatura().setSize(619, 435);
+        
+        vista.getjDlgBuscarAsignatura().setSize(708, 435);
         vista.getjDlgBuscarAsignatura().setTitle("Seleccione una asignatura");
         vista.getjDlgBuscarAsignatura().setVisible(true);
+        vista.getjDlgBuscarAsignatura().setLocationRelativeTo(null);
         cargarRegistroDeAsignatura();
         buscarAsignatura();
     }
@@ -547,5 +551,8 @@ public class ControladorAsiAsignatura {
         //Seteo la fecha actual en el jCalendar
         Date fecha = new Date();
         vista.getFechaDeAsignacion().setDate(fecha);
+    }
+     public void botonEliminar() {
+        vista.getjDlgAsiAsignatura().setVisible(false);
     }
 }

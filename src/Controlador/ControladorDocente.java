@@ -78,7 +78,7 @@ public class ControladorDocente {
 
             //Abrir jDialog de campos de Docente
             vista.getjDlgDocente().setVisible(true);
-            vista.getjDlgDocente().setSize(774, 614);
+            vista.getjDlgDocente().setSize(889, 685);
             vista.getjDlgDocente().setLocationRelativeTo(null);
             vista.getjDlgDocente().setName("Modificar docente");
             vista.getjDlgDocente().setTitle("Modificar  docente");
@@ -126,7 +126,7 @@ public class ControladorDocente {
     public void abrirjDlgDocente() {
 
         vista.getjDlgDocente().setVisible(true);
-        vista.getjDlgDocente().setSize(774, 614);
+        vista.getjDlgDocente().setSize(889, 685);
         vista.getjDlgDocente().setLocationRelativeTo(null);
         vista.getjDlgDocente().setName("Crear nuevo docente");
         vista.getjDlgDocente().setTitle("Crear nuevo docente");
