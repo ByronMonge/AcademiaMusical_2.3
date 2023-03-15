@@ -278,7 +278,7 @@ public class VistaAsiHorario extends javax.swing.JInternalFrame {
         btnModificar = new javax.swing.JButton();
         btnActualizar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
-        jLabel10 = new javax.swing.JLabel();
+        jtxtTituloMenu = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblAsiHorario = new javax.swing.JTable();
 
@@ -566,9 +566,10 @@ public class VistaAsiHorario extends javax.swing.JInternalFrame {
         btnEliminar.setBorder(null);
         btnEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        jLabel10.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
-        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel10.setText("Listado de Asignación de horarios");
+        jtxtTituloMenu.setFont(new java.awt.Font("Roboto Black", 1, 24)); // NOI18N
+        jtxtTituloMenu.setForeground(new java.awt.Color(155, 12, 27));
+        jtxtTituloMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/eleccion.png"))); // NOI18N
+        jtxtTituloMenu.setText("Asignar horarios");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -588,14 +589,17 @@ public class VistaAsiHorario extends javax.swing.JInternalFrame {
                 .addGap(39, 39, 39)
                 .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(25, 25, 25))
-            .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jtxtTituloMenu)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel10)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addComponent(jtxtTituloMenu)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(7, 7, 7)
@@ -659,7 +663,6 @@ public class VistaAsiHorario extends javax.swing.JInternalFrame {
     private javax.swing.JDialog jDlgBuscarCurso;
     private javax.swing.JDialog jDlgBuscarHorario;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
@@ -680,6 +683,7 @@ public class VistaAsiHorario extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JLabel jtxtTituloMenu;
     private javax.swing.JTable tblAsiHorario;
     private javax.swing.JTable tblDlgjCurso;
     private javax.swing.JTable tblDlgjHorario;

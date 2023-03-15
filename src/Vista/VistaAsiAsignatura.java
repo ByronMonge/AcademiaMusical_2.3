@@ -293,8 +293,8 @@ public class VistaAsiAsignatura extends javax.swing.JInternalFrame {
         btnModificar = new javax.swing.JButton();
         btnActualizar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
         btnImprimir = new javax.swing.JButton();
+        jtxtTituloMenu = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblAsiAsignatura = new javax.swing.JTable();
 
@@ -613,7 +613,7 @@ public class VistaAsiAsignatura extends javax.swing.JInternalFrame {
         jDlgAsiAsignatura.getContentPane().setLayout(jDlgAsiAsignaturaLayout);
         jDlgAsiAsignaturaLayout.setHorizontalGroup(
             jDlgAsiAsignaturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 892, Short.MAX_VALUE)
+            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 892, Short.MAX_VALUE)
         );
         jDlgAsiAsignaturaLayout.setVerticalGroup(
             jDlgAsiAsignaturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -656,16 +656,17 @@ public class VistaAsiAsignatura extends javax.swing.JInternalFrame {
         btnEliminar.setBorder(null);
         btnEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        jLabel7.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setText("Listado de asignaciones a asignatura");
-
         btnImprimir.setBackground(new java.awt.Color(255, 255, 255));
         btnImprimir.setFont(new java.awt.Font("Roboto Medium", 0, 13)); // NOI18N
         btnImprimir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/imprimir.png"))); // NOI18N
         btnImprimir.setText("Imprimir");
         btnImprimir.setBorder(null);
         btnImprimir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        jtxtTituloMenu.setFont(new java.awt.Font("Roboto Black", 1, 24)); // NOI18N
+        jtxtTituloMenu.setForeground(new java.awt.Color(155, 12, 27));
+        jtxtTituloMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/asignacionasi.png"))); // NOI18N
+        jtxtTituloMenu.setText("Asignar asignaturas");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -687,14 +688,17 @@ public class VistaAsiAsignatura extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addComponent(btnImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29))
-            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jtxtTituloMenu)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(jLabel7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(jtxtTituloMenu)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(7, 7, 7)
@@ -771,7 +775,6 @@ public class VistaAsiAsignatura extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -779,6 +782,7 @@ public class VistaAsiAsignatura extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JLabel jtxtTituloMenu;
     private javax.swing.JTable tblAsiAsignatura;
     private javax.swing.JTable tblDlgDocente;
     private javax.swing.JTable tblDlgjAsignatura;
