@@ -12,6 +12,7 @@ import java.util.logging.Logger;
  * @author Usuario
  */
 public class ModeloAsigAula extends AsigAula {
+
     ConexionPG conpg = new ConexionPG();
 
     public ModeloAsigAula() {
@@ -21,8 +22,14 @@ public class ModeloAsigAula extends AsigAula {
         super(asia_codigo, asia_codcurso, asia_codaula, asia_fecha, asi_estado);
     }
 
-     public SQLException asignarAula() {
-        String sql = "INSERT INTO asigaula( asia_codcurso, asia_codaula, asia_fecha ,asia_estado) VALUES (" +getAsia_codcurso() + ", " + getAsia_codaula() +",'"+getAsia_fecha()+"', 'A');";
+    public SQLException asignarAula() {
+        String sql = "INSERT INTO asigaula( asia_codcurso, asia_codaula, asia_fecha ,asia_estado) VALUES (" + getAsia_codcurso() + ", " + getAsia_codaula() + ",'" + getAsia_fecha() + "', 'A');";
+
+        return conpg.accion(sql);
+    }
+
+    public SQLException modificarAsignacionFecha() {
+        String sql = "UPDATE asigaula SET asia_fecha = '" + getAsia_fecha() + "' where asia_codigo = " + getAsia_codigo() + ";";
 
         return conpg.accion(sql);
     }
@@ -72,5 +79,3 @@ public class ModeloAsigAula extends AsigAula {
         }
     }
 }
-
-
