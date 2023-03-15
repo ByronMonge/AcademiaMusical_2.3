@@ -83,6 +83,7 @@ public class VistaLogin extends javax.swing.JFrame {
         this.jButton3 = jButton3;
     }
 
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
