@@ -70,14 +70,11 @@ public class ControladorAsigAula {
         List<Aula> aulas = modeloAula.listaAulaTabla();
 
         asignaciones.stream().forEach(as -> {
-//            System.out.println("Codigo docAsi : " + as.getAsia_codigo());
 
             cursos.stream().forEach(d -> {
 
                 if (as.getAsia_codcurso() == d.getCur_codigo()) {
 
-//                    System.out.println("Codigo docAsi : " + as.getAsig_coddoc());
-//                    System.out.println("Codigo doc : " + d.getDoc_codigo());
                     aulas.stream().forEach(a -> {
 
                         if (as.getAsia_codaula() == a.getAul_codigo()) {
@@ -99,11 +96,10 @@ public class ControladorAsigAula {
         vista.getjDlgAsigAula().setLocationRelativeTo(null);
         vista.getjDlgAsigAula().setTitle("Asignar Aula");
         vista.getjDlgAsigAula().setName("Asignar Aula");
-
         vista.getTxtCodigocurso().setVisible(false);
 
         limpiarlabels();
-        vista.getFechaDeAsignacion().setEnabled(true);
+        cargarFechaActual();
         bloquearTxtAsi();
     }
 
@@ -178,9 +174,18 @@ public class ControladorAsigAula {
                 //Si el docente ya imparte la materia solo se modificara la fecha
                 if (verificarAsignacion) {
 
-                    JOptionPane.showMessageDialog(vista, "Los datos fueron modificados satisfactoriamente");
-                    vista.getjDlgAsigAula().setVisible(false);
-                    cargarTablaAsignaciones();
+                    modelo.setAsia_codigo(codigoAsigAula);
+
+                    Date fecha = vista.getFechaDeAsignacion().getDate();
+                    java.sql.Date fechaSQL = new java.sql.Date(fecha.getTime());
+                    modelo.setAsia_fecha(fechaSQL);
+
+                    if (modelo.modificarAsignacionFecha() == null) {
+                        JOptionPane.showMessageDialog(vista, "Los datos fueron modificados satisfactoriamente");
+                        vista.getjDlgAsigAula().setVisible(false);
+                        cargarTablaAsignaciones();
+                    }
+
                 } else {
 
                     modelo.setAsia_codigo(codigoAsigAula);
@@ -219,7 +224,7 @@ public class ControladorAsigAula {
             vista.getjDlgAsigAula().setTitle("Modificar  Asignacion");
 
             bloquearTxtAsi();
-            vista.getFechaDeAsignacion().setEnabled(false);
+            vista.getFechaDeAsignacion().setEnabled(true);
             vista.getTxtCodigocurso().setVisible(false);
 
             ModeloCurso modeloCurso = new ModeloCurso();
@@ -504,11 +509,10 @@ public class ControladorAsigAula {
         vista.getTxtUbicacion().setText("");
         vista.getTxtNombreAula().setText("");
         vista.getTxtCapacidad().setText("");
-        vista.getFechaDeAsignacion().setDate(null);
     }
 
     public boolean validarDatos() {
-//
+
         boolean validar = true;
 
         if (vista.getTxtCodigocurso().getText().isEmpty()) {
@@ -522,7 +526,7 @@ public class ControladorAsigAula {
         }
 
         if (vista.getFechaDeAsignacion().getDate() == null) {
-            JOptionPane.showMessageDialog(null, "Ingrese una fecha");
+            JOptionPane.showMessageDialog(null, "Ingrese una fecha de asignación");
             validar = false;
         } else {
 
@@ -542,10 +546,16 @@ public class ControladorAsigAula {
                 JOptionPane.showMessageDialog(null, "La fecha de asignacion no puede superar a la fecha actual");
                 return false;
             }
-//
         }
 
         return validar;
+    }
+
+    public void cargarFechaActual() {
+        vista.getFechaDeAsignacion().setEnabled(false);
+        //Seteo la fecha actual en el jCalendar
+        Date fecha = new Date();
+        vista.getFechaDeAsignacion().setDate(fecha);
     }
 
     public void botonEliminar() {
