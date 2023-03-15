@@ -63,7 +63,7 @@ public class ControladorDirigir {
         vista.getBtnModificar().addActionListener(l -> cargarDatosDirigirEnTXT());
         vista.getBtnEliminar().addActionListener(l -> eliminarDirigir());
         vista.getBtnCancelar().addActionListener(l -> botonCancelar());
-                //vista.getBtnImprimir().addActionListener(l -> imprimir());
+        //vista.getBtnImprimir().addActionListener(l -> imprimir());
         buscarRegistros();
     }
 
@@ -112,6 +112,7 @@ public class ControladorDirigir {
         vista.getTxtCodigoProductor().setVisible(false);
         vista.getTxtCodigoSetgrabacion().setVisible(false);
         bloquearCampos();
+        cargarFechaActual();
     }
 
     //Todo sobre el registro de Docentes en el jDialog
@@ -125,8 +126,6 @@ public class ControladorDirigir {
     }
 
     public void crearModificarDirigir() {
-        System.out.println("holi");
-
         if ("Crear Dirigir".equals(vista.getjDlgDirigir().getName())) {
 
             verificarDirigir = false;
@@ -236,6 +235,8 @@ public class ControladorDirigir {
             vista.getTxtCodigoProductor().setVisible(false);
             vista.getTxtCodigoSetgrabacion().setVisible(false);
 
+            bloquearCampos();
+                    
             ModeloProductor modeloProductor = new ModeloProductor();
             ModeloSetGrab modeloset = new ModeloSetGrab();
 
@@ -545,7 +546,7 @@ public class ControladorDirigir {
         }
 
         if (vista.getFechaDeAsignacion().getDate() == null) {
-            JOptionPane.showMessageDialog(null, "Ingrese una fecha");
+            JOptionPane.showMessageDialog(null, "Ingrese una fecha de asignación");
             validar = false;
         } else {
 
@@ -565,7 +566,6 @@ public class ControladorDirigir {
                 JOptionPane.showMessageDialog(null, "La fecha de asignacion no puede superar a la fecha actual");
                 return false;
             }
-
         }
 
         return validar;
@@ -578,8 +578,8 @@ public class ControladorDirigir {
         Date fecha = new Date();
         vista.getFechaDeAsignacion().setDate(fecha);
     }
-    
-        public void bloquearCampos() {
+
+    public void bloquearCampos() {
         vista.getTxtCedula().setEditable(false);
         vista.getTxtNombreDocente().setEditable(false);
         vista.getTxtApellido().setEditable(false);
@@ -588,11 +588,11 @@ public class ControladorDirigir {
         vista.getTxtCodigoSetgrabacion().setEnabled(false);
         vista.getTxtNombreAsignatura().setEnabled(false);
     }
-        
-            public void botonCancelar() {
+
+    public void botonCancelar() {
         vista.getjDlgDirigir().setVisible(false);
     }
-          /*public void imprimir() {
+    /*public void imprimir() {
 
         ConexionPG conpg = new ConexionPG();//Instanciar la conexion con esto abrimos la conexion a la BD
         try {
@@ -614,5 +614,5 @@ public class ControladorDirigir {
         } catch (JRException ex) {
             Logger.getLogger(ControladorPersona.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }*/      
+    }*/
 }
