@@ -11,8 +11,14 @@ import Vista.VistaAsiAsignatura;
 import Vista.VistaPrincipal;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
@@ -47,7 +53,7 @@ public class ControladorAsiAsignatura {
         vista.getBtnModificar().addActionListener(l -> cargarDatosAsignarAsignaturaEnTXT());
         vista.getBtnEliminar().addActionListener(l -> eliminarAsignacion());
         vista.getBtnCancelar().addActionListener(l -> botonEliminar());
-                //vista.getBtnImprimir().addActionListener(l -> imprimir());
+        //vista.getBtnImprimir().addActionListener(l -> imprimir());
         buscarRegistros();
     }
 
@@ -89,7 +95,7 @@ public class ControladorAsiAsignatura {
     }
 
     public void abrirjDialogAsignarAsignatura() {
-        
+
         vista.getjDlgAsiAsignatura().setSize(892, 449);
         vista.getjDlgAsiAsignatura().setTitle("Asignar asignatura");
         vista.getjDlgAsiAsignatura().setName("Asignar asignatura");
@@ -104,7 +110,7 @@ public class ControladorAsiAsignatura {
 
     //Todo sobre el registro de Docentes en el jDialog
     public void abrirjDialogDocente() {
-        
+
         vista.getjDlgBuscarDocente().setSize(685, 418);
         vista.getjDlgBuscarDocente().setTitle("Seleccione un docente");
         vista.getjDlgBuscarDocente().setVisible(true);
@@ -173,9 +179,17 @@ public class ControladorAsiAsignatura {
                 //Si el docente ya imparte la materia solo se mostrara un mensaje
                 if (verificarAsignacion) {
 
-                    JOptionPane.showMessageDialog(vista, "Los datos fueron modificados satisfactoriamente");
-                    vista.getjDlgAsiAsignatura().setVisible(false);
-                    cargarTablaAsignaciones();
+                    modelo.setAsig_codigo(codigoAsiAsignatura);
+
+                    Date fecha = vista.getFechaDeAsignacion().getDate();
+                    java.sql.Date fechaSQL = new java.sql.Date(fecha.getTime());
+                    modelo.setAsig_fecha(fechaSQL);
+
+                    if (modelo.modificarAsignacionFecha() == null) {
+                        JOptionPane.showMessageDialog(vista, "Los datos fueron modificados satisfactoriamente");
+                        vista.getjDlgAsiAsignatura().setVisible(false);
+                        cargarTablaAsignaciones();
+                    }
 
                 } else {
 
@@ -208,8 +222,6 @@ public class ControladorAsiAsignatura {
             JOptionPane.showMessageDialog(null, "Aun no ha seleccionado una fila");
         } else {
 
-            bloquearCampos();
-
             vista.getjDlgAsiAsignatura().setName("Modificar asignacion");
             vista.getjDlgAsiAsignatura().setLocationRelativeTo(null);
             vista.getjDlgAsiAsignatura().setSize(885, 433);
@@ -217,6 +229,9 @@ public class ControladorAsiAsignatura {
             vista.getjDlgAsiAsignatura().setVisible(true);
             vista.getTxtCodigoDocente().setVisible(false);
             vista.getTxtCodigoAsignatura().setVisible(false);
+
+            bloquearCampos();
+            vista.getFechaDeAsignacion().setEnabled(true);
 
             ModeloDocente modeloDocente = new ModeloDocente();
             ModeloAsignatura modeloAsignatura = new ModeloAsignatura();
@@ -417,7 +432,7 @@ public class ControladorAsiAsignatura {
 
     //Todo sobre el registro de asignatura en el jDialog
     public void abrirjDialogAsignatura() {
-        
+
         vista.getjDlgBuscarAsignatura().setSize(708, 435);
         vista.getjDlgBuscarAsignatura().setTitle("Seleccione una asignatura");
         vista.getjDlgBuscarAsignatura().setVisible(true);
@@ -527,6 +542,30 @@ public class ControladorAsiAsignatura {
             validar = false;
         }
 
+        if (vista.getFechaDeAsignacion().getDate() == null) {
+            JOptionPane.showMessageDialog(null, "Ingrese una fecha de asignación");
+            validar = false;
+        } else {
+
+            SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yy");//Doy formato a la fecha
+            String fechaContratacionT = formato.format(vista.getFechaDeAsignacion().getDate()); //Paso de la fecha de contratacion de tipo de Date a String con el formato especificado
+
+            Date fechaConD = null;
+            try {
+                fechaConD = formato.parse(fechaContratacionT); //Paso la fecha de contratacion de String a Date
+
+            } catch (ParseException ex) {
+                Logger.getLogger(ControladorDocente.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            Date fechaNueva = Date.from(LocalDate.now().atStartOfDay(ZoneId.systemDefault()).toInstant()); //Paso la fecha actual de tipo LocalDate a Date
+            if (fechaConD.after(fechaNueva)) {
+                JOptionPane.showMessageDialog(null, "La fecha de asignacion no puede superar a la fecha actual");
+                return false;
+            }
+
+        }
+
         return validar;
     }
 
@@ -536,7 +575,6 @@ public class ControladorAsiAsignatura {
         vista.getTxtApellido().setEditable(false);
         vista.getTxtEspecialidad().setEditable(false);
         vista.getTxtNombreAsignatura().setEditable(false);
-        vista.getFechaDeAsignacion().setEnabled(false);
     }
 
     public void limpiarCampos() {
@@ -549,14 +587,16 @@ public class ControladorAsiAsignatura {
 
     public void cargarFechaActual() {
 
+        vista.getFechaDeAsignacion().setEnabled(false);
         //Seteo la fecha actual en el jCalendar
         Date fecha = new Date();
         vista.getFechaDeAsignacion().setDate(fecha);
     }
-     public void botonEliminar() {
+
+    public void botonEliminar() {
         vista.getjDlgAsiAsignatura().setVisible(false);
     }
-         /*public void imprimir() {
+    /*public void imprimir() {
 
         ConexionPG conpg = new ConexionPG();//Instanciar la conexion con esto abrimos la conexion a la BD
         try {
