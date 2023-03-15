@@ -222,7 +222,7 @@ public class ControladorCurso {
             validar = false;
         } else {
             if (!mivalidacion.validarPeriodoAcademico(vista.getTxtPeriodo().getText())) {
-                JOptionPane.showMessageDialog(null, "El periodo academico puede empezar desde el 2023 y ser menor a 2025.\nEl inicio del periodo academico no debe superar a la fecha fin del mismo.");
+                JOptionPane.showMessageDialog(null, "El periodo academico debe ser mayor o igual al año actual: Ejemplo 2023");
                 validar = false;
             }
         }
