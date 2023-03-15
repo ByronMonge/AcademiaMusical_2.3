@@ -10,8 +10,14 @@ import Vista.VistaAsiHorario;
 import Vista.VistaPrincipal;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
@@ -160,10 +166,18 @@ public class ControladorAsiHorario {
 
                 //Si el docente ya imparte la materia solo se modificara la fecha
                 if (verificarAsignacion) {
+                    modelo.setAsih_codigo(codigoAsiHorario);
 
-                    JOptionPane.showMessageDialog(vista, "Los datos fueron modificados satisfactoriamente");
-                    vista.getjDlgAsignarHorario().setVisible(false);
-                    cargarTablaAsignaciones();
+                    Date fecha = vista.getFechaDeAsignacion().getDate();
+                    java.sql.Date fechaSQL = new java.sql.Date(fecha.getTime());
+                    modelo.setAsih_fecha(fechaSQL);
+
+                    if (modelo.modificarAsignacionFecha() == null) {
+                        JOptionPane.showMessageDialog(vista, "Los datos fueron modificados satisfactoriamente");
+                        vista.getjDlgAsignarHorario().setVisible(false);
+                        cargarTablaAsignaciones();
+                    }
+
                 } else {
 
                     modelo.setAsih_codigo(codigoAsiHorario);
@@ -195,14 +209,16 @@ public class ControladorAsiHorario {
             JOptionPane.showMessageDialog(null, "Aun no ha seleccionado una fila");
         } else {
 
-            //Bloquear los campos
-            bloquearCampos();
-
             vista.getjDlgAsignarHorario().setVisible(true);
             vista.getjDlgAsignarHorario().setSize(809, 540);
             vista.getjDlgAsignarHorario().setLocationRelativeTo(null);
             vista.getjDlgAsignarHorario().setName("Modificar asignacion");
             vista.getjDlgAsignarHorario().setTitle("Modificar asignacion");
+
+            //Bloquear los campos
+            bloquearCampos();
+            vista.getFechaDeAsignacion().setEnabled(true);
+
             //Quito la visibilidad de los txt de los codigos
             vista.getTxtCodigoCurso().setVisible(false);
             vista.getTxtCodigoHorario().setVisible(false);
@@ -517,6 +533,30 @@ public class ControladorAsiHorario {
             validar = false;
         }
 
+        if (vista.getFechaDeAsignacion().getDate() == null) {
+            JOptionPane.showMessageDialog(null, "Ingrese una fecha de asignación");
+            validar = false;
+        } else {
+
+            SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yy");//Doy formato a la fecha
+            String fechaContratacionT = formato.format(vista.getFechaDeAsignacion().getDate()); //Paso de la fecha de contratacion de tipo de Date a String con el formato especificado
+
+            Date fechaConD = null;
+            try {
+                fechaConD = formato.parse(fechaContratacionT); //Paso la fecha de contratacion de String a Date
+
+            } catch (ParseException ex) {
+                Logger.getLogger(ControladorDocente.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            Date fechaNueva = Date.from(LocalDate.now().atStartOfDay(ZoneId.systemDefault()).toInstant()); //Paso la fecha actual de tipo LocalDate a Date
+            if (fechaConD.after(fechaNueva)) {
+                JOptionPane.showMessageDialog(null, "La fecha de asignacion no puede superar a la fecha actual");
+                return false;
+            }
+
+        }
+
         return validar;
     }
 
@@ -526,7 +566,7 @@ public class ControladorAsiHorario {
         vista.getTxtDiaHorario().setEditable(false);
         vista.getTxtHoraDeInicio().setEditable(false);
         vista.getTxtHoraDeFin().setEditable(false);
-        vista.getFechaDeAsignacion().setEnabled(false);
+
     }
 
     public void limpiarCampos() {
@@ -538,11 +578,13 @@ public class ControladorAsiHorario {
     }
 
     public void cargarFechaActual() {
+        vista.getFechaDeAsignacion().setEnabled(false);
         //Seteo la fecha actual en el jCalendar
         Date fecha = new Date();
         vista.getFechaDeAsignacion().setDate(fecha);
     }
-        public void cancelar(){
+
+    public void cancelar() {
         vista.getjDlgAsignarHorario().setVisible(false);
     }
 }
