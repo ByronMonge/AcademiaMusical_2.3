@@ -25,6 +25,12 @@ public class ModeloAsiHorario extends AsiHorario {
         return conpg.accion(sql);
     }
 
+    public SQLException modificarAsignacionFecha() {
+        String sql = "UPDATE asihorario SET asih_fecha = '" + getAsih_fecha() + "' where asih_codigo = " + getAsih_codigo() + ";";
+
+        return conpg.accion(sql);
+    }
+
     public SQLException modificarAsignacionCompleto() {
         String sql = "UPDATE asihorario SET asih_codcurso = " + getAsih_codcurso() + ", asih_codhorario = " + getAsih_codhorario() + ", asih_fecha = '" + getAsih_fecha() + "' where asih_codigo = " + getAsih_codigo() + ";";
 
