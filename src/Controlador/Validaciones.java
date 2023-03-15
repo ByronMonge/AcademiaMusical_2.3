@@ -1,5 +1,6 @@
 package Controlador;
 
+import java.time.LocalDate;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -150,7 +151,8 @@ public class Validaciones {
     public boolean validarPeriodoAcademico(String periodo) {
 
         try {
-            if (Integer.parseInt(periodo.substring(0, 4)) >= 2023 && Integer.parseInt(periodo.substring(0, 4)) < Integer.parseInt(periodo.substring(5, 9)) && periodo.substring(4, 5).equals("-") && Integer.parseInt(periodo.substring(5, 9)) <= 2025) {
+
+            if (Integer.parseInt(periodo) >= Integer.parseInt(LocalDate.now().toString().substring(0, 4))) {
                 return true;
             }
         } catch (NumberFormatException e) {
