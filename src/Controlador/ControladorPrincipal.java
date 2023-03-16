@@ -2,6 +2,7 @@ package Controlador;
 
 import Modelo.*;
 import Vista.*;
+import static java.awt.Frame.MAXIMIZED_BOTH;
 
 import java.util.List;
 
@@ -13,6 +14,7 @@ public class ControladorPrincipal {
         this.vistaPrincipal = vistaPrincipal;
         vistaPrincipal.setVisible(true);
         vistaPrincipal.setLocationRelativeTo(null);
+        vistaPrincipal.setExtendedState(MAXIMIZED_BOTH); //Se supone que ésto va a servir para 
         vistaPrincipal.getLblUsuario().setText(ControladorLogin.usuario);
         DashBoard();
     }
@@ -48,6 +50,7 @@ public class ControladorPrincipal {
         ModeloPersona modelo = new ModeloPersona();
 
         //Agregar Vista Personas al Desktop Pane.
+        //vista.setMaximumSize(vistaPrincipal.getEscritorioPrincipal().getSize()); prueba de tamaños
         vistaPrincipal.getEscritorioPrincipal().add(vista);
 
         ControladorPersona control = new ControladorPersona(modelo, vista);
