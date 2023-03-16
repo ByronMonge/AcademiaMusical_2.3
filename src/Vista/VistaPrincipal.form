@@ -7,7 +7,9 @@
       <Color blue="0" green="cc" red="0" type="rgb"/>
     </Property>
     <Property name="extendedState" type="int" value="6"/>
-    <Property name="resizable" type="boolean" value="false"/>
+    <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+      <Dimension value="[0, 0]"/>
+    </Property>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>

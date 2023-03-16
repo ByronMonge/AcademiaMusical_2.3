@@ -2,7 +2,9 @@ package Controlador;
 
 import Modelo.*;
 import Vista.*;
+import java.awt.Dimension;
 import static java.awt.Frame.MAXIMIZED_BOTH;
+import java.awt.Toolkit;
 import java.util.List;
 
 public class ControladorPrincipal {
@@ -13,8 +15,9 @@ public class ControladorPrincipal {
         this.vistaPrincipal = vistaPrincipal;
         vistaPrincipal.setVisible(true);
         vistaPrincipal.setLocationRelativeTo(null);
-        vistaPrincipal.setResizable(false);
-        vistaPrincipal.setExtendedState(MAXIMIZED_BOTH);
+        Toolkit t = Toolkit.getDefaultToolkit();
+        Dimension screenSize = t.getScreenSize();
+        vistaPrincipal.setSize(screenSize);
         vistaPrincipal.getLblUsuario().setText(ControladorLogin.usuario);
         DashBoard();
     }
