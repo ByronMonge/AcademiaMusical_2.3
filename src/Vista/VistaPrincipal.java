@@ -195,6 +195,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         btnMatricula = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(0, 204, 0));
         setExtendedState(2);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -382,10 +383,10 @@ public class VistaPrincipal extends javax.swing.JFrame {
         );
         escritorioPrincipalLayout.setVerticalGroup(
             escritorioPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 790, Short.MAX_VALUE)
+            .addGap(0, 710, Short.MAX_VALUE)
         );
 
-        jPanel2.add(escritorioPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 1160, 790));
+        jPanel2.add(escritorioPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 1160, 710));
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -402,6 +403,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1150, 90));
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnRegistrarPersona.setBackground(new java.awt.Color(255, 255, 255));
