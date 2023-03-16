@@ -198,6 +198,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         setBackground(new java.awt.Color(0, 204, 0));
         setExtendedState(6);
         setMaximumSize(new java.awt.Dimension(0, 0));
+        setMinimumSize(new java.awt.Dimension(0, 0));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(46, 49, 49));
