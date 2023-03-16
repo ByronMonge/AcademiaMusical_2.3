@@ -12,8 +12,6 @@ public class ControladorPrincipal {
         this.vistaPrincipal = vistaPrincipal;
         vistaPrincipal.setVisible(true);
         vistaPrincipal.setLocationRelativeTo(null);
-        //vistaPrincipal.setMaximumSize(vistaPrincipal.getSize());
-        vistaPrincipal.setMaximizedBounds(vistaPrincipal.getBounds()); //Se supone que ésto va a servir
         vistaPrincipal.getLblUsuario().setText(ControladorLogin.usuario);
         DashBoard();
     }
@@ -49,9 +47,7 @@ public class ControladorPrincipal {
         ModeloPersona modelo = new ModeloPersona();
 
         //Agregar Vista Personas al Desktop Pane.
-        //vista.setMaximumSize(vistaPrincipal.getEscritorioPrincipal().getSize()); prueba de tamaños
         vistaPrincipal.getEscritorioPrincipal().add(vista);
-
         ControladorPersona control = new ControladorPersona(modelo, vista);
         control.iniciarControl();//Empezamos las escuchas a los eventos de la vista, Listeners.
     }
