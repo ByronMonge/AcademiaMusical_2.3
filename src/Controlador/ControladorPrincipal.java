@@ -14,7 +14,8 @@ public class ControladorPrincipal {
         this.vistaPrincipal = vistaPrincipal;
         vistaPrincipal.setVisible(true);
         vistaPrincipal.setLocationRelativeTo(null);
-        vistaPrincipal.setExtendedState(MAXIMIZED_BOTH); //Se supone que ésto va a servir para 
+        vistaPrincipal.setMaximumSize(vistaPrincipal.getSize());
+        //vistaPrincipal.setExtendedState(MAXIMIZED_BOTH); //Se supone que ésto va a servir
         vistaPrincipal.getLblUsuario().setText(ControladorLogin.usuario);
         DashBoard();
     }
