@@ -15,9 +15,7 @@ public class ControladorPrincipal {
         this.vistaPrincipal = vistaPrincipal;
         vistaPrincipal.setVisible(true);
         vistaPrincipal.setLocationRelativeTo(null);
-        Toolkit t = Toolkit.getDefaultToolkit();
-        Dimension screenSize = t.getScreenSize();
-        vistaPrincipal.setSize(screenSize);
+        vistaPrincipal.setExtendedState(MAXIMIZED_BOTH);
         vistaPrincipal.getLblUsuario().setText(ControladorLogin.usuario);
         DashBoard();
     }
