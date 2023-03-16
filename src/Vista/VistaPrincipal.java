@@ -196,7 +196,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 204, 0));
-        setExtendedState(2);
+        setExtendedState(6);
 
         jPanel1.setBackground(new java.awt.Color(46, 49, 49));
         jPanel1.setAutoscrolls(true);
