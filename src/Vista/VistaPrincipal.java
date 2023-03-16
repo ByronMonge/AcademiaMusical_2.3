@@ -201,6 +201,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(46, 49, 49));
+        jPanel1.setAutoscrolls(true);
 
         lblUsuario.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         lblUsuario.setForeground(new java.awt.Color(255, 255, 255));
@@ -215,6 +216,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         btnDashboard.setForeground(new java.awt.Color(255, 255, 255));
         btnDashboard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/dash.png"))); // NOI18N
         btnDashboard.setText("Dashboard");
+        btnDashboard.setAutoscrolls(true);
         btnDashboard.setBorder(null);
         btnDashboard.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
@@ -223,6 +225,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         btnCurso.setForeground(new java.awt.Color(255, 255, 255));
         btnCurso.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/curso.png"))); // NOI18N
         btnCurso.setText("Curso");
+        btnCurso.setAutoscrolls(true);
         btnCurso.setBorder(null);
         btnCurso.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
@@ -231,6 +234,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         btnAsignatura.setForeground(new java.awt.Color(255, 255, 255));
         btnAsignatura.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/libros.png"))); // NOI18N
         btnAsignatura.setText("Asignatura");
+        btnAsignatura.setAutoscrolls(true);
         btnAsignatura.setBorder(null);
         btnAsignatura.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
@@ -239,6 +243,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         btnAsignarAsignatura.setForeground(new java.awt.Color(255, 255, 255));
         btnAsignarAsignatura.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/asignacionasi.png"))); // NOI18N
         btnAsignarAsignatura.setText("Asignar Asignatura");
+        btnAsignarAsignatura.setAutoscrolls(true);
         btnAsignarAsignatura.setBorder(null);
         btnAsignarAsignatura.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
@@ -247,6 +252,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         btnAula.setForeground(new java.awt.Color(255, 255, 255));
         btnAula.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/aulan.png"))); // NOI18N
         btnAula.setText("Aula");
+        btnAula.setAutoscrolls(true);
         btnAula.setBorder(null);
         btnAula.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
@@ -255,6 +261,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         btnInstrumento.setForeground(new java.awt.Color(255, 255, 255));
         btnInstrumento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/guitarra.png"))); // NOI18N
         btnInstrumento.setText("Instrumento");
+        btnInstrumento.setAutoscrolls(true);
         btnInstrumento.setBorder(null);
         btnInstrumento.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
@@ -263,6 +270,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         btnSetGrab.setForeground(new java.awt.Color(255, 255, 255));
         btnSetGrab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/grabar.png"))); // NOI18N
         btnSetGrab.setText("Set de Grabacion");
+        btnSetGrab.setAutoscrolls(true);
         btnSetGrab.setBorder(null);
         btnSetGrab.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
@@ -271,6 +279,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         btnReserva.setForeground(new java.awt.Color(255, 255, 255));
         btnReserva.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/reservaa.png"))); // NOI18N
         btnReserva.setText("Reserva");
+        btnReserva.setAutoscrolls(true);
         btnReserva.setBorder(null);
         btnReserva.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
@@ -279,6 +288,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         btnHorario.setForeground(new java.awt.Color(255, 255, 255));
         btnHorario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/calendario_1.png"))); // NOI18N
         btnHorario.setText("Horario");
+        btnHorario.setAutoscrolls(true);
         btnHorario.setBorder(null);
         btnHorario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
@@ -287,6 +297,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         btnAsiHorario.setForeground(new java.awt.Color(255, 255, 255));
         btnAsiHorario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/eleccion.png"))); // NOI18N
         btnAsiHorario.setText("Asignar Horario");
+        btnAsiHorario.setAutoscrolls(true);
         btnAsiHorario.setBorder(null);
         btnAsiHorario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
@@ -295,6 +306,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         btnAsignarAula.setForeground(new java.awt.Color(255, 255, 255));
         btnAsignarAula.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/diagrama.png"))); // NOI18N
         btnAsignarAula.setText("Asignar aula");
+        btnAsignarAula.setAutoscrolls(true);
         btnAsignarAula.setBorder(null);
         btnAsignarAula.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
@@ -303,6 +315,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         btnDirigir.setForeground(new java.awt.Color(255, 255, 255));
         btnDirigir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/banda-sonora.png"))); // NOI18N
         btnDirigir.setText("Asignar director");
+        btnDirigir.setAutoscrolls(true);
         btnDirigir.setBorder(null);
         btnDirigir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
@@ -369,6 +382,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 860));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setAutoscrolls(true);
         jPanel2.setFocusable(false);
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -388,6 +402,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         jPanel2.add(escritorioPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 1160, 710));
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setAutoscrolls(true);
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Roboto", 1, 26)); // NOI18N
@@ -402,6 +417,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1150, 90));
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel4.setAutoscrolls(true);
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnRegistrarPersona.setBackground(new java.awt.Color(255, 255, 255));
