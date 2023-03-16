@@ -2,6 +2,7 @@ package Controlador;
 
 import Modelo.*;
 import Vista.*;
+import static java.awt.Frame.MAXIMIZED_BOTH;
 import java.util.List;
 
 public class ControladorPrincipal {
@@ -12,6 +13,7 @@ public class ControladorPrincipal {
         this.vistaPrincipal = vistaPrincipal;
         vistaPrincipal.setVisible(true);
         vistaPrincipal.setLocationRelativeTo(null);
+        vistaPrincipal.setExtendedState(MAXIMIZED_BOTH);
         vistaPrincipal.getLblUsuario().setText(ControladorLogin.usuario);
         DashBoard();
     }
