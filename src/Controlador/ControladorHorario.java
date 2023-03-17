@@ -1,16 +1,27 @@
 package Controlador;
 
+import Modelo.ConexionPG;
 import Modelo.Horario;
 import Modelo.ModeloHorario;
 import Vista.VistaHorario;
 import Vista.VistaPrincipal;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 public class ControladorHorario {
 
@@ -35,12 +46,12 @@ public class ControladorHorario {
         vista.getBtnModificar().addActionListener(l -> cargarDatosHorarioEnTXT());
         vista.getBtnEliminar().addActionListener(l -> eliminarHorario());
         vista.getBtnCancelar().addActionListener(l -> botonEliminar());
-                //vista.getBtnImprimir().addActionListener(l -> imprimir());
+        vista.getBtnImprimir().addActionListener(l -> imprimir());
         buscarHorario();
     }
 
     public void abrirDialogCrear() {
-        vista.getjDlgHorario().setName("Crear nuevo horario");        
+        vista.getjDlgHorario().setName("Crear nuevo horario");
         vista.getjDlgHorario().setSize(615, 386);
         vista.getjDlgHorario().setTitle("Crear nuevo horario");
         vista.getjDlgHorario().setVisible(true);
@@ -59,6 +70,28 @@ public class ControladorHorario {
             String[] datos = {String.valueOf(p.getHor_codigo()), p.getHor_dia(), p.getHor_horaIni(), p.getHor_horaFin()};
             tabla.addRow(datos);
         });
+    }
+
+    public void imprimir() {
+
+        ConexionPG cpg = new ConexionPG();//Instanciar la conexion con esto abrimos la conexion a la BD
+        try {
+            JasperReport jr = (JasperReport) JRLoader.loadObject(getClass().getResource("/reportes/HorarioReporte.jasper"));
+
+            //Hacer una vista previa
+            //JasperPrint jp = JasperFillManager.fillReport(jr, null, cpg.getCon());//JasperFillManager.fillReport: Carga los datos de la BD.//JasperPrint: Hace la impresion del reporte. Puede ir 'null' si en el jasper no existen parametros caso contrario se envian los parametros necesarios
+            Map<String, Object> parametros = new HashMap<String, Object>();
+
+            parametros.put("ImagenRuta", "src/imagenesJasper/horario.png"); //En donde esta 'titulo' tienen que ser igual al nombre que esta en el parametro del jasper
+
+            JasperPrint jp = JasperFillManager.fillReport(jr, parametros, cpg.getCon());//'parametros' es el Map recien creado que contiene los parametros que iran al jasper
+
+            JasperViewer jv = new JasperViewer(jp, false); //Se pasa false para que no se cierre el sistema 
+            jv.setVisible(true);
+
+        } catch (JRException ex) {
+            Logger.getLogger(ControladorPersona.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     private void crearEditarCurso() {
@@ -265,10 +298,11 @@ public class ControladorHorario {
         vista.getComboHoraFin().setSelectedIndex(0);
         vista.getComboMinutosFin().setSelectedIndex(0);
     }
-     public void botonEliminar() {
+
+    public void botonEliminar() {
         vista.getjDlgHorario().setVisible(false);
     }
-         /*public void imprimir() {
+    /*public void imprimir() {
 
         ConexionPG conpg = new ConexionPG();//Instanciar la conexion con esto abrimos la conexion a la BD
         try {

@@ -1,5 +1,6 @@
 package Controlador;
 
+import Modelo.ConexionPG;
 import Modelo.Estudiante;
 import Modelo.ModeloEstudiante;
 import Modelo.ModeloPersona;
@@ -8,10 +9,20 @@ import Vista.VistaEstudiante;
 import Vista.VistaPrincipal;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.xml.ws.Holder;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 public class ControladorEstudiante {
 
@@ -28,7 +39,9 @@ public class ControladorEstudiante {
         vista.setSize(p.getEscritorioPrincipal().getWidth(), p.getEscritorioPrincipal().getHeight());
         vista.getjDlgBuscarPersonas().setResizable(false);
         vista.getjDlgBuscarPersonas().setLocationRelativeTo(null);
+        vista.getBtnImprimir().addActionListener(l -> imprimir());
         cargarTablaDeEstudiantes();
+        buscarEstudiante();
     }
 
     public void iniciarControl() {
@@ -421,19 +434,17 @@ public class ControladorEstudiante {
     public void cancelar() {
         vista.getjDlgEstudiante().setVisible(false);
     }
-        /*public void imprimir() {
+       public void imprimir() {
 
-        ConexionPG conpg = new ConexionPG();//Instanciar la conexion con esto abrimos la conexion a la BD
+        ConexionPG cpg = new ConexionPG();//Instanciar la conexion con esto abrimos la conexion a la BD
         try {
-            JasperReport jr = (JasperReport) JRLoader.loadObject(getClass().getResource("/vista/reportes/Reporte mvc.jasper"));
+            JasperReport jr = (JasperReport) JRLoader.loadObject(getClass().getResource("/reportes/EstudianteReporte.jasper"));
 
             //Hacer una vista previa
             //JasperPrint jp = JasperFillManager.fillReport(jr, null, cpg.getCon());//JasperFillManager.fillReport: Carga los datos de la BD.//JasperPrint: Hace la impresion del reporte. Puede ir 'null' si en el jasper no existen parametros caso contrario se envian los parametros necesarios
             Map<String, Object> parametros = new HashMap<String, Object>();
 
-            parametros.put("titulo", vista.getTxtTitulo().getText()); //En donde esta 'titulo' tienen que ser igual al nombre que esta en el parametro del jasper
-            parametros.put("limitea", Double.parseDouble(vista.getSpinnerSueldomaximo().getValue().toString()));
-            parametros.put("limiteb", Double.parseDouble(vista.getSpinnerSueldominimo().getValue().toString()));//Cuando se quiere pasar un tipo de dato int '100' se coloca la 'd' despues del dato'100d'
+            parametros.put("ImagenRuta", "src/imagenesJasper/estudiante.png"); //En donde esta 'titulo' tienen que ser igual al nombre que esta en el parametro del jasper
 
             JasperPrint jp = JasperFillManager.fillReport(jr, parametros, cpg.getCon());//'parametros' es el Map recien creado que contiene los parametros que iran al jasper
 
@@ -443,6 +454,6 @@ public class ControladorEstudiante {
         } catch (JRException ex) {
             Logger.getLogger(ControladorPersona.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }*/
+    }
     
 }
