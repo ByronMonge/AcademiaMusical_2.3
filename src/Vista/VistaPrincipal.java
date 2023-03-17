@@ -1,17 +1,27 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package Vista;
 
 import javax.swing.JButton;
 import javax.swing.JDesktopPane;
 import javax.swing.JLabel;
 
+/**
+ *
+ * @author Usuario
+ */
 public class VistaPrincipal extends javax.swing.JFrame {
 
+    /**
+     * Creates new form pri
+     */
     public VistaPrincipal() {
         initComponents();
-        this.setExtendedState(MAXIMIZED_BOTH);
     }
-
-    public JButton getBtnAdministrador() {
+public JButton getBtnAdministrador() {
         return btnAdministrador;
     }
 
@@ -162,14 +172,20 @@ public class VistaPrincipal extends javax.swing.JFrame {
     public void setBtnDirigir(JButton btnDirigir) {
         this.btnDirigir = btnDirigir;
     }
+    
+    public JLabel getLblUsuario() {
+        return lblUsuario;
+    }
 
-    
-    
+    public void setLblUsuario(JLabel lblUsuario) {
+        this.lblUsuario = lblUsuario;
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
         lblUsuario = new javax.swing.JLabel();
         btnDashboard = new javax.swing.JButton();
         btnCurso = new javax.swing.JButton();
@@ -183,27 +199,25 @@ public class VistaPrincipal extends javax.swing.JFrame {
         btnAsiHorario = new javax.swing.JButton();
         btnAsignarAula = new javax.swing.JButton();
         btnDirigir = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
-        escritorioPrincipal = new javax.swing.JDesktopPane();
         jPanel3 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        jPanel6 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
         btnRegistrarPersona = new javax.swing.JButton();
         btnEstudiante = new javax.swing.JButton();
         btnProductor = new javax.swing.JButton();
         btnDocente = new javax.swing.JButton();
         btnAdministrador = new javax.swing.JButton();
         btnMatricula = new javax.swing.JButton();
+        jPanel5 = new javax.swing.JPanel();
+        escritorioPrincipal = new javax.swing.JDesktopPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setBackground(new java.awt.Color(0, 204, 0));
-        setExtendedState(6);
-        setMaximumSize(new java.awt.Dimension(0, 0));
-        setMinimumSize(new java.awt.Dimension(0, 0));
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(46, 49, 49));
-        jPanel1.setAutoscrolls(true);
+        jPanel1.setLayout(new java.awt.BorderLayout());
+
+        jPanel4.setBackground(new java.awt.Color(46, 49, 49));
+        jPanel4.setAutoscrolls(true);
 
         lblUsuario.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         lblUsuario.setForeground(new java.awt.Color(255, 255, 255));
@@ -221,6 +235,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         btnDashboard.setAutoscrolls(true);
         btnDashboard.setBorder(null);
         btnDashboard.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnDashboard.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
 
         btnCurso.setBackground(new java.awt.Color(46, 49, 49));
         btnCurso.setFont(new java.awt.Font("Roboto Medium", 0, 16)); // NOI18N
@@ -230,6 +245,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         btnCurso.setAutoscrolls(true);
         btnCurso.setBorder(null);
         btnCurso.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCurso.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
 
         btnAsignatura.setBackground(new java.awt.Color(46, 49, 49));
         btnAsignatura.setFont(new java.awt.Font("Roboto Medium", 0, 16)); // NOI18N
@@ -239,6 +255,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         btnAsignatura.setAutoscrolls(true);
         btnAsignatura.setBorder(null);
         btnAsignatura.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAsignatura.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
 
         btnAsignarAsignatura.setBackground(new java.awt.Color(46, 49, 49));
         btnAsignarAsignatura.setFont(new java.awt.Font("Roboto Medium", 0, 16)); // NOI18N
@@ -248,6 +265,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         btnAsignarAsignatura.setAutoscrolls(true);
         btnAsignarAsignatura.setBorder(null);
         btnAsignarAsignatura.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAsignarAsignatura.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
 
         btnAula.setBackground(new java.awt.Color(46, 49, 49));
         btnAula.setFont(new java.awt.Font("Roboto Medium", 0, 16)); // NOI18N
@@ -257,6 +275,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         btnAula.setAutoscrolls(true);
         btnAula.setBorder(null);
         btnAula.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAula.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
 
         btnInstrumento.setBackground(new java.awt.Color(46, 49, 49));
         btnInstrumento.setFont(new java.awt.Font("Roboto Medium", 0, 16)); // NOI18N
@@ -266,6 +285,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         btnInstrumento.setAutoscrolls(true);
         btnInstrumento.setBorder(null);
         btnInstrumento.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnInstrumento.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
 
         btnSetGrab.setBackground(new java.awt.Color(46, 49, 49));
         btnSetGrab.setFont(new java.awt.Font("Roboto Medium", 0, 16)); // NOI18N
@@ -275,6 +295,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         btnSetGrab.setAutoscrolls(true);
         btnSetGrab.setBorder(null);
         btnSetGrab.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSetGrab.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
 
         btnReserva.setBackground(new java.awt.Color(46, 49, 49));
         btnReserva.setFont(new java.awt.Font("Roboto Medium", 0, 16)); // NOI18N
@@ -284,6 +305,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         btnReserva.setAutoscrolls(true);
         btnReserva.setBorder(null);
         btnReserva.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnReserva.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
 
         btnHorario.setBackground(new java.awt.Color(46, 49, 49));
         btnHorario.setFont(new java.awt.Font("Roboto Medium", 0, 16)); // NOI18N
@@ -293,6 +315,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         btnHorario.setAutoscrolls(true);
         btnHorario.setBorder(null);
         btnHorario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnHorario.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
 
         btnAsiHorario.setBackground(new java.awt.Color(46, 49, 49));
         btnAsiHorario.setFont(new java.awt.Font("Roboto Medium", 0, 16)); // NOI18N
@@ -311,6 +334,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         btnAsignarAula.setAutoscrolls(true);
         btnAsignarAula.setBorder(null);
         btnAsignarAula.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAsignarAula.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
 
         btnDirigir.setBackground(new java.awt.Color(46, 49, 49));
         btnDirigir.setFont(new java.awt.Font("Roboto Medium", 0, 16)); // NOI18N
@@ -320,92 +344,77 @@ public class VistaPrincipal extends javax.swing.JFrame {
         btnDirigir.setAutoscrolls(true);
         btnDirigir.setBorder(null);
         btnDirigir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnDirigir.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(lblUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(66, 66, 66))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(22, Short.MAX_VALUE)
-                .addComponent(btnAsignarAsignatura)
-                .addContainerGap())
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnDirigir)
-                    .addComponent(btnAsignarAula)
-                    .addComponent(btnAsiHorario)
-                    .addComponent(btnHorario)
-                    .addComponent(btnReserva)
-                    .addComponent(btnSetGrab)
-                    .addComponent(btnInstrumento)
-                    .addComponent(btnAula)
-                    .addComponent(btnAsignatura)
-                    .addComponent(btnCurso)
-                    .addComponent(btnDashboard))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnAsignarAsignatura, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
+                    .addComponent(btnDirigir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnAsignarAula, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnHorario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnReserva, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnSetGrab, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnInstrumento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnAula, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnAsignatura, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnCurso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnDashboard, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(btnAsiHorario, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addComponent(lblUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnDashboard)
+                .addComponent(btnDashboard, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(btnReserva)
+                .addComponent(btnReserva, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(btnCurso)
+                .addComponent(btnCurso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(btnHorario)
+                .addComponent(btnHorario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(btnAsiHorario, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnAsiHorario, javax.swing.GroupLayout.PREFERRED_SIZE, 30, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(btnAsignatura)
+                .addComponent(btnAsignatura, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(btnAsignarAsignatura)
+                .addComponent(btnAsignarAsignatura, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(btnAula)
+                .addComponent(btnAula, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(btnAsignarAula)
+                .addComponent(btnAsignarAula, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(27, 27, 27)
-                .addComponent(btnInstrumento)
+                .addComponent(btnInstrumento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(btnSetGrab)
+                .addComponent(btnSetGrab, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(btnDirigir)
-                .addContainerGap())
+                .addComponent(btnDirigir, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 860));
+        jPanel1.add(jPanel4, java.awt.BorderLayout.CENTER);
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setAutoscrolls(true);
-        jPanel2.setFocusable(false);
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().add(jPanel1, java.awt.BorderLayout.LINE_START);
 
-        escritorioPrincipal.setAutoscrolls(true);
+        jPanel3.setLayout(new java.awt.BorderLayout());
 
-        javax.swing.GroupLayout escritorioPrincipalLayout = new javax.swing.GroupLayout(escritorioPrincipal);
-        escritorioPrincipal.setLayout(escritorioPrincipalLayout);
-        escritorioPrincipalLayout.setHorizontalGroup(
-            escritorioPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1160, Short.MAX_VALUE)
-        );
-        escritorioPrincipalLayout.setVerticalGroup(
-            escritorioPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 710, Short.MAX_VALUE)
-        );
+        jPanel2.setLayout(new java.awt.BorderLayout());
 
-        jPanel2.add(escritorioPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 1160, 710));
-
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel3.setAutoscrolls(true);
-        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel6.setAutoscrolls(true);
 
         jLabel1.setFont(new java.awt.Font("Roboto", 1, 26)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(153, 0, 0));
@@ -414,13 +423,6 @@ public class VistaPrincipal extends javax.swing.JFrame {
         jLabel1.setToolTipText("");
         jLabel1.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 380, -1));
-
-        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1150, 90));
-
-        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel4.setAutoscrolls(true);
-        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnRegistrarPersona.setBackground(new java.awt.Color(255, 255, 255));
         btnRegistrarPersona.setFont(new java.awt.Font("Roboto Medium", 0, 16)); // NOI18N
@@ -429,7 +431,6 @@ public class VistaPrincipal extends javax.swing.JFrame {
         btnRegistrarPersona.setToolTipText("Registrar persona");
         btnRegistrarPersona.setBorder(null);
         btnRegistrarPersona.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel4.add(btnRegistrarPersona, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 10, -1, -1));
 
         btnEstudiante.setBackground(new java.awt.Color(255, 255, 255));
         btnEstudiante.setFont(new java.awt.Font("Roboto Medium", 0, 16)); // NOI18N
@@ -439,7 +440,6 @@ public class VistaPrincipal extends javax.swing.JFrame {
         btnEstudiante.setToolTipText("Registrar estudiante");
         btnEstudiante.setBorder(null);
         btnEstudiante.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel4.add(btnEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 10, -1, -1));
 
         btnProductor.setBackground(new java.awt.Color(255, 255, 255));
         btnProductor.setFont(new java.awt.Font("Roboto Medium", 0, 16)); // NOI18N
@@ -449,7 +449,6 @@ public class VistaPrincipal extends javax.swing.JFrame {
         btnProductor.setToolTipText("Registrar productor");
         btnProductor.setBorder(null);
         btnProductor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel4.add(btnProductor, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 10, -1, -1));
 
         btnDocente.setBackground(new java.awt.Color(255, 255, 255));
         btnDocente.setFont(new java.awt.Font("Roboto Medium", 0, 16)); // NOI18N
@@ -459,7 +458,6 @@ public class VistaPrincipal extends javax.swing.JFrame {
         btnDocente.setToolTipText("Registrar docente");
         btnDocente.setBorder(null);
         btnDocente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel4.add(btnDocente, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 10, -1, -1));
 
         btnAdministrador.setBackground(new java.awt.Color(255, 255, 255));
         btnAdministrador.setFont(new java.awt.Font("Roboto Medium", 0, 16)); // NOI18N
@@ -469,7 +467,6 @@ public class VistaPrincipal extends javax.swing.JFrame {
         btnAdministrador.setToolTipText("Registrar administrador");
         btnAdministrador.setBorder(null);
         btnAdministrador.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel4.add(btnAdministrador, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 10, -1, -1));
 
         btnMatricula.setBackground(new java.awt.Color(255, 255, 255));
         btnMatricula.setFont(new java.awt.Font("Roboto Medium", 0, 16)); // NOI18N
@@ -479,25 +476,64 @@ public class VistaPrincipal extends javax.swing.JFrame {
         btnMatricula.setToolTipText("Realizar matrícula");
         btnMatricula.setBorder(null);
         btnMatricula.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel4.add(btnMatricula, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 10, 120, 30));
 
-        jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 86, 1160, 50));
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(421, 421, 421)
+                .addComponent(btnProductor, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE)
+                .addGap(26, 26, 26)
+                .addComponent(btnDocente, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(btnEstudiante, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE)
+                .addGap(30, 30, 30)
+                .addComponent(btnAdministrador, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnMatricula, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnRegistrarPersona, javax.swing.GroupLayout.DEFAULT_SIZE, 46, Short.MAX_VALUE)
+                .addGap(48, 48, 48))
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(842, Short.MAX_VALUE))
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(jLabel1)
+                .addGap(5, 5, 5)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnProductor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnDocente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnEstudiante, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnAdministrador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnMatricula, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnRegistrarPersona, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(23, 23, 23))
+        );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(213, 0, -1, -1));
+        jPanel2.add(jPanel6, java.awt.BorderLayout.CENTER);
+
+        jPanel3.add(jPanel2, java.awt.BorderLayout.PAGE_START);
+
+        jPanel5.setLayout(new java.awt.BorderLayout());
+
+        escritorioPrincipal.setLayout(new java.awt.BorderLayout());
+        jPanel5.add(escritorioPrincipal, java.awt.BorderLayout.CENTER);
+
+        jPanel3.add(jPanel5, java.awt.BorderLayout.CENTER);
+
+        getContentPane().add(jPanel3, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public JLabel getLblUsuario() {
-        return lblUsuario;
-    }
 
-    public void setLblUsuario(JLabel lblUsuario) {
-        this.lblUsuario = lblUsuario;
-    }
-
-
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdministrador;
     private javax.swing.JButton btnAsiHorario;
@@ -523,6 +559,8 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JLabel lblUsuario;
     // End of variables declaration//GEN-END:variables
 }

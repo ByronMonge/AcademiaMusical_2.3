@@ -3,7 +3,7 @@ package Controlador;
 import Modelo.*;
 import Vista.*;
 import java.awt.Dimension;
-import static java.awt.Frame.MAXIMIZED_BOTH;
+
 import java.awt.Toolkit;
 import java.util.List;
 
@@ -15,7 +15,6 @@ public class ControladorPrincipal {
         this.vistaPrincipal = vistaPrincipal;
         vistaPrincipal.setVisible(true);
         vistaPrincipal.setLocationRelativeTo(null);
-        vistaPrincipal.setExtendedState(MAXIMIZED_BOTH);
         vistaPrincipal.getLblUsuario().setText(ControladorLogin.usuario);
         DashBoard();
     }
@@ -49,7 +48,7 @@ public class ControladorPrincipal {
         //Instancio las clases del Modelo y la Vista.
         VistaPersona vista = new VistaPersona();
         ModeloPersona modelo = new ModeloPersona();
-
+        vista.setSize(vistaPrincipal.getEscritorioPrincipal().getWidth(), vistaPrincipal.getEscritorioPrincipal().getHeight());
         //Agregar Vista Personas al Desktop Pane.
         vistaPrincipal.getEscritorioPrincipal().add(vista);
         ControladorPersona control = new ControladorPersona(modelo, vista);
@@ -62,7 +61,7 @@ public class ControladorPrincipal {
 
         VistaDocente vista = new VistaDocente();
         ModeloDocente modelo = new ModeloDocente();
-
+        vista.setSize(vistaPrincipal.getEscritorioPrincipal().getWidth(), vistaPrincipal.getEscritorioPrincipal().getHeight());
         vistaPrincipal.getEscritorioPrincipal().add(vista);
 
         ControladorDocente control = new ControladorDocente(modelo, vista);
@@ -75,7 +74,7 @@ public class ControladorPrincipal {
 
         VistaAdministrador vista = new VistaAdministrador();
         ModeloAdministrador modelo = new ModeloAdministrador();
-
+        vista.setSize(vistaPrincipal.getEscritorioPrincipal().getWidth(), vistaPrincipal.getEscritorioPrincipal().getHeight());
         vistaPrincipal.getEscritorioPrincipal().add(vista);
 
         ControladorAdministrador control = new ControladorAdministrador(modelo, vista);
@@ -146,14 +145,14 @@ public class ControladorPrincipal {
         List<Reserva> reservas = reserva.listaReservasTabla();
 
         ModeloInstrumento instrumento = new ModeloInstrumento();
-        List<Instrumentos> instrumentos =instrumento.listaInstumentoTabla();
+        List<Instrumentos> instrumentos = instrumento.listaInstumentoTabla();
         //Setear en los labels del dashBoard la cantidad total de cada elemento que conforma la academia
         vista.getLblDocentes().setText(String.valueOf(docentes.stream().count())); //Seteo la cantidad de docentes     
         vista.getLblEstudiantes().setText(String.valueOf(estudiantes.stream().count()));//Seteo la cantidad de estudiantes
         vista.getLblProductores().setText(String.valueOf(productores.stream().count()));//Seteo la cantidad de productores
         vista.getLblReservas().setText(String.valueOf(reservas.stream().count())); //Seteo la cantidad de reservas
         vista.getLblInstrumentos().setText(String.valueOf(instrumentos.stream().count()));
-        
+
     }
 
     private void registroEstudiante() {
