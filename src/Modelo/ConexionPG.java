@@ -13,10 +13,11 @@ public class ConexionPG {
 
     Connection con;
 
-    String cadenaConexion = "jdbc:postgresql://containers-us-west-141.railway.app:6363/railway";
+    //String cadenaConexion = "jdbc:postgresql://containers-us-west-141.railway.app:6363/railway";
+    String cadenaConexion = "jdbc:postgresql://localhost:5432/RedNote";
     //jdbc:postgresql://localhost:5432/ProyectoAcademiaMusical
     String usuarioPG = "postgres";
-    String passPG = "iw9sXOirC0OMA4qNMvPb";
+    String passPG = "1234";
     //bfml1123 
 
 

@@ -20,6 +20,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
      */
     public VistaPrincipal() {
         initComponents();
+        this.setTitle("DashBoard");
     }
 public JButton getBtnAdministrador() {
         return btnAdministrador;

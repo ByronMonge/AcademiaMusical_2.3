@@ -3,6 +3,7 @@ package Controlador;
 import Modelo.*;
 import Vista.*;
 import java.awt.Dimension;
+import java.awt.Image;
 
 import java.awt.Toolkit;
 import java.util.List;
@@ -14,6 +15,7 @@ public class ControladorPrincipal {
     public ControladorPrincipal(VistaPrincipal vistaPrincipal) {
         this.vistaPrincipal = vistaPrincipal;
         vistaPrincipal.setVisible(true);
+        vistaPrincipal.setIconImage(getIconImage());
         vistaPrincipal.setLocationRelativeTo(null);
         vistaPrincipal.getLblUsuario().setText(ControladorLogin.usuario);
         DashBoard();
@@ -298,5 +300,9 @@ public class ControladorPrincipal {
 
         ControladorAsigAula control = new ControladorAsigAula(modelo, vista);
         control.iniciarControl();
+    }
+    public Image getIconImage(){
+        Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("imagenes/loguito.png"));
+        return retValue;
     }
 }

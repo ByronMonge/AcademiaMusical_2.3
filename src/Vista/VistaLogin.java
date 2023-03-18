@@ -1,5 +1,7 @@
 package Vista;
 
+import java.awt.Image;
+import java.awt.Toolkit;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPasswordField;
@@ -9,6 +11,8 @@ public class VistaLogin extends javax.swing.JFrame {
 
     public VistaLogin() {
         initComponents();
+        setIconImage(getIconImage());
+        this.setTitle("Inicio de Sesión");
     }
 
     public JButton getBtnIniciarSesion() {
@@ -83,7 +87,13 @@ public class VistaLogin extends javax.swing.JFrame {
         this.jButton3 = jButton3;
     }
 
-    
+    public Image getIconImage() {
+        Image retValue = Toolkit.getDefaultToolkit()
+                .getImage(ClassLoader.
+                        getSystemResource("imagenes/loguito.png"));
+        return retValue;
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
